@@ -301,7 +301,9 @@
     if (!body.length) imgs.slice(1).forEach(function (im) { art.appendChild(figure(im, false)); });
 
     if (a.sourceTitle || a.sourceUrl) {
-      var src = el("p", "sl-source", "Based on a Swansea Council press release");
+      // sourceName says where the story came from, e.g. "a Facebook post by Cllr Rob Stewart".
+      // Older articles have none and were all council press releases.
+      var src = el("p", "sl-source", "Based on " + (a.sourceName || "a Swansea Council press release"));
       if (a.sourceUrl) {
         src.appendChild(document.createTextNode(": "));
         var l = el("a", null, a.sourceTitle || "read the original");
@@ -312,7 +314,7 @@
       } else if (a.sourceTitle) {
         src.appendChild(document.createTextNode(": " + a.sourceTitle));
       }
-      src.appendChild(document.createTextNode("."));
+      if (!/[.!?]$/.test(a.sourceTitle || "")) src.appendChild(document.createTextNode("."));
       art.appendChild(src);
     }
     art.appendChild(imprintEl(data.imprint));
