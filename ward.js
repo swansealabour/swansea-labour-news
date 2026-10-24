@@ -11,8 +11,9 @@
  *   data-map-url="/delivering"  link from "Delivered in this ward" to the full map page
  *   data-news-url="/news"       news page, used if articles.json has no pageUrl set
  *   data-news-limit="3"         how many news stories to show
- *   data-news-fallback="off"    if the ward has no stories, say so instead of showing
- *                               the latest Swansea Labour news
+ *   data-news-fallback="off"    show this ward's stories, then city-wide ones (no ward
+ *                               tagged), but never other wards' stories; if there are
+ *                               none, say so
  *   data-projects-limit="6"     how many delivered projects to show
  *   data-imprint="off"          hide the imprint line under the news
  *   data-accent="#E4003B"       accent colour
@@ -252,6 +253,12 @@
     var heading = ward.name + " news";
     var pageUrl = (news.pageUrl || opts.newsUrl || "/news").replace(/\/+$/, "");
     var part = el("section", "slw-part");
+    if (!opts.newsFallback) {
+      // This ward's stories first, then city-wide ones (no ward tagged). Never other wards' stories.
+      var general = articles.filter(function (a) { return !(a.wards || []).length; });
+      if (!mine.length && general.length) heading = "Latest from Swansea Labour";
+      mine = mine.concat(general);
+    }
     if (!mine.length && !opts.newsFallback) {
       part.appendChild(el("h2", "slw-h", heading));
       var empty = el("p", "slw-empty", "No news for " + ward.name + " yet. ");
