@@ -313,8 +313,20 @@ function photoCard(p, group, isLead, onChange) {
   };
 }
 
+// What the article page says the story is "Based on". Facebook drafts are labelled
+// "Facebook: <who>" by the daily task; everything else came from a council press release.
+function defaultSourceName(d) {
+  if (d.sourceName) return d.sourceName;
+  const fb = /^Facebook: (.+)$/.exec(d.sourceFile || "");
+  if (!fb) return "a Swansea Council press release";
+  const who = fb[1].replace(/\bRob Stewart\b/, "Cllr Rob Stewart");
+  if (/ and /.test(who)) return `Facebook posts by ${who}`;
+  return who === "Swansea Council" ? "a Swansea Council Facebook post" : `a Facebook post by ${who}`;
+}
+
 function draftEditor(d) {
   const f = {
+    sourceName: el("input", { type: "text", value: defaultSourceName(d) }),
     headline: el("input", { type: "text", value: d.headline || "" }),
     summary: el("textarea", {}, d.summary || ""),
     body: el("textarea", { class: "body" }, (d.body || []).join("\n\n")),
@@ -341,7 +353,7 @@ function draftEditor(d) {
   const addBtn = el("button", { class: "secondary", type: "button", onclick: () => picker.click() }, "Add a photo");
   const photoHint = el("p", { class: "hint" });
 
-  const factChecks = [...(d.checks || []), "I have read the article and every fact matches the original press release."].map((c) =>
+  const factChecks = [...(d.checks || []), "I have read the article and every fact matches the original source."].map((c) =>
     el("label", {}, el("input", { type: "checkbox", onchange: update }), c));
   const permission = el("label", {}, el("input", { type: "checkbox", onchange: update }), "We have permission to publish the photos being used, and anyone identifiable in them is happy to be pictured.");
   const publishBtn = el("button", { class: "primary", onclick: publish }, "Publish to website");
@@ -383,6 +395,7 @@ function draftEditor(d) {
         body: f.body.value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
         images,
         wards: f.wards.value.split(",").map((s) => s.trim()).filter(Boolean),
+        sourceName: f.sourceName.value.trim(),
         sourceTitle: f.sourceTitle.value.trim(),
         sourceDate: f.sourceDate.value.trim(),
         sourceUrl: f.sourceUrl.value.trim(),
@@ -420,9 +433,11 @@ function draftEditor(d) {
     el("label", { text: "Wards this story is about (optional, comma separated)" }), f.wards,
     el("p", { class: "hint", text: "Lets the story appear on those ward pages as well as the main news page. Spell them as on the website: " + WARDS.join(", ") + "." }),
     el("label", { text: "People quoted" }), people,
-    el("label", { text: "Original press release title" }), f.sourceTitle,
-    el("label", { text: "Original press release date" }), f.sourceDate,
-    el("label", { text: "Link to the original on swansea.gov.uk (recommended)" }), f.sourceUrl,
+    el("label", { text: "Based on (shown under the article)" }), f.sourceName,
+    el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
+    el("label", { text: "Original title" }), f.sourceTitle,
+    el("label", { text: "Original date" }), f.sourceDate,
+    el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl,
     el("div", { class: "checks" }, el("strong", { text: "Before publishing, confirm:" }), factChecks, permission),
     el("div", { class: "btns" }, publishBtn, el("button", { class: "secondary", onclick: reject }, "Reject")));
 }
