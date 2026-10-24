@@ -32,6 +32,7 @@
   var showImprint = root.getAttribute("data-imprint") !== "off";
   var allUrl = root.getAttribute("data-all-url") || "";
   var linkTo = (root.getAttribute("data-link-to") || "").replace(/\/+$/, "");
+  if (linkTo) root.classList.add("sl-linked");
   // Text size: matches the site's own body text unless data-text-size="17px" (or similar) is set.
   var fontSize = /^\d+(\.\d+)?(px|rem|em)$/.test(root.getAttribute("data-text-size") || "") ? root.getAttribute("data-text-size") : "inherit";
   var PARAM = "article";
@@ -70,6 +71,7 @@
     "#sl-news .sl-imprint{margin-top:32px}" +
     "#sl-news .sl-empty{opacity:.7}" +
     "#sl-news .sl-all{margin:24px 0 0;text-align:right}#sl-news .sl-all a{text-decoration:none}" +
+    "#sl-news.sl-linked .sl-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}" +
     "#sl-news .sl-empty a{color:var(--sl-accent)}";
   var style = document.createElement("style");
   style.textContent = css;
