@@ -3,6 +3,46 @@
   "pageUrl": "https://www.swansealabour.org/news",
   "articles": [
     {
+      "id": "2026-10-24-labour-brings-500-rental-e-bikes-to-swansea-fb217",
+      "date": "2026-10-24T10:50:33.270Z",
+      "updated": "2026-10-24T10:50:33.270Z",
+      "headline": "Labour brings Wales' only dockless e-bike scheme to Swansea",
+      "summary": "Swansea's Labour council has appointed Voi to run a city-wide e-bike scheme, the only dockless one in Wales, with free first rides and discounts for people on low incomes.",
+      "body": [
+        "Swansea's Labour council is bringing Wales' only dockless e-bike scheme to the city, giving residents an affordable, sustainable new way to make short journeys.",
+        "The council has appointed Voi to run the 24-hour, city-wide service, which launches in the week of 26 October. It starts with 70 e-bikes across Swansea University campuses, the city centre and key transport hubs, and the fleet will grow in stages to 500 e-bikes within the first year.",
+        "Labour's Cabinet Member for Environment and Infrastructure, Cllr Andrew Stevens, said: \"It has long been our ambition to have a Swansea-wide e-bike scheme and I'm delighted that we are partnering with Voi. Similar schemes around the UK have quickly become very well used, offering a new form of public transport and providing a convenient and sustainable travel option for everyday short journeys. Swansea will be the only place in Wales with a dockless e-bike scheme, and I'd encourage everyone to give it a go.\"",
+        "Keeping it affordable was central to Labour's choice of operator. Prices start at 50p to unlock an e-bike and 20p per minute, but the unlock fee is waived for the first six months and every new customer gets their first three 15-minute rides free. Day, week and monthly passes are available, with discounts for people on low incomes, NHS workers, people aged over 60, disabled people, military personnel and students.",
+        "Labour's Cabinet Member for Community, Cllr Rebecca Fogarty, said: \"Key to our decision to partner with Voi was the affordable nature of the scheme. There are day, week and monthly passes available for regular users and a range of discounts available to many people including those on low incomes, making it a cost-effective way to travel around Swansea.\"",
+        "The scheme will connect Swansea's universities, city centre, transport hubs and communities, with an early focus on destinations such as Singleton Park and SA1. It is designed to work alongside new infrastructure including the Swansea Bay Metro and the Strand hub.",
+        "The e-bikes will be powered by 100% renewable energy and supported by a zero-emission operations fleet. The scheme will also create 18 jobs, as well as apprenticeships in sustainable transport operations.",
+        "Cheaper, greener journeys and new local jobs: this is Labour delivering a better-connected Swansea that works for everyone."
+      ],
+      "images": [
+        {
+          "src": "images/2026-10-24-labour-brings-500-rental-e-bikes-to-swansea-fb217/1.jpg",
+          "alt": "Cllr Andrew Stevens and Cllr Rebecca Fogarty in helmets on orange Voi e-bikes outside a glass-fronted building",
+          "caption": "Cllr Andrew Stevens and Cllr Rebecca Fogarty try out the new Voi e-bikes",
+          "credit": "",
+          "width": 901,
+          "height": 1600
+        },
+        {
+          "src": "images/2026-10-24-labour-brings-500-rental-e-bikes-to-swansea-fb217/2.jpg",
+          "alt": "Orange Voi rental e-bikes with helmets parked on a paved area under a curved canopy",
+          "caption": "",
+          "credit": "",
+          "width": 901,
+          "height": 1600
+        }
+      ],
+      "wards": [],
+      "sourceName": "a Swansea Council press release",
+      "sourceTitle": "Swansea set for Wales' only dockless e-bike scheme",
+      "sourceDate": "23 October 2026",
+      "sourceUrl": "https://www.swansea.gov.uk/article/49520/Swansea-set-for-Wales-only-dockless-e-bike-scheme"
+    },
+    {
       "id": "2026-10-24-labour-council-warns-of-council-tax-scam-messages-fb458",
       "date": "2026-10-24T10:33:18.624Z",
       "updated": "2026-10-24T10:33:18.624Z",
