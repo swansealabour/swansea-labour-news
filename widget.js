@@ -11,6 +11,8 @@
  *   data-ward="Gowerton"       only show stories tagged with this ward
  *   data-imprint="off"         hide the imprint line (only if the page already carries one)
  *   data-all-url="/news"       where "See all news" points when used on a ward page
+ *   data-link-to="/news"       list only: cards open the story on that page instead of
+ *                              in place (use on the homepage), with a "See all news" link
  *   data-text-size="17px"      text size; leave out to match the site's own body text
  *
  * Each story has its own address (?article=ID) with its own title, description,
@@ -29,6 +31,7 @@
   var wardFilter = (root.getAttribute("data-ward") || "").trim().toLowerCase();
   var showImprint = root.getAttribute("data-imprint") !== "off";
   var allUrl = root.getAttribute("data-all-url") || "";
+  var linkTo = (root.getAttribute("data-link-to") || "").replace(/\/+$/, "");
   // Text size: matches the site's own body text unless data-text-size="17px" (or similar) is set.
   var fontSize = /^\d+(\.\d+)?(px|rem|em)$/.test(root.getAttribute("data-text-size") || "") ? root.getAttribute("data-text-size") : "inherit";
   var PARAM = "article";
@@ -66,6 +69,7 @@
     "#sl-news .sl-source a{color:inherit}" +
     "#sl-news .sl-imprint{margin-top:32px}" +
     "#sl-news .sl-empty{opacity:.7}" +
+    "#sl-news .sl-all{margin:24px 0 0;text-align:right}#sl-news .sl-all a{text-decoration:none}" +
     "#sl-news .sl-empty a{color:var(--sl-accent)}";
   var style = document.createElement("style");
   style.textContent = css;
@@ -244,13 +248,17 @@
     }
     var grid = el("div", "sl-grid");
     items.forEach(function (a, idx) {
-      var card = el("a", "sl-card" + (idx === 0 && !wardFilter ? " sl-feature" : ""));
-      card.href = articleUrl(a.id);
-      card.onclick = function (ev) {
-        if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return;
-        ev.preventDefault();
-        go(card.href);
-      };
+      var card = el("a", "sl-card" + (idx === 0 && !wardFilter && !linkTo ? " sl-feature" : ""));
+      if (linkTo) {
+        card.href = linkTo + "?" + PARAM + "=" + encodeURIComponent(a.id);
+      } else {
+        card.href = articleUrl(a.id);
+        card.onclick = function (ev) {
+          if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button === 1) return;
+          ev.preventDefault();
+          go(card.href);
+        };
+      }
       card.appendChild(media(a));
       var text = el("div");
       text.appendChild(el("p", "sl-date", fmtDate(a.date)));
@@ -261,6 +269,13 @@
       grid.appendChild(card);
     });
     root.appendChild(grid);
+    if (linkTo) {
+      var more = el("p", "sl-all");
+      var all = el("a", "sl-more", "See all news →");
+      all.href = allUrl || linkTo;
+      more.appendChild(all);
+      root.appendChild(more);
+    }
     root.appendChild(imprintEl(data.imprint));
   }
 
@@ -305,6 +320,7 @@
   var data = null;
   function route() {
     if (!data) return;
+    if (linkTo) { renderList(data); return; }
     var id = currentId();
     if (id && location.hash) history.replaceState({}, "", articleUrl(id));
     var a = id && (data.articles || []).find(function (x) { return x.id === id; });
