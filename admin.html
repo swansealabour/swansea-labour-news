@@ -237,10 +237,72 @@ async function writeSitemap(articles) {
   const existing = await gh(conn.site, "sitemap.xml");
   await writeText(conn.site, "sitemap.xml", sitemapXml(pageUrlOf(state.config), articles), existing && existing.sha, "Update sitemap");
 }
+// ---- Share pages: share/<id>.html, one per article ----
+// Facebook, X and WhatsApp build link previews from raw HTML without running scripts, so the
+// news reel's own pages always preview as the plain News page. Each article gets a tiny static
+// page with its own title, summary and photo; it sends people straight on to the real article.
+const DEFAULT_SHARE_IMAGE = { src: "https://static1.squarespace.com/static/60f66d93c0d6ed6055a56101/t/6255bbcacff6531bcd7f814b/1649785802379/Swansea+Bay+Credit+Jack+Wodehouse.jpg?format=1500w", width: 1500, height: 842, alt: "Swansea Bay" };
+function shareHtml(a, pageUrl) {
+  const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const shareUrl = siteUrl(`share/${encodeURIComponent(a.id)}.html`);
+  const articleUrl = `${pageUrl}?article=${encodeURIComponent(a.id)}`;
+  const img = imagesOf(a)[0];
+  const image = img ? { src: siteUrl(img.src), width: img.width, height: img.height, alt: img.alt } : DEFAULT_SHARE_IMAGE;
+  const title = `${a.headline} | Swansea Labour`;
+  return `<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(a.summary)}">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${esc(articleUrl)}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Swansea Labour">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="${esc(a.headline)}">
+<meta property="og:description" content="${esc(a.summary)}">
+<meta property="og:url" content="${esc(shareUrl)}">
+<meta property="og:image" content="${esc(image.src)}">
+${image.width ? `<meta property="og:image:width" content="${image.width}">\n<meta property="og:image:height" content="${image.height}">\n` : ""}<meta property="og:image:alt" content="${esc(image.alt)}">
+<meta property="article:published_time" content="${esc(a.date)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(a.headline)}">
+<meta name="twitter:description" content="${esc(a.summary)}">
+<meta name="twitter:image" content="${esc(image.src)}">
+<meta name="twitter:image:alt" content="${esc(image.alt)}">
+<script>location.replace(${JSON.stringify(articleUrl)});<\/script>
+<style>body{font-family:system-ui,sans-serif;margin:3em auto;max-width:36em;padding:0 1em;line-height:1.5}a{color:#E4003B}</style>
+</head>
+<body>
+<p>Taking you to the story…</p>
+<p><a href="${esc(articleUrl)}">${esc(a.headline)}</a></p>
+</body>
+</html>
+`;
+}
+// Writes only the pages that are new or have changed, so most saves add no extra commits.
+async function writeSharePages(articles) {
+  const pageUrl = pageUrlOf(state.config);
+  const dir = (await gh(conn.site, "share")) || [];
+  const shas = new Map((Array.isArray(dir) ? dir : []).map((f) => [f.name, f.sha]));
+  for (const a of articles) {
+    const name = `${a.id}.html`;
+    const html = shareHtml(a, pageUrl);
+    const sha = shas.get(name);
+    if (sha) {
+      const f = await gh(conn.site, `share/${name}`);
+      if (f && b64decode(f.content) === html) continue;
+    }
+    await writeText(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
+  }
+}
 async function writeSite(data, sha, message) {
   const payload = { imprint: data.imprint, pageUrl: pageUrlOf(state.config), articles: data.articles };
   await writeJson(conn.site, "articles.json", payload, sha, message);
   await writeSitemap(payload.articles);
+  await writeSharePages(payload.articles);
 }
 
 // ---- Loading ----
@@ -447,8 +509,8 @@ function renderPublished() {
   const root = $("#tab-published"); root.innerHTML = "";
   const list = state.published.data.articles;
   const rebuild = el("button", { class: "secondary", onclick: async () => {
-    try { await writeSitemap(list); setStatus("Sitemap rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
-  } }, "Rebuild sitemap");
+    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); setStatus("Sitemap and share pages rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
+  } }, "Rebuild sitemap and share pages");
   if (!list.length) { root.append(el("p", { class: "empty", text: "Nothing published yet." }), el("div", { class: "btns" }, rebuild)); return; }
   root.append(el("table", {},
     el("tr", {}, el("th", { text: "Photo" }), el("th", { text: "Date" }), el("th", { text: "Headline" }), el("th", {})),
