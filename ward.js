@@ -2,7 +2,7 @@
  *
  * Squarespace Code Block (one or more per ward page):
  *   <div class="sl-ward" data-ward="Gowerton"></div>
- *   <script src="https://swansealabour.github.io/swansea-labour-news/ward.js" defer></script>
+ *   <script src="https://news.swansealabour.org/ward.js" defer></script>
  *
  * Attributes on each .sl-ward div:
  *   data-ward="Gowerton"        ward name exactly as in wards.json (required)
@@ -23,7 +23,7 @@
  */
 (function () {
   var script = document.currentScript;
-  var base = script ? script.src.replace(/ward\.js(\?.*)?$/, "") : "https://swansealabour.github.io/swansea-labour-news/";
+  var base = script ? script.src.replace(/ward\.js(\?.*)?$/, "") : "https://news.swansealabour.org/";
   var roots = [].slice.call(document.querySelectorAll(".sl-ward:not([data-sl-done])"));
   if (!roots.length) return;
   roots.forEach(function (r) { r.setAttribute("data-sl-done", ""); r.textContent = "Loading…"; });
