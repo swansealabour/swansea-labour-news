@@ -2,7 +2,7 @@
  *
  * Squarespace Code Block:
  *   <div id="sl-news" data-limit="12"></div>
- *   <script src="https://swansealabour.github.io/swansea-labour-news/widget.js" defer></script>
+ *   <script src="https://news.swansealabour.org/widget.js" defer></script>
  *
  * Optional attributes on the #sl-news div:
  *   data-limit="12"            how many cards to show
