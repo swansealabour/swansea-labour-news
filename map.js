@@ -2,7 +2,7 @@
  *
  * Squarespace Code Block:
  *   <div id="sl-map"></div>
- *   <script src="https://swansealabour.github.io/swansea-labour-news/map.js" defer></script>
+ *   <script src="https://news.swansealabour.org/map.js" defer></script>
  *
  * Optional attributes on #sl-map:
  *   data-height="560"       map height in pixels
@@ -15,7 +15,7 @@
  */
 (function () {
   var script = document.currentScript;
-  var base = script ? script.src.replace(/map\.js(\?.*)?$/, "") : "https://swansealabour.github.io/swansea-labour-news/";
+  var base = script ? script.src.replace(/map\.js(\?.*)?$/, "") : "https://news.swansealabour.org/";
   var root = document.getElementById("sl-map");
   if (!root || root.hasAttribute("data-sl-done")) return;
   root.setAttribute("data-sl-done", "");
