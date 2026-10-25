@@ -301,11 +301,49 @@ async function writeSharePages(articles) {
     await writeText(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
   }
 }
+// ---- Facebook feed: feed.xml lists the articles ticked "Post to Facebook" ----
+// Zapier watches this feed and posts each new item to the Swansea Labour Councillors page.
+// An article's "facebook" field holds when it was sent; each item's link is its share page,
+// so Facebook shows the photo, headline and summary.
+function feedXml(pageUrl, articles) {
+  const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const items = articles.filter((a) => a.facebook)
+    .sort((a, b) => b.facebook.localeCompare(a.facebook))
+    .slice(0, 20)
+    .map((a) => {
+      const img = imagesOf(a)[0];
+      return `  <item>
+    <title>${esc(a.headline)}</title>
+    <link>${esc(siteUrl(`share/${encodeURIComponent(a.id)}.html`))}</link>
+    <guid isPermaLink="false">${esc(a.id)}</guid>
+    <description>${esc(a.summary)}</description>
+    <pubDate>${new Date(a.facebook).toUTCString()}</pubDate>${img ? `\n    <enclosure url="${esc(siteUrl(img.src))}" type="image/jpeg" length="0"/>` : ""}
+  </item>`;
+    });
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Swansea Labour news</title>
+  <link>${esc(pageUrl)}</link>
+  <description>Stories from Swansea Labour, for the Swansea Labour Councillors Facebook page</description>
+  <language>en-gb</language>
+${items.join("\n")}
+</channel>
+</rss>
+`;
+}
+async function writeFeed(articles) {
+  const xml = feedXml(pageUrlOf(state.config), articles);
+  const existing = await gh(conn.site, "feed.xml");
+  if (existing && b64decode(existing.content) === xml) return;
+  await writeText(conn.site, "feed.xml", xml, existing && existing.sha, "Update Facebook feed");
+}
 async function writeSite(data, sha, message) {
   const payload = { imprint: data.imprint, pageUrl: pageUrlOf(state.config), articles: data.articles };
   await writeJson(conn.site, "articles.json", payload, sha, message);
   await writeSitemap(payload.articles);
   await writeSharePages(payload.articles);
+  await writeFeed(payload.articles);
 }
 
 // ---- Loading ----
@@ -422,6 +460,11 @@ function draftEditor(d) {
     el("label", {}, el("input", { type: "checkbox", onchange: update }), c));
   const permission = el("label", {}, el("input", { type: "checkbox", onchange: update }), "We have permission to publish the photos being used, and anyone identifiable in them is happy to be pictured.");
   const publishBtn = el("button", { class: "primary", onclick: publish }, "Publish to website");
+  const alreadySent = ((state.published && state.published.data.articles) || []).find((a) => a.id === d.id && a.facebook);
+  const facebookBox = el("input", { type: "checkbox", checked: !!alreadySent, disabled: !!alreadySent });
+  const facebook = el("label", {}, facebookBox, alreadySent
+    ? "Already sent to the Swansea Labour Councillors Facebook page."
+    : "Also post to the Swansea Labour Councillors Facebook page (usually appears within about 15 minutes).");
 
   function update() {
     const anyUsed = photos.some((p) => p.used());
@@ -465,6 +508,8 @@ function draftEditor(d) {
         sourceDate: f.sourceDate.value.trim(),
         sourceUrl: f.sourceUrl.value.trim(),
       };
+      const sentAt = (previous && previous.facebook) || (facebookBox.checked ? now : "");
+      if (sentAt) article.facebook = sentAt;
       const articles = [article, ...fresh.data.articles.filter((a) => a.id !== d.id)];
       await writeSite({ imprint: state.config.data.imprint, articles }, fresh.sha, `Publish: ${article.headline}`);
       await deleteFile(conn.engine, d._path, d._sha, `Published draft ${d.id}`);
@@ -504,6 +549,7 @@ function draftEditor(d) {
     el("label", { text: "Original date" }), f.sourceDate,
     el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl,
     el("div", { class: "checks" }, el("strong", { text: "Before publishing, confirm:" }), factChecks, permission),
+    el("div", { class: "checks" }, el("strong", { text: "Facebook" }), facebook),
     el("div", { class: "btns" }, publishBtn, el("button", { class: "secondary", onclick: reject }, "Reject")));
 }
 
@@ -526,6 +572,9 @@ function renderPublished() {
         el("td", {}, el("div", { class: "btns", style: "margin:0" },
           el("button", { class: "secondary", onclick: () => addPublishedPhoto(a) }, imgs.length ? "Change lead photo" : "Add photo"),
           imgs.length ? el("button", { class: "secondary", onclick: () => removePhotos(a) }, "Remove photos") : null,
+          a.facebook
+            ? el("span", { class: "hint", text: "Sent to Facebook " + new Date(a.facebook).toLocaleDateString("en-GB") })
+            : el("button", { class: "secondary", onclick: () => postToFacebook(a) }, "Post to Facebook"),
           el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish"))));
     })),
     el("div", { class: "btns" }, rebuild));
@@ -567,6 +616,17 @@ async function removePhotos(a) {
     await writeSite(fresh.data, fresh.sha, `Remove photos: ${a.headline}`);
     await loadAll();
     setStatus("Photos removed.", "ok");
+  } catch (e) { setStatus(e.message, "err"); }
+}
+async function postToFacebook(a) {
+  if (!confirm(`Post "${a.headline}" to the Swansea Labour Councillors Facebook page? It usually appears within about 15 minutes.`)) return;
+  try {
+    const fresh = await readJson(conn.site, "articles.json");
+    const sentAt = new Date().toISOString();
+    fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id && !x.facebook ? { ...x, facebook: sentAt } : x));
+    await writeSite(fresh.data, fresh.sha, `Send to Facebook: ${a.headline}`);
+    await loadAll();
+    setStatus("Sent to the Facebook feed. Zapier will post it shortly.", "ok");
   } catch (e) { setStatus(e.message, "err"); }
 }
 async function unpublish(a) {
