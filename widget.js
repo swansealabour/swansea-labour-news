@@ -291,6 +291,7 @@
   function shareBar(a) {
     var url = base + "share/" + encodeURIComponent(a.id) + ".html";
     var enc = encodeURIComponent;
+    var phone = !!navigator.share && window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
     var bar = el("div", "sl-share");
     bar.appendChild(el("span", "sl-share-label", "Share this story"));
     [
@@ -302,6 +303,16 @@
       var link = el("a", "sl-share-btn", l[0]);
       link.href = l[1];
       if (l[0] !== "Email") { link.target = "_blank"; link.rel = "noopener"; }
+      // On phones the Facebook app takes over facebook.com links and drops the share request,
+      // so open the phone's own share sheet instead; picking Facebook there opens its composer.
+      if (l[0] === "Facebook" && phone) {
+        link.onclick = function (ev) {
+          ev.preventDefault();
+          navigator.share({ title: a.headline, url: url }).catch(function (err) {
+            if (!err || err.name !== "AbortError") window.location.href = l[1];
+          });
+        };
+      }
       bar.appendChild(link);
     });
     var copy = el("button", "sl-share-btn", "Copy link");
