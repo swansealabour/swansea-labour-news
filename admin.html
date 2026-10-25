@@ -144,8 +144,11 @@ function imprintOk(text) {
 function pageUrlOf(config) {
   return ((config && config.data.pageUrl) || DEFAULT_PAGE_URL).replace(/\/+$/, "");
 }
+// The public site repository is served at its custom domain, not github.io. GitHub forwards
+// github.io addresses there over plain http, which secure pages refuse to load.
+const SITE_ORIGIN = "https://news.swansealabour.org/";
 function siteUrl(path) {
-  return /^(https?:)?\/\//.test(path) ? path : `https://${conn.owner.toLowerCase()}.github.io/${conn.site}/${path}`;
+  return /^(https?:)?\/\//.test(path) ? path : SITE_ORIGIN + path;
 }
 // Photos on a published article. Understands the older single "image" field too.
 function imagesOf(a) {
