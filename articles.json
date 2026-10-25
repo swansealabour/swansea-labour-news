@@ -3,6 +3,58 @@
   "pageUrl": "https://www.swansealabour.org/news",
   "articles": [
     {
+      "id": "2026-10-25-labour-council-shuts-three-more-illegal-vape-shops-fb614",
+      "date": "2026-10-25T07:23:12.559Z",
+      "updated": "2026-10-25T07:23:12.559Z",
+      "headline": "Labour council shuts three more illegal vape shops in Swansea",
+      "summary": "Swansea's Labour council has closed three more vape shops caught selling illegal vapes and counterfeit tobacco, two on St Helen's Road and one on Dilwyn Street.",
+      "body": [
+        "Swansea's Labour council has shut three more vape shops that were selling illegal vapes and counterfeit tobacco, protecting residents and children from dangerous goods.",
+        "The shops are Vape City and Asia Vapes, both on St Helen's Road, and Vape Zone on Dilwyn Street. Swansea Magistrates enforced all three closures.",
+        "The closures were secured by the council's Trading Standards team working with the police. They are the latest step in the Labour administration's continued clampdown on counterfeit tobacco and illegal vapes across Swansea.",
+        "Labour's Cabinet Member for Development, Cllr Andrew Williams, said: \"The latest closures are another great example of the work our Trading Standards is doing to disrupt and close down businesses that are operating illegally.",
+        "\"It's completely unacceptable for many of these vape shops to operate in the way they are, selling counterfeit goods, particularly to children.\"",
+        "This is not a one-off. In June 2026, two vape shops in Pontarddulais and the city centre were closed after being caught selling illegal vapes. More recently, three vape shops on Mansel Street in the city centre were closed for three months, and two more were closed in Morriston.",
+        "Every closure takes illegal products off our high streets and sends a clear message to traders who break the law that Labour's council will act.",
+        "Keeping children safe and standing up for honest local businesses are priorities for Swansea Labour, and this latest action shows the council delivering on them."
+      ],
+      "images": [
+        {
+          "src": "images/2026-10-25-labour-council-shuts-three-more-illegal-vape-shops-fb614/1.jpg",
+          "alt": "Asia Vape shop with its red roller shutter down and closure notices posted on it",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "src": "images/2026-10-25-labour-council-shuts-three-more-illegal-vape-shops-fb614/2.jpg",
+          "alt": "Vape Zone shop front with closure notices posted in the window",
+          "caption": "",
+          "credit": "",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "src": "images/2026-10-25-labour-council-shuts-three-more-illegal-vape-shops-fb614/3.jpg",
+          "alt": "Vape City shop front with closure notices posted in the window and on the door",
+          "caption": "",
+          "credit": "",
+          "width": 1200,
+          "height": 1600
+        }
+      ],
+      "wards": [
+        "Castle",
+        "Pontarddulais",
+        "Morriston"
+      ],
+      "sourceName": "a Swansea Council press release",
+      "sourceTitle": "Clampdown on illegal vape sellers in Swansea continues",
+      "sourceDate": "22 October 2026",
+      "sourceUrl": "https://www.swansea.gov.uk/article/49508/Clampdown-on-illegal-vape-sellers-in-Swansea-continues"
+    },
+    {
       "id": "2026-10-24-labour-brings-500-rental-e-bikes-to-swansea-fb217",
       "date": "2026-10-24T10:50:33.270Z",
       "updated": "2026-10-24T10:50:33.270Z",
