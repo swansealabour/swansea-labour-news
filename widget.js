@@ -66,6 +66,10 @@
     "#sl-news .sl-figure figcaption{font-size:.82em;opacity:.75;line-height:1.4;margin-top:8px}" +
     "#sl-news .sl-back{display:inline-block;font-weight:700;color:var(--sl-accent);margin-bottom:18px;text-decoration:none}" +
     "#sl-news .sl-back:hover{text-decoration:underline}" +
+    "#sl-news .sl-share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:28px 0 20px;padding-top:18px;border-top:1px solid rgba(127,127,127,.3)}" +
+    "#sl-news .sl-share-label{font-weight:700;margin-right:4px}" +
+    "#sl-news .sl-share-btn{display:inline-block;font:inherit;font-size:.85em;font-weight:600;line-height:1;padding:9px 14px;border-radius:999px;border:1.5px solid var(--sl-accent);background:transparent;color:var(--sl-accent);text-decoration:none;cursor:pointer}" +
+    "#sl-news .sl-share-btn:hover,#sl-news .sl-share-btn:focus-visible{background:var(--sl-accent);color:#fff}" +
     "#sl-news .sl-source,#sl-news .sl-imprint{font-size:.85em;opacity:.75}" +
     "#sl-news .sl-source a{color:inherit}" +
     "#sl-news .sl-imprint{margin-top:32px}" +
@@ -281,6 +285,43 @@
     root.appendChild(imprintEl(data.imprint));
   }
 
+  // Share links point at share/<id>.html beside this script: a small static page that gives
+  // Facebook, X and WhatsApp the story's own title, summary and photo, then sends readers on
+  // to the article. The article's own address can't, because its details are added by script.
+  function shareBar(a) {
+    var url = base + "share/" + encodeURIComponent(a.id) + ".html";
+    var enc = encodeURIComponent;
+    var bar = el("div", "sl-share");
+    bar.appendChild(el("span", "sl-share-label", "Share this story"));
+    [
+      ["Facebook", "https://www.facebook.com/sharer/sharer.php?u=" + enc(url)],
+      ["X", "https://twitter.com/intent/tweet?url=" + enc(url) + "&text=" + enc(a.headline)],
+      ["WhatsApp", "https://wa.me/?text=" + enc(a.headline + " " + url)],
+      ["Email", "mailto:?subject=" + enc(a.headline) + "&body=" + enc((a.summary || "") + "\n\n" + url)]
+    ].forEach(function (l) {
+      var link = el("a", "sl-share-btn", l[0]);
+      link.href = l[1];
+      if (l[0] !== "Email") { link.target = "_blank"; link.rel = "noopener"; }
+      bar.appendChild(link);
+    });
+    var copy = el("button", "sl-share-btn", "Copy link");
+    copy.type = "button";
+    copy.onclick = function () {
+      var done = function () { copy.textContent = "Link copied"; setTimeout(function () { copy.textContent = "Copy link"; }, 2000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { window.prompt("Copy this link:", url); });
+      else window.prompt("Copy this link:", url);
+    };
+    bar.appendChild(copy);
+    // Phones get their own share sheet (Messenger, Instagram, texts and so on) as well.
+    if (navigator.share) {
+      var native = el("button", "sl-share-btn", "More…");
+      native.type = "button";
+      native.onclick = function () { navigator.share({ title: a.headline, text: a.summary || "", url: url }).catch(function () {}); };
+      bar.appendChild(native);
+    }
+    return bar;
+  }
+
   function renderArticle(data, a) {
     root.innerHTML = "";
     var art = el("article", "sl-article");
@@ -299,6 +340,8 @@
       if (idx === 0) imgs.slice(1).forEach(function (im) { art.appendChild(figure(im, false)); });
     });
     if (!body.length) imgs.slice(1).forEach(function (im) { art.appendChild(figure(im, false)); });
+
+    art.appendChild(shareBar(a));
 
     if (a.sourceTitle || a.sourceUrl) {
       // sourceName says where the story came from, e.g. "a Facebook post by Cllr Rob Stewart".
