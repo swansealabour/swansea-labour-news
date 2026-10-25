@@ -3,6 +3,38 @@
   "pageUrl": "https://www.swansealabour.org/news",
   "articles": [
     {
+      "id": "2026-10-25-labour-council-repairs-more-swansea-roads-gov104",
+      "date": "2026-10-25T07:59:18.805Z",
+      "updated": "2026-10-25T07:59:18.805Z",
+      "headline": "Labour council repairs more Swansea roads, with Cockett next",
+      "summary": "Swansea's Labour council has completed road repairs on Mynydd Newydd Road in Mynydd-bach, and highway teams are heading to the Cockett ward next.",
+      "body": [
+        "Swansea's Labour council is pressing on with road repairs across the city, with more work done and more on the way.",
+        "Highway teams have recently been working in Mynydd-bach and have just completed a section of road on Mynydd Newydd Road.",
+        "Over the coming weeks, highway maintenance teams will visit the Cockett ward to carry out similar repairs, making sure roads are safe for motorists.",
+        "The council has thanked motorists for their patience while repairs continue. Details of planned maintenance schemes are on the council's Roadwatch page at swansea.gov.uk/roadwatch.",
+        "Safe, well-maintained roads matter to everyone. Swansea Labour is getting on with fixing them, street by street."
+      ],
+      "images": [
+        {
+          "src": "images/2026-10-25-labour-council-repairs-more-swansea-roads-gov104/1.jpg",
+          "alt": "Two highway workers in hi-vis clothing and helmets raking fresh tarmac into a road repair",
+          "caption": "",
+          "credit": "",
+          "width": 400,
+          "height": 237
+        }
+      ],
+      "wards": [
+        "Mynyddbach",
+        "Cockett"
+      ],
+      "sourceName": "a Swansea Council press release",
+      "sourceTitle": "More roads in Swansea repaired",
+      "sourceDate": "15 October 2026",
+      "sourceUrl": "https://www.swansea.gov.uk/article/49250"
+    },
+    {
       "id": "2026-10-25-labour-council-s-award-winning-christmas-parade-retu-gov105",
       "date": "2026-10-25T07:58:47.985Z",
       "updated": "2026-10-25T07:58:47.985Z",
