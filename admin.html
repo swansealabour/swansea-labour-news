@@ -198,6 +198,19 @@ const put = (repo, path, content, sha, message) =>
   gh(repo, path, { method: "PUT", body: JSON.stringify({ message, content, ...(sha && { sha }) }) });
 const writeJson = (repo, path, data, sha, message) => put(repo, path, b64encode(JSON.stringify(data, null, 2) + "\n"), sha, message);
 const writeText = (repo, path, text, sha, message) => put(repo, path, b64encode(text), sha, message);
+// For files built from articles.json (sitemap, share pages, feed): GitHub sometimes rejects a
+// save made straight after another (409), so fetch the latest sha and try again.
+async function writeGenerated(repo, path, text, sha, message) {
+  for (let attempt = 1; ; attempt++) {
+    try { return await writeText(repo, path, text, sha, message); } catch (e) {
+      if (attempt >= 3 || !/GitHub (409|422)/.test(e.message)) throw e;
+      await new Promise((r) => setTimeout(r, 1500 * attempt));
+      const existing = await gh(repo, path);
+      if (existing && b64decode(existing.content) === text) return;
+      sha = existing && existing.sha;
+    }
+  }
+}
 async function writeB64(repo, path, b64, message) {
   const existing = await gh(repo, path);
   return put(repo, path, b64, existing && existing.sha, message);
@@ -238,7 +251,7 @@ function sitemapXml(pageUrl, articles) {
 }
 async function writeSitemap(articles) {
   const existing = await gh(conn.site, "sitemap.xml");
-  await writeText(conn.site, "sitemap.xml", sitemapXml(pageUrlOf(state.config), articles), existing && existing.sha, "Update sitemap");
+  await writeGenerated(conn.site, "sitemap.xml", sitemapXml(pageUrlOf(state.config), articles), existing && existing.sha, "Update sitemap");
 }
 // ---- Share pages: share/<id>.html, one per article ----
 // Facebook, X and WhatsApp build link previews from raw HTML without running scripts, so the
@@ -298,7 +311,7 @@ async function writeSharePages(articles) {
       const f = await gh(conn.site, `share/${name}`);
       if (f && b64decode(f.content) === html) continue;
     }
-    await writeText(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
+    await writeGenerated(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
   }
 }
 // ---- Facebook feed: feed.xml lists the articles ticked "Post to Facebook" ----
@@ -337,14 +350,14 @@ async function writeFeed(articles) {
   const xml = feedXml(pageUrlOf(state.config), articles);
   const existing = await gh(conn.site, "feed.xml");
   if (existing && b64decode(existing.content) === xml) return;
-  await writeText(conn.site, "feed.xml", xml, existing && existing.sha, "Update Facebook feed");
+  await writeGenerated(conn.site, "feed.xml", xml, existing && existing.sha, "Update Facebook feed");
 }
 async function writeSite(data, sha, message) {
   const payload = { imprint: data.imprint, pageUrl: pageUrlOf(state.config), articles: data.articles };
   await writeJson(conn.site, "articles.json", payload, sha, message);
-  await writeSitemap(payload.articles);
   await writeSharePages(payload.articles);
   await writeFeed(payload.articles);
+  await writeSitemap(payload.articles);
 }
 
 // ---- Loading ----
