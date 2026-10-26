@@ -304,7 +304,8 @@ async function writeSharePages(articles) {
 // ---- Facebook feed: feed.xml lists the articles ticked "Post to Facebook" ----
 // Zapier watches this feed and posts each new item to the Swansea Labour Councillors page.
 // An article's "facebook" field holds when it was sent; each item's link is its share page,
-// so Facebook shows the photo, headline and summary.
+// so Facebook shows the photo, headline and summary. Zapier skips guids it has seen, so each
+// send gets its own "facebookGuid" (older articles fall back to their id).
 function feedXml(pageUrl, articles) {
   const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const items = articles.filter((a) => a.facebook)
@@ -315,7 +316,7 @@ function feedXml(pageUrl, articles) {
       return `  <item>
     <title>${esc(a.headline)}</title>
     <link>${esc(siteUrl(`share/${encodeURIComponent(a.id)}.html`))}</link>
-    <guid isPermaLink="false">${esc(a.id)}</guid>
+    <guid isPermaLink="false">${esc(a.facebookGuid || a.id)}</guid>
     <description>${esc(a.summary)}</description>
     <pubDate>${new Date(a.facebook).toUTCString()}</pubDate>${img ? `\n    <enclosure url="${esc(siteUrl(img.src))}" type="image/jpeg" length="0"/>` : ""}
   </item>`;
@@ -508,8 +509,8 @@ function draftEditor(d) {
         sourceDate: f.sourceDate.value.trim(),
         sourceUrl: f.sourceUrl.value.trim(),
       };
-      const sentAt = (previous && previous.facebook) || (facebookBox.checked ? now : "");
-      if (sentAt) article.facebook = sentAt;
+      if (previous && previous.facebook) Object.assign(article, facebookFields(previous));
+      else if (facebookBox.checked) Object.assign(article, newFacebookSend(d.id));
       const articles = [article, ...fresh.data.articles.filter((a) => a.id !== d.id)];
       await writeSite({ imprint: state.config.data.imprint, articles }, fresh.sha, `Publish: ${article.headline}`);
       await deleteFile(conn.engine, d._path, d._sha, `Published draft ${d.id}`);
@@ -572,9 +573,8 @@ function renderPublished() {
         el("td", {}, el("div", { class: "btns", style: "margin:0" },
           el("button", { class: "secondary", onclick: () => addPublishedPhoto(a) }, imgs.length ? "Change lead photo" : "Add photo"),
           imgs.length ? el("button", { class: "secondary", onclick: () => removePhotos(a) }, "Remove photos") : null,
-          a.facebook
-            ? el("span", { class: "hint", text: "Sent to Facebook " + new Date(a.facebook).toLocaleDateString("en-GB") })
-            : el("button", { class: "secondary", onclick: () => postToFacebook(a) }, "Post to Facebook"),
+          a.facebook ? el("span", { class: "hint", text: "Sent to Facebook " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
+          el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook again" : "Post to Facebook"),
           el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish"))));
     })),
     el("div", { class: "btns" }, rebuild));
@@ -618,12 +618,21 @@ async function removePhotos(a) {
     setStatus("Photos removed.", "ok");
   } catch (e) { setStatus(e.message, "err"); }
 }
+function newFacebookSend(id) {
+  const sentAt = new Date().toISOString();
+  return { facebook: sentAt, facebookGuid: `${id}-${Date.parse(sentAt).toString(36)}` };
+}
+function facebookFields(a) {
+  return a.facebookGuid ? { facebook: a.facebook, facebookGuid: a.facebookGuid } : { facebook: a.facebook };
+}
 async function postToFacebook(a) {
-  if (!confirm(`Post "${a.headline}" to the Swansea Labour Councillors Facebook page? It usually appears within about 15 minutes.`)) return;
+  const question = a.facebook
+    ? `"${a.headline}" was already sent to Facebook on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
+    : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page? It usually appears within about 15 minutes.`;
+  if (!confirm(question)) return;
   try {
     const fresh = await readJson(conn.site, "articles.json");
-    const sentAt = new Date().toISOString();
-    fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id && !x.facebook ? { ...x, facebook: sentAt } : x));
+    fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
     await writeSite(fresh.data, fresh.sha, `Send to Facebook: ${a.headline}`);
     await loadAll();
     setStatus("Sent to the Facebook feed. Zapier will post it shortly.", "ok");
