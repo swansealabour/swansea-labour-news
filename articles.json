@@ -3,6 +3,65 @@
   "pageUrl": "https://www.swansealabour.org/news",
   "articles": [
     {
+      "id": "2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512",
+      "date": "2026-10-27T06:34:33.518Z",
+      "updated": "2026-10-27T06:34:33.518Z",
+      "headline": "Labour's Bascule Bridge restoration gathers pace on the River Tawe",
+      "summary": "Swansea's Labour council is pressing ahead with the restoration of the 117-year-old Bascule Bridge, which will return next year as a walking and cycling route over the River Tawe.",
+      "body": [
+        "Swansea's Labour council is bringing one of the city's best-loved landmarks back to life. Restoration of the 117-year-old Bascule Bridge is gathering pace on the River Tawe, and once the work is done the bridge will reopen next year as a walking and cycling route across the river.",
+        "The project is part of the Labour administration's heritage restoration and investment programme, which is protecting the structures that tell the story of Swansea's industrial past while putting them to use for residents today.",
+        "On the river, the fender rails are going in. These protective rails shield the bridge supports from boats and floating debris. They are now complete on the east bank, and work is continuing towards the west bank, with installation expected to be finished by the end of this week.",
+        "Divers are in the water helping to remove the old timber supports and prepare for the next stage of the restoration. Floating platforms are being installed so that teams can safely remove the remaining sections of the old bridge deck.",
+        "The next step is to remove more of the ageing timber supports to make way for their replacements, with further work planned around Christmas.",
+        "Labour councillors have long backed the return of the bridge. Rather than letting a piece of the city's heritage decay, the Labour council chose to invest in it and give it a new purpose for walkers and cyclists.",
+        "This is what Labour's priorities for Swansea look like in practice: looking after the city's history, investing in local infrastructure and making it easier for people to get around on foot and by bike."
+      ],
+      "images": [
+        {
+          "src": "images/2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512/1.jpg",
+          "alt": "A barge with a red crane beside new timber fender piles and the old Bascule Bridge trestles on the River Tawe",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 720
+        },
+        {
+          "src": "images/2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512/2.jpg",
+          "alt": "Workers in orange overalls on a small boat beside new timber piles, with a crane barge and floating platforms behind",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 720
+        },
+        {
+          "src": "images/2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512/3.jpg",
+          "alt": "The old timber trestles of the Bascule Bridge next to new fender piles and a work barge on the River Tawe",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 720
+        },
+        {
+          "src": "images/2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512/4.jpg",
+          "alt": "Grey floating platforms under the old bridge deck, with a crane barge carrying removed timber alongside",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 720
+        }
+      ],
+      "wards": [
+        "Landore"
+      ],
+      "sourceName": "Facebook posts by Cllr Rob Stewart and Swansea Council",
+      "sourceTitle": "Big progress on Swansea's historic Bascule Bridge",
+      "sourceDate": "26 October 2026",
+      "sourceUrl": "",
+      "facebook": "2026-10-27T06:34:33.518Z",
+      "facebookGuid": "2026-10-27-labour-s-bascule-bridge-restoration-gathers-pace-fb512-mvqb8vxq"
+    },
+    {
       "id": "2026-10-27-labour-council-s-one-stop-shop-brings-support-to-fb839",
       "date": "2026-10-27T06:32:38.525Z",
       "updated": "2026-10-27T06:32:38.525Z",
