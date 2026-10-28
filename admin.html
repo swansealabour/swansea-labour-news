@@ -118,9 +118,12 @@ let conn = { owner: store.get("owner"), engine: store.get("engine"), site: store
 let state = { drafts: [], published: null, config: null, selected: null };
 
 const DEFAULT_PAGE_URL = "https://www.swansealabour.org/news";
-const WARDS = ["Bôn-y-maen", "Castle", "Cockett", "Dunvant & Killay", "Gorseinon & Penyrheol", "Gowerton",
-  "Landore", "Llansamlet", "Llwchwr", "Morriston", "Mynyddbach", "Penclawdd", "Penderry",
-  "Pontarddulais", "Pontlliw & Tircoed", "St Thomas", "Townhill", "Waunarlwydd", "West Cross"];
+// All 32 Swansea wards, including those without Labour councillors (same list as engine/scripts/prompt.mjs).
+const WARDS = ["Bishopston", "Bôn-y-maen", "Castle", "Clydach", "Cockett", "Cwmbwrla", "Dunvant & Killay",
+  "Fairwood", "Gorseinon & Penyrheol", "Gower", "Gowerton", "Landore", "Llangyfelach", "Llansamlet",
+  "Llwchwr", "Mayals", "Morriston", "Mumbles", "Mynyddbach", "Penclawdd", "Penderry", "Penllergaer",
+  "Pennard", "Pontarddulais", "Pontlliw & Tircoed", "Sketty", "St Thomas", "Townhill", "Uplands",
+  "Waterfront", "Waunarlwydd", "West Cross"];
 
 function setStatus(msg, kind = "") { const s = $("#status"); s.textContent = msg; s.className = "status " + kind; }
 function el(tag, attrs = {}, ...kids) {
@@ -555,7 +558,7 @@ function draftEditor(d) {
     el("p", { class: "hint", text: "Leave a blank line between paragraphs." }),
     el("label", { text: "Photos" }), photoBox, photoHint, picker, el("div", { class: "btns", style: "margin-top:8px" }, addBtn),
     el("label", { text: "Wards this story is about (optional, comma separated)" }), f.wards,
-    el("p", { class: "hint", text: "Lets the story appear on those ward pages as well as the main news page. Spell them as on the website: " + WARDS.join(", ") + "." }),
+    el("p", { class: "hint", text: "Tag every ward the story is about, including wards without Labour councillors. Wards with a Labour page show the story there too. Spell them as listed: " + WARDS.join(", ") + "." }),
     el("label", { text: "People quoted" }), people,
     el("label", { text: "Based on (shown under the article)" }), f.sourceName,
     el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
