@@ -53,7 +53,7 @@
     // Squarespace sets antialiased smoothing, which thins the lettering on Apple devices; the preview uses the default
     ".slh-display,.slh-head,.slh-btn,#header,#sl-news .sl-title,.slh-polaroid figcaption," + HERO + " h1," + HERO + " h1 span," + HERO + " .sqs-block-code a," + INVOLVED + " h2," + SIGNUP + " h4{-webkit-font-smoothing:auto!important;-moz-osx-font-smoothing:auto!important}",
     ".slh-display{font-family:Anton,sans-serif;font-weight:700;text-transform:uppercase;line-height:1.02;letter-spacing:.5px;margin:0}",
-    ".slh-yellow{color:var(--slh-yellow)!important;text-shadow:4px 4px 0 rgba(0,0,0,.45)}",
+    ".slh-yellow{color:var(--slh-yellow)!important;text-shadow:3px 3px 0 rgba(0,0,0,.35)}",
     ".slh-head{display:table;font-family:'Bebas Neue',sans-serif!important;font-weight:400!important;font-style:normal!important;font-size:44px!important;line-height:1!important;letter-spacing:.5px!important;" +
       "text-transform:none!important;margin:0 0 22px!important;padding:10px 18px 5px!important;background:var(--slh-red);color:#fff!important;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.18)}",
     ".slh-head .cy{color:var(--slh-yellow)}",
@@ -141,7 +141,7 @@
     HERO + " .section-background::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(228,0,59,.8) 0%,rgba(228,0,59,.5) 35%,rgba(228,0,59,0) 58%)}",
     "@media (max-width:767px){" + HERO + " .section-background::after{background:linear-gradient(0deg,rgba(228,0,59,.7) 0%,rgba(228,0,59,.35) 45%,rgba(228,0,59,0) 75%)}}",
     HERO + " .sqs-block{padding-top:0!important;padding-bottom:0!important}",
-    HERO + " h1," + HERO + " h1 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:4px 4px 0 rgba(0,0,0,.45)}",
+    HERO + " h1," + HERO + " h1 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.35)}",
     HERO + " h1{font-size:clamp(64px,9vw,118px)!important;max-width:640px;margin:0!important}",
     HERO + " p{font-size:19px!important;font-weight:400!important;line-height:1.6!important;max-width:520px;margin:18px 0 28px!important;text-shadow:0 1px 4px rgba(0,0,0,.45)}",
     HERO + " .sqs-block-code .sqs-code-container > div{justify-content:flex-start!important;gap:14px!important;margin:0!important}",
@@ -189,7 +189,7 @@
     INVOLVED + " .content-wrapper{padding-top:110px!important;padding-bottom:129px!important}",
     INVOLVED + " .section-background-overlay{opacity:1!important;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.25))!important}",
     INVOLVED + " .sqs-block{padding-top:0!important;padding-bottom:0!important}",
-    INVOLVED + " h2," + INVOLVED + " h2 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:4px 4px 0 rgba(0,0,0,.45)}",
+    INVOLVED + " h2," + INVOLVED + " h2 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.35)}",
     INVOLVED + " h2{font-size:clamp(52px,7vw,92px)!important;margin:0!important}",
     INVOLVED + " h2::after{content:'If you value it, vote for it!';display:block;font-family:'Kaushan Script',cursive;text-transform:none;color:#fff;font-size:44px;line-height:1.3;letter-spacing:0;transform:rotate(-4deg);transform-origin:left;margin:6px 0 57px;text-shadow:none}",
     INVOLVED + " p{font-size:18px!important;font-weight:400!important;line-height:1.6!important;max-width:560px}",
