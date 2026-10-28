@@ -9,12 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@500;700&family=Kaushan+Script&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Out-card palette: Labour red, out-card yellow, Welsh green for bilingual heads */
+  /* Out-card palette: Labour red and out-card yellow (no green) */
   :root {
     --red: #e4003b;
     --red-dark: #b8002f;
     --yellow: #fbe70d;
-    --green: #0b8a3e;
     --ink: #1c1c1c;
     --paper: #fff;
     --soft: #f6f4f1;
@@ -28,9 +27,9 @@
   /* Shared type styles */
   .display { font-family: "Anton", sans-serif; text-transform: uppercase; line-height: 1.02; letter-spacing: .5px; margin: 0; }
   .yellow { color: var(--yellow); text-shadow: 3px 3px 0 rgba(0,0,0,.25); }
-  .head { font-family: "Bebas Neue", sans-serif; font-size: 44px; line-height: 1; margin: 0 0 18px; color: var(--red); letter-spacing: .5px; }
-  .head .cy { color: var(--green); }
-  .head .bar { color: var(--ink); margin: 0 6px; }
+  .head { display: table; font-family: "Bebas Neue", sans-serif; font-weight: 400; font-size: 44px; line-height: 1; margin: 0 0 22px; padding: 10px 18px 5px; background: var(--red); color: #fff; border-radius: 3px; box-shadow: 3px 3px 0 rgba(0,0,0,.18); letter-spacing: .5px; }
+  .head .cy { color: var(--yellow); }
+  .head .bar { color: #fff; opacity: .55; margin: 0 6px; }
   .script { font-family: "Kaushan Script", cursive; }
   .hand { font-family: "Caveat", cursive; }
   .btn { display: inline-block; font-family: "Bebas Neue", sans-serif; font-size: 22px; letter-spacing: 1px; padding: 10px 26px 8px; border-radius: 4px; text-decoration: none; transition: transform .15s; }
