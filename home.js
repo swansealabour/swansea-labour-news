@@ -155,6 +155,10 @@
     "#find-your-team .sl-btn{" + BTN + "background:var(--slh-red)!important;color:#fff!important;border:0!important;box-shadow:3px 3px 0 rgba(0,0,0,.18)}",
     "#find-your-team .sl-locate{font-size:14px!important;line-height:1.4!important;padding:0!important;margin:0!important;color:var(--slh-red)!important}",
     "@media (max-width:800px){#find-your-team .sl-row{flex-direction:column}}",
+    "#sl-result{max-width:560px;border-radius:0 4px 4px 0}",
+    "#sl-result p{font-weight:400!important}",
+    "#sl-result a{display:inline-block;" + BTN + "background:var(--slh-red)!important;color:#fff!important;border:0!important;text-decoration:none!important;box-shadow:3px 3px 0 rgba(0,0,0,.18);transition:transform .15s}",
+    "#sl-result a:hover{transform:translateY(-2px)}",
 
     // Ward list as red pills
     WARDS + " p:nth-of-type(1){display:none}",
