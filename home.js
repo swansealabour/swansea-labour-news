@@ -11,6 +11,7 @@
  * and restyles the homepage's own Squarespace sections so the page matches
  * homepage-preview.html: hero, intro, postcode finder, ward list, news, the "Help build
  * a better Swansea" banner, the newsletter sign-up and the footer.
+ * Anton headings use weight 700 (the browser thickens Anton, which only has one weight), as in the preview.
  * No green anywhere: it reads as Plaid Cymru.
  */
 (function () {
@@ -35,7 +36,7 @@
 
   var fonts = document.createElement("link");
   fonts.rel = "stylesheet";
-  fonts.href = "https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@600&family=Kaushan+Script&display=swap";
+  fonts.href = "https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@500;700&family=Kaushan+Script&display=swap";
   document.head.appendChild(fonts);
 
   var BEBAS = "font-family:'Bebas Neue',sans-serif!important;font-weight:400!important;letter-spacing:1px!important;";
@@ -49,7 +50,7 @@
     ".sl-home{display:block;width:100%;container-type:inline-size;font-size:16px;line-height:1.6}",
     ".sl-home *{box-sizing:border-box}",
     ":where(.sl-home) p{font-size:16px;font-weight:400;line-height:1.6}",
-    ".slh-display{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;line-height:1.02;letter-spacing:.5px;margin:0}",
+    ".slh-display{font-family:Anton,sans-serif;font-weight:700;text-transform:uppercase;line-height:1.02;letter-spacing:.5px;margin:0}",
     ".slh-yellow{color:var(--slh-yellow)!important;text-shadow:3px 3px 0 rgba(0,0,0,.25)}",
     ".slh-head{display:table;font-family:'Bebas Neue',sans-serif!important;font-weight:400!important;font-style:normal!important;font-size:44px!important;line-height:1!important;letter-spacing:.5px!important;" +
       "text-transform:none!important;margin:0 0 22px!important;padding:10px 18px 5px!important;background:var(--slh-red);color:#fff!important;border-radius:3px;box-shadow:3px 3px 0 rgba(0,0,0,.18)}",
@@ -93,7 +94,7 @@
     ".slh-ospreys-text h2{font-size:46px;margin-bottom:16px}",
     ".slh-ospreys-text p{margin:0 0 12px;color:#fff}",
     ".slh-ospreys-quote{font-style:italic;border-left:4px solid var(--slh-yellow);padding-left:14px;margin:18px 0!important}",
-    ".slh-ospreys-text .slh-keep{font-family:Anton,sans-serif;text-transform:uppercase;color:var(--slh-yellow);font-size:30px;line-height:1.3;letter-spacing:.5px;margin:6px 0 0}",
+    ".slh-ospreys-text .slh-keep{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;color:var(--slh-yellow);font-size:30px;line-height:1.3;letter-spacing:.5px;margin:6px 0 0}",
 
     // We're here to help: full-width red band
     ".slh-help{" + BAND("var(--slh-red)") + "color:#fff;padding:70px 0;margin-top:70px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}",
@@ -127,19 +128,28 @@
     "#block-" + NEWS_BLOCK + " .sqs-block-content{width:100%;max-width:1132px;margin:0 auto}",
 
     // Hero: yellow Anton headline over a light red fade, left-aligned buttons
-    HERO + "{min-height:560px}",
-    HERO + " .content-wrapper{min-height:480px;padding-top:40px!important;padding-bottom:40px!important;align-items:center!important}",
+    // The photo starts below the header (its height is measured into --slh-header), with no white wash,
+    // centred like the preview: 560px tall on desktop, 520px on phones
+    HERO + "{min-height:0!important;padding-top:var(--slh-header,0px)!important}",
+    HERO + " .section-background{top:var(--slh-header,0px)!important;height:auto!important;bottom:0!important}",
+    HERO + " .section-background img{object-position:50% 50%!important}",
+    HERO + " .section-background-overlay{opacity:0!important}",
+    HERO + " .content-wrapper{box-sizing:border-box!important;min-height:560px!important;padding-top:40px!important;padding-bottom:40px!important;align-items:center!important}",
+    "#block-yui_3_17_2_1_1642931961542_5509{display:none!important}", // hero spacer block
     HERO + " .section-background::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(228,0,59,.8) 0%,rgba(228,0,59,.5) 35%,rgba(228,0,59,0) 58%)}",
     "@media (max-width:767px){" + HERO + " .section-background::after{background:linear-gradient(0deg,rgba(228,0,59,.7) 0%,rgba(228,0,59,.35) 45%,rgba(228,0,59,0) 75%)}}",
     HERO + " .sqs-block{padding-top:0!important;padding-bottom:0!important}",
-    HERO + " h1," + HERO + " h1 span{font-family:Anton,sans-serif!important;font-weight:400!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.25)}",
+    HERO + " h1," + HERO + " h1 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.25)}",
     HERO + " h1{font-size:clamp(64px,9vw,118px)!important;max-width:640px;margin:0!important}",
     HERO + " p{font-size:19px!important;font-weight:400!important;line-height:1.6!important;max-width:520px;margin:18px 0 28px!important;text-shadow:0 1px 4px rgba(0,0,0,.45)}",
     HERO + " .sqs-block-code .sqs-code-container > div{justify-content:flex-start!important;gap:14px!important;margin:0!important}",
     HERO + " .sqs-block-code a{" + BTN + "background:transparent!important;border:2px solid #fff!important;color:#fff!important;transition:transform .15s}",
-    HERO + " .sqs-block-code a:first-child{background:var(--slh-yellow)!important;border-color:var(--slh-yellow)!important;color:var(--slh-red-dark)!important;box-shadow:3px 3px 0 rgba(0,0,0,.25)}",
+    HERO + " .sqs-block-code a:first-child{background:var(--slh-yellow)!important;border:0!important;color:var(--slh-red-dark)!important;box-shadow:3px 3px 0 rgba(0,0,0,.25)}",
     HERO + " .sqs-block-code a:hover{transform:translateY(-2px)}",
-    "@media (max-width:767px){" + HERO + "{min-height:520px}" + HERO + " h1{font-size:64px!important}}",
+    // Phones: content sits at the bottom of the photo; "Find your councillor" on its own row, the other two below
+    "@media (max-width:767px){" + HERO + " .content-wrapper{min-height:520px!important;padding-bottom:41px!important;align-items:flex-end!important}" + HERO + " h1{font-size:64px!important}" +
+      HERO + " .sqs-block-code .sqs-code-container > div{display:grid!important;grid-template-columns:auto auto;justify-content:start}" +
+      HERO + " .sqs-block-code a:first-child{grid-column:1/-1;justify-self:start}}",
 
     // Intro: the old photo and quote blocks give way to data-show="welcome"
     OLD_PHOTO + "," + OLD_QUOTE + "{display:none!important}",
@@ -177,7 +187,7 @@
     INVOLVED + " .content-wrapper{padding-top:110px!important;padding-bottom:129px!important}",
     INVOLVED + " .section-background-overlay{opacity:1!important;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.25))!important}",
     INVOLVED + " .sqs-block{padding-top:0!important;padding-bottom:0!important}",
-    INVOLVED + " h2," + INVOLVED + " h2 span{font-family:Anton,sans-serif!important;font-weight:400!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.25)}",
+    INVOLVED + " h2," + INVOLVED + " h2 span{font-family:Anton,sans-serif!important;font-weight:700!important;text-transform:uppercase;color:var(--slh-yellow)!important;line-height:1.02!important;letter-spacing:.5px!important;text-shadow:3px 3px 0 rgba(0,0,0,.25)}",
     INVOLVED + " h2{font-size:clamp(52px,7vw,92px)!important;margin:0!important}",
     INVOLVED + " h2::after{content:'If you value it, vote for it!';display:block;font-family:'Kaushan Script',cursive;text-transform:none;color:#fff;font-size:44px;line-height:1.3;letter-spacing:0;transform:rotate(-4deg);transform-origin:left;margin:6px 0 57px;text-shadow:none}",
     INVOLVED + " p{font-size:18px!important;font-weight:400!important;line-height:1.6!important;max-width:560px}",
@@ -262,6 +272,15 @@
         "</div>" +
       "</div>"
   };
+
+  // The hero photo starts below the Squarespace header, whose height changes between desktop and phone
+  function measureHeader() {
+    var header = document.getElementById("header");
+    if (header) document.documentElement.style.setProperty("--slh-header", header.offsetHeight + "px");
+  }
+  measureHeader();
+  window.addEventListener("resize", measureHeader);
+  window.addEventListener("load", measureHeader);
 
   function render() {
     var spots = document.querySelectorAll(".sl-home[data-show]");
