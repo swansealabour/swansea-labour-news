@@ -189,8 +189,11 @@
     SIGNUP + " .form-submit-button{" + BTN + "background:var(--slh-red)!important;color:#fff!important;box-shadow:3px 3px 0 rgba(0,0,0,.18)}",
     "@media (max-width:800px){" + SIGNUP + " h4{font-size:34px!important}}",
 
-    // Footer: dark red with the out-card strapline
-    FOOTER + " .section-background{background:var(--slh-red-dark)!important}",
+    // Footer strapline
+    // Header and footer in the leaflets' Labour red (#e4003b), each edged with the out-card's yellow rule
+    "header#header{border-bottom:4px solid var(--slh-yellow)}",
+    "#footer-sections{border-top:5px solid var(--slh-yellow)}",
+    FOOTER + " .section-background{background:var(--slh-red)!important}",
     FOOTER + " .content-wrapper{padding-top:40px!important;padding-bottom:30px!important}",
     FOOTER + " .content{" + CONTAINER + "}",
     FOOTER + " .content::before{content:'Building a Better Swansea \\00B7  Adeiladu Abertawe gwell';display:block;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.5px;color:#fff;margin-bottom:14px}"
