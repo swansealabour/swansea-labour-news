@@ -1,0 +1,158 @@
+/* Swansea Labour site style (out-card look) for every page on swansealabour.org.
+ *
+ * Squarespace: Website Tools > Code Injection > Header:
+ *   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@500;700&family=Kaushan+Script&display=swap">
+ *   <link rel="stylesheet" href="https://news.swansealabour.org/site.css?v=1">
+ * Bump ?v= after each upload so phones load the new copy.
+ *
+ * The homepage adds its own layout on top (home.js). Labour red #e4003b and out-card
+ * yellow #fbe70d only: no green anywhere, it reads as Plaid Cymru.
+ */
+:root {
+  --slh-red: #e4003b;
+  --slh-red-dark: #b8002f;
+  --slh-yellow: #fbe70d;
+  --slh-ink: #1c1c1c;
+  --slh-shadow: 3px 3px 0 rgba(0, 0, 0, .35);
+}
+
+/* Header and footer: Labour red edged with the out-card's yellow rule */
+#header { border-bottom: 4px solid var(--slh-yellow); }
+#footer-sections { border-top: 5px solid var(--slh-yellow); }
+#footer-sections .section-background { background: var(--slh-red) !important; }
+#footer-sections .content::before {
+  content: "Building a Better Swansea \00B7  Adeiladu Abertawe gwell";
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: .5px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+/* Body text a touch heavier, as in the leaflets */
+.sqs-html-content p,
+.sqs-html-content li,
+.list-item-content__description p { font-weight: 400; }
+
+/* Page titles: Anton capitals in Labour red (yellow on dark or photo backgrounds) */
+.sqs-html-content h1,
+.sqs-html-content h2 {
+  font-family: Anton, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content h1 em, .sqs-html-content h1 strong,
+.sqs-html-content h2 em, .sqs-html-content h2 strong { font-style: normal; font-weight: inherit; }
+
+/* Section headings: the out-card's red label with white Bebas lettering */
+.sqs-html-content h3,
+.sqs-html-content h4,
+.sl-ward h2.slw-h {
+  display: table;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: .5px;
+  line-height: 1;
+  padding: 10px 18px 5px;
+  background: var(--slh-red);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content h3 { font-size: 36px; }
+.sqs-html-content h4, .sl-ward h2.slw-h { font-size: 32px; }
+.sqs-html-content h3 *, .sqs-html-content h4 * { color: inherit !important; font-style: normal; font-weight: inherit; }
+
+/* Dark sections (the councillor lists) in Labour red, with yellow headings */
+section[data-section-theme="dark"] .section-background { background-color: var(--slh-red); }
+section[data-section-theme="dark"] .sqs-html-content h1,
+section[data-section-theme="dark"] .sqs-html-content h2,
+section[data-section-theme="black"] .sqs-html-content h1,
+section[data-section-theme="black"] .sqs-html-content h2,
+.list-section-title,
+.list-section-title p {
+  font-family: Anton, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  color: var(--slh-yellow) !important;
+  text-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.list-section-title em, .list-section-title strong { font-style: normal; font-weight: inherit; }
+section[data-section-theme="dark"] .sqs-html-content h3,
+section[data-section-theme="dark"] .sqs-html-content h4,
+section[data-section-theme="black"] .sqs-html-content h3,
+section[data-section-theme="black"] .sqs-html-content h4 { background: var(--slh-yellow); color: var(--slh-red-dark); }
+
+/* Councillor cards: names in Bebas, contact details in white with yellow links */
+.user-items-list .list-item-content__title {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 34px !important;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  -webkit-font-smoothing: auto;
+}
+section[data-section-theme="dark"] .list-item-content__description a { color: var(--slh-yellow) !important; }
+
+/* Buttons: Bebas on Labour red, yellow on red or dark backgrounds */
+.sqs-block-button-element,
+.list-item-content__button,
+.form-submit-button,
+.sqs-editable-button {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 22px !important;
+  letter-spacing: 1px !important;
+  line-height: 1.6 !important;
+  text-transform: none !important;
+  padding: 10px 26px 8px !important;
+  border-radius: 4px !important;
+  background: var(--slh-red) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: var(--slh-shadow);
+  transition: transform .15s;
+  -webkit-font-smoothing: auto;
+}
+.sqs-block-button-element:hover,
+.list-item-content__button:hover,
+.form-submit-button:hover { transform: translateY(-2px); }
+section[data-section-theme="dark"] .sqs-block-button-element,
+section[data-section-theme="dark"] .list-item-content__button,
+section[data-section-theme="black"] .sqs-block-button-element,
+section[data-section-theme="black"] .form-submit-button { background: var(--slh-yellow) !important; color: var(--slh-red-dark) !important; }
+
+/* News reel, ward pages and map: out-card headline font on cards and names */
+#sl-news .sl-title,
+.sl-ward .slw-ctitle,
+.sl-ward .slw-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  letter-spacing: .3px;
+  line-height: 1.05;
+  -webkit-font-smoothing: auto;
+}
+#sl-news .sl-title { font-size: 26px; }
+.sl-ward .slw-ctitle { font-size: 24px; }
+.sl-ward .slw-name { font-size: 28px; }
+#sl-news p, .sl-ward p { font-weight: 400; }
+
+@media (max-width: 767px) {
+  .sqs-html-content h3 { font-size: 30px; }
+  .sqs-html-content h4, .sl-ward h2.slw-h { font-size: 28px; }
+  .user-items-list .list-item-content__title { font-size: 30px !important; }
+  #footer-sections .content::before { font-size: 24px; }
+}
