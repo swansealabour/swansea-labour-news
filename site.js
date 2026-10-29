@@ -272,6 +272,7 @@
   function run() {
     var h = findPledgeHeading();
     if (!h) return;
+    document.body.classList.add("sl-ward-page"); // ward title style in site.css
     tidyHeading(h);
     restylePledges(h);
     var slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];

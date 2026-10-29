@@ -326,10 +326,11 @@ section[data-section-theme="black"] .form-submit-button { background: var(--slh-
 }
 .sl-delivered-list span { font-size: 16px; font-weight: 400; color: #fff; }
 
-/* Trial: ward title bigger with the out-card's yellow hand-drawn underline, grey divider lines gone */
-.sl-trial article .sqs-block-horizontalrule { display: none !important; }
-.sl-trial article .sqs-html-content h2 { font-size: clamp(46px, 6vw, 76px) !important; line-height: 1 !important; margin: 0 !important; }
-.sl-trial article .sqs-html-content h2::after {
+/* Ward pages (body.sl-ward-page, set by site.js): title bigger with the out-card's yellow
+   hand-drawn underline, grey divider lines gone */
+.sl-ward-page article .sqs-block-horizontalrule { display: none !important; }
+.sl-ward-page article .sqs-html-content h2 { font-size: clamp(46px, 6vw, 76px) !important; line-height: 1 !important; margin: 0 !important; }
+.sl-ward-page article .sqs-html-content h2::after {
   content: "";
   display: block;
   width: min(420px, 80%);
