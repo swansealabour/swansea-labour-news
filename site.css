@@ -275,26 +275,20 @@ section[data-section-theme="black"] .form-submit-button { background: var(--slh-
   color: #fff;
   -webkit-font-smoothing: auto;
 }
-.sl-help-people { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 34px; }
-.sl-help-person { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.sl-help-person img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--slh-yellow);
-  margin-bottom: 8px;
-}
-.sl-help-person b {
+.sl-help-go {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: var(--slh-yellow);
+  color: #000 !important;
   font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: .5px;
-  line-height: 1.05;
+  text-decoration: none !important;
   -webkit-font-smoothing: auto;
 }
-.sl-help-person .sl-help-phone { color: var(--slh-yellow) !important; font-weight: 700; font-size: 18px; text-decoration: none; }
-.sl-help-person .sl-help-email { color: #fff !important; font-size: 14px; word-break: break-all; }
+.sl-help-go::after { content: " \2193"; }
 
 .sl-delivered {
   margin: 40px 17px 10px;
