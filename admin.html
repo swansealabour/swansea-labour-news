@@ -393,7 +393,7 @@ function renderDrafts() {
     root.append(el("p", { class: "banner", text: "Publishing is switched off until you add a real digital imprint in Settings (legally required on political material). Placeholder text such as XX does not count." }));
   }
   if (!state.drafts.length) {
-    root.append(el("p", { class: "empty", text: "No drafts. Drop a press release into the Google Drive folder and it will appear here within the hour." }));
+    root.append(el("p", { class: "empty", text: "No drafts waiting. New ones from Facebook and swansea.gov.uk are added each morning at 7am." }));
     return;
   }
   if (!state.selected || !state.drafts.find((d) => d.id === state.selected)) state.selected = state.drafts[0].id;
