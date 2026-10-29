@@ -118,7 +118,7 @@
     var facts = el("ul", "sl-about-facts");
     (ward.about.facts || []).forEach(function (f) { facts.appendChild(el("li", null, f)); });
     box.appendChild(facts);
-    var src = el("p", "sl-about-source", "From ");
+    var src = el("p", "sl-about-source", ward.about.sourceLead || "From ");
     var a = el("a", null, ward.about.source);
     a.href = ward.about.sourceUrl;
     a.target = "_blank";

@@ -434,7 +434,8 @@
           "13.5% speak Welsh",
           "Home of Leigh Halfpenny and Colin Jones MBE"
         ],
-        "source": "Figures from Swansea Council ward profile, March 2026",
+        "sourceLead": "Figures from ",
+        "source": "Swansea Council ward profile, March 2026",
         "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
       },
       "delivered": [
