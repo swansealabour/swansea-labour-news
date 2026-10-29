@@ -150,7 +150,84 @@ section[data-section-theme="black"] .form-submit-button { background: var(--slh-
 .sl-ward .slw-name { font-size: 28px; }
 #sl-news p, .sl-ward p { font-weight: 400; }
 
+/* Ward pledges, rebuilt by site.js as a tick list like the out-card's "You asked - we delivered!" */
+.sqs-html-content h4.sl-pledge-head .sl-cy { color: var(--slh-yellow) !important; }
+.sqs-html-content h4.sl-pledge-head .sl-bar { opacity: .55; margin: 0 6px; }
+.sqs-html-content ul.sl-pledges {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.sqs-html-content ul.sl-pledges li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 14px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+.sqs-html-content ul.sl-pledges li::before { content: none; display: none; }
+.sqs-html-content ul.sl-pledges svg { width: 30px; height: 30px; margin-top: 2px; }
+.sqs-html-content ul.sl-pledges b {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: .5px;
+  line-height: 1.1;
+  color: var(--slh-red);
+  margin-bottom: 3px;
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content ul.sl-pledges span { font-size: 16px; font-weight: 400; line-height: 1.55; }
+
+/* "About the ward" box added by site.js under the pledges */
+.sl-about {
+  margin: 34px 17px 10px;
+  padding: 28px 30px 24px;
+  background: #f6f4f1;
+  border-left: 6px solid var(--slh-yellow);
+  border-radius: 4px;
+}
+.sl-about .sl-about-head {
+  display: table;
+  margin: 0 0 16px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: .5px;
+  line-height: 1;
+  padding: 10px 18px 5px;
+  background: var(--slh-red);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sl-about .sl-about-text { margin: 0 0 16px; font-size: 17px; font-weight: 400; line-height: 1.6; }
+.sl-about .sl-about-facts { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sl-about .sl-about-facts li {
+  margin: 0;
+  padding: 4px 14px;
+  border: 2px solid var(--slh-red);
+  border-radius: 30px;
+  color: var(--slh-red);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.sl-about .sl-about-facts li::before { content: none; display: none; }
+.sl-about .sl-about-source { margin: 0; font-size: 13px; opacity: .75; }
+.sl-about .sl-about-source a { color: inherit; }
+
 @media (max-width: 767px) {
+  .sl-about { margin: 28px 0 6px; padding: 22px 18px 18px; }
+  .sl-about .sl-about-head { font-size: 28px; }
+  .sqs-html-content h4.sl-pledge-head .sl-bar { display: none; }
+  .sqs-html-content h4.sl-pledge-head .sl-cy { display: block; margin-top: 4px; }
+
   .sqs-html-content h3 { font-size: 30px; }
   .sqs-html-content h4, .sl-ward h2.slw-h { font-size: 28px; }
   .user-items-list .list-item-content__title { font-size: 30px !important; }

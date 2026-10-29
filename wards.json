@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-29",
   "wards": [
     {
       "name": "Bôn-y-maen",
@@ -66,7 +66,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Bonymaen-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Bôn-y-maen grew from small industrial villages whose terraces housed workers from local collieries and works. Post-war council housing and later building along the main roads joined the villages together, and since 2008 new homes at Copper Quarter on the River Tawe have added to the mix.",
+        "facts": [
+          "Population 7,900",
+          "About 4 km north-east of the city centre",
+          "Includes Bôn-y-maen and Pentrechwyth"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Castle",
@@ -149,7 +159,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Castle-Election-Address-updated.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Castle covers Swansea city centre and the neighbourhoods around it, from the Victorian terraces of Sandfields to Mount Pleasant, Dyfatty and Waun Wen. Much historic housing was lost in the Blitz, and since 2001 new homes have brought people back to live in the heart of the city.",
+        "facts": [
+          "Population 15,400",
+          "Swansea's second most densely populated ward",
+          "Includes the city centre"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Cockett",
@@ -231,7 +251,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Cockett-Election-Address.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Cockett brings together Cockett, Fforestfach and Gendros, which grew in late Victorian times and through the 20th century. Carmarthen Road runs through the ward, and semi-detached homes make up more than half of its housing.",
+        "facts": [
+          "Population 10,600",
+          "About 3 km north-west of the city centre",
+          "Includes Cockett, Fforestfach and Gendros"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Dunvant & Killay",
@@ -289,7 +319,17 @@
           ]
         }
       ],
-      "documents": []
+      "documents": [],
+      "about": {
+        "text": "Dunvant grew around coal mining in the 1800s, while Killay began as one of the Victorian hamlets along Gower Road. Most homes were built from the 1960s onwards, and today the ward is a popular residential suburb.",
+        "facts": [
+          "Population 9,200",
+          "About 6 km west of the city centre",
+          "Includes Dunvant and Killay"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Gorseinon & Penyrheol",
@@ -376,7 +416,17 @@
           "title": "Newsletter 2022",
           "url": "https://www.swansealabour.org/s/Gorseinon-and-Penyrheol-Budget.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Gorseinon grew quickly in the late 1800s and early 1900s with steel and tinplate works and coal mining, while Penyrheol, Grovesend and Waungron grew around industry such as the Grovesend works, opened in 1900. Newer homes, like Bryngwyn Village, now stand on former works sites.",
+        "facts": [
+          "Population 11,100",
+          "About 11 km north-west of the city centre",
+          "Includes Gorseinon, Penyrheol, Grovesend and Waungron"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Gowerton",
@@ -440,7 +490,16 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Gowerton-Election-Address-final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Gowerton grew with coal mining and the Elba Steel Works, opened in 1872, and became a popular suburb after the Second World War. Homes have since been built on the old Elba works and Old Cattle Market sites.",
+        "facts": [
+          "Population 5,100",
+          "About 6.4 km north-west of the city centre"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Landore",
@@ -507,7 +566,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Landore-Election-Address-updated.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Landore is where Swansea's copper industry began: the first copper smelting works opened here in 1717. Tinplate, steel and coal followed, and the close-knit terraces of Hafod, Landore and Plasmarl still reflect that industrial heritage.",
+        "facts": [
+          "Population 8,300",
+          "About 2.4 km north of the city centre",
+          "Includes Hafod, Landore and Plasmarl"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Llansamlet",
@@ -590,7 +659,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Llansamlet-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "By the mid-1800s Llansamlet's collieries were exporting 70,000 tons of coal a year, followed by copper and zinc works. Today the ward stretches from Enterprise Park and Swansea Vale to Trallwn, Birchgrove and rural Glais.",
+        "facts": [
+          "Population 15,200",
+          "About 6.5 km north-east of the city",
+          "Includes Glais, Trallwn, Birchgrove and Llansamlet"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Llwchwr",
@@ -678,7 +757,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Llwchwr-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Loughor's roots lie in early coal mining and tinplate, and the 1923 bridge over the estuary made it the link between Swansea and Llanelli. Kingsbridge and Garden Village, built mostly between 1914 and the late 1930s, complete the ward.",
+        "facts": [
+          "Population 9,700",
+          "About 7 km north-west of the city centre",
+          "Includes Loughor, Kingsbridge and Garden Village"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Morriston",
@@ -769,7 +858,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Morriston-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Morriston has the largest population of any ward in Swansea and is a town in its own right, centred on Woodfield Street. It stretches from the 19th-century terraces near the town centre to Cwmrhydyceirw and Ynystawe north of the M4.",
+        "facts": [
+          "Population 16,900",
+          "About 4 km north-east of the city",
+          "Includes Morriston, Cwmrhydyceirw and Ynystawe"
+        ],
+        "source": "Swansea Council ward profile, June 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Mynyddbach",
@@ -844,7 +943,17 @@
           "title": "Newsletter",
           "url": "https://www.swansealabour.org/s/Mynyddbach-budget.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Mynyddbach's southern half dates back to coal mining and early Victorian times, with workers' terraces still seen around Treboeth. The Clase estate followed in the 1950s, and the DVLA opened at the north of the ward in the early 1970s.",
+        "facts": [
+          "Population 9,200",
+          "About 5 km north of the city centre",
+          "Includes Treboeth, Mynydd Garnllwyd and Clase"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Penclawdd",
@@ -903,7 +1012,17 @@
           "title": "Newsletter",
           "url": "https://www.swansealabour.org/s/Penclawdd-Ward-Budget-Leaflet.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Penclawdd is famous for its cockles, gathered from the Burry Estuary since Roman times. Until the late 1800s it was also a busy port, and beyond the villages of Penclawdd, Crofty and Llanmorlais the ward is rural, like the rest of Gower.",
+        "facts": [
+          "Population 3,700",
+          "About 12 km west of the city centre",
+          "Includes Penclawdd, Crofty and Llanmorlais"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Penderry",
@@ -978,7 +1097,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Penderry-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Penderry is made up of the Blaenymaes, Portmead and Penlan estates, built from the late 1800s and in the years after the war, with newer homes at Penplas. It is home to many young families, and Mynydd Cadle Common and Mynydd Newydd playing fields give the ward valuable open space.",
+        "facts": [
+          "Population 11,700",
+          "About 4 km north of the city centre",
+          "Includes Penlan, Portmead and Blaenymaes"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Pontarddulais",
@@ -1037,7 +1166,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Pontarddulais-Election-Address.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "For centuries 'The Bont' was a small hamlet at a crossing of the River Loughor. Railways from 1839 and six tinplate works opened between 1872 and 1910 turned it into a thriving industrial town, and the uplands of Graig Fawr still rise around it.",
+        "facts": [
+          "Population 7,200",
+          "About 12 km north-west of the city centre",
+          "24.9 sq km, mostly rural uplands"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Pontlliw & Tircoed",
@@ -1096,7 +1235,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Pontlliw-Tircoed-Election-Address-final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Pontlliw and Tircoed is a mainly rural ward with the smallest population in Swansea. Pontlliw has grown along Swansea Road, and Tircoed Forest Village, built in the mid-1980s north of Junction 47, was planned as a self-contained village.",
+        "facts": [
+          "Population 2,500",
+          "About 9 km north-west of the city centre",
+          "Includes Pontlliw and Tircoed"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "St Thomas",
@@ -1157,7 +1306,17 @@
           "bio": []
         }
       ],
-      "documents": []
+      "documents": [],
+      "about": {
+        "text": "St Thomas, Danygraig and Port Tennant lie between the River Tawe and Kilvey Hill, almost 200 metres high. Victorian terraces built for dock and industrial workers sit alongside post-war homes, and the nearby SA1 Waterfront has made the area popular with first-time buyers.",
+        "facts": [
+          "Population 7,600",
+          "About 1 km east of the city centre",
+          "Includes St Thomas, Danygraig and Port Tennant"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Townhill",
@@ -1246,7 +1405,17 @@
           "title": "Newsletter 2021",
           "url": "https://www.swansealabour.org/s/TOWNHILL-WARD-2.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Townhill and Mayhill, known together as 'the Hill', look out over the city centre, the docks and Swansea Bay. The area was largely built as council housing between the wars, and it is home to many young families.",
+        "facts": [
+          "Population 9,300",
+          "About 1 km north-west of the city centre",
+          "Includes Townhill and Mayhill"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "Waunarlwydd",
@@ -1305,7 +1474,16 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/Waunarlwydd-Election-Address-final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "Waunarlwydd sits between Gowerton and Cockett, a village that grew in late Victorian times and through the 20th century. The former Alcoa aluminium works is now Westfield Industrial Park, and Cwmllwyd Wood nature reserve lies to the south-east.",
+        "facts": [
+          "Population 3,400",
+          "About 4.5 km north-west of the city centre"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     },
     {
       "name": "West Cross",
@@ -1384,7 +1562,17 @@
           "title": "Election Address",
           "url": "https://www.swansealabour.org/s/West-Cross-Election-Address-Final.pdf"
         }
-      ]
+      ],
+      "about": {
+        "text": "West Cross first grew in the late 1800s, with more homes built between the wars and, in recent years, westwards towards Clyne Common. The ward takes in West Cross, Norton and the northern part of Newton.",
+        "facts": [
+          "Population 6,000",
+          "About 6 km south-west of the city centre",
+          "Includes West Cross, Norton and part of Newton"
+        ],
+        "source": "Swansea Council ward profile, March 2026",
+        "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      }
     }
   ]
 }
