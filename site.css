@@ -183,6 +183,46 @@ section[data-section-theme="black"] .form-submit-button { background: var(--slh-
 }
 .sqs-html-content ul.sl-pledges span { font-size: 16px; font-weight: 400; line-height: 1.55; }
 
+/* Old newsletters and 2022 election addresses now live on /leaflet-archive, so their buttons
+   come off the ward pages. Listed by file so any new leaflet button still shows. */
+.sqs-block-button:has(a[href="/s/Bonymaen-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Castle-Election-Address-updated.pdf"]),
+.sqs-block-button:has(a[href="/s/Cockett-Election-Address.pdf"]),
+.sqs-block-button:has(a[href="/s/Penyrheol-Gorseinon-Autumn-2021.pdf"]),
+.sqs-block-button:has(a[href="/s/Gorseinon-and-Penyrheol-Budget.pdf"]),
+.sqs-block-button:has(a[href="/s/Gorseinon-Penyrheol-Election-Address-Update-1.pdf"]),
+.sqs-block-button:has(a[href="/s/Gowerton-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/Landore-Election-Address-updated.pdf"]),
+.sqs-block-button:has(a[href="/s/Llansamlet-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Llwchwr-Budget-Leaflet.pdf"]),
+.sqs-block-button:has(a[href="/s/Llwchwr-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Morriston-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Mynyddbach-budget.pdf"]),
+.sqs-block-button:has(a[href="/s/Penclawdd-Ward-Budget-Leaflet.pdf"]),
+.sqs-block-button:has(a[href="/s/Penderry-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Pontarddulais-Election-Address.pdf"]),
+.sqs-block-button:has(a[href="/s/Pontlliw-Tircoed-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/TOWNHILL-WARD-2.pdf"]),
+.sqs-block-button:has(a[href="/s/Waunarlwydd-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/West-Cross.pdf"]),
+.sqs-block-button:has(a[href="/s/West-Cross-Election-Address-Final.pdf"]) { display: none !important; }
+
+/* Leaflet archive page: each leaflet as a red link marked PDF */
+.sqs-html-content ul:has(a[href^="/s/"]) { list-style: none; padding-left: 0; margin: 12px 0 28px; }
+.sqs-html-content ul:has(a[href^="/s/"]) li::before { content: none; display: none; }
+.sqs-html-content ul:has(a[href^="/s/"]) a { color: var(--slh-red); font-weight: 600; }
+.sqs-html-content ul:has(a[href^="/s/"]) a::after {
+  content: "PDF";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1.5;
+  vertical-align: 2px;
+}
+
 /* "About the ward" box added by site.js under the pledges */
 .sl-about {
   margin: 34px 17px 10px;
