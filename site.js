@@ -276,7 +276,10 @@
     restylePledges(h);
     var slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
     var testing = slug.indexOf("test2-") === 0;
-    if (testing) slug = slug.slice("test2-".length);
+    if (testing) {
+      slug = slug.slice("test2-".length);
+      document.body.classList.add("sl-trial"); // trial styles in site.css
+    }
     fetch(base + "wards.json", { cache: "no-cache" })
       .then(function (r) { return r.json(); })
       .then(function (data) {

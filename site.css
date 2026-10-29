@@ -308,6 +308,18 @@ section[data-section-theme="black"] .form-submit-button { background: var(--slh-
 }
 .sl-delivered-list span { font-size: 16px; font-weight: 400; color: #fff; }
 
+/* Trial: ward title bigger with the out-card's yellow hand-drawn underline, grey divider lines gone */
+.sl-trial article .sqs-block-horizontalrule { display: none !important; }
+.sl-trial article .sqs-html-content h2 { font-size: clamp(46px, 6vw, 76px) !important; line-height: 1 !important; margin: 0 !important; }
+.sl-trial article .sqs-html-content h2::after {
+  content: "";
+  display: block;
+  width: min(420px, 80%);
+  height: 20px;
+  margin-top: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 18' preserveAspectRatio='none'%3E%3Cpath d='M4 12 C 60 4, 140 3, 256 8' stroke='%23fbe70d' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+
 .sl-budget { margin: 46px 17px 10px; }
 .sl-budget-head {
   display: table;
