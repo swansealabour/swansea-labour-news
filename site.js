@@ -11,7 +11,8 @@
  *    ward profiles) under the pledges, unless the page already has its own "about" section
  *
  * On test pages (/test2-<ward slug>) it also trials, from wards.json:
- *  - a "We're here to help!" band, above the pledges, with a button down to the councillor list
+ *  - a "We're here to help!" band with the councillors' phone and email, above the pledges,
+ *    in place of the page's own councillor list lower down
  *  - a "You asked - we delivered!" panel (the ward's `delivered` list), below the pledges
  *  - a "Your community budget at work" summary (the ward's `budget`), below that
  */
@@ -132,8 +133,14 @@
 
   var COUNT = ["", "", "two", "three", "four", "five"];
 
-  // The out-card's "We're here to help!" band. The councillors' photos and numbers are already
-  // in the page's own councillor list, so the band just points down to it.
+  // "+447973712852" or "07973712852" -> "07973 712852"
+  function prettyPhone(p) {
+    var d = (p || "").replace(/[^\d+]/g, "").replace(/^\+44/, "0");
+    return /^0\d{10}$/.test(d) ? d.slice(0, 5) + " " + d.slice(5) : p;
+  }
+
+  // The out-card's "We're here to help!" band, with each councillor's phone and email.
+  // It replaces the page's own councillor list lower down (hidden by body.sl-help-shown in site.css).
   function buildHelp(ward) {
     var people = ward.councillors || [];
     var band = el("div", "sl-help");
@@ -143,19 +150,32 @@
     box.appendChild(el("p", null, people.length > 1
       ? "Your " + (COUNT[people.length] || "") + " local councillors work for you all year round. Tell us what needs fixing in your street and we will act on it. No issue is too small. Call or email us and we will get back to you."
       : "Your local councillor works for you all year round. Tell me what needs fixing in your street and I will act on it. No issue is too small. Call or email and I will get back to you."));
-    var list = document.querySelector(".user-items-list-section");
-    if (list) {
-      list.id = list.id || "sl-councillors";
-      var go = el("a", "sl-help-go", people.length > 1 ? "Contact your councillors" : "Contact your councillor");
-      go.href = "#" + list.id;
-      go.addEventListener("click", function (e) { // the page doesn't jump to #links on its own
-        e.preventDefault();
-        list.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      box.appendChild(go);
-    }
     top.appendChild(box);
     band.appendChild(top);
+    var list = el("div", "sl-help-people");
+    people.forEach(function (c) {
+      var card = el("div", "sl-help-person");
+      if (c.photo) {
+        var img = el("img");
+        img.src = base + c.photo;
+        img.alt = c.name;
+        img.loading = "lazy";
+        card.appendChild(img);
+      }
+      card.appendChild(el("b", null, "Cllr " + c.name));
+      if (c.phone) {
+        var tel = el("a", "sl-help-phone", prettyPhone(c.phone));
+        tel.href = "tel:" + c.phone.replace(/\s+/g, "");
+        card.appendChild(tel);
+      }
+      if (c.email) {
+        var mail = el("a", "sl-help-email", c.email);
+        mail.href = "mailto:" + c.email;
+        card.appendChild(mail);
+      }
+      list.appendChild(card);
+    });
+    band.appendChild(list);
     return band;
   }
 
@@ -246,7 +266,10 @@
     if (!row) return;
     var after = row;
     function place(node) { after.parentNode.insertBefore(node, after.nextSibling); after = node; }
-    if (ward.councillors && ward.councillors.length) row.parentNode.insertBefore(buildHelp(ward), row);
+    if (ward.councillors && ward.councillors.length) {
+      row.parentNode.insertBefore(buildHelp(ward), row);
+      document.body.classList.add("sl-help-shown"); // hides the page's own councillor list
+    }
     if (ward.delivered && ward.delivered.length) place(buildDelivered(ward));
     if (ward.budget) place(buildBudget(ward));
   }
