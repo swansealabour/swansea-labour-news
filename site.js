@@ -9,6 +9,11 @@
  *  - turns the pledge list into a tick list, like the out-card's "You asked - we delivered!"
  *  - adds a short "About the ward" box from wards.json (written from Swansea Council's
  *    ward profiles) under the pledges, unless the page already has its own "about" section
+ *
+ * On test pages (/test2-<ward slug>) it also trials, from wards.json:
+ *  - a "We're here to help!" band with the councillors' phone and email, above the pledges
+ *  - a "You asked - we delivered!" panel (the ward's `delivered` list), below the pledges
+ *  - a "Your community budget at work" summary (the ward's `budget`), below that
  */
 (function () {
   var script = document.currentScript;
@@ -92,33 +97,176 @@
     return false;
   }
 
-  function addAbout(h) {
-    if (hasOwnAbout()) return;
-    var slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
-    fetch(base + "wards.json", { cache: "no-cache" })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var ward = (data.wards || []).filter(function (w) { return w.slug === slug; })[0];
-        if (!ward || !ward.about) return;
-        var row = h.closest(".sqs-layout > .row") || h.closest(".row");
-        if (!row) return;
-        var box = el("div", "sl-about");
-        var head = el("h4", "sl-about-head", "About " + ward.name);
-        box.appendChild(head);
-        box.appendChild(el("p", "sl-about-text", ward.about.text));
-        var facts = el("ul", "sl-about-facts");
-        (ward.about.facts || []).forEach(function (f) { facts.appendChild(el("li", null, f)); });
-        box.appendChild(facts);
-        var src = el("p", "sl-about-source", "From ");
-        var a = el("a", null, ward.about.source);
-        a.href = ward.about.sourceUrl;
-        a.target = "_blank";
-        a.rel = "noopener";
-        src.appendChild(a);
-        box.appendChild(src);
-        row.parentNode.insertBefore(box, row.nextSibling);
-      })
-      .catch(function () {});
+  function addAbout(h, ward) {
+    if (hasOwnAbout() || !ward.about) return;
+    var row = h.closest(".sqs-layout > .row") || h.closest(".row");
+    if (!row) return;
+    var box = el("div", "sl-about");
+    var head = el("h4", "sl-about-head", "About " + ward.name);
+    box.appendChild(head);
+    if (ward.about.paras) {
+      // Longer write-ups: short paragraphs with a bold lead-in ("Then.", "Today.")
+      ward.about.paras.forEach(function (p) {
+        var para = el("p", "sl-about-text");
+        if (p.label) para.appendChild(el("b", null, p.label + ". "));
+        para.appendChild(document.createTextNode(p.text));
+        box.appendChild(para);
+      });
+    } else {
+      box.appendChild(el("p", "sl-about-text", ward.about.text));
+    }
+    var facts = el("ul", "sl-about-facts");
+    (ward.about.facts || []).forEach(function (f) { facts.appendChild(el("li", null, f)); });
+    box.appendChild(facts);
+    var src = el("p", "sl-about-source", "From ");
+    var a = el("a", null, ward.about.source);
+    a.href = ward.about.sourceUrl;
+    a.target = "_blank";
+    a.rel = "noopener";
+    src.appendChild(a);
+    box.appendChild(src);
+    row.parentNode.insertBefore(box, row.nextSibling);
+  }
+
+  // --- Trial sections, shown only on test pages (/test2-<ward slug>) until approved ---
+
+  var COUNT = ["", "", "two", "three", "four", "five"];
+
+  // "+447973712852" or "07973712852" -> "07973 712852"
+  function prettyPhone(p) {
+    var d = (p || "").replace(/[^\d+]/g, "").replace(/^\+44/, "0");
+    return /^0\d{10}$/.test(d) ? d.slice(0, 5) + " " + d.slice(5) : p;
+  }
+
+  // The out-card's "We're here to help!" band, with each councillor's phone and email
+  function buildHelp(ward) {
+    var people = ward.councillors || [];
+    var band = el("div", "sl-help");
+    var top = el("div", "sl-help-top");
+    top.appendChild(el("h2", "sl-display sl-yellow", "We're here to help!"));
+    var box = el("div", "sl-help-box");
+    box.appendChild(el("p", null, people.length > 1
+      ? "Your " + (COUNT[people.length] || "") + " local councillors work for you all year round. Tell us what needs fixing in your street and we will act on it. No issue is too small. Call or email us and we will get back to you."
+      : "Your local councillor works for you all year round. Tell me what needs fixing in your street and I will act on it. No issue is too small. Call or email and I will get back to you."));
+    top.appendChild(box);
+    band.appendChild(top);
+    var list = el("div", "sl-help-people");
+    people.forEach(function (c) {
+      var card = el("div", "sl-help-person");
+      if (c.photo) {
+        var img = el("img");
+        img.src = base + c.photo;
+        img.alt = c.name;
+        img.loading = "lazy";
+        card.appendChild(img);
+      }
+      card.appendChild(el("b", null, "Cllr " + c.name));
+      if (c.phone) {
+        var tel = el("a", "sl-help-phone", prettyPhone(c.phone));
+        tel.href = "tel:" + c.phone.replace(/\s+/g, "");
+        card.appendChild(tel);
+      }
+      if (c.email) {
+        var mail = el("a", "sl-help-email", c.email);
+        mail.href = "mailto:" + c.email;
+        card.appendChild(mail);
+      }
+      list.appendChild(card);
+    });
+    band.appendChild(list);
+    return band;
+  }
+
+  // The out-card's "You asked - we delivered!" panel for this ward
+  function buildDelivered(ward) {
+    var panel = el("div", "sl-delivered");
+    var intro = el("div", "sl-delivered-intro");
+    var h = el("h2", "sl-display");
+    h.innerHTML = "You asked &ndash;<br><span class=\"sl-yellow\">we delivered!</span>";
+    intro.appendChild(h);
+    intro.insertAdjacentHTML("beforeend", '<svg class="sl-underline" viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C 60 4, 140 3, 256 8" stroke="#fbe70d" stroke-width="5" fill="none" stroke-linecap="round"/></svg>');
+    intro.appendChild(el("p", null, "Here's what your Labour councillors have delivered for " + ward.name + "."));
+    panel.appendChild(intro);
+    var list = el("ul", "sl-delivered-list");
+    ward.delivered.forEach(function (d) {
+      var li = el("li");
+      li.innerHTML = TICK;
+      var body = el("div");
+      body.appendChild(el("b", null, d.title));
+      body.appendChild(el("span", null, d.text));
+      li.appendChild(body);
+      list.appendChild(li);
+    });
+    panel.appendChild(list);
+    return panel;
+  }
+
+  function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
+
+  // "Your community budget at work": headline figures, spend by theme, what's coming, groups backed
+  function buildBudget(ward) {
+    var b = ward.budget;
+    var box = el("div", "sl-budget");
+    var head = el("h4", "sl-budget-head");
+    head.appendChild(document.createTextNode("Your community budget at work "));
+    head.appendChild(el("span", "sl-bar", "|"));
+    head.appendChild(el("span", "sl-cy", "Eich cyllideb gymunedol ar waith"));
+    box.appendChild(head);
+    box.appendChild(el("p", "sl-budget-intro", "Our community budget lets us fund local priorities quickly, from play areas and parking to the clubs and groups that keep " +
+      ward.name + " going. Here's how we've used it since 2022."));
+
+    var stats = el("div", "sl-budget-stats");
+    [[money(b.used), "spent or committed of our " + money(b.total) + " budget for " + b.period],
+     [String(b.payments), "local projects, grants and events paid for"],
+     [String(b.grants), "grants to local groups, clubs and charities"]].forEach(function (s) {
+      var tile = el("div", "sl-budget-stat");
+      tile.appendChild(el("b", null, s[0]));
+      tile.appendChild(el("span", null, s[1]));
+      stats.appendChild(tile);
+    });
+    box.appendChild(stats);
+
+    var bars = el("div", "sl-budget-bars");
+    bars.appendChild(el("h5", null, "Where the money has gone"));
+    var max = Math.max.apply(null, b.themes.map(function (t) { return t.amount; }));
+    b.themes.forEach(function (t) {
+      var row = el("div", "sl-budget-bar");
+      row.appendChild(el("span", "sl-budget-label", t.name));
+      var track = el("span", "sl-budget-track");
+      var fill = el("span", "sl-budget-fill");
+      fill.style.width = Math.max(3, Math.round(t.amount / max * 100)) + "%";
+      track.appendChild(fill);
+      row.appendChild(track);
+      row.appendChild(el("span", "sl-budget-amount", money(t.amount)));
+      bars.appendChild(row);
+    });
+    box.appendChild(bars);
+
+    if (b.coming) {
+      var next = el("div", "sl-budget-next");
+      next.appendChild(el("b", null, "Coming next: " + money(b.coming.amount) + " committed"));
+      next.appendChild(el("span", null, b.coming.name));
+      box.appendChild(next);
+    }
+
+    if (b.groups && b.groups.length) {
+      box.appendChild(el("h5", null, "Groups and clubs we've backed"));
+      var pills = el("ul", "sl-budget-groups");
+      b.groups.forEach(function (g) { pills.appendChild(el("li", null, g)); });
+      box.appendChild(pills);
+    }
+    box.appendChild(el("p", "sl-budget-note", "Figures to " + b.asOf + ". " + (b.note || "")));
+    return box;
+  }
+
+  function addTrials(h, ward) {
+    var row = h.closest(".row"); // the photo + pledges row
+    if (!row) return;
+    var after = row;
+    function place(node) { after.parentNode.insertBefore(node, after.nextSibling); after = node; }
+    if (ward.councillors && ward.councillors.length) row.parentNode.insertBefore(buildHelp(ward), row);
+    if (ward.delivered && ward.delivered.length) place(buildDelivered(ward));
+    if (ward.budget) place(buildBudget(ward));
   }
 
   function run() {
@@ -126,7 +274,18 @@
     if (!h) return;
     tidyHeading(h);
     restylePledges(h);
-    addAbout(h);
+    var slug = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
+    var testing = slug.indexOf("test2-") === 0;
+    if (testing) slug = slug.slice("test2-".length);
+    fetch(base + "wards.json", { cache: "no-cache" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var ward = (data.wards || []).filter(function (w) { return w.slug === slug; })[0];
+        if (!ward) return;
+        addAbout(h, ward);
+        if (testing) addTrials(h, ward);
+      })
+      .catch(function () {});
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
   else run();

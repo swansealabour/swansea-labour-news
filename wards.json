@@ -418,14 +418,121 @@
         }
       ],
       "about": {
-        "text": "Gorseinon grew quickly in the late 1800s and early 1900s with steel and tinplate works and coal mining, while Penyrheol, Grovesend and Waungron grew around industry such as the Grovesend works, opened in 1900. Newer homes, like Bryngwyn Village, now stand on former works sites.",
+        "paras": [
+          {
+            "label": "Then",
+            "text": "Monks from Neath Abbey worked this land from the 12th century, and Melin Mynach, “the monks' mill”, still carries their name. Wool from Cwrt y Carnau is said to have reached Flanders and Italy. Gorseinon grew quickly in the late 1800s and early 1900s around steel, tinplate and coal, and the railway carried its tinplate and coal to Swansea Docks. Grovesend had its own works from 1900 and collieries at Grovesend, Brynlliw and Tir Isaf. St Teilo's Church, which stood on the marsh at Castell Ddu for centuries, was taken down stone by stone and rebuilt at St Fagans National Museum of History."
+          },
+          {
+            "label": "Today",
+            "text": "Around 11,100 people live in Gorseinon, Penyrheol, Grovesend and Waungron. New homes such as Bryngwyn Village stand on the old works sites, while farms including Llannant, Cwrt y Carnau, Gwynfaen and Pencefnarda run down to the River Loughor. The town centre, Parc y Werin, Parc Melin Mynach and Golden Grove Park are at the heart of community life, and more people here speak Welsh than the Swansea average."
+          }
+        ],
         "facts": [
           "Population 11,100",
           "About 11 km north-west of the city centre",
-          "Includes Gorseinon, Penyrheol, Grovesend and Waungron"
+          "13.5% speak Welsh",
+          "Home of Leigh Halfpenny and Colin Jones MBE"
         ],
-        "source": "Swansea Council ward profile, March 2026",
+        "source": "Figures from Swansea Council ward profile, March 2026",
         "sourceUrl": "https://www.swansea.gov.uk/wardprofiles"
+      },
+      "delivered": [
+        {
+          "title": "Local legends",
+          "text": "New murals of Leigh Halfpenny and Colin Jones MBE, paid for by our community budget."
+        },
+        {
+          "title": "Banking Hub",
+          "text": "Gorseinon's new Banking Hub is open at 20 High Street, keeping face-to-face banking in town."
+        },
+        {
+          "title": "Saving lives",
+          "text": "Three new public-access defibrillators on the cycle path between Grovesend, Gorseinon and Kingsbridge."
+        },
+        {
+          "title": "Safer streets",
+          "text": "CCTV back in the town centre and at Parc Melin Mynach."
+        },
+        {
+          "title": "Skate park upgraded",
+          "text": "Parc Melin Mynach skate park upgraded with new ramps, banks and a quarter pipe."
+        }
+      ],
+      "budget": {
+        "period": "2022–27",
+        "asOf": "28 October 2026",
+        "total": 225000,
+        "used": 171930,
+        "payments": 126,
+        "grants": 77,
+        "themes": [
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 39289
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 26780
+          },
+          {
+            "name": "Roads, parking and cleaner streets",
+            "amount": 14468
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 13459
+          },
+          {
+            "name": "Murals and community artwork",
+            "amount": 6424
+          },
+          {
+            "name": "Christmas lights",
+            "amount": 5480
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 3780
+          }
+        ],
+        "coming": {
+          "name": "Parc y Werin mini pump track, skate park improvements and a community garden with toilets",
+          "amount": 62250
+        },
+        "groups": [
+          "Evolve Youth Club",
+          "Gorseinon Youth Club",
+          "The Sharing Table",
+          "Food With Friends",
+          "SOS Shelter Wales food bank",
+          "Royal British Legion",
+          "Loughor Inshore Rescue",
+          "St John Ambulance",
+          "Morgan's Army",
+          "ALN Connect Gorseinon",
+          "Recycled Teenagers Club",
+          "Moving Forward",
+          "Movement for Health",
+          "Penyrheol Free Church",
+          "St Catherine's Church, Gorseinon",
+          "West Street Gymnastics",
+          "Gorseinon RFC",
+          "Loughor RFC",
+          "Loughor Rovers AFC",
+          "Gorseinon Athletic FC",
+          "Pengelli AFC Supporters Club",
+          "Penyrheol Amateur Boxing Club",
+          "Gorseinon Cricket Club",
+          "Parc y Werin Bowling Association",
+          "Friends of Golden Grove",
+          "Friends of Melin Mynach",
+          "Grovesend & Waungron Community Council",
+          "Pengelli Sports & Social Club",
+          "1st Gorseinon Brownies",
+          "Cwrt Hywel Residents Group"
+        ],
+        "note": "Some projects were shared with neighbouring wards."
       }
     },
     {
