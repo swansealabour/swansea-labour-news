@@ -444,6 +444,44 @@ function defaultSourceName(d) {
   return who === "Swansea Council" ? "a Swansea Council Facebook post" : `a Facebook post by ${who}`;
 }
 
+// Optional quotes from the story's local Labour councillors. The daily task may suggest some
+// (draft.ward_quotes); none goes into the article unless its box is ticked.
+function labourCouncillors(taggedWards) {
+  const tagged = new Set(taggedWards.map((w) => w.toLowerCase()));
+  return ((state.wards && state.wards.data.wards) || [])
+    .flatMap((w) => (w.councillors || []).map((c) => ({ name: c.name, ward: w.name, local: tagged.has(w.name.toLowerCase()) })))
+    .sort((a, b) => Number(b.local) - Number(a.local) || a.ward.localeCompare(b.ward) || a.name.localeCompare(b.name));
+}
+function wardQuoteCard(q, councillors, onChange) {
+  let removed = false;
+  const known = councillors.some((c) => c.name === q.name && c.ward === q.ward);
+  const options = [...(q.name && !known ? [{ name: q.name, ward: q.ward }] : []), ...councillors];
+  const who = el("select", { onchange: onChange },
+    el("option", { value: "" }, "Choose a councillor…"),
+    options.map((c) => el("option", { value: `${c.name}|${c.ward}`, selected: c.name === q.name && c.ward === q.ward }, `${c.name} (${c.ward})`)));
+  const text = el("textarea", { oninput: onChange, placeholder: "The councillor's words, without quotation marks" }, q.text || "");
+  const use = el("input", { type: "checkbox", onchange: onChange });
+  const box = el("div", { class: "card" },
+    el("label", { text: "Councillor" }), who,
+    el("label", { text: "Quote" }), text,
+    el("label", { style: "display:flex;gap:8px;align-items:center;font-weight:400" }, use, "Add this quote to the article (the councillor has agreed the wording)"),
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { removed = true; box.remove(); onChange(); } }, "Remove")));
+  return {
+    el: box,
+    ticked: () => !removed && use.checked,
+    value: () => {
+      const [name = "", ward = ""] = who.value.split("|");
+      return { name, ward, text: text.value.trim().replace(/^["“]+|["”]+$/g, "").trim() };
+    },
+  };
+}
+// One paragraph per quote; a second councillor from the same ward is introduced as "Fellow".
+function wardQuoteParagraphs(quotes) {
+  return quotes.map((q, i) => i > 0 && quotes[i - 1].ward === q.ward
+    ? `Fellow ${q.ward} Labour councillor Cllr ${q.name} added: “${q.text}”`
+    : `Local Labour councillor for ${q.ward}, Cllr ${q.name}, said: “${q.text}”`);
+}
+
 function draftEditor(d) {
   const f = {
     sourceName: el("input", { type: "text", value: defaultSourceName(d) }),
@@ -483,6 +521,14 @@ function draftEditor(d) {
     ? "Already sent to the Swansea Labour Councillors Facebook page."
     : "Also post to the Swansea Labour Councillors Facebook page (usually appears within about 15 minutes).");
 
+  const councillors = labourCouncillors(d.wards || []);
+  const quoteBox = el("div");
+  const wardQuotes = [];
+  const addQuote = (q) => { const c = wardQuoteCard(q, councillors, update); wardQuotes.push(c); quoteBox.append(c.el); };
+  (d.ward_quotes || []).forEach(addQuote);
+  const addQuoteBtn = el("button", { class: "secondary", type: "button", onclick: () => { addQuote({}); update(); } }, "Add a ward councillor quote");
+  const quoteHint = el("p", { class: "hint" });
+
   function update() {
     const anyUsed = photos.some((p) => p.used());
     const missingAlt = photos.some((p) => !p.valid());
@@ -490,8 +536,10 @@ function draftEditor(d) {
     photoHint.textContent = !photos.length
       ? "No photos came with this press release. Without one, the story shows a red Swansea Labour panel."
       : missingAlt ? "Every photo you use needs a description before you can publish." : "";
+    const badQuote = wardQuotes.some((q) => q.ticked() && (!q.value().name || !q.value().text));
+    quoteHint.textContent = badQuote ? "A ticked quote needs a councillor and their words before you can publish." : "";
     const ticks = [...factChecks, ...(anyUsed ? [permission] : [])];
-    publishBtn.disabled = !imprintOk(state.config.data.imprint) || missingAlt || ticks.some((l) => !l.firstChild.checked);
+    publishBtn.disabled = !imprintOk(state.config.data.imprint) || missingAlt || badQuote || ticks.some((l) => !l.firstChild.checked);
   }
   update();
 
@@ -511,13 +559,17 @@ function draftEditor(d) {
       const fresh = await readJson(conn.site, "articles.json") || { data: { imprint: "", articles: [] } };
       const now = new Date().toISOString();
       const previous = fresh.data.articles.find((a) => a.id === d.id);
+      const body = f.body.value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+      // Ticked ward quotes go in just before the closing paragraph.
+      const quotes = wardQuoteParagraphs(wardQuotes.filter((q) => q.ticked()).map((q) => q.value()));
+      if (quotes.length) body.splice(Math.max(body.length - 1, 0), 0, ...quotes);
       const article = {
         id: d.id,
         date: previous ? previous.date : now,
         updated: now,
         headline: f.headline.value.trim(),
         summary: f.summary.value.trim(),
-        body: f.body.value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+        body,
         images,
         wards: f.wards.value.split(",").map((s) => s.trim()).filter(Boolean),
         sourceName: f.sourceName.value.trim(),
@@ -560,6 +612,9 @@ function draftEditor(d) {
     el("label", { text: "Wards this story is about (optional, comma separated)" }), f.wards,
     el("p", { class: "hint", text: "Tag every ward the story is about, including wards without Labour councillors. Wards with a Labour page show the story there too. Spell them as listed: " + WARDS.join(", ") + "." }),
     el("label", { text: "People quoted" }), people,
+    el("label", { text: "Ward councillor quotes (optional)" }),
+    el("p", { class: "hint", text: "Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor has agreed the wording. Leave them unticked to publish the story as it is." }),
+    quoteBox, quoteHint, el("div", { class: "btns", style: "margin-top:8px" }, addQuoteBtn),
     el("label", { text: "Based on (shown under the article)" }), f.sourceName,
     el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
     el("label", { text: "Original title" }), f.sourceTitle,
