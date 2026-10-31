@@ -218,7 +218,7 @@
       ward.name + " going. Here's how we've used it since 2022."));
 
     var stats = el("div", "sl-budget-stats");
-    [[money(b.used), "spent or committed of our " + money(b.total) + " budget for " + b.period],
+    [[money(b.used), "spent or committed on local priorities since 2022"],
      [String(b.payments), "local projects, grants and events paid for"],
      [String(b.grants), "grants to local groups, clubs and charities"]].forEach(function (s) {
       var tile = el("div", "sl-budget-stat");
