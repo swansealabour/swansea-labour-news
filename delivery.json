@@ -1,36 +1,116 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-31",
   "projects": [
     {
-      "id": "covid-memorial-on-the-promenade",
-      "title": "Covid memorial on the promenade",
-      "date": "2026-09",
-      "theme": "Community",
-      "status": "Completed",
-      "summary": "Permanent memorial near the Slip Bridge, a calm place to sit, reflect and remember.",
-      "lat": 51.6136,
-      "lng": -3.9655,
+      "id": "clyne-gardens-japanese-bridge-restoration",
+      "title": "Clyne Gardens Japanese Bridge restoration",
+      "date": "2026-10",
+      "theme": "Coast and countryside",
+      "status": "Planned",
+      "summary": "Restoration of the Grade II listed red bridge, built in 1973 as a replica of an earlier one, due to start in late 2026.",
+      "lat": 51.59577,
+      "lng": -4.00279,
       "ward": "",
-      "councilWard": "Uplands",
+      "councilWard": "Mayals",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/covidmemorialunveiled"
+        "url": "https://www.swansea.gov.uk/japanesebridgerestoration"
       }
     },
     {
-      "id": "leaf-boat-sculpture-s-new-home-cwmdonkin-park",
-      "title": "Leaf Boat sculpture's new home, Cwmdonkin Park",
-      "date": "2026-09",
-      "theme": "Community",
+      "id": "gowerton-school-new-learning-spaces",
+      "title": "Gowerton School new learning spaces",
+      "date": "2026-10",
+      "theme": "Schools",
+      "status": "Planned",
+      "summary": "Plans for modern new classrooms and improved facilities, expected to cost more than £47m, jointly funded with the Welsh Government.",
+      "lat": 51.64294,
+      "lng": -4.03682,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/GowertonInvest26"
+      }
+    },
+    {
+      "id": "mansel-road-resurfacing-bonymaen",
+      "title": "Mansel Road resurfacing, Bonymaen",
+      "date": "2026-10",
+      "theme": "Roads",
+      "status": "In progress",
+      "summary": "Major overnight resurfacing scheduled for 19 to 23 October 2026.",
+      "lat": 51.64649,
+      "lng": -3.90955,
+      "ward": "Bôn-y-maen",
+      "councilWard": "Bôn-y-maen",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/49275/Road-resurfacing-scheme-set-to-be-completed-overnight"
+      }
+    },
+    {
+      "id": "mowbray-yard-green-space",
+      "title": "Mowbray Yard green space",
+      "date": "2026-10",
+      "theme": "Regeneration",
       "status": "Completed",
-      "summary": "Restored Leaf Boat sculpture installed in a refurbished pond in the park linked to Dylan Thomas.",
-      "lat": 51.6214,
-      "lng": -3.96869,
+      "summary": "New city centre green space linking The Kingsway and Oxford Street, with trees, planting, seating and a giant mural.",
+      "lat": 51.61984,
+      "lng": -3.94697,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/huwsyardopening"
+      }
+    },
+    {
+      "id": "mynydd-newydd-road-resurfaced",
+      "title": "Mynydd Newydd Road resurfaced",
+      "date": "2026-10",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "A section of the road resurfaced, reported complete in October 2026.",
+      "lat": 51.65131,
+      "lng": -3.96873,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/49250/More-roads-in-Swansea-repaired"
+      }
+    },
+    {
+      "id": "st-helen-s-community-stadium",
+      "title": "St Helen's community stadium",
+      "date": "2026-10",
+      "theme": "Sport and leisure",
+      "status": "Open",
+      "summary": "£7.6m council and Ospreys transformation of the historic ground into a community stadium and the new home of the Ospreys and Swansea RFC. It hosted the Ospreys v Dragons game in October 2026.",
+      "lat": 51.61247,
+      "lng": -3.96606,
       "ward": "",
       "councilWard": "Uplands",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/reunitedLeafBoatartist"
+        "url": "https://www.swansea.gov.uk/sthelensupdateSept242026"
+      }
+    },
+    {
+      "id": "brynhyfryd-primary-dining-hall-and-kitchen",
+      "title": "Brynhyfryd Primary dining hall and kitchen",
+      "date": "2026-09",
+      "theme": "Schools",
+      "status": "In progress",
+      "summary": "£2.5m new dining hall and kitchen to meet growing demand for free school meals.",
+      "lat": 51.64358,
+      "lng": -3.94782,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/BrynhyfrdSchoolKitchen"
       }
     },
     {
@@ -50,6 +130,102 @@
       }
     },
     {
+      "id": "carmarthen-road-resurfaced",
+      "title": "Carmarthen Road resurfaced",
+      "date": "2026-09",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Full resurfacing from Cwmbwrla roundabout to the Wickes roundabout, one of the main routes into the city centre.",
+      "lat": 51.6399,
+      "lng": -3.964,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/48932/Main-road-into-city-centre-resurfaced"
+      }
+    },
+    {
+      "id": "covid-memorial-on-the-promenade",
+      "title": "Covid memorial on the promenade",
+      "date": "2026-09",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "Permanent memorial near the Slip Bridge, a calm place to sit, reflect and remember.",
+      "lat": 51.6136,
+      "lng": -3.9655,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/covidmemorialunveiled"
+      }
+    },
+    {
+      "id": "cwm-chapel-road-repaired-bonymaen",
+      "title": "Cwm Chapel Road repaired, Bonymaen",
+      "date": "2026-09",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Repairs to sections of the road under the council's Small Resurfacing Scheme.",
+      "lat": 51.64499,
+      "lng": -3.91208,
+      "ward": "Bôn-y-maen",
+      "councilWard": "Bôn-y-maen",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/48380/Swansea-roads-continue-to-be-improved"
+      }
+    },
+    {
+      "id": "leaf-boat-sculpture-s-new-home-cwmdonkin-park",
+      "title": "Leaf Boat sculpture's new home, Cwmdonkin Park",
+      "date": "2026-09",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "Restored Leaf Boat sculpture installed in a refurbished pond in the park linked to Dylan Thomas.",
+      "lat": 51.6214,
+      "lng": -3.96869,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/reunitedLeafBoatartist"
+      }
+    },
+    {
+      "id": "morfa-bascule-bridge-restoration",
+      "title": "Morfa Bascule Bridge restoration",
+      "date": "2026-09",
+      "theme": "Regeneration",
+      "status": "In progress",
+      "summary": "Work to restore and reinstate the historic bascule bridge over the Tawe at the copperworks.",
+      "lat": 51.63962,
+      "lng": -3.93598,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/basculebridgeupdatesept2026"
+      }
+    },
+    {
+      "id": "rheidol-avenue-resurfaced-clase",
+      "title": "Rheidol Avenue resurfaced, Clase",
+      "date": "2026-09",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "A section of the road resurfaced, reported complete in September 2026.",
+      "lat": 51.6629,
+      "lng": -3.94693,
+      "ward": "Mynyddbach",
+      "councilWard": "Mynydd-bach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/48717/Council-highways-maintenance-teams-repair-more-roads"
+      }
+    },
+    {
       "id": "coed-bran-riverside-boardwalk-and-sensory-garden",
       "title": "Coed Brân riverside boardwalk and sensory garden",
       "date": "2026-08",
@@ -66,51 +242,35 @@
       }
     },
     {
-      "id": "heol-talycopa-play-area",
-      "title": "Heol Talycopa play area",
-      "date": "2026-07",
-      "theme": "Play",
-      "status": "Completed",
-      "summary": "Inclusive play area with a multi-level play structure, wheelchair-accessible ramp and in-ground trampoline.",
-      "lat": 51.65738,
-      "lng": -3.88477,
-      "ward": "Llansamlet",
-      "councilWard": "Llansamlet",
-      "source": {
-        "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/heoltalycopaplay"
-      }
-    },
-    {
-      "id": "copr-bay-north-car-park",
-      "title": "Copr Bay North car park",
-      "date": "2026-07",
+      "id": "copperworks-laboratory-building-and-engine-houses",
+      "title": "Copperworks Laboratory Building and engine houses",
+      "date": "2026-08",
       "theme": "Regeneration",
-      "status": "Completed",
-      "summary": "New 628-space car park with £1-an-hour parking, freeing the St David's site for further regeneration.",
-      "lat": 51.6186,
-      "lng": -3.9421,
-      "ward": "Castle",
-      "councilWard": "Castle",
+      "status": "In progress",
+      "summary": "Council-led restoration of the Grade II listed Laboratory Building and the Vivian and Musgrave engine houses.",
+      "lat": 51.63772,
+      "lng": -3.93638,
+      "ward": "Landore",
+      "councilWard": "Landore",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/Coprbaynorthopen"
+        "url": "https://www.swansea.gov.uk/LabAug26"
       }
     },
     {
-      "id": "new-urban-park-near-prince-of-wales-dock-sa1",
-      "title": "New urban park near Prince of Wales Dock, SA1",
+      "id": "bryn-road-repairs-uplands",
+      "title": "Bryn Road repairs, Uplands",
       "date": "2026-07",
-      "theme": "Play",
+      "theme": "Roads",
       "status": "Completed",
-      "summary": "Underused land turned into a park with play facilities and nature planting, designed with local schoolchildren.",
-      "lat": 51.62018,
-      "lng": -3.9201,
+      "summary": "Repairs under the council's Small Resurfacing Scheme in July 2026.",
+      "lat": 51.61346,
+      "lng": -3.96629,
       "ward": "",
-      "councilWard": "Waterfront",
+      "councilWard": "Uplands",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/LangdonRoadParkOpening"
+        "url": "https://www.swansea.gov.uk/article/47612/Highways-road-repair-teams-in-Uplands"
       }
     },
     {
@@ -130,6 +290,70 @@
       }
     },
     {
+      "id": "copr-bay-north-car-park",
+      "title": "Copr Bay North car park",
+      "date": "2026-07",
+      "theme": "Regeneration",
+      "status": "Completed",
+      "summary": "New 628-space car park with £1-an-hour parking, freeing the St David's site for further regeneration.",
+      "lat": 51.6186,
+      "lng": -3.9421,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Coprbaynorthopen"
+      }
+    },
+    {
+      "id": "heol-talycopa-play-area",
+      "title": "Heol Talycopa play area",
+      "date": "2026-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Inclusive play area with a multi-level play structure, wheelchair-accessible ramp and in-ground trampoline.",
+      "lat": 51.65738,
+      "lng": -3.88477,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/heoltalycopaplay"
+      }
+    },
+    {
+      "id": "new-urban-park-near-prince-of-wales-dock-sa1",
+      "title": "New urban park near Prince of Wales Dock, SA1",
+      "date": "2026-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Underused land turned into a park with play facilities and nature planting, designed with local schoolchildren.",
+      "lat": 51.62018,
+      "lng": -3.9201,
+      "ward": "",
+      "councilWard": "Waterfront",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/LangdonRoadParkOpening"
+      }
+    },
+    {
+      "id": "cwm-level-road-and-roundabout-resurfaced",
+      "title": "Cwm Level Road and roundabout resurfaced",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Cwm Level Road was resurfaced in 2023, followed by the Cwm Level roundabout in spring 2026.",
+      "lat": 51.64672,
+      "lng": -3.94107,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
       "id": "dyfatty-junction-community-space",
       "title": "Dyfatty Junction community space",
       "date": "2026-06",
@@ -146,16 +370,32 @@
       }
     },
     {
-      "id": "victoria-park-street-plaza-skate-park",
-      "title": "Victoria Park street plaza skate park",
+      "id": "morfydd-street-resurfaced-morriston",
+      "title": "Morfydd Street resurfaced, Morriston",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2026.",
+      "lat": 51.66211,
+      "lng": -3.92391,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
+      "id": "mynydd-newydd-skate-park-penlan",
+      "title": "Mynydd Newydd skate park, Penlan",
       "date": "2026-06",
       "theme": "Sport and leisure",
       "status": "Completed",
-      "summary": "New street plaza-style wheeled sports facility, part of a £3m citywide investment.",
-      "lat": 51.61297,
-      "lng": -3.96249,
-      "ward": "",
-      "councilWard": "Uplands",
+      "summary": "Upgraded skate park at Mynydd Newydd, part of the £3m wheeled sports investment.",
+      "lat": 51.65131,
+      "lng": -3.96873,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/ThreeSkateParks"
@@ -178,19 +418,179 @@
       }
     },
     {
-      "id": "mynydd-newydd-skate-park-penlan",
-      "title": "Mynydd Newydd skate park, Penlan",
+      "id": "roseland-road-resurfaced-waunarlwydd",
+      "title": "Roseland Road resurfaced, Waunarlwydd",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2026.",
+      "lat": 51.64262,
+      "lng": -4.01304,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
+      "id": "uplands-terrace-richmond-terrace-and-cwmdonkin-drive-resurfaced",
+      "title": "Uplands Terrace, Richmond Terrace and Cwmdonkin Drive resurfaced",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2026.",
+      "lat": 51.61931,
+      "lng": -3.96649,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
+      "id": "vardre-road-resurfaced-clydach",
+      "title": "Vardre Road resurfaced, Clydach",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2026.",
+      "lat": 51.69755,
+      "lng": -3.89303,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
+      "id": "victoria-park-street-plaza-skate-park",
+      "title": "Victoria Park street plaza skate park",
       "date": "2026-06",
       "theme": "Sport and leisure",
       "status": "Completed",
-      "summary": "Upgraded skate park at Mynydd Newydd, part of the £3m wheeled sports investment.",
-      "lat": 51.65131,
-      "lng": -3.96873,
-      "ward": "Penderry",
-      "councilWard": "Penderry",
+      "summary": "New street plaza-style wheeled sports facility, part of a £3m citywide investment.",
+      "lat": 51.61297,
+      "lng": -3.96249,
+      "ward": "",
+      "councilWard": "Uplands",
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/ThreeSkateParks"
+      }
+    },
+    {
+      "id": "wimmerfield-drive-resurfaced-killay",
+      "title": "Wimmerfield Drive resurfaced, Killay",
+      "date": "2026-06",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2026.",
+      "lat": 51.6192,
+      "lng": -4.01332,
+      "ward": "Dunvant & Killay",
+      "councilWard": "Dunvant and Killay",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/46409/City-roads-benefitting-from-new-surfaces"
+      }
+    },
+    {
+      "id": "a4118-south-gower-road-resurfaced",
+      "title": "A4118 South Gower road resurfaced",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing from Vennaway Lane to the Gower Inn and on to the Gower Heritage Centre at Parkmill.",
+      "lat": 51.58297,
+      "lng": -4.09797,
+      "ward": "",
+      "councilWard": "Pennard",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "a48-resurfaced-penllergaer",
+      "title": "A48 resurfaced, Penllergaer",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing from Penllergaer Business Park to the Lezzet Café.",
+      "lat": 51.67404,
+      "lng": -3.9826,
+      "ward": "",
+      "councilWard": "Llangyfelach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "birchgrove-road-resurfaced",
+      "title": "Birchgrove Road resurfaced",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.66605,
+      "lng": -3.87372,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "bishopston-road-resurfaced",
+      "title": "Bishopston Road resurfaced",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.58413,
+      "lng": -4.05239,
+      "ward": "",
+      "councilWard": "Bishopston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "butterslade-grove-resurfaced-ynysforgan",
+      "title": "Butterslade Grove resurfaced, Ynysforgan",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.68157,
+      "lng": -3.91878,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "elba-junction-resurfaced-gowerton",
+      "title": "Elba junction resurfaced, Gowerton",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.65248,
+      "lng": -4.04649,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
       }
     },
     {
@@ -210,6 +610,310 @@
       }
     },
     {
+      "id": "glan-yr-afon-road-resurfaced-sketty",
+      "title": "Glan-yr-Afon Road resurfaced, Sketty",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.62103,
+      "lng": -3.99377,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "glynhir-road-resurfaced-pontarddulais",
+      "title": "Glynhir Road resurfaced, Pontarddulais",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.7202,
+      "lng": -4.02956,
+      "ward": "Pontarddulais",
+      "councilWard": "Pontarddulais",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "gors-avenue-and-high-view-resurfaced-mayhill",
+      "title": "Gors Avenue and High View resurfaced, Mayhill",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.63193,
+      "lng": -3.96036,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "lon-camlad-resurfaced-morriston",
+      "title": "Lon Camlad resurfaced, Morriston",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.66269,
+      "lng": -3.93713,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "lon-cynlais-resurfaced-sketty",
+      "title": "Lon Cynlais resurfaced, Sketty",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.62233,
+      "lng": -3.98075,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "lone-road-resurfaced-clydach",
+      "title": "Lone Road resurfaced, Clydach",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.70599,
+      "lng": -3.90362,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "maes-y-gwernen-road-resurfaced-cwmrhydyceirw",
+      "title": "Maes y Gwernen Road resurfaced, Cwmrhydyceirw",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.67922,
+      "lng": -3.9324,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "nantyffin-road-resurfaced-llansamlet",
+      "title": "Nantyffin Road resurfaced, Llansamlet",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.65755,
+      "lng": -3.90434,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "neath-road-resurfaced-landore",
+      "title": "Neath Road resurfaced, Landore",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.638,
+      "lng": -3.93826,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "north-gower-road-resurfaced-penclawdd-to-oldwalls",
+      "title": "North Gower road resurfaced, Penclawdd to Oldwalls",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing of the North Gower road (B4295) in sections from Penclawdd through Llanmorlais and Llanrhidian to Oldwalls.",
+      "lat": 51.63101,
+      "lng": -4.12458,
+      "ward": "Penclawdd",
+      "councilWard": "Pen-clawdd",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "pontarddulais-road-resurfaced-gorseinon",
+      "title": "Pontarddulais Road resurfaced, Gorseinon",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.67132,
+      "lng": -4.04116,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "ridgeway-and-goetre-fawr-road-resurfaced-killay",
+      "title": "Ridgeway and Goetre Fawr Road resurfaced, Killay",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.61918,
+      "lng": -4.02452,
+      "ward": "Dunvant & Killay",
+      "councilWard": "Dunvant and Killay",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "townhill-community-primary-dining-hall",
+      "title": "Townhill Community Primary dining hall",
+      "date": "2026-03",
+      "theme": "Schools",
+      "status": "In progress",
+      "summary": "£4.9m new dining hall and all-weather games area.",
+      "lat": 51.62692,
+      "lng": -3.96284,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Townhillturfcutting"
+      }
+    },
+    {
+      "id": "westland-avenue-resurfaced-west-cross",
+      "title": "Westland Avenue resurfaced, West Cross",
+      "date": "2026-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of around 30 resurfacing schemes the council completed between April 2025 and March 2026.",
+      "lat": 51.58555,
+      "lng": -4.01972,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/roadresurfacinglistMarch2026"
+      }
+    },
+    {
+      "id": "ffynone-road-resurfaced-uplands",
+      "title": "Ffynone Road resurfaced, Uplands",
+      "date": "2026-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Sections of the road resurfaced in early 2026.",
+      "lat": 51.62048,
+      "lng": -3.96088,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholesupdateearlyFeb"
+      }
+    },
+    {
+      "id": "frampton-road-junction-improved-gorseinon",
+      "title": "Frampton Road junction improved, Gorseinon",
+      "date": "2026-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Sections of Frampton Road resurfaced and junction improvements completed in February 2026.",
+      "lat": 51.67951,
+      "lng": -4.04139,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/43652/Road-repairs-and-resurfacing-effort-making-great-progress"
+      }
+    },
+    {
+      "id": "m4-junction-44-roundabout-resurfaced-peniel-green",
+      "title": "M4 Junction 44 roundabout resurfaced, Peniel Green",
+      "date": "2026-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Full resurfacing of the M4 Junction 44 roundabout at Peniel Green, completed in February 2026. The Junction 44 link road has also been resurfaced.",
+      "lat": 51.66083,
+      "lng": -3.89316,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/43652/Road-repairs-and-resurfacing-effort-making-great-progress"
+      }
+    },
+    {
+      "id": "ysgol-gyfun-gymraeg-bryn-tawe-improvements",
+      "title": "Ysgol Gyfun Gymraeg Bryn Tawe improvements",
+      "date": "2026-02",
+      "theme": "Schools",
+      "status": "Planned",
+      "summary": "Up to £32m committed by the council's cabinet for major improvements, subject to Welsh Government and planning approval.",
+      "lat": 51.65181,
+      "lng": -3.96051,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/BrynTaweCabinetFeb26"
+      }
+    },
+    {
+      "id": "croft-street-flats-refurbishment",
+      "title": "Croft Street flats refurbishment",
+      "date": "2026-01",
+      "theme": "Homes",
+      "status": "Planned",
+      "summary": "More than 100 council homes in two high-rise and two low-rise blocks set for a multi-million pound makeover: new kitchens, bathrooms, fire safety upgrades and better insulation.",
+      "lat": 51.62867,
+      "lng": -3.94278,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/croftstreetUpgrade"
+      }
+    },
+    {
       "id": "former-central-police-station-becomes-homeless-accommodation",
       "title": "Former Central Police Station becomes homeless accommodation",
       "date": "2026-01",
@@ -223,6 +927,102 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/article/43027/Former-city-police-station-transformed-into-safe-place-to-live-for-homeless"
+      }
+    },
+    {
+      "id": "former-debenhams-brought-back-into-use",
+      "title": "Former Debenhams brought back into use",
+      "date": "2026-01",
+      "theme": "Regeneration",
+      "status": "In progress",
+      "summary": "Council works to bring the empty store back into use, with plans for two retail units on the ground floor and a leisure operator upstairs.",
+      "lat": 51.61819,
+      "lng": -3.94514,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/DebenhamsWorks"
+      }
+    },
+    {
+      "id": "mill-street-resurfaced-gowerton",
+      "title": "Mill Street resurfaced, Gowerton",
+      "date": "2026-01",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in late 2025.",
+      "lat": 51.65054,
+      "lng": -4.04067,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/43369/Busy-M4-roundabout-in-Swansea-to-be-renewed"
+      }
+    },
+    {
+      "id": "mumbles-road-and-newton-road-crossings",
+      "title": "Mumbles Road and Newton Road crossings",
+      "date": "2026-01",
+      "theme": "Active travel",
+      "status": "In progress",
+      "summary": "Two new pedestrian crossings, wider pavements and an improved bus stop at the Newton Road junction. Work was due to start on 25 January 2026.",
+      "lat": 51.57554,
+      "lng": -4.00123,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/mumblesroadimproveJan2026"
+      }
+    },
+    {
+      "id": "west-cross-avenue-resurfaced",
+      "title": "West Cross Avenue resurfaced",
+      "date": "2026-01",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in late 2025.",
+      "lat": 51.58345,
+      "lng": -4.00603,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/43369/Busy-M4-roundabout-in-Swansea-to-be-renewed"
+      }
+    },
+    {
+      "id": "woodfield-street-resurfaced-morriston",
+      "title": "Woodfield Street resurfaced, Morriston",
+      "date": "2026-01",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in late 2025.",
+      "lat": 51.66474,
+      "lng": -3.9258,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/43369/Busy-M4-roundabout-in-Swansea-to-be-renewed"
+      }
+    },
+    {
+      "id": "kings-lane-homes-and-business-space",
+      "title": "Kings Lane homes and business space",
+      "date": "2025-12",
+      "theme": "Homes",
+      "status": "In progress",
+      "summary": "Led by non-profit Beacon Cymru: a six-storey block of affordable homes plus business units on the corner of Kings Lane and The Strand. Foundation work started in December 2025.",
+      "lat": 51.62245,
+      "lng": -3.94205,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/KingsLaneProject"
       }
     },
     {
@@ -290,35 +1090,35 @@
       }
     },
     {
-      "id": "underhill-park-sports-hub-and-cafe-reopened",
-      "title": "Underhill Park sports hub and café reopened",
-      "date": "2025-09",
+      "id": "south-gower-rfc-floodlights",
+      "title": "South Gower RFC floodlights",
+      "date": "2025-10",
       "theme": "Sport and leisure",
       "status": "Completed",
-      "summary": "All-weather pitch, changing rooms, hub and café reopened with Mumbles Community Council.",
-      "lat": 51.57369,
-      "lng": -4.00921,
+      "summary": "Energy-saving LED floodlights paid for with a £21,148 Rural Anchor Fund grant run by the council.",
+      "lat": 51.57261,
+      "lng": -4.0529,
       "ward": "",
-      "councilWard": "Mumbles",
+      "councilWard": "Bishopston",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/HubCafeOpen"
+        "url": "https://www.swansea.gov.uk/ruralanchorrhossilirugby"
       }
     },
     {
-      "id": "penclawdd-community-shed-at-graig-y-coed",
-      "title": "Penclawdd Community Shed at Graig y Coed",
+      "id": "bishop-gore-cricket-hub",
+      "title": "Bishop Gore cricket hub",
       "date": "2025-09",
-      "theme": "Community",
-      "status": "Completed",
-      "summary": "Volunteer-built workshop and classroom at Graig y Coed playing fields, with council funding support.",
-      "lat": 51.639,
-      "lng": -4.1054,
-      "ward": "Penclawdd",
-      "councilWard": "Pen-clawdd",
+      "theme": "Sport and leisure",
+      "status": "Planned",
+      "summary": "£1.1m plan, developed with Cricket Wales, to turn the playing fields into a cricket hub with a new grass square, clubhouse and training facilities.",
+      "lat": 51.61489,
+      "lng": -3.98725,
+      "ward": "",
+      "councilWard": "Sketty",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/PenclawddHubOpening"
+        "url": "https://www.swansea.gov.uk/CricketHub"
       }
     },
     {
@@ -338,6 +1138,22 @@
       }
     },
     {
+      "id": "penclawdd-community-shed-at-graig-y-coed",
+      "title": "Penclawdd Community Shed at Graig y Coed",
+      "date": "2025-09",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "Volunteer-built workshop and classroom at Graig y Coed playing fields, with council funding support.",
+      "lat": 51.639,
+      "lng": -4.1054,
+      "ward": "Penclawdd",
+      "councilWard": "Pen-clawdd",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/PenclawddHubOpening"
+      }
+    },
+    {
       "id": "sandfields-rain-gardens",
       "title": "Sandfields rain gardens",
       "date": "2025-09",
@@ -351,6 +1167,22 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/article/40473/New-rain-gardens-provide-better-access-for-residents"
+      }
+    },
+    {
+      "id": "underhill-park-sports-hub-and-cafe-reopened",
+      "title": "Underhill Park sports hub and café reopened",
+      "date": "2025-09",
+      "theme": "Sport and leisure",
+      "status": "Completed",
+      "summary": "All-weather pitch, changing rooms, hub and café reopened with Mumbles Community Council.",
+      "lat": 51.57369,
+      "lng": -4.00921,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/HubCafeOpen"
       }
     },
     {
@@ -386,6 +1218,22 @@
       }
     },
     {
+      "id": "71-72-kingsway-offices-open",
+      "title": "71/72 Kingsway offices open",
+      "date": "2025-07",
+      "theme": "Regeneration",
+      "status": "Completed",
+      "summary": "Council-developed 104,000 sq ft office scheme for up to 600 jobs, part-funded by the Swansea Bay City Deal.",
+      "lat": 51.61967,
+      "lng": -3.94816,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/KingswayOffices"
+      }
+    },
+    {
       "id": "mumbles-coastal-flood-defences",
       "title": "Mumbles coastal flood defences",
       "date": "2025-07",
@@ -402,19 +1250,35 @@
       }
     },
     {
-      "id": "71-72-kingsway-offices-open",
-      "title": "71/72 Kingsway offices open",
+      "id": "sail-bridge-surface-upgrade",
+      "title": "Sail Bridge surface upgrade",
       "date": "2025-07",
-      "theme": "Regeneration",
-      "status": "Completed",
-      "summary": "Council-developed 104,000 sq ft office scheme for up to 600 jobs, part-funded by the Swansea Bay City Deal.",
-      "lat": 51.61967,
-      "lng": -3.94816,
-      "ward": "Castle",
-      "councilWard": "Castle",
+      "theme": "Active travel",
+      "status": "In progress",
+      "summary": "The bridge closed for two weeks in July 2025 so its surface could be upgraded for walkers and cyclists.",
+      "lat": 51.61924,
+      "lng": -3.93307,
+      "ward": "",
+      "councilWard": "Waterfront",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/KingswayOffices"
+        "url": "https://www.swansea.gov.uk/sailbridgeupgrade"
+      }
+    },
+    {
+      "id": "garden-village-play-area-myrtle-road",
+      "title": "Garden Village play area, Myrtle Road",
+      "date": "2025-06",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "New community play area with swings, trampoline, rocking roundabout and sensory features, opened in time for summer.",
+      "lat": 51.66078,
+      "lng": -4.02822,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/gardenvillageplayarea"
       }
     },
     {
@@ -450,22 +1314,6 @@
       }
     },
     {
-      "id": "garden-village-play-area-myrtle-road",
-      "title": "Garden Village play area, Myrtle Road",
-      "date": "2025-06",
-      "theme": "Play",
-      "status": "Completed",
-      "summary": "New community play area with swings, trampoline, rocking roundabout and sensory features, opened in time for summer.",
-      "lat": 51.66078,
-      "lng": -4.02822,
-      "ward": "Llwchwr",
-      "councilWard": "Llwchwr",
-      "source": {
-        "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/gardenvillageplayarea"
-      }
-    },
-    {
       "id": "brynmelyn-park-play-area-waun-wen",
       "title": "Brynmelyn Park play area, Waun Wen",
       "date": "2025-05",
@@ -482,6 +1330,22 @@
       }
     },
     {
+      "id": "mumbles-road-resurfaced-norton",
+      "title": "Mumbles Road resurfaced, Norton",
+      "date": "2025-05",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "A new section of road between the West Cross Inn and Norton Road, completed in spring 2025.",
+      "lat": 51.57875,
+      "lng": -4.00002,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/38162/List-of-roads-set-for-repair-in-Swansea-is-published"
+      }
+    },
+    {
       "id": "coed-bach-skate-park-pontarddulais",
       "title": "Coed Bach skate park, Pontarddulais",
       "date": "2025-04",
@@ -495,6 +1359,70 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/CoedBachSkate"
+      }
+    },
+    {
+      "id": "bethel-road-resurfaced-llansamlet",
+      "title": "Bethel Road resurfaced, Llansamlet",
+      "date": "2025-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Major resurfacing in early 2025.",
+      "lat": 51.66148,
+      "lng": -3.88527,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholesmarch2025"
+      }
+    },
+    {
+      "id": "sketty-park-drive-resurfaced",
+      "title": "Sketty Park Drive resurfaced",
+      "date": "2025-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Major resurfacing in early 2025.",
+      "lat": 51.6155,
+      "lng": -3.99963,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholesmarch2025"
+      }
+    },
+    {
+      "id": "valley-way-resurfaced",
+      "title": "Valley Way resurfaced",
+      "date": "2025-03",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing between the Fendrod Way junction and Ferryboat Close, part of major resurfacing work in the Enterprise Park in early 2025.",
+      "lat": 51.66155,
+      "lng": -3.91195,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholesmarch2025"
+      }
+    },
+    {
+      "id": "broughton-avenue-games-area-blaenymaes",
+      "title": "Broughton Avenue games area, Blaenymaes",
+      "date": "2025-02",
+      "theme": "Sport and leisure",
+      "status": "Completed",
+      "summary": "New purpose-built multi-use games area for young people at Broughton Avenue.",
+      "lat": 51.6538,
+      "lng": -3.97466,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/MorePlayMorristonBlaenymaes"
       }
     },
     {
@@ -524,22 +1452,6 @@
       "lng": -3.93439,
       "ward": "Morriston",
       "councilWard": "Morriston",
-      "source": {
-        "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/MorePlayMorristonBlaenymaes"
-      }
-    },
-    {
-      "id": "broughton-avenue-games-area-blaenymaes",
-      "title": "Broughton Avenue games area, Blaenymaes",
-      "date": "2025-02",
-      "theme": "Sport and leisure",
-      "status": "Completed",
-      "summary": "New purpose-built multi-use games area for young people at Broughton Avenue.",
-      "lat": 51.6538,
-      "lng": -3.97466,
-      "ward": "Penderry",
-      "councilWard": "Penderry",
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/MorePlayMorristonBlaenymaes"
@@ -578,6 +1490,54 @@
       }
     },
     {
+      "id": "elba-hockey-pitch-gowerton",
+      "title": "Elba hockey pitch, Gowerton",
+      "date": "2024-11",
+      "theme": "Sport and leisure",
+      "status": "Completed",
+      "summary": "Pitch accredited by the International Hockey Federation, refurbished with a £230,000 grant from Sport Wales and Freedom Leisure, which runs the Elba complex for the council. Home of Gowerton Hockey Club.",
+      "lat": 51.65188,
+      "lng": -4.04749,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/33564/Sports-pitch-gets-major-makeover"
+      }
+    },
+    {
+      "id": "killan-colliery-memorial-restored-dunvant",
+      "title": "Killan Colliery memorial restored, Dunvant",
+      "date": "2024-11",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "The council's Gower National Landscape team, local councillors and community groups restored the memorial for the 100th anniversary of the Killan Colliery disaster, in which five miners died.",
+      "lat": 51.62536,
+      "lng": -4.03329,
+      "ward": "Dunvant & Killay",
+      "councilWard": "Dunvant and Killay",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Killanmemorial2025"
+      }
+    },
+    {
+      "id": "morriston-tabernacle-restored",
+      "title": "Morriston Tabernacle restored",
+      "date": "2024-11",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "The Grade I listed chapel was restored with council regeneration support, including £450,000 of UK Shared Prosperity Fund money awarded through the council, and reopened as the Tabernacle Morriston Centre in November 2024.",
+      "lat": 51.66335,
+      "lng": -3.92509,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/tabernacleofficialopening"
+      }
+    },
+    {
       "id": "palace-theatre-brought-back-to-life",
       "title": "Palace Theatre brought back to life",
       "date": "2024-10",
@@ -594,19 +1554,83 @@
       }
     },
     {
-      "id": "penclawdd-pirate-ship-play-area",
-      "title": "Penclawdd pirate ship play area",
-      "date": "2024-07",
-      "theme": "Play",
+      "id": "a483-resurfaced-penllergaer",
+      "title": "A483 resurfaced, Penllergaer",
+      "date": "2024-09",
+      "theme": "Roads",
       "status": "Completed",
-      "summary": "£120,000 upgrade with Llanrhidian Higher Community Council, including a pirate play ship, zip wire and inclusive roundabout.",
-      "lat": 51.6427,
-      "lng": -4.11,
-      "ward": "Penclawdd",
-      "councilWard": "Pen-clawdd",
+      "summary": "A section of the A483 at Penllergaer given full resurfacing in 2024.",
+      "lat": 51.67065,
+      "lng": -3.99519,
+      "ward": "",
+      "councilWard": "Penllergaer",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/penclawddplayarealaunch"
+        "url": "https://www.swansea.gov.uk/article/32192/Road-repair-teams-in-Swansea-fight-back-against-weather-related-damage"
+      }
+    },
+    {
+      "id": "albert-hall-restored-and-reopened",
+      "title": "Albert Hall restored and reopened",
+      "date": "2024-09",
+      "theme": "Regeneration",
+      "status": "Completed",
+      "summary": "The 160-year-old hall, restored in a scheme led by Welsh firm LoftCo with Transforming Towns support, reopened with a food court, workspaces and a children's play area.",
+      "lat": 51.62129,
+      "lng": -3.94732,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/ExploreAlbertHall"
+      }
+    },
+    {
+      "id": "lon-heddwch-repaired-craig-cefn-parc",
+      "title": "Lon Heddwch repaired, Craig Cefn Parc",
+      "date": "2024-09",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Repaired under the council's Small Resurfacing Scheme in 2024.",
+      "lat": 51.70737,
+      "lng": -3.91632,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/32192/Road-repair-teams-in-Swansea-fight-back-against-weather-related-damage"
+      }
+    },
+    {
+      "id": "quarr-drive-repaired-clydach",
+      "title": "Quarr Drive repaired, Clydach",
+      "date": "2024-09",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Repaired under the council's Small Resurfacing Scheme in 2024.",
+      "lat": 51.69315,
+      "lng": -3.90223,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/32192/Road-repair-teams-in-Swansea-fight-back-against-weather-related-damage"
+      }
+    },
+    {
+      "id": "parc-llewelyn-play-area",
+      "title": "Parc Llewelyn play area",
+      "date": "2024-08",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Brand new play area in the park serving Morriston, Mynyddbach and Landore.",
+      "lat": 51.65401,
+      "lng": -3.93789,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/ParcLlewelynPlayOpens"
       }
     },
     {
@@ -626,6 +1650,70 @@
       }
     },
     {
+      "id": "penclawdd-pirate-ship-play-area",
+      "title": "Penclawdd pirate ship play area",
+      "date": "2024-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "£120,000 upgrade with Llanrhidian Higher Community Council, including a pirate play ship, zip wire and inclusive roundabout.",
+      "lat": 51.6427,
+      "lng": -4.11,
+      "ward": "Penclawdd",
+      "councilWard": "Pen-clawdd",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/penclawddplayarealaunch"
+      }
+    },
+    {
+      "id": "rhossili-toilets-and-changing-places",
+      "title": "Rhossili toilets and Changing Places",
+      "date": "2024-07",
+      "theme": "Coast and countryside",
+      "status": "Completed",
+      "summary": "Major upgrade to the toilet block at a beach that welcomes more than 750,000 visitors a year: £35,000 from the council plus a £132,000 Welsh Government grant. A Changing Places toilet was also installed here.",
+      "lat": 51.56904,
+      "lng": -4.28611,
+      "ward": "",
+      "councilWard": "Gower",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/loosRhosili"
+      }
+    },
+    {
+      "id": "clydach-road-resurfaced",
+      "title": "Clydach Road resurfaced",
+      "date": "2024-05",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in spring 2024, part of the council's £6.5m highways programme for that year.",
+      "lat": 51.67768,
+      "lng": -3.91489,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/29175/Your-road-repair-teams-pull-out-all-the-stops-to-tackle-potholes"
+      }
+    },
+    {
+      "id": "cockett-road-resurfaced",
+      "title": "Cockett Road resurfaced",
+      "date": "2024-05",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Full resurfacing in spring 2024, part of the council's £6.5m highways programme for that year.",
+      "lat": 51.62319,
+      "lng": -3.98147,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/29175/Your-road-repair-teams-pull-out-all-the-stops-to-tackle-potholes"
+      }
+    },
+    {
       "id": "coed-gwilym-park-play-area-clydach",
       "title": "Coed Gwilym Park play area, Clydach",
       "date": "2024-05",
@@ -642,6 +1730,38 @@
       }
     },
     {
+      "id": "llwyn-mawr-road-resurfaced-tycoch",
+      "title": "Llwyn Mawr Road resurfaced, Tycoch",
+      "date": "2024-05",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Full resurfacing in spring 2024, part of the council's £6.5m highways programme for that year.",
+      "lat": 51.63107,
+      "lng": -3.99923,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/29175/Your-road-repair-teams-pull-out-all-the-stops-to-tackle-potholes"
+      }
+    },
+    {
+      "id": "nixon-terrace-play-area-morriston",
+      "title": "Nixon Terrace play area, Morriston",
+      "date": "2024-05",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Revamped play area with swings, a roundabout and a multiplay unit, part of the £7m play programme.",
+      "lat": 51.66751,
+      "lng": -3.92032,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/DFSplayofficialopening"
+      }
+    },
+    {
       "id": "new-walkers-bridge-at-pwll-du-bay",
       "title": "New walkers' bridge at Pwll Du Bay",
       "date": "2024-04",
@@ -655,6 +1775,22 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/pwlldunewbridge"
+      }
+    },
+    {
+      "id": "olchfa-school-3g-pitch",
+      "title": "Olchfa School 3G pitch",
+      "date": "2024-04",
+      "theme": "Schools",
+      "status": "Completed",
+      "summary": "£1.6m full-size all-weather 3G pitch for pupils and the wider community.",
+      "lat": 51.61866,
+      "lng": -4.005,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Olchfapitchopening"
       }
     },
     {
@@ -706,19 +1842,51 @@
       }
     },
     {
-      "id": "manselton-park-play-area-upgraded",
-      "title": "Manselton Park play area upgraded",
+      "id": "brynmill-park-play-area-upgraded",
+      "title": "Brynmill Park play area upgraded",
       "date": "2024-02",
       "theme": "Play",
       "status": "Completed",
-      "summary": "Upgraded play area at Manselton Park, part of more than 50 neighbourhood play areas improved by the council.",
-      "lat": 51.64317,
-      "lng": -3.95481,
+      "summary": "New play equipment at Brynmill Park, opened as part of the council's play areas renewal programme.",
+      "lat": 51.61492,
+      "lng": -3.97415,
       "ward": "",
-      "councilWard": "Cwmbwrla",
+      "councilWard": "Uplands",
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/threemoreplayareas"
+      }
+    },
+    {
+      "id": "fendrod-way-resurfaced-llansamlet",
+      "title": "Fendrod Way resurfaced, Llansamlet",
+      "date": "2024-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Part of 9km of resurfacing the council completed in 2023.",
+      "lat": 51.65792,
+      "lng": -3.90488,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholerepairsfeb24"
+      }
+    },
+    {
+      "id": "gorwydd-road-resurfaced-gowerton",
+      "title": "Gorwydd Road resurfaced, Gowerton",
+      "date": "2024-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in early 2024.",
+      "lat": 51.64248,
+      "lng": -4.0293,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholerepairsfeb24"
       }
     },
     {
@@ -738,35 +1906,19 @@
       }
     },
     {
-      "id": "brynmill-park-play-area-upgraded",
-      "title": "Brynmill Park play area upgraded",
+      "id": "manselton-park-play-area-upgraded",
+      "title": "Manselton Park play area upgraded",
       "date": "2024-02",
       "theme": "Play",
       "status": "Completed",
-      "summary": "New play equipment at Brynmill Park, opened as part of the council's play areas renewal programme.",
-      "lat": 51.61492,
-      "lng": -3.97415,
+      "summary": "Upgraded play area at Manselton Park, part of more than 50 neighbourhood play areas improved by the council.",
+      "lat": 51.64317,
+      "lng": -3.95481,
       "ward": "",
-      "councilWard": "Uplands",
+      "councilWard": "Cwmbwrla",
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/threemoreplayareas"
-      }
-    },
-    {
-      "id": "penllergaer-to-gorseinon-walking-and-cycling-route",
-      "title": "Penllergaer to Gorseinon walking and cycling route",
-      "date": "2024-02",
-      "theme": "Active travel",
-      "status": "Completed",
-      "summary": "2.8km off-road route along Gorseinon Road completed, linking existing routes towards Morriston, Kingsbridge and Gowerton.",
-      "lat": 51.66776,
-      "lng": -4.01908,
-      "ward": "",
-      "councilWard": "Penllergaer",
-      "source": {
-        "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/article/27473/New-walking-and-cycling-routes-added-to-Swanseas-network"
       }
     },
     {
@@ -786,19 +1938,67 @@
       }
     },
     {
-      "id": "pontlliw-play-area-upgraded",
-      "title": "Pontlliw play area upgraded",
-      "date": "2024-01",
-      "theme": "Play",
+      "id": "penllergaer-to-gorseinon-walking-and-cycling-route",
+      "title": "Penllergaer to Gorseinon walking and cycling route",
+      "date": "2024-02",
+      "theme": "Active travel",
       "status": "Completed",
-      "summary": "Pontlliw's play area was among the neighbourhood sites completed in the council's play areas renewal programme.",
-      "lat": 51.69022,
-      "lng": -4.0126,
-      "ward": "Pontlliw & Tircoed",
-      "councilWard": "Pontlliw and Tircoed",
+      "summary": "2.8km off-road route along Gorseinon Road completed, linking existing routes towards Morriston, Kingsbridge and Gowerton.",
+      "lat": 51.66776,
+      "lng": -4.01908,
+      "ward": "",
+      "councilWard": "Penllergaer",
       "source": {
         "name": "Swansea Council",
-        "url": "https://www.swansea.gov.uk/newplayareasdec23"
+        "url": "https://www.swansea.gov.uk/article/27473/New-walking-and-cycling-routes-added-to-Swanseas-network"
+      }
+    },
+    {
+      "id": "pentrepoeth-road-resurfaced-morriston",
+      "title": "Pentrepoeth Road resurfaced, Morriston",
+      "date": "2024-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in early 2024.",
+      "lat": 51.67041,
+      "lng": -3.92674,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholerepairsfeb24"
+      }
+    },
+    {
+      "id": "swansea-road-resurfaced-garngoch",
+      "title": "Swansea Road resurfaced, Garngoch",
+      "date": "2024-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Part of 9km of resurfacing the council completed in 2023.",
+      "lat": 51.65892,
+      "lng": -4.028,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholerepairsfeb24"
+      }
+    },
+    {
+      "id": "swansea-road-resurfaced-llewitha",
+      "title": "Swansea Road resurfaced, Llewitha",
+      "date": "2024-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Part of 9km of resurfacing the council completed in 2023.",
+      "lat": 51.65478,
+      "lng": -4.012,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/potholerepairsfeb24"
       }
     },
     {
@@ -815,6 +2015,438 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/newplayareasdec23"
+      }
+    },
+    {
+      "id": "pontlliw-play-area-upgraded",
+      "title": "Pontlliw play area upgraded",
+      "date": "2024-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Pontlliw's play area was among the neighbourhood sites completed in the council's play areas renewal programme.",
+      "lat": 51.69022,
+      "lng": -4.0126,
+      "ward": "Pontlliw & Tircoed",
+      "councilWard": "Pontlliw and Tircoed",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasdec23"
+      }
+    },
+    {
+      "id": "river-tawe-pontoon-landore",
+      "title": "River Tawe pontoon, Landore",
+      "date": "2023-11",
+      "theme": "Coast and countryside",
+      "status": "Completed",
+      "summary": "New boating pontoon on the Tawe next to the copperworks. River cruises and rowing clubs plan to use it under licence from the council.",
+      "lat": 51.63922,
+      "lng": -3.93458,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/PontoonInstalled"
+      }
+    },
+    {
+      "id": "new-council-flats-at-former-penlan-housing-office",
+      "title": "New council flats at former Penlan housing office",
+      "date": "2023-09",
+      "theme": "Homes",
+      "status": "Completed",
+      "summary": "The former Penlan district housing office converted into six council flats (five two-bedroom and one one-bedroom) with new kitchens and bathrooms.",
+      "lat": 51.64768,
+      "lng": -3.96333,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/24692/Former-Swansea-district-housing-office-transformed-into-flats"
+      }
+    },
+    {
+      "id": "cecil-road-resurfaced-gowerton",
+      "title": "Cecil Road resurfaced, Gowerton",
+      "date": "2023-08",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing completed under the council's 2022/23 roads programme.",
+      "lat": 51.6471,
+      "lng": -4.04073,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/busyroadrepair"
+      }
+    },
+    {
+      "id": "gellionnen-road-resurfaced",
+      "title": "Gellionnen Road resurfaced",
+      "date": "2023-08",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing completed under the council's 2022/23 roads programme.",
+      "lat": 51.70461,
+      "lng": -3.89318,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/busyroadrepair"
+      }
+    },
+    {
+      "id": "middle-road-resurfaced-gendros",
+      "title": "Middle Road resurfaced, Gendros",
+      "date": "2023-08",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of ten resurfacing projects the council had completed by August 2023.",
+      "lat": 51.63796,
+      "lng": -3.96326,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/busyroadrepair"
+      }
+    },
+    {
+      "id": "philip-street-resurfaced-cwmbwrla",
+      "title": "Philip Street resurfaced, Cwmbwrla",
+      "date": "2023-08",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "One of ten resurfacing projects the council had completed by August 2023.",
+      "lat": 51.6376,
+      "lng": -3.94743,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/busyroadrepair"
+      }
+    },
+    {
+      "id": "townhill-road-resurfaced-mayhill",
+      "title": "Townhill Road resurfaced, Mayhill",
+      "date": "2023-08",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfacing completed under the council's 2022/23 roads programme.",
+      "lat": 51.6327,
+      "lng": -3.951,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/busyroadrepair"
+      }
+    },
+    {
+      "id": "bishopston-comprehensive-transformation",
+      "title": "Bishopston Comprehensive transformation",
+      "date": "2023-07",
+      "theme": "Schools",
+      "status": "Completed",
+      "summary": "£15m refurbishment and remodelling of the school.",
+      "lat": 51.58418,
+      "lng": -4.04842,
+      "ward": "",
+      "councilWard": "Bishopston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Bishopstonopening"
+      }
+    },
+    {
+      "id": "morriston-park-nature-trail",
+      "title": "Morriston Park nature trail",
+      "date": "2023-07",
+      "theme": "Coast and countryside",
+      "status": "Completed",
+      "summary": "New nature trail created by the council, local councillors and the Friends of Morriston Park.",
+      "lat": 51.66792,
+      "lng": -3.93439,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/NatureTrailOpens"
+      }
+    },
+    {
+      "id": "penderyn-distillery-at-the-hafod-morfa-copperworks",
+      "title": "Penderyn distillery at the Hafod-Morfa Copperworks",
+      "date": "2023-07",
+      "theme": "Regeneration",
+      "status": "Completed",
+      "summary": "The council transformed historic copperworks buildings, helped by a £4m National Lottery Heritage Fund grant, and handed them to Penderyn, which opened a working distillery and visitor attraction there in July 2023.",
+      "lat": 51.63842,
+      "lng": -3.93578,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/CopperworksPlans"
+      }
+    },
+    {
+      "id": "changing-places-toilet-at-knab-rock",
+      "title": "Changing Places toilet at Knab Rock",
+      "date": "2023-06",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "Specialist accessible toilet so people with complex disabilities can enjoy the Mumbles seafront, part of more than £300,000 spent on public toilets.",
+      "lat": 51.57088,
+      "lng": -3.985,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/23034/Vital-Changing-Places-facilities-improve-beach-access-for-people-with-disabilities"
+      }
+    },
+    {
+      "id": "swansea-marina-lock-gates-and-swing-bridge",
+      "title": "Swansea Marina lock gates and swing bridge",
+      "date": "2023-06",
+      "theme": "Regeneration",
+      "status": "Completed",
+      "summary": "£750,000 upgrade to the marina's inner lock gates in 2022, followed by renovation of the 40-year-old swing bridge, which reopened to walkers in June 2023.",
+      "lat": 51.61568,
+      "lng": -3.93908,
+      "ward": "",
+      "councilWard": "Waterfront",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/17319/Major-investment-leads-to-reopening-of-Swansea-Marina"
+      }
+    },
+    {
+      "id": "new-council-homes-on-alexandra-road-gorseinon",
+      "title": "New council homes on Alexandra Road, Gorseinon",
+      "date": "2023-05",
+      "theme": "Homes",
+      "status": "Completed",
+      "summary": "A former council respite centre converted into two three-bedroom council homes.",
+      "lat": 51.66903,
+      "lng": -4.04613,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/22484/Former-council-building-transformed-into-spectacular-new-homes"
+      }
+    },
+    {
+      "id": "new-council-bungalows-at-the-circle-west-cross",
+      "title": "New council bungalows at The Circle, West Cross",
+      "date": "2023-03",
+      "theme": "Homes",
+      "status": "Completed",
+      "summary": "Six new council bungalows with energy-saving technology including solar panels, battery storage and ground source heating.",
+      "lat": 51.58722,
+      "lng": -4.01029,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/21745/New-council-homes-ready-to-welcome-tenants"
+      }
+    },
+    {
+      "id": "brokesby-road-play-area-bonymaen",
+      "title": "Brokesby Road play area, Bonymaen",
+      "date": "2023-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Refurbished play area, part of the council's £5m city-wide play upgrade.",
+      "lat": 51.63818,
+      "lng": -3.91796,
+      "ward": "Bôn-y-maen",
+      "councilWard": "Bôn-y-maen",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasjan23"
+      }
+    },
+    {
+      "id": "dunvant-park-play-area",
+      "title": "Dunvant Park play area",
+      "date": "2023-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Refurbished with multiplay units, disability-compliant swings and roundabouts, a trampoline and new safety surfacing.",
+      "lat": 51.62006,
+      "lng": -4.02303,
+      "ward": "Dunvant & Killay",
+      "councilWard": "Dunvant and Killay",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasjan23"
+      }
+    },
+    {
+      "id": "highmead-play-area-newton",
+      "title": "Highmead play area, Newton",
+      "date": "2023-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Refurbished play area, part of the council's £5m city-wide play upgrade.",
+      "lat": 51.57815,
+      "lng": -4.01714,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasjan23"
+      }
+    },
+    {
+      "id": "ynystawe-park-play-area",
+      "title": "Ynystawe Park play area",
+      "date": "2023-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Refurbished play area, part of the council's £5m city-wide play upgrade.",
+      "lat": 51.68366,
+      "lng": -3.90655,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasjan23"
+      }
+    },
+    {
+      "id": "heol-tir-du-play-park-morriston",
+      "title": "Heol Tir Du play park, Morriston",
+      "date": "2022-10",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Transformed play park with 40 new features for up to 70 children, funded by the council and local ward members.",
+      "lat": 51.67548,
+      "lng": -3.92451,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/morristonplay"
+      }
+    },
+    {
+      "id": "morriston-comprehensive-gym",
+      "title": "Morriston Comprehensive gym",
+      "date": "2022-10",
+      "theme": "Schools",
+      "status": "Completed",
+      "summary": "Major upgrade to the gym shared by Morriston Comprehensive and the adjoining leisure centre.",
+      "lat": 51.6819,
+      "lng": -3.92608,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/MorristonGym"
+      }
+    },
+    {
+      "id": "grovesend-to-pontarddulais-railway-path",
+      "title": "Grovesend to Pontarddulais railway path",
+      "date": "2022-09",
+      "theme": "Active travel",
+      "status": "Completed",
+      "summary": "Disused railway line turned into a traffic-free walking and cycling route, part of an off-road link from Pontarddulais towards Swansea Bay.",
+      "lat": 51.68786,
+      "lng": -4.03793,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/18659/Former-railway-line-transformed-into-a-new-walking-and-cycling-route"
+      }
+    },
+    {
+      "id": "victoria-park-basketball-court",
+      "title": "Victoria Park basketball court",
+      "date": "2022-09",
+      "theme": "Sport and leisure",
+      "status": "Completed",
+      "summary": "The council and Basketball Wales, with Sport Wales funding, replaced the court's two posts and added two more, extending the free court for full games and 3x3.",
+      "lat": 51.61297,
+      "lng": -3.96249,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/NewPosts"
+      }
+    },
+    {
+      "id": "copr-bay-apartments",
+      "title": "Copr Bay apartments",
+      "date": "2022-08",
+      "theme": "Homes",
+      "status": "Completed",
+      "summary": "33 new apartments run by Pobl, part of the council's £135m Copr Bay district next to the arena and coastal park.",
+      "lat": 51.61765,
+      "lng": -3.9433,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/CBapartments"
+      }
+    },
+    {
+      "id": "seafront-play-area-west-cross",
+      "title": "Seafront play area, West Cross",
+      "date": "2022-08",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "£56,000 new play area near the seafront with wheelchair-accessible equipment.",
+      "lat": 51.58552,
+      "lng": -4.00029,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/WestCrossplayarea"
+      }
+    },
+    {
+      "id": "the-ravine-walking-and-cycling-route-townhill",
+      "title": "The Ravine walking and cycling route, Townhill",
+      "date": "2022-08",
+      "theme": "Active travel",
+      "status": "Completed",
+      "summary": "Former fly-tipping hotspot turned into a scenic walking and cycling route.",
+      "lat": 51.63145,
+      "lng": -3.95163,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/article/18028/New-walking-and-cycling-route-reclaims-old-fly-tipping-hotspot"
+      }
+    },
+    {
+      "id": "phoenix-centre-all-weather-pitch-townhill",
+      "title": "Phoenix Centre all-weather pitch, Townhill",
+      "date": "2022-05",
+      "theme": "Sport and leisure",
+      "status": "Completed",
+      "summary": "New all-weather pitch and upgraded floodlights funded by the council, with improvements to the nearby games area: an investment of up to £300,000.",
+      "lat": 51.6262,
+      "lng": -3.96655,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/Phoenixpitchready"
       }
     }
   ]

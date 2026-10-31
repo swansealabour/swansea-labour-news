@@ -251,7 +251,7 @@
     if (cap.potholes) {
       var ph = el("div", "sl-budget-stat");
       ph.appendChild(el("b", null, cap.potholes.toLocaleString("en-GB")));
-      ph.appendChild(el("span", null, "potholes fixed since January 2022"));
+      ph.appendChild(el("span", null, "pothole repairs since January 2022"));
       stats.appendChild(ph);
     }
     box.appendChild(stats);
@@ -259,7 +259,7 @@
     var go = el("a", "sl-capital-map", "See what we've delivered on the map");
     go.href = "/delivering?ward=" + encodeURIComponent(cap.name);
     box.appendChild(go);
-    box.appendChild(el("p", "sl-budget-note", "Swansea Council capital figures, May 2022 to May 2026. School improvements from April 2022, Community Investment Fund from May 2024, potholes to October 2026."));
+    box.appendChild(el("p", "sl-budget-note", "Swansea Council capital figures, May 2022 to May 2026. School improvements from April 2022, potholes to October 2026. The Community Investment Fund (from May 2024) pays 70% of each project, with the other 30% from your councillors' community budget."));
     return box;
   }
 
