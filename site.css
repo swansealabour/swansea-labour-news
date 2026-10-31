@@ -410,6 +410,19 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   -webkit-font-smoothing: auto;
 }
 .sl-budget-next span { font-size: 16px; }
+.sl-budget-next-list { list-style: none; margin: 10px 0 0; padding: 0; }
+.sl-budget-next-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}
+.sl-budget-next-list li::before { content: none; display: none; }
+.sl-budget-next .sl-budget-amount { flex: none; font-size: 24px; }
+.sl-budget-next .sl-budget-note { margin-top: 10px; }
 .sl-budget-groups { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .sl-budget-groups li {
   margin: 0;

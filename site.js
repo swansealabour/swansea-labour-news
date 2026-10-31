@@ -303,9 +303,22 @@
     box.appendChild(bars);
 
     if (b.coming) {
+      // one project, or a list of projects with their own figures under a total
+      var coming = [].concat(b.coming);
       var next = el("div", "sl-budget-next");
-      next.appendChild(el("b", null, "Coming next: " + money(b.coming.amount) + " committed"));
-      next.appendChild(el("span", null, b.coming.name));
+      next.appendChild(el("b", null, "Coming next: " + money(coming.reduce(function (s, c) { return s + c.amount; }, 0)) + " committed"));
+      if (coming.length === 1) next.appendChild(el("span", null, coming[0].name));
+      else {
+        var list = el("ul", "sl-budget-next-list");
+        coming.forEach(function (c) {
+          var li = el("li");
+          li.appendChild(el("span", null, c.name + (c.status ? " (" + c.status + ")" : "")));
+          li.appendChild(el("span", "sl-budget-amount", money(c.amount)));
+          list.appendChild(li);
+        });
+        next.appendChild(list);
+      }
+      if (b.comingNote) next.appendChild(el("p", "sl-budget-note", b.comingNote));
       box.appendChild(next);
     }
 

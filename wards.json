@@ -496,10 +496,18 @@
             "amount": 3780
           }
         ],
-        "coming": {
-          "name": "Parc y Werin mini pump track, skate park improvements and a community garden with toilets",
-          "amount": 62250
-        },
+        "coming": [
+          {
+            "name": "Parc y Werin: mini pump track, skate park improvements, a community garden and a new pathway",
+            "amount": 162500
+          },
+          {
+            "name": "Melin Mynach pump track",
+            "amount": 140218.92,
+            "status": "funding to be allocated soon"
+          }
+        ],
+        "comingNote": "Full project costs, including funding from outside our community budget, such as the Community Investment Fund.",
         "groups": [
           "Evolve Youth Club",
           "Gorseinon Youth Club",
