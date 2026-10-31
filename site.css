@@ -472,7 +472,7 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   text-decoration: none !important;
   -webkit-font-smoothing: auto;
 }
-.sl-capital-map::after { content: " \2192"; }
+.sl-capital-map::after { content: "\00a0\2192"; } /* non-breaking space keeps the arrow with "map" */
 
 @media (max-width: 767px) {
   .sl-budget { margin: 36px 0 6px; }
@@ -486,6 +486,7 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   .sl-help-top, .sl-delivered { grid-template-columns: 1fr; }
   .sl-delivered { margin: 32px 0 6px; padding: 28px 20px; gap: 26px; }
   .sl-help-box p { font-size: 23px; }
+  .sl-capital-map { font-size: 20px; }
 }
 
 /* "About the ward" box added by site.js under the pledges */
