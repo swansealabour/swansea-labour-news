@@ -199,8 +199,7 @@
         grid.appendChild(ph);
       }
       invest.appendChild(grid);
-      invest.appendChild(el("p", "slm-invest-note",
-        "Swansea Council capital figures, May 2022 to May 2026. The Community Investment Fund pays 70% of each project; councillors' community budgets pay the other 30%."));
+      invest.appendChild(el("p", "slm-invest-note", "Swansea Council capital figures, May 2022 to May 2026."));
       invest.hidden = false;
     }
 

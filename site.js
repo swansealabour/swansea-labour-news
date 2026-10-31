@@ -225,14 +225,6 @@
     big.appendChild(el("span", null, "invested in " + ward.name + " by Swansea's Labour council since 2022, on top of the community budget"));
     box.appendChild(big);
 
-    // "Population 11,100" in the about box facts gives a per-resident figure
-    var pop = 0;
-    ((ward.about && ward.about.facts) || []).forEach(function (f) {
-      var m = /population\s+([\d,]+)/i.exec(f);
-      if (m) pop = parseInt(m[1].replace(/,/g, ""), 10);
-    });
-    if (pop) box.appendChild(el("p", "sl-budget-intro", "That's about " + money(total / pop) + " for every person living here, spent on the roads you drive and walk on, the schools your children go to and the community projects that bring people together."));
-
     var stats = el("div", "sl-budget-stats");
     var words = {
       roads: "on resurfacing and repairing roads and pavements",
@@ -259,7 +251,7 @@
     var go = el("a", "sl-capital-map", "See what we've delivered on the map");
     go.href = "/delivering?ward=" + encodeURIComponent(cap.name);
     box.appendChild(go);
-    box.appendChild(el("p", "sl-budget-note", "Swansea Council capital figures, May 2022 to May 2026. School improvements from April 2022, potholes to October 2026. The Community Investment Fund (from May 2024) pays 70% of each project, with the other 30% from your councillors' community budget."));
+    box.appendChild(el("p", "sl-budget-note", "Swansea Council capital figures, May 2022 to May 2026. School improvements from April 2022, potholes to October 2026."));
     return box;
   }
 
@@ -303,17 +295,18 @@
     box.appendChild(bars);
 
     if (b.coming) {
-      // one project, or a list of projects with their own figures under a total
+      // one scheme or a list of schemes; figures are optional
       var coming = [].concat(b.coming);
+      var sum = coming.reduce(function (s, c) { return s + (c.amount || 0); }, 0);
       var next = el("div", "sl-budget-next");
-      next.appendChild(el("b", null, "Coming next: " + money(coming.reduce(function (s, c) { return s + c.amount; }, 0)) + " committed"));
+      next.appendChild(el("b", null, "Coming next" + (sum ? ": " + money(sum) + " committed" : "")));
       if (coming.length === 1) next.appendChild(el("span", null, coming[0].name));
       else {
         var list = el("ul", "sl-budget-next-list");
         coming.forEach(function (c) {
           var li = el("li");
           li.appendChild(el("span", null, c.name + (c.status ? " (" + c.status + ")" : "")));
-          li.appendChild(el("span", "sl-budget-amount", money(c.amount)));
+          if (c.amount) li.appendChild(el("span", "sl-budget-amount", money(c.amount)));
           list.appendChild(li);
         });
         next.appendChild(list);
