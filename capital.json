@@ -1,0 +1,313 @@
+{
+    "updated":  "2026-10-31",
+    "source":  "Swansea Council capital figures by ward, May 2022 to May 2026",
+    "labels":  {
+                   "roads":  "Roads and pavements",
+                   "schools":  "School improvements",
+                   "schoolBuildings":  "School buildings",
+                   "play":  "Play areas",
+                   "communityFund":  "Community Investment Fund"
+               },
+    "periods":  {
+                    "roads":  "May 2022 to May 2026",
+                    "schools":  "April 2022 to May 2026",
+                    "schoolBuildings":  "May 2022 to May 2026",
+                    "play":  "May 2022 to May 2026",
+                    "communityFund":  "May 2024 to May 2026",
+                    "potholes":  "January 2022 to October 2026"
+                },
+    "citywide":  {
+                     "roads":  20631500,
+                     "schools":  19293324
+                 },
+    "wards":  [
+                  {
+                      "name":  "Bishopston",
+                      "play":  0,
+                      "roads":  507160,
+                      "potholes":  813,
+                      "schools":  4293043,
+                      "schoolBuildings":  200000,
+                      "communityFund":  147000
+                  },
+                  {
+                      "name":  "Bonymaen",
+                      "play":  152821,
+                      "roads":  299824,
+                      "potholes":  939,
+                      "schools":  704036,
+                      "schoolBuildings":  270000,
+                      "communityFund":  45500
+                  },
+                  {
+                      "name":  "Castle",
+                      "play":  197646,
+                      "roads":  597610,
+                      "potholes":  713,
+                      "schools":  96298,
+                      "schoolBuildings":  1720000,
+                      "communityFund":  129500
+                  },
+                  {
+                      "name":  "Clydach",
+                      "play":  181035,
+                      "roads":  513946,
+                      "potholes":  1160,
+                      "schools":  59539,
+                      "schoolBuildings":  0,
+                      "communityFund":  117279
+                  },
+                  {
+                      "name":  "Cockett",
+                      "play":  240807,
+                      "roads":  678946,
+                      "potholes":  913,
+                      "schools":  987914,
+                      "schoolBuildings":  1083000,
+                      "communityFund":  132682
+                  },
+                  {
+                      "name":  "Cwmbwrla",
+                      "play":  135648,
+                      "roads":  580946,
+                      "potholes":  518,
+                      "schools":  0,
+                      "schoolBuildings":  150000,
+                      "communityFund":  54798
+                  },
+                  {
+                      "name":  "Dunvant and Killay",
+                      "play":  126432,
+                      "roads":  718946,
+                      "potholes":  701,
+                      "schools":  56395,
+                      "schoolBuildings":  620000,
+                      "communityFund":  113442
+                  },
+                  {
+                      "name":  "Fairwood",
+                      "play":  0,
+                      "roads":  138160,
+                      "potholes":  457,
+                      "schools":  1335,
+                      "schoolBuildings":  0,
+                      "communityFund":  17394
+                  },
+                  {
+                      "name":  "Gorseinon and Penyrheol",
+                      "play":  0,
+                      "roads":  690946,
+                      "potholes":  753,
+                      "schools":  452485,
+                      "schoolBuildings":  0,
+                      "communityFund":  145250
+                  },
+                  {
+                      "name":  "Gower",
+                      "play":  0,
+                      "roads":  866660,
+                      "potholes":  672,
+                      "schools":  24000,
+                      "schoolBuildings":  0,
+                      "communityFund":  50400
+                  },
+                  {
+                      "name":  "Gowerton",
+                      "play":  0,
+                      "roads":  843324,
+                      "potholes":  552,
+                      "schools":  2733895,
+                      "schoolBuildings":  0,
+                      "communityFund":  282622
+                  },
+                  {
+                      "name":  "Landore",
+                      "play":  458014,
+                      "roads":  646824,
+                      "potholes":  469,
+                      "schools":  102049,
+                      "schoolBuildings":  150000,
+                      "communityFund":  112000
+                  },
+                  {
+                      "name":  "Llangyfelach",
+                      "play":  0,
+                      "roads":  125160,
+                      "potholes":  379,
+                      "schools":  1335,
+                      "schoolBuildings":  100000,
+                      "communityFund":  0
+                  },
+                  {
+                      "name":  "Llansamlet",
+                      "play":  202331,
+                      "roads":  2335610,
+                      "potholes":  1796,
+                      "schools":  230250,
+                      "schoolBuildings":  450000,
+                      "communityFund":  210000
+                  },
+                  {
+                      "name":  "Llwchwr",
+                      "play":  137842,
+                      "roads":  895946,
+                      "potholes":  766,
+                      "schools":  344125,
+                      "schoolBuildings":  0,
+                      "communityFund":  108500
+                  },
+                  {
+                      "name":  "Mayals",
+                      "play":  0,
+                      "roads":  224160,
+                      "potholes":  230,
+                      "schools":  0,
+                      "schoolBuildings":  0,
+                      "communityFund":  15400
+                  },
+                  {
+                      "name":  "Morriston",
+                      "play":  387408,
+                      "roads":  1238503,
+                      "potholes":  1576,
+                      "schools":  264833,
+                      "schoolBuildings":  735000,
+                      "communityFund":  162213
+                  },
+                  {
+                      "name":  "Mumbles",
+                      "play":  137866,
+                      "roads":  700946,
+                      "potholes":  735,
+                      "schools":  103745,
+                      "schoolBuildings":  593000,
+                      "communityFund":  164534
+                  },
+                  {
+                      "name":  "Mynyddbach",
+                      "play":  42510,
+                      "roads":  946446,
+                      "potholes":  699,
+                      "schools":  3115673,
+                      "schoolBuildings":  0,
+                      "communityFund":  14000
+                  },
+                  {
+                      "name":  "Penclawdd",
+                      "play":  0,
+                      "roads":  621660,
+                      "potholes":  384,
+                      "schools":  114905,
+                      "schoolBuildings":  0,
+                      "communityFund":  17500
+                  },
+                  {
+                      "name":  "Penderry",
+                      "play":  168859,
+                      "roads":  591660,
+                      "potholes":  636,
+                      "schools":  2403479,
+                      "schoolBuildings":  735000,
+                      "communityFund":  139110
+                  },
+                  {
+                      "name":  "Penllergaer",
+                      "play":  0,
+                      "roads":  967446,
+                      "potholes":  180,
+                      "schools":  13548,
+                      "schoolBuildings":  0,
+                      "communityFund":  23940
+                  },
+                  {
+                      "name":  "Pennard",
+                      "play":  0,
+                      "roads":  215160,
+                      "potholes":  626,
+                      "schools":  194370,
+                      "schoolBuildings":  0,
+                      "communityFund":  44304
+                  },
+                  {
+                      "name":  "Pontarddulais",
+                      "play":  80207,
+                      "roads":  409824,
+                      "potholes":  838,
+                      "schools":  594221,
+                      "schoolBuildings":  1090000,
+                      "communityFund":  130000
+                  },
+                  {
+                      "name":  "Pontlliw and Tircoed",
+                      "play":  109842,
+                      "roads":  100160,
+                      "potholes":  64,
+                      "schools":  0,
+                      "schoolBuildings":  0,
+                      "communityFund":  20958
+                  },
+                  {
+                      "name":  "Sketty",
+                      "play":  120561,
+                      "roads":  1272503,
+                      "potholes":  1050,
+                      "schools":  1701327,
+                      "schoolBuildings":  820000,
+                      "communityFund":  40186
+                  },
+                  {
+                      "name":  "St Thomas",
+                      "play":  124429,
+                      "roads":  187824,
+                      "potholes":  413,
+                      "schools":  69569,
+                      "schoolBuildings":  0,
+                      "communityFund":  130336
+                  },
+                  {
+                      "name":  "Townhill",
+                      "play":  200252,
+                      "roads":  853946,
+                      "potholes":  419,
+                      "schools":  361769,
+                      "schoolBuildings":  100000,
+                      "communityFund":  70000
+                  },
+                  {
+                      "name":  "Uplands",
+                      "play":  130334,
+                      "roads":  881610,
+                      "potholes":  950,
+                      "schools":  34706,
+                      "schoolBuildings":  100000,
+                      "communityFund":  70000
+                  },
+                  {
+                      "name":  "Waterfront",
+                      "play":  19520,
+                      "roads":  149160,
+                      "potholes":  282,
+                      "schools":  0,
+                      "schoolBuildings":  150000,
+                      "communityFund":  56000
+                  },
+                  {
+                      "name":  "Waunarlwydd",
+                      "play":  38890,
+                      "roads":  291660,
+                      "potholes":  590,
+                      "schools":  0,
+                      "schoolBuildings":  0,
+                      "communityFund":  33932
+                  },
+                  {
+                      "name":  "West Cross",
+                      "play":  134291,
+                      "roads":  538824,
+                      "potholes":  409,
+                      "schools":  234480,
+                      "schoolBuildings":  410000,
+                      "communityFund":  122500
+                  }
+              ]
+}

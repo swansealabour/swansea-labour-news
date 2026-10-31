@@ -14,6 +14,7 @@
  *  - a "We're here to help!" band with the councillors' phone and email, above the pledges,
  *    in place of the page's own councillor list lower down
  *  - a "You asked - we delivered!" panel (the ward's `delivered` list), below the pledges
+ *  - an "Investing in <ward>" summary of the council's capital spend there (capital.json)
  *  - a "Your community budget at work" summary (the ward's `budget`), below that
  */
 (function () {
@@ -204,6 +205,63 @@
   }
 
   function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
+  // 1288681 -> "£1.3 million"; smaller sums stay in full
+  function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
+  function norm(s) { return String(s || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z]/g, ""); }
+
+  // "Investing in <ward>": the council's capital spend in the ward since 2022, from capital.json
+  function buildCapital(ward, cap) {
+    var keys = ["roads", "schools", "schoolBuildings", "play", "communityFund"];
+    var total = keys.reduce(function (sum, k) { return sum + (cap[k] || 0); }, 0);
+    var box = el("div", "sl-budget sl-capital");
+    var head = el("h4", "sl-budget-head");
+    head.appendChild(document.createTextNode("Investing in " + ward.name + " "));
+    head.appendChild(el("span", "sl-bar", "|"));
+    head.appendChild(el("span", "sl-cy", "Buddsoddi yn eich cymuned"));
+    box.appendChild(head);
+
+    var big = el("div", "sl-capital-total");
+    big.appendChild(el("b", null, bigMoney(total)));
+    big.appendChild(el("span", null, "invested in " + ward.name + " by Swansea's Labour council since 2022, on top of the community budget"));
+    box.appendChild(big);
+
+    // "Population 11,100" in the about box facts gives a per-resident figure
+    var pop = 0;
+    ((ward.about && ward.about.facts) || []).forEach(function (f) {
+      var m = /population\s+([\d,]+)/i.exec(f);
+      if (m) pop = parseInt(m[1].replace(/,/g, ""), 10);
+    });
+    if (pop) box.appendChild(el("p", "sl-budget-intro", "That's about " + money(total / pop) + " for every person living here, spent on the roads you drive and walk on, the schools your children go to and the community projects that bring people together."));
+
+    var stats = el("div", "sl-budget-stats");
+    var words = {
+      roads: "on resurfacing and repairing roads and pavements",
+      schools: "on improving local schools",
+      schoolBuildings: "on school buildings",
+      play: "on new and improved play areas",
+      communityFund: "from the Community Investment Fund for local projects"
+    };
+    keys.forEach(function (k) {
+      if (!cap[k]) return;
+      var tile = el("div", "sl-budget-stat");
+      tile.appendChild(el("b", null, money(cap[k])));
+      tile.appendChild(el("span", null, words[k]));
+      stats.appendChild(tile);
+    });
+    if (cap.potholes) {
+      var ph = el("div", "sl-budget-stat");
+      ph.appendChild(el("b", null, cap.potholes.toLocaleString("en-GB")));
+      ph.appendChild(el("span", null, "potholes fixed since January 2022"));
+      stats.appendChild(ph);
+    }
+    box.appendChild(stats);
+
+    var go = el("a", "sl-capital-map", "See what we've delivered on the map");
+    go.href = "/delivering?ward=" + encodeURIComponent(cap.name);
+    box.appendChild(go);
+    box.appendChild(el("p", "sl-budget-note", "Swansea Council capital figures, May 2022 to May 2026. School improvements from April 2022, Community Investment Fund from May 2024, potholes to October 2026."));
+    return box;
+  }
 
   // "Your community budget at work": headline figures, spend by theme, what's coming, groups backed
   function buildBudget(ward) {
@@ -261,7 +319,7 @@
     return box;
   }
 
-  function addTrials(h, ward) {
+  function addTrials(h, ward, capital) {
     var row = h.closest(".row"); // the photo + pledges row
     if (!row) return;
     var after = row;
@@ -271,7 +329,15 @@
       document.body.classList.add("sl-help-shown"); // hides the page's own councillor list
     }
     if (ward.delivered && ward.delivered.length) place(buildDelivered(ward));
+    var cap = ((capital && capital.wards) || []).filter(function (w) { return norm(w.name) === norm(ward.name); })[0];
+    if (cap) place(buildCapital(ward, cap));
     if (ward.budget) place(buildBudget(ward));
+  }
+
+  function getJson(name) {
+    return fetch(base + name, { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
   }
 
   function run() {
@@ -286,13 +352,12 @@
       slug = slug.slice("test2-".length);
       document.body.classList.add("sl-trial"); // trial styles in site.css
     }
-    fetch(base + "wards.json", { cache: "no-cache" })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var ward = (data.wards || []).filter(function (w) { return w.slug === slug; })[0];
+    Promise.all([getJson("wards.json"), testing ? getJson("capital.json") : null])
+      .then(function (res) {
+        var ward = ((res[0] && res[0].wards) || []).filter(function (w) { return w.slug === slug; })[0];
         if (!ward) return;
         addAbout(h, ward);
-        if (testing) addTrials(h, ward);
+        if (testing) addTrials(h, ward, res[1]);
       })
       .catch(function () {});
   }

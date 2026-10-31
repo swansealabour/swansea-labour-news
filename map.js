@@ -11,6 +11,7 @@
  *   data-imprint="off"      hide the imprint line
  *
  * Projects come from delivery.json, edited in the review page's Map tab.
+ * The capital investment panel comes from capital.json (council figures by ward, 2022-26).
  * Map data © OpenStreetMap contributors.
  */
 (function () {
@@ -61,7 +62,17 @@
     "#sl-map .slm-actions{font-size:.9em}" +
     "#sl-map .slm-actions button{background:none;border:0;padding:0;font:inherit;color:#E4003B;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}" +
     "#sl-map .slm-actions a{color:inherit}" +
-    "#sl-map .slm-imprint{margin-top:2em;font-size:.85em;opacity:.75}";
+    "#sl-map .slm-imprint{margin-top:2em;font-size:.85em;opacity:.75}" +
+    "#sl-map .slm-invest{background:#E4003B;color:#fff;border-radius:8px;border-bottom:6px solid #FBE70D;padding:18px 22px;margin:0 0 16px}" +
+    "#sl-map .slm-invest[hidden]{display:none}" +
+    "#sl-map .slm-invest-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin:0 0 12px}" +
+    "#sl-map .slm-invest-total{font-family:Anton,'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,54px);line-height:1;color:#FBE70D}" +
+    "#sl-map .slm-invest-lead{flex:1 1 240px;font-size:1em;font-weight:600;line-height:1.35}" +
+    "#sl-map .slm-invest-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:10px}" +
+    "#sl-map .slm-invest-grid li{margin:0;padding:10px 12px;background:rgba(255,255,255,.12);border-radius:6px;font-size:.88em;line-height:1.35}" +
+    "#sl-map .slm-invest-grid li::before{content:none;display:none}" +
+    "#sl-map .slm-invest-grid b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.75em;letter-spacing:.02em;line-height:1.1;color:#FBE70D}" +
+    "#sl-map .slm-invest-note{margin:12px 0 0;font-size:.78em;opacity:.85}";
   document.head.appendChild(css);
 
   function el(tag, cls, text) {
@@ -78,6 +89,9 @@
     return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\band\b/g, "&").replace(/[^a-z&]/g, "");
   }
   function colour(theme) { return THEMES[theme] || "#666666"; }
+  function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
+  // 1288681 -> "£1.3 million"; smaller sums stay in full
+  function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
   function loadLeaflet() {
     if (window.L) return Promise.resolve(window.L);
     if (!document.querySelector('link[href*="leaflet"]')) {
@@ -99,8 +113,9 @@
   }
 
   root.textContent = "Loading map…";
-  Promise.all([getJson("delivery.json"), getJson("articles.json"), loadLeaflet()]).then(function (res) {
-    var data = res[0], news = res[1], L = res[2];
+  Promise.all([getJson("delivery.json"), getJson("articles.json"), loadLeaflet(), getJson("capital.json")]).then(function (res) {
+    var data = res[0], news = res[1], L = res[2], capital = res[3];
+    var capWards = (capital && capital.wards) || [];
     var projects = ((data && data.projects) || []).filter(function (p) { return isFinite(p.lat) && isFinite(p.lng); });
     root.textContent = "";
     if (!projects.length) { root.appendChild(el("p", null, "The delivery map is not available right now.")); return; }
@@ -129,8 +144,11 @@
     var wardSel = el("select");
     wardSel.setAttribute("aria-label", "Show projects in a ward");
     var opt = el("option", null, "All of Swansea"); opt.value = ""; wardSel.appendChild(opt);
-    var wardNames = projects.map(function (p) { return p.ward || p.councilWard; }).filter(Boolean)
-      .filter(function (w, i, a) { return a.indexOf(w) === i; }).sort(function (a, b) { return a.localeCompare(b); });
+    // every ward with projects or capital figures, once each ("Gorseinon & Penyrheol" = "Gorseinon and Penyrheol")
+    var wardNames = projects.map(function (p) { return p.ward || p.councilWard; })
+      .concat(capWards.map(function (c) { return c.name; })).filter(Boolean)
+      .filter(function (w, i, a) { return a.findIndex(function (x) { return norm(x) === norm(w); }) === i; })
+      .sort(function (a, b) { return a.localeCompare(b); });
     wardNames.forEach(function (w) { var o = el("option", null, w); o.value = w; wardSel.appendChild(o); });
     var match = wardNames.filter(function (w) { return norm(w) === norm(startWard); })[0];
     if (match) wardSel.value = match;
@@ -139,6 +157,53 @@
     count.setAttribute("aria-live", "polite");
     bar.appendChild(chips); bar.appendChild(wardSel); bar.appendChild(count);
     root.appendChild(bar);
+
+    // ---- Capital investment, for the chosen ward or all of Swansea ----
+    var invest = el("div", "slm-invest");
+    invest.hidden = true;
+    if (capWards.length) root.appendChild(invest);
+    var KEYS = ["roads", "schools", "schoolBuildings", "play", "communityFund"];
+    var WORDS = {
+      roads: "roads and pavements resurfaced and repaired",
+      schools: "school improvements",
+      schoolBuildings: "school buildings",
+      play: "new and improved play areas",
+      communityFund: "Community Investment Fund projects"
+    };
+    function showInvest(w) {
+      invest.textContent = "";
+      var city = capital.citywide || {};
+      var c = w ? capWards.filter(function (x) { return norm(x.name) === norm(w); })[0] : null;
+      if (w && !c) { invest.hidden = true; return; }
+      var sums = {};
+      KEYS.concat("potholes").forEach(function (k) {
+        sums[k] = c ? (c[k] || 0) : capWards.reduce(function (s, x) { return s + (x[k] || 0); }, 0) + (city[k] || 0);
+      });
+      var total = KEYS.reduce(function (s, k) { return s + sums[k]; }, 0);
+      var head = el("div", "slm-invest-head");
+      head.appendChild(el("span", "slm-invest-total", bigMoney(total)));
+      head.appendChild(el("span", "slm-invest-lead", "invested by Swansea's Labour council " + (w ? "in " + w : "across Swansea") + " since 2022"));
+      invest.appendChild(head);
+      var grid = el("ul", "slm-invest-grid");
+      KEYS.forEach(function (k) {
+        if (!sums[k]) return;
+        var li = el("li");
+        li.appendChild(el("b", null, bigMoney(sums[k])));
+        li.appendChild(document.createTextNode(WORDS[k]));
+        grid.appendChild(li);
+      });
+      if (sums.potholes) {
+        var ph = el("li");
+        ph.appendChild(el("b", null, sums.potholes.toLocaleString("en-GB")));
+        ph.appendChild(document.createTextNode("potholes fixed since January 2022"));
+        grid.appendChild(ph);
+      }
+      invest.appendChild(grid);
+      var cityAll = (city.roads || 0) + (city.schools || 0);
+      invest.appendChild(el("p", "slm-invest-note", (!w && cityAll ? "Includes " + bigMoney(cityAll) + " on city-wide road and school schemes. " : "") +
+        "Swansea Council capital figures, May 2022 to May 2026."));
+      invest.hidden = false;
+    }
 
     // ---- Map ----
     var canvas = el("div", "slm-canvas");
@@ -209,7 +274,8 @@
         if (ok) { it.marker.addTo(map); visible.push(it); } else { it.marker.remove(); }
         if (it.li) { if (ok) list.appendChild(it.li); else if (it.li.parentNode) it.li.parentNode.removeChild(it.li); }
       });
-      count.textContent = visible.length + (visible.length === 1 ? " project" : " projects") + (w ? " in " + w : " across Swansea");
+      count.textContent = visible.length + (visible.length === 1 ? " project" : " projects") + " on the map" + (w ? " in " + w : " across Swansea");
+      if (capWards.length) showInvest(w);
       if (fit && visible.length) {
         var b = L.latLngBounds(visible.map(function (it) { return [it.p.lat, it.p.lng]; }));
         map.fitBounds(b, { padding: [30, 30], maxZoom: 15 });
@@ -217,6 +283,7 @@
     }
     apply(false);
     var start = items.filter(function (it) { return !wardSel.value || norm(it.p.ward || it.p.councilWard) === norm(wardSel.value); });
+    if (!start.length) start = items; // a ward with figures but no pins yet
     map.fitBounds(L.latLngBounds(start.map(function (it) { return [it.p.lat, it.p.lng]; })), { padding: [30, 30], maxZoom: 15 });
 
     if (showImprint && news && news.imprint) root.appendChild(el("p", "slm-imprint", news.imprint));

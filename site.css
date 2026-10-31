@@ -424,6 +424,43 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
 .sl-budget-groups li::before { content: none; display: none; }
 .sl-budget-note { margin: 18px 0 0; font-size: 13px; opacity: .75; }
 
+/* "Investing in <ward>" (capital.json), shares the budget's tiles */
+.sl-capital .sl-budget-stats { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.sl-capital-total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin: 0 0 18px;
+  padding: 20px 24px;
+  background: var(--slh-yellow);
+  border-radius: 6px;
+  border-left: 8px solid var(--slh-red);
+}
+.sl-capital-total b {
+  font-family: Anton, sans-serif;
+  font-weight: 700;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sl-capital-total span { flex: 1 1 260px; font-size: 18px; font-weight: 600; line-height: 1.35; color: #000; }
+.sl-capital-map {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: var(--slh-red);
+  color: #fff !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: .5px;
+  text-decoration: none !important;
+  -webkit-font-smoothing: auto;
+}
+.sl-capital-map::after { content: " \2192"; }
+
 @media (max-width: 767px) {
   .sl-budget { margin: 36px 0 6px; }
   .sl-budget-head { font-size: 28px !important; }
