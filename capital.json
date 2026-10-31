@@ -16,10 +16,6 @@
                     "communityFund":  "May 2024 to May 2026",
                     "potholes":  "January 2022 to October 2026"
                 },
-    "citywide":  {
-                     "roads":  20631500,
-                     "schools":  19293324
-                 },
     "wards":  [
                   {
                       "name":  "Bishopston",

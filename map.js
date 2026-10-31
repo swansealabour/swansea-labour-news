@@ -173,12 +173,11 @@
     };
     function showInvest(w) {
       invest.textContent = "";
-      var city = capital.citywide || {};
       var c = w ? capWards.filter(function (x) { return norm(x.name) === norm(w); })[0] : null;
       if (w && !c) { invest.hidden = true; return; }
       var sums = {};
       KEYS.concat("potholes").forEach(function (k) {
-        sums[k] = c ? (c[k] || 0) : capWards.reduce(function (s, x) { return s + (x[k] || 0); }, 0) + (city[k] || 0);
+        sums[k] = c ? (c[k] || 0) : capWards.reduce(function (s, x) { return s + (x[k] || 0); }, 0);
       });
       var total = KEYS.reduce(function (s, k) { return s + sums[k]; }, 0);
       var head = el("div", "slm-invest-head");
@@ -200,8 +199,7 @@
         grid.appendChild(ph);
       }
       invest.appendChild(grid);
-      var cityAll = (city.roads || 0) + (city.schools || 0);
-      invest.appendChild(el("p", "slm-invest-note", (!w && cityAll ? "Includes " + bigMoney(cityAll) + " on city-wide road and school schemes. " : "") +
+      invest.appendChild(el("p", "slm-invest-note",
         "Swansea Council capital figures, May 2022 to May 2026. The Community Investment Fund pays 70% of each project; councillors' community budgets pay the other 30%."));
       invest.hidden = false;
     }
