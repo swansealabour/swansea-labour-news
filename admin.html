@@ -160,6 +160,66 @@ function imagesOf(a) {
   return list;
 }
 
+// ---- Facebook post text ----
+// Zapier posts each feed item's description as the Facebook post text. By default that is the
+// summary plus a few hashtags: the story's wards (up to two), one topic tag, then the fixed tags
+// from Settings. Facebook does best with a handful of tags, not a wall of them. An article's own
+// "facebookText" (edited on the review page) replaces the automatic text entirely.
+const DEFAULT_FACEBOOK_TAGS = "#Swansea #SwanseaLabour";
+const WARD_TAGS = {
+  "Bôn-y-maen": ["Bonymaen"], "Dunvant & Killay": ["Killay", "Dunvant"], "Gorseinon & Penyrheol": ["Gorseinon", "Penyrheol"],
+  "Pontlliw & Tircoed": ["Pontlliw", "Tircoed"], "St Thomas": ["StThomas"], "West Cross": ["WestCross"],
+};
+// First match wins, so the specific patterns come before the general ones.
+const TOPIC_TAGS = [
+  [/\bflood|storm drain|drainage/i, "Flooding"],
+  [/\bvapes?\b|counterfeit|trading standards|illegal (tobacco|cigarettes)/i, "TradingStandards"],
+  [/cost of living|winter support|pension credit|free school meals|warm (hub|space)|fuel|hardship/i, "CostOfLiving"],
+  [/christmas|festive|xmas/i, "Christmas"],
+  [/half[- ]term|bonfire|fireworks|festival|family fun|free events|what's on/i, "WhatsOn"],
+  [/pothole|resurfac|\broads? (repair|programme|resurfac)|carriageway|road (works|closure|repair)|resurfacing/i, "Roads"],
+  [/\bschools?\b|pupils?|estyn|learners|classrooms?/i, "Schools"],
+  [/council homes|\bhomes\b|housing|apartments|tenants?/i, "Housing"],
+  [/have your say|consultation|survey|your views|shape the future/i, "HaveYourSay"],
+  [/bascule|bridge restoration|heritage|historic|listed building|restor(e|ed|ation)/i, "Heritage"],
+  [/recycl|\bbins?\b|litter|fly-?tipping|\bleaf\b|leaves|cleansing|street clean/i, "CleanerSwansea"],
+  [/play (area|park|ground)|playground|\bparks?\b|skate/i, "Parks"],
+  [/e-bike|cycl|active travel|walking route|footpath|footway/i, "ActiveTravel"],
+  [/\blibrar/i, "Libraries"],
+  [/\bbus(es)?\b/i, "Buses"],
+  [/city centre|high street|oxford street|castle square|kingsway|wind street/i, "CityCentre"],
+  [/beach|seafront|\bbay\b|coast|promenade|foreshore/i, "SwanseaBay"],
+  [/anti-?social|cctv|police|safer|crime/i, "CommunitySafety"],
+  [/\bscam|fraud/i, "ScamAware"],
+  [/\broads?\b|junction|traffic/i, "Roads"],
+  [/business|jobs|investment|regenerat|development/i, "Regeneration"],
+  [/one stop shop|y storfa|support|advice/i, "CommunitySupport"],
+];
+function wardTags(wards) {
+  const list = (wards || []).length > 3 ? [] : wards || []; // four or more wards is really a city-wide story
+  const out = [];
+  for (const w of list) for (const t of WARD_TAGS[w] || [w.replace(/[^A-Za-z]/g, "")]) if (t && !out.includes(t)) out.push(t);
+  return out.slice(0, 2);
+}
+function hashtagsFor(a, fixed) {
+  const text = `${a.headline || ""} ${a.summary || ""}`;
+  const topic = (TOPIC_TAGS.find(([re]) => re.test(text)) || [])[1];
+  const tags = wardTags(a.wards);
+  if (topic) tags.push(topic);
+  for (const t of (fixed == null ? DEFAULT_FACEBOOK_TAGS : fixed).split(/\s+/)) {
+    const clean = t.replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "");
+    if (clean && !tags.some((x) => x.toLowerCase() === clean.toLowerCase())) tags.push(clean);
+  }
+  return tags.map((t) => "#" + t).join(" ");
+}
+function autoFacebookText(a, config) {
+  const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined);
+  return [(a.summary || "").trim(), tags].filter(Boolean).join("\n\n");
+}
+function facebookTextOf(a, config) {
+  return (a.facebookText || "").trim() || autoFacebookText(a, config);
+}
+
 // ---- GitHub contents API ----
 const b64encode = (str) => {
   const bytes = new TextEncoder().encode(str); let bin = "";
@@ -320,9 +380,10 @@ async function writeSharePages(articles) {
 // ---- Facebook feed: feed.xml lists the articles ticked "Post to Facebook" ----
 // Zapier watches this feed and posts each new item to the Swansea Labour Councillors page.
 // An article's "facebook" field holds when it was sent; each item's link is its share page,
-// so Facebook shows the photo, headline and summary. Zapier skips guids it has seen, so each
-// send gets its own "facebookGuid" (older articles fall back to their id).
-function feedXml(pageUrl, articles) {
+// so Facebook shows the photo, headline and summary. The description is the post text (summary
+// plus hashtags, see facebookTextOf). Zapier skips guids it has seen, so each send gets its own
+// "facebookGuid" (older articles fall back to their id).
+function feedXml(pageUrl, articles, config) {
   const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const items = articles.filter((a) => a.facebook)
     .sort((a, b) => b.facebook.localeCompare(a.facebook))
@@ -333,7 +394,7 @@ function feedXml(pageUrl, articles) {
     <title>${esc(a.headline)}</title>
     <link>${esc(siteUrl(`share/${encodeURIComponent(a.id)}.html`))}</link>
     <guid isPermaLink="false">${esc(a.facebookGuid || a.id)}</guid>
-    <description>${esc(a.summary)}</description>
+    <description>${esc(facebookTextOf(a, config))}</description>
     <pubDate>${new Date(a.facebook).toUTCString()}</pubDate>${img ? `\n    <enclosure url="${esc(siteUrl(img.src))}" type="image/jpeg" length="0"/>` : ""}
   </item>`;
     });
@@ -350,7 +411,7 @@ ${items.join("\n")}
 `;
 }
 async function writeFeed(articles) {
-  const xml = feedXml(pageUrlOf(state.config), articles);
+  const xml = feedXml(pageUrlOf(state.config), articles, state.config);
   const existing = await gh(conn.site, "feed.xml");
   if (existing && b64decode(existing.content) === xml) return;
   await writeGenerated(conn.site, "feed.xml", xml, existing && existing.sha, "Update Facebook feed");
@@ -520,6 +581,15 @@ function draftEditor(d) {
   const facebook = el("label", {}, facebookBox, alreadySent
     ? "Already sent to the Swansea Labour Councillors Facebook page."
     : "Also post to the Swansea Labour Councillors Facebook page (usually appears within about 15 minutes).");
+  // What Zapier will post: the summary plus hashtags, refreshed as the summary and wards change
+  // until Andrew edits it himself. Only an edited text is saved on the article (facebookText).
+  const prevPublished = ((state.published && state.published.data.articles) || []).find((a) => a.id === d.id);
+  const autoText = () => autoFacebookText({ headline: f.headline.value, summary: f.summary.value, wards: f.wards.value.split(",").map((s) => s.trim()).filter(Boolean) }, state.config);
+  const fbText = el("textarea", { style: "min-height:110px" }, (prevPublished && prevPublished.facebookText) || autoText());
+  let fbEdited = !!(prevPublished && prevPublished.facebookText);
+  fbText.addEventListener("input", () => { fbEdited = fbText.value.trim() !== autoText(); });
+  for (const k of ["headline", "summary", "wards"]) f[k].addEventListener("input", () => { if (!fbEdited) fbText.value = autoText(); });
+  const fbReset = el("button", { class: "secondary", type: "button", onclick: () => { fbEdited = false; fbText.value = autoText(); } }, "Reset to automatic");
 
   const councillors = labourCouncillors(d.wards || []);
   const quoteBox = el("div");
@@ -577,6 +647,8 @@ function draftEditor(d) {
         sourceDate: f.sourceDate.value.trim(),
         sourceUrl: f.sourceUrl.value.trim(),
       };
+      const customText = fbText.value.trim();
+      if (customText && customText !== autoFacebookText(article, state.config)) article.facebookText = customText;
       if (previous && previous.facebook) Object.assign(article, facebookFields(previous));
       else if (facebookBox.checked) Object.assign(article, newFacebookSend(d.id));
       const articles = [article, ...fresh.data.articles.filter((a) => a.id !== d.id)];
@@ -621,7 +693,10 @@ function draftEditor(d) {
     el("label", { text: "Original date" }), f.sourceDate,
     el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl,
     el("div", { class: "checks" }, el("strong", { text: "Before publishing, confirm:" }), factChecks, permission),
-    el("div", { class: "checks" }, el("strong", { text: "Facebook" }), facebook),
+    el("div", { class: "checks" }, el("strong", { text: "Facebook" }), facebook,
+      el("label", { text: "Facebook post text" }), fbText,
+      el("p", { class: "hint", text: "The summary plus a few hashtags: the story's wards, one topic, then the fixed tags from Settings. Edit it for different wording or tags; the photo, headline and link come from the share page." }),
+      el("div", { class: "row-btns" }, fbReset)),
     el("div", { class: "btns" }, publishBtn, el("button", { class: "secondary", onclick: reject }, "Reject")));
 }
 
@@ -630,13 +705,17 @@ function renderPublished() {
   const root = $("#tab-published"); root.innerHTML = "";
   const list = state.published.data.articles;
   const rebuild = el("button", { class: "secondary", onclick: async () => {
-    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); setStatus("Sitemap and share pages rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
-  } }, "Rebuild sitemap and share pages");
+    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); await writeFeed(list); setStatus("Sitemap, share pages and Facebook feed rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
+  } }, "Rebuild sitemap, share pages and Facebook feed");
   if (!list.length) { root.append(el("p", { class: "empty", text: "Nothing published yet." }), el("div", { class: "btns" }, rebuild)); return; }
   root.append(el("table", {},
     el("tr", {}, el("th", { text: "Photo" }), el("th", { text: "Date" }), el("th", { text: "Headline" }), el("th", {})),
     list.map((a) => {
       const imgs = imagesOf(a);
+      const fbHolder = el("div");
+      const fbToggle = el("button", { class: "secondary", onclick: () => {
+        if (fbHolder.firstChild) fbHolder.innerHTML = ""; else fbHolder.append(facebookTextEditor(a));
+      } }, a.facebookText ? "Facebook text (custom)" : "Facebook text");
       return el("tr", {},
         el("td", {}, imgs[0] ? el("img", { class: "mini", src: siteUrl(imgs[0].src), alt: imgs[0].alt || "" }) : el("span", { class: "hint", text: "None" })),
         el("td", { text: new Date(a.date).toLocaleDateString("en-GB") }),
@@ -646,7 +725,8 @@ function renderPublished() {
           imgs.length ? el("button", { class: "secondary", onclick: () => removePhotos(a) }, "Remove photos") : null,
           a.facebook ? el("span", { class: "hint", text: "Sent to Facebook " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
           el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook again" : "Post to Facebook"),
-          el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish"))));
+          fbToggle,
+          el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish")), fbHolder));
     })),
     el("div", { class: "btns" }, rebuild));
 }
@@ -689,6 +769,33 @@ async function removePhotos(a) {
     setStatus("Photos removed.", "ok");
   } catch (e) { setStatus(e.message, "err"); }
 }
+// Edits the text Zapier posts for one published story. Saving the automatic text unchanged
+// clears any custom text, so later edits to the summary flow through again.
+function facebookTextEditor(a) {
+  const auto = autoFacebookText(a, state.config);
+  const ta = el("textarea", { style: "min-height:110px" }, facebookTextOf(a, state.config));
+  const hint = el("p", { class: "hint", text: a.facebookText
+    ? "Custom text. Reset to go back to the automatic summary and hashtags."
+    : "Automatic: the summary plus hashtags. Edit it to change what Zapier posts next time this story is sent." });
+  async function save(text) {
+    try {
+      setStatus("Saving…");
+      const fresh = await readJson(conn.site, "articles.json");
+      fresh.data.articles = fresh.data.articles.map((x) => {
+        if (x.id !== a.id) return x;
+        const { facebookText, ...rest } = x;
+        return text ? { ...rest, facebookText: text } : rest;
+      });
+      await writeSite(fresh.data, fresh.sha, `Facebook text: ${a.headline}`);
+      await loadAll();
+      setStatus(text ? "Facebook text saved. It is used the next time this story is sent to Facebook." : "Facebook text reset to automatic.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+  return el("div", { class: "card" }, el("h3", { text: "Facebook post text" }), ta, hint,
+    el("div", { class: "row-btns" },
+      el("button", { class: "primary", onclick: () => save(ta.value.trim() === auto ? "" : ta.value.trim()) }, "Save"),
+      el("button", { class: "secondary", onclick: () => save("") }, "Reset to automatic")));
+}
 function newFacebookSend(id) {
   const sentAt = new Date().toISOString();
   return { facebook: sentAt, facebookGuid: `${id}-${Date.parse(sentAt).toString(36)}` };
@@ -700,7 +807,7 @@ async function postToFacebook(a) {
   const question = a.facebook
     ? `"${a.headline}" was already sent to Facebook on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
     : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page? It usually appears within about 15 minutes.`;
-  if (!confirm(question)) return;
+  if (!confirm(`${question}\n\nPost text:\n${facebookTextOf(a, state.config)}`)) return;
   try {
     const fresh = await readJson(conn.site, "articles.json");
     fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
@@ -956,6 +1063,7 @@ function renderSettings() {
     councillors: el("textarea", {}, (c.labourCouncillors || []).join("\n")),
     councilDescription: el("input", { type: "text", value: c.councilDescription || "" }),
     styleNotes: el("textarea", {}, c.styleNotes || ""),
+    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #Swansea #SwanseaLabour" }),
     driveInboxFolderId: el("input", { type: "text", value: c.driveInboxFolderId || "" }),
   };
   async function save() {
@@ -968,6 +1076,7 @@ function renderSettings() {
         labourCouncillors: f.councillors.value.split("\n").map((s) => s.trim()).filter(Boolean),
         councilDescription: f.councilDescription.value.trim(),
         styleNotes: f.styleNotes.value.trim(),
+        facebookTags: f.facebookTags.value.trim(),
         driveInboxFolderId: f.driveInboxFolderId.value.trim(),
       };
       await writeJson(conn.engine, "config.json", next, fresh.sha, "Update settings");
@@ -989,6 +1098,8 @@ function renderSettings() {
     el("p", { class: "hint", text: "Only these people are quoted as Labour without a check." }),
     el("label", { text: "How to describe the council" }), f.councilDescription,
     el("label", { text: "Writing style notes" }), f.styleNotes,
+    el("label", { text: "Hashtags added to every Facebook post" }), f.facebookTags,
+    el("p", { class: "hint", text: "Added after the story's ward tags (up to two) and one topic tag, e.g. \"#Killay #Dunvant #Flooding #Swansea #SwanseaLabour\". Facebook does best with a few tags, not many. Leave empty for none." }),
     el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
     el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." }),
     el("div", { class: "btns" }, el("button", { class: "primary", onclick: save }, "Save settings")));
