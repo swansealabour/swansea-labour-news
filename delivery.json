@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "projects": [
     {
       "id": "clyne-gardens-japanese-bridge-restoration",
@@ -87,7 +87,7 @@
       "date": "2026-09",
       "theme": "Schools",
       "status": "In progress",
-      "summary": "£2.5m new dining hall and kitchen to meet growing demand for free school meals.",
+      "summary": "£2.5m new dining hall and upgraded kitchen, funded by the Welsh Government and delivered by the council, to meet growing demand for free school meals.",
       "lat": 51.64358,
       "lng": -3.94782,
       "ward": "",
@@ -215,7 +215,7 @@
       "date": "2026-09",
       "theme": "Sport and leisure",
       "status": "Open",
-      "summary": "£7.6m council and Ospreys transformation of the historic ground into a community stadium and the new home of the Ospreys and Swansea RFC, opening to regular users from October 2026.",
+      "summary": "£7.6m council and Ospreys transformation of the historic ground into a community stadium and the new home of the Ospreys and Swansea RFC, which began welcoming regular users in October 2026.",
       "lat": 51.61247,
       "lng": -3.96606,
       "ward": "",
@@ -247,7 +247,7 @@
       "date": "2026-08",
       "theme": "Regeneration",
       "status": "In progress",
-      "summary": "Council-led restoration of the Grade II listed Laboratory Building and the Vivian and Musgrave engine houses.",
+      "summary": "Council-led restoration of the historic Laboratory Building, with new floors and a Welsh slate roof, as part of wider plans to regenerate the Lower Swansea Valley. The Vivian and Musgrave engine houses are next in line.",
       "lat": 51.63772,
       "lng": -3.93638,
       "ward": "Landore",
@@ -2055,7 +2055,7 @@
       "date": "2023-11",
       "theme": "Coast and countryside",
       "status": "Completed",
-      "summary": "New boating pontoon on the Tawe next to the copperworks. River cruises and rowing clubs plan to use it under licence from the council.",
+      "summary": "New boating pontoon on the Tawe next to the copperworks, managed by the council's marina team. At first it is open to established non-commercial groups that already use the river.",
       "lat": 51.63922,
       "lng": -3.93458,
       "ward": "Landore",
