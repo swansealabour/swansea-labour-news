@@ -219,6 +219,18 @@ function autoFacebookText(a, config) {
 function facebookTextOf(a, config) {
   return (a.facebookText || "").trim() || autoFacebookText(a, config);
 }
+// X post text: headline, link and the same hashtags, within X's 280 characters (X counts any
+// link as 23). Tags are dropped from the end until it fits. Buffer posts it as written.
+const X_LIMIT = 280, X_LINK_LENGTH = 23;
+function xTextOf(a, config) {
+  const link = siteUrl(`share/${encodeURIComponent(a.id)}.html`);
+  const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined).split(" ").filter(Boolean);
+  let headline = (a.headline || "").trim();
+  const length = (t) => headline.length + 2 + X_LINK_LENGTH + (t.length ? 2 + t.join(" ").length : 0);
+  while (tags.length && length(tags) > X_LIMIT) tags.pop();
+  if (length(tags) > X_LIMIT) headline = headline.slice(0, X_LIMIT - 2 - X_LINK_LENGTH - 1).trimEnd() + "…";
+  return [headline, link, tags.join(" ")].filter(Boolean).join("\n\n");
+}
 
 // ---- GitHub contents API ----
 const b64encode = (str) => {
@@ -377,13 +389,14 @@ async function writeSharePages(articles) {
     await writeGenerated(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
   }
 }
-// ---- Facebook feed: feed.xml lists the articles ticked "Post to Facebook" ----
+// ---- Social feeds: feed.xml (Facebook) and x.xml (X) list the articles ticked "Post to Facebook and X" ----
 // Zapier watches this feed and posts each new item to the Swansea Labour Councillors page.
 // An article's "facebook" field holds when it was sent; each item's link is its share page,
 // so Facebook shows the photo, headline and summary. The description is the post text (summary
 // plus hashtags, see facebookTextOf). Zapier skips guids it has seen, so each send gets its own
-// "facebookGuid" (older articles fall back to their id).
-function feedXml(pageUrl, articles, config) {
+// "facebookGuid" (older articles fall back to their id). x.xml lists the same stories with X-length
+// text (xTextOf) for a second Zap that sends them to Buffer, which posts them to X.
+function feedXml(pageUrl, articles, config, textOf = facebookTextOf, about = "the Swansea Labour Councillors Facebook page") {
   const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const items = articles.filter((a) => a.facebook)
     .sort((a, b) => b.facebook.localeCompare(a.facebook))
@@ -394,7 +407,7 @@ function feedXml(pageUrl, articles, config) {
     <title>${esc(a.headline)}</title>
     <link>${esc(siteUrl(`share/${encodeURIComponent(a.id)}.html`))}</link>
     <guid isPermaLink="false">${esc(a.facebookGuid || a.id)}</guid>
-    <description>${esc(facebookTextOf(a, config))}</description>
+    <description>${esc(textOf(a, config))}</description>
     <pubDate>${new Date(a.facebook).toUTCString()}</pubDate>${img ? `\n    <enclosure url="${esc(siteUrl(img.src))}" type="image/jpeg" length="0"/>` : ""}
   </item>`;
     });
@@ -403,7 +416,7 @@ function feedXml(pageUrl, articles, config) {
 <channel>
   <title>Swansea Labour news</title>
   <link>${esc(pageUrl)}</link>
-  <description>Stories from Swansea Labour, for the Swansea Labour Councillors Facebook page</description>
+  <description>Stories from Swansea Labour, for ${esc(about)}</description>
   <language>en-gb</language>
 ${items.join("\n")}
 </channel>
@@ -411,10 +424,15 @@ ${items.join("\n")}
 `;
 }
 async function writeFeed(articles) {
-  const xml = feedXml(pageUrlOf(state.config), articles, state.config);
-  const existing = await gh(conn.site, "feed.xml");
-  if (existing && b64decode(existing.content) === xml) return;
-  await writeGenerated(conn.site, "feed.xml", xml, existing && existing.sha, "Update Facebook feed");
+  const pageUrl = pageUrlOf(state.config);
+  for (const [path, xml, message] of [
+    ["feed.xml", feedXml(pageUrl, articles, state.config), "Update Facebook feed"],
+    ["x.xml", feedXml(pageUrl, articles, state.config, xTextOf, "X"), "Update X feed"],
+  ]) {
+    const existing = await gh(conn.site, path);
+    if (existing && b64decode(existing.content) === xml) continue;
+    await writeGenerated(conn.site, path, xml, existing && existing.sha, message);
+  }
 }
 async function writeSite(data, sha, message) {
   const payload = { imprint: data.imprint, pageUrl: pageUrlOf(state.config), articles: data.articles };
@@ -579,8 +597,8 @@ function draftEditor(d) {
   const alreadySent = ((state.published && state.published.data.articles) || []).find((a) => a.id === d.id && a.facebook);
   const facebookBox = el("input", { type: "checkbox", checked: !!alreadySent, disabled: !!alreadySent });
   const facebook = el("label", {}, facebookBox, alreadySent
-    ? "Already sent to the Swansea Labour Councillors Facebook page."
-    : "Also post to the Swansea Labour Councillors Facebook page (usually appears within about 15 minutes).");
+    ? "Already sent to the Swansea Labour Councillors Facebook page and X."
+    : "Also post to the Swansea Labour Councillors Facebook page and X (usually appears within about 15 minutes).");
   // What Zapier will post: the summary plus hashtags, refreshed as the summary and wards change
   // until Andrew edits it himself. Only an edited text is saved on the article (facebookText).
   const prevPublished = ((state.published && state.published.data.articles) || []).find((a) => a.id === d.id);
@@ -723,8 +741,8 @@ function renderPublished() {
         el("td", {}, el("div", { class: "btns", style: "margin:0" },
           el("button", { class: "secondary", onclick: () => addPublishedPhoto(a) }, imgs.length ? "Change lead photo" : "Add photo"),
           imgs.length ? el("button", { class: "secondary", onclick: () => removePhotos(a) }, "Remove photos") : null,
-          a.facebook ? el("span", { class: "hint", text: "Sent to Facebook " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
-          el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook again" : "Post to Facebook"),
+          a.facebook ? el("span", { class: "hint", text: "Sent to Facebook and X " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
+          el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook and X again" : "Post to Facebook and X"),
           fbToggle,
           el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish")), fbHolder));
     })),
@@ -805,15 +823,15 @@ function facebookFields(a) {
 }
 async function postToFacebook(a) {
   const question = a.facebook
-    ? `"${a.headline}" was already sent to Facebook on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
-    : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page? It usually appears within about 15 minutes.`;
-  if (!confirm(`${question}\n\nPost text:\n${facebookTextOf(a, state.config)}`)) return;
+    ? `"${a.headline}" was already sent to Facebook and X on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
+    : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page and X? It usually appears within about 15 minutes.`;
+  if (!confirm(`${question}\n\nFacebook post:\n${facebookTextOf(a, state.config)}\n\nX post:\n${xTextOf(a, state.config)}`)) return;
   try {
     const fresh = await readJson(conn.site, "articles.json");
     fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
-    await writeSite(fresh.data, fresh.sha, `Send to Facebook: ${a.headline}`);
+    await writeSite(fresh.data, fresh.sha, `Send to Facebook and X: ${a.headline}`);
     await loadAll();
-    setStatus("Sent to the Facebook feed. Zapier will post it shortly.", "ok");
+    setStatus("Sent to the Facebook and X feeds. Zapier will post it shortly.", "ok");
   } catch (e) { setStatus(e.message, "err"); }
 }
 async function unpublish(a) {
