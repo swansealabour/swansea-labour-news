@@ -5,7 +5,7 @@
     {
       "id": "2026-11-05-labour-council-s-76-000-green-energy-boost-for-rur-fb531",
       "date": "2026-11-05T09:09:42.554Z",
-      "updated": "2026-11-05T09:09:42.554Z",
+      "updated": "2026-11-05T23:43:49.033Z",
       "headline": "Labour council's £76,000 green energy boost for rural Swansea groups",
       "summary": "Swansea's Labour council is giving five rural community organisations more than £76,000 for solar panels, batteries, heat pumps and EV chargers, cutting their energy bills for good.",
       "body": [
@@ -21,7 +21,24 @@
         "Local Labour councillor for Pontarddulais, Cllr Philip Downing, said: “Bont Elim Community Church and the 4th Lliw Valley Scout Group do wonderful work in Pontarddulais. Heat pumps, solar panels and LED lighting will make their buildings cheaper to run for years to come.”",
         "From scout halls to rugby clubs and community centres, this investment shows Labour's priorities for Swansea: backing the volunteers who hold rural communities together, cutting running costs for good causes, and protecting the environment at the same time."
       ],
-      "images": [],
+      "images": [
+        {
+          "src": "images/2026-11-05-labour-council-s-76-000-green-energy-boost-for-rur-fb531/1.jpg",
+          "alt": "A smiling man leans on railings outside Bont Elim Community Church in Pontarddulais, a brick and stone building with hanging baskets",
+          "caption": "Bont Elim Community Church in Pontarddulais",
+          "credit": "",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "images/2026-11-05-labour-council-s-76-000-green-energy-boost-for-rur-fb531/2.jpg",
+          "alt": "Loughor RFC senior squad and coaches in blue kit, lined up on their home pitch",
+          "caption": "Loughor RFC 1882",
+          "credit": "",
+          "width": 1600,
+          "height": 614
+        }
+      ],
       "wards": [
         "Llwchwr",
         "Pontarddulais",
