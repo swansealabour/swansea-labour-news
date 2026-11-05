@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01",
+  "updated": "2026-10-31",
   "projects": [
     {
       "id": "clyne-gardens-japanese-bridge-restoration",
@@ -1362,6 +1362,54 @@
       }
     },
     {
+      "id": "herbert-thomas-way-play-area-birchgrove",
+      "title": "Herbert Thomas Way play area, Birchgrove",
+      "date": "2025-04",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "New carousel installed.",
+      "lat": 51.67565,
+      "lng": -3.88984,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/moreplayapril2025"
+      }
+    },
+    {
+      "id": "pollys-park-play-area-st-thomas",
+      "title": "Polly's Park play area, St Thomas",
+      "date": "2025-04",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Upgrade completed with a new multi-play unit and a web swing.",
+      "lat": 51.62883,
+      "lng": -3.93159,
+      "ward": "St Thomas",
+      "councilWard": "St Thomas",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/moreplayapril2025"
+      }
+    },
+    {
+      "id": "rhydypandy-play-area-morriston",
+      "title": "Rhydypandy play area",
+      "date": "2025-04",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "New trampoline and carousel installed.",
+      "lat": 51.70245,
+      "lng": -3.93213,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/moreplayapril2025"
+      }
+    },
+    {
       "id": "bethel-road-resurfaced-llansamlet",
       "title": "Bethel Road resurfaced, Llansamlet",
       "date": "2025-03",
@@ -1618,6 +1666,22 @@
       }
     },
     {
+      "id": "cwm-level-park-play-area-plasmarl",
+      "title": "Cwm Level Park play area, Plasmarl",
+      "date": "2024-08",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "A tired open space transformed into a play area with swings, a roundabout, a multiplay unit, a trampoline and picnic benches, officially opened by the council leader.",
+      "lat": 51.64679,
+      "lng": -3.94345,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/cwmlevelofficialopen"
+      }
+    },
+    {
       "id": "parc-llewelyn-play-area",
       "title": "Parc Llewelyn play area",
       "date": "2024-08",
@@ -1679,6 +1743,22 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/loosRhosili"
+      }
+    },
+    {
+      "id": "tregoff-village-play-area-llansamlet",
+      "title": "Tregoff Village play area, Llansamlet",
+      "date": "2024-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Play area upgrade completed at Tregoff Village as part of the council's play areas programme.",
+      "lat": 51.66914,
+      "lng": -3.89689,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/playareasupdate23july"
       }
     },
     {
@@ -2018,6 +2098,38 @@
       }
     },
     {
+      "id": "yalton-play-area-west-cross",
+      "title": "Yalton play area, West Cross",
+      "date": "2024-02",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Yalton play area upgraded as part of the council's play areas renewal programme.",
+      "lat": 51.58694,
+      "lng": -4.01423,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/threemoreplayareas"
+      }
+    },
+    {
+      "id": "blaenymaes-play-area",
+      "title": "Blaenymaes play area",
+      "date": "2024-01",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "New play zone completed in Blaenymaes as part of the council's play areas renewal programme.",
+      "lat": 51.65284,
+      "lng": -3.97502,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/newplayareasdec23"
+      }
+    },
+    {
       "id": "gendros-play-area-upgraded",
       "title": "Gendros play area upgraded",
       "date": "2024-01",
@@ -2210,6 +2322,22 @@
       }
     },
     {
+      "id": "bonymaen-play-area-makeover",
+      "title": "Bonymaen play area makeover",
+      "date": "2023-06",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Bonymaen's community play area given a makeover under the council's £7m play upgrade programme. Pinned at Bonymaen Park, the Bonymaen site still on the council's upgrade list at the time.",
+      "lat": 51.6478,
+      "lng": -3.90904,
+      "ward": "Bôn-y-maen",
+      "councilWard": "Bôn-y-maen",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/bonymaenplay"
+      }
+    },
+    {
       "id": "changing-places-toilet-at-knab-rock",
       "title": "Changing Places toilet at Knab Rock",
       "date": "2023-06",
@@ -2338,6 +2466,54 @@
       }
     },
     {
+      "id": "denver-road-play-area-fforestfach",
+      "title": "Denver Road play area, Fforestfach",
+      "date": "2022-11",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Play area improvements completed at Denver Road as part of the council's play area upgrade programme.",
+      "lat": 51.64778,
+      "lng": -3.99895,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/eightplay"
+      }
+    },
+    {
+      "id": "garnswllt-play-area-mawr",
+      "title": "Garnswllt play area, Mawr",
+      "date": "2022-11",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Play area improvements completed at Garnswllt as part of the council's play area upgrade programme.",
+      "lat": 51.7717,
+      "lng": -3.99143,
+      "ward": "Pontarddulais",
+      "councilWard": "Pontarddulais",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/eightplay"
+      }
+    },
+    {
+      "id": "hafod-park-play-area-landore",
+      "title": "Hafod Park play area, Landore",
+      "date": "2022-11",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Play area improvements completed at Hafod Park as part of the council's play area upgrade programme.",
+      "lat": 51.635,
+      "lng": -3.94206,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/eightplay"
+      }
+    },
+    {
       "id": "heol-tir-du-play-park-morriston",
       "title": "Heol Tir Du play park, Morriston",
       "date": "2022-10",
@@ -2447,6 +2623,22 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/article/18028/New-walking-and-cycling-route-reclaims-old-fly-tipping-hotspot"
+      }
+    },
+    {
+      "id": "coed-bach-park-play-area-pontarddulais",
+      "title": "Coed Bach Park play area, Pontarddulais",
+      "date": "2022-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "Upgraded play area at Coed Bach Park, completed in time for the 2022 summer holidays.",
+      "lat": 51.7096,
+      "lng": -4.03674,
+      "ward": "Pontarddulais",
+      "councilWard": "Pontarddulais",
+      "source": {
+        "name": "Swansea Council",
+        "url": "https://www.swansea.gov.uk/playareajuly22"
       }
     },
     {
