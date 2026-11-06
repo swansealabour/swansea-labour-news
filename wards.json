@@ -870,6 +870,7 @@
       "name": "Llwchwr",
       "slug": "llwchwr",
       "page": "/llwchwr",
+      "newLayout": true,
       "gallery": [
         { "photo": "images/llwchwr-estuary.jpg", "caption": "By the Loughor estuary", "alt": "Llwchwr's Labour councillors by the Loughor estuary" },
         { "photo": "images/llwchwr-play-area-slide.jpg", "caption": "At a local play area", "alt": "Llwchwr's Labour councillors by a play area slide" },
@@ -970,7 +971,7 @@
           "role": "",
           "phone": "01792898323",
           "email": "cllr.robert.smith@swansea.gov.uk",
-          "photo": "images/councillors/robert-smith.jpg",
+          "photo": "images/robert-smith-2026.jpg",
           "bio": [
             "Robert is an experienced Town and County Councillor and governor of two local schools. A graduate of Swansea University where he gained a BA and then a PhD, Robert worked for the University of Wales and then as Head of Evaluation in Wales for an educational organisation.",
             "Mae Robert yn gynghorydd profiadol iawn sydd wedi gwasanaethu ar y Cyngor Tref a’r Cyngor Sir ac fel llywodraethwr ar ddwy ysgol. Yn raddedig o Brifysgol Abertawe, gweithiodd i Brifysgol Cymru ac fel Pennaeth Gwerthuso yng Nghymru ar gyfer sefydliad addysgol yn y DG."
@@ -981,7 +982,7 @@
           "role": "",
           "phone": "07791832172",
           "email": "cllr.kelly.roberts@swansea.gov.uk",
-          "photo": "images/councillors/kelly-roberts.jpg",
+          "photo": "images/kelly-roberts-2026.jpg",
           "bio": [
             "Kelly is a public policy lecturer at Swansea University with a degree in social policy followed by a masters and recently submitted her PhD. Since becoming a Town Councillor in 2015 and County Councillor in 2017, she has worked tirelessly for her locality and is honoured to represent residents on local issues.",
             "Mae Kelly yn ddarlithydd mewn polisi cyhoeddus ym Mhrifysgol Abertawe. Mae ganddi radd mewn polisi cymdeithasol a gradd meistr ac yn ddiweddar cyflwynodd ei thraethawd PhD. Ers dod yn Gynghorydd Tref yn 2015 a Chynghorydd Sir yn 2017, gweithiodd yn ddiflino dros ei chymuned ac mae'n ei ystyried yn anrhydedd i gynrychioli trigolion ar faterion lleol"
@@ -992,7 +993,7 @@
           "role": "",
           "phone": "07949027860",
           "email": "cllr.adam.davis@swansea.gov.uk",
-          "photo": "images/councillors/adam-davis.jpg",
+          "photo": "images/adam-davis-2026.jpg",
           "bio": [
             "Adam is an active campaigner and Town Councillor. He studied for his A Levels at Gorseinon College before graduating from Swansea University in 2014 and has experience working in political campaigning and communications.",
             "Mae Adam yn ymgyrchydd gweithgar ar garreg y drws ac yn Gynghorwr Tref. Astudiodd ar gyfer ei Lefel A yng Ngholeg Gorseinon cyn graddio o Brifysgol Abertawe yn 2014 ac mae ganddo brofiad o weithio ym maes ymgyrchu a chyfathrebu gwleidyddol."
@@ -1552,10 +1553,11 @@
       "name": "St Thomas",
       "slug": "st-thomas",
       "page": "/st-thomas",
+      "newLayout": true,
       "candidates": [
         {
           "name": "Sarah O'Connor",
-          "phone": "",
+          "phone": "07356258249",
           "email": "s12soc@hotmail.co.uk",
           "photo": "images/sarah-oconnor.jpg"
         }
@@ -1576,39 +1578,39 @@
         { "photo": "images/st-thomas-summer-party.jpg", "caption": "Celebrating summer with the community", "alt": "A balloon arch at a community summer party" },
         { "photo": "images/st-thomas-community-trip.jpg", "caption": "On a community trip", "alt": "Hayley Gwilliam and Sarah O'Connor on a community trip" }
       ],
-      "pledgeHeading": "My Pledges",
+      "pledgeHeading": "Our Pledges",
       "pledges": [
         {
           "title": "Cost of living",
-          "detail": "I will help reduce the impact of the cost of living crisis on local residents.",
+          "detail": "We will help reduce the impact of the cost of living crisis on local residents.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
           "title": "Monkey Park",
-          "detail": "I will improve the facilities at Monkey Park.",
+          "detail": "We will improve the facilities at Monkey Park.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
           "title": "Community clubs and events",
-          "detail": "I will continue to work as a community volunteer, delivering for our community by running clubs, groups, events and trips.",
+          "detail": "We will continue to work as community volunteers, delivering for our community by running clubs, groups, events and trips.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
           "title": "Eastside Carnival",
-          "detail": "I will bring back the Eastside Carnival.",
+          "detail": "We will bring back the Eastside Carnival.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
           "title": "The Ashlands",
-          "detail": "I will improve the facilities at the Ashlands.",
+          "detail": "We will improve the facilities at the Ashlands.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
