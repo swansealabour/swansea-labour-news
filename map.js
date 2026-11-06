@@ -93,7 +93,11 @@
   // 690946 -> "£691,000": £10,000 and over to the nearest thousand, smaller sums in full
   function money(n) { return "£" + (n >= 1e4 ? Math.round(n / 1e3) * 1e3 : Math.round(n)).toLocaleString("en-GB"); }
   // 1288681 -> "£1.3 million"
-  function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
+  function bigMoney(n) {
+    if (n >= 999500) return "£" + (Math.round(n / 1e5) / 10) + "m";
+    if (n >= 1e4) return "£" + Math.round(n / 1e3) + "k";
+    return money(n);
+  }
   function loadLeaflet() {
     if (window.L) return Promise.resolve(window.L);
     if (!document.querySelector('link[href*="leaflet"]')) {

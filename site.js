@@ -219,13 +219,18 @@
     head.appendChild(el("span", "sl-cy", "Allan yn y gymuned"));
     box.appendChild(head);
     var grid = el("div", "sl-gallery-grid");
-    ward.gallery.forEach(function (p) {
+    ward.gallery.forEach(function (p, i) {
       var fig = el("figure");
+      var btn = el("button", "sl-gallery-open");
+      btn.type = "button";
+      btn.setAttribute("aria-label", "Enlarge photo: " + p.caption);
       var img = el("img");
       img.src = base + p.photo;
       img.alt = p.alt || p.caption;
       img.loading = "lazy";
-      fig.appendChild(img);
+      btn.appendChild(img);
+      btn.addEventListener("click", function () { openLightbox(ward.gallery, i); });
+      fig.appendChild(btn);
       fig.appendChild(el("figcaption", null, p.caption));
       grid.appendChild(fig);
     });
@@ -233,10 +238,59 @@
     return box;
   }
 
+  // Click a gallery photo to see it large; arrows/Escape on keyboard, tap outside to close
+  function openLightbox(photos, start) {
+    var i = start, opener = document.activeElement;
+    var lb = el("div", "sl-lightbox");
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    var img = el("img"), cap = el("p", "sl-lightbox-cap");
+    var close = el("button", "sl-lightbox-close", "×");
+    close.type = "button";
+    close.setAttribute("aria-label", "Close");
+    var prev = el("button", "sl-lightbox-nav sl-lightbox-prev", "‹");
+    var next = el("button", "sl-lightbox-nav sl-lightbox-next", "›");
+    prev.type = next.type = "button";
+    prev.setAttribute("aria-label", "Previous photo");
+    next.setAttribute("aria-label", "Next photo");
+    function show() {
+      var p = photos[i];
+      img.src = base + (p.full || p.photo);
+      img.alt = p.alt || p.caption;
+      cap.textContent = p.caption + "  (" + (i + 1) + " of " + photos.length + ")";
+    }
+    function step(d) { i = (i + d + photos.length) % photos.length; show(); }
+    function shut() { document.removeEventListener("keydown", key); lb.remove(); document.body.style.overflow = ""; if (opener) opener.focus(); }
+    function key(e) {
+      if (e.key === "Escape") shut();
+      else if (e.key === "ArrowLeft") step(-1);
+      else if (e.key === "ArrowRight") step(1);
+    }
+    prev.addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
+    next.addEventListener("click", function (e) { e.stopPropagation(); step(1); });
+    close.addEventListener("click", shut);
+    lb.addEventListener("click", function (e) { if (e.target === lb) shut(); });
+    var fig = el("figure", "sl-lightbox-fig");
+    fig.appendChild(img);
+    fig.appendChild(cap);
+    lb.appendChild(fig);
+    if (photos.length > 1) { lb.appendChild(prev); lb.appendChild(next); }
+    lb.appendChild(close);
+    document.addEventListener("keydown", key);
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(lb);
+    show();
+    close.focus();
+  }
+
   // 690946 -> "£691,000": £10,000 and over to the nearest thousand, smaller sums in full
   function money(n) { return "£" + (n >= 1e4 ? Math.round(n / 1e3) * 1e3 : Math.round(n)).toLocaleString("en-GB"); }
-  // 1288681 -> "£1.3 million"
-  function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
+  // Headline figures, short so they fit the tiles: 1720000 -> "£1.7m", 130250 -> "£130k", 9500 -> "£9,500"
+  function bigMoney(n) {
+    if (n >= 999500) return "£" + (Math.round(n / 1e5) / 10) + "m";
+    if (n >= 1e4) return "£" + Math.round(n / 1e3) + "k";
+    return money(n);
+  }
   function norm(s) { return String(s || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z]/g, ""); }
 
   // "Investing in <ward>": the council's capital spend in the ward since 2022, from capital.json
@@ -266,7 +320,7 @@
     keys.forEach(function (k) {
       if (!cap[k]) return;
       var tile = el("div", "sl-budget-stat");
-      tile.appendChild(el("b", null, money(cap[k])));
+      tile.appendChild(el("b", null, bigMoney(cap[k])));
       tile.appendChild(el("span", null, words[k]));
       stats.appendChild(tile);
     });
@@ -298,7 +352,7 @@
       ward.name + " going. Here's how we've used it since 2022."));
 
     var stats = el("div", "sl-budget-stats");
-    [[money(b.used), "spent or committed on local priorities since 2022"],
+    [[bigMoney(b.used),"spent or committed on local priorities since 2022"],
      [String(b.payments), "local projects, grants and events paid for"],
      [String(b.grants), "grants to local groups, clubs and charities"]].forEach(function (s) {
       var tile = el("div", "sl-budget-stat");
