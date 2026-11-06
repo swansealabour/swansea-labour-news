@@ -204,6 +204,29 @@
     return panel;
   }
 
+  // "Out and about": a few photos of the councillors at local events (wards.json gallery)
+  function buildGallery(ward) {
+    var box = el("div", "sl-budget sl-gallery");
+    var head = el("h4", "sl-budget-head");
+    head.appendChild(document.createTextNode("Out and about "));
+    head.appendChild(el("span", "sl-bar", "|"));
+    head.appendChild(el("span", "sl-cy", "Allan yn y gymuned"));
+    box.appendChild(head);
+    var grid = el("div", "sl-gallery-grid");
+    ward.gallery.forEach(function (p) {
+      var fig = el("figure");
+      var img = el("img");
+      img.src = base + p.photo;
+      img.alt = p.alt || p.caption;
+      img.loading = "lazy";
+      fig.appendChild(img);
+      fig.appendChild(el("figcaption", null, p.caption));
+      grid.appendChild(fig);
+    });
+    box.appendChild(grid);
+    return box;
+  }
+
   function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
   // 1288681 -> "£1.3 million"; smaller sums stay in full
   function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
@@ -335,6 +358,7 @@
       document.body.classList.add("sl-help-shown"); // hides the page's own councillor list
     }
     if (ward.delivered && ward.delivered.length) place(buildDelivered(ward));
+    if (ward.gallery && ward.gallery.length) place(buildGallery(ward));
     var cap = ((capital && capital.wards) || []).filter(function (w) { return norm(w.name) === norm(ward.name); })[0];
     if (cap) place(buildCapital(ward, cap));
     if (ward.budget) place(buildBudget(ward));

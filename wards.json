@@ -460,16 +460,48 @@
           "text": "Parc Melin Mynach skate park upgraded with new ramps, banks and a quarter pipe."
         }
       ],
+      "gallery": [
+        {
+          "photo": "images/gorseinon-halfpenny-mural.jpg",
+          "caption": "The Leigh Halfpenny mural, paid for by our community budget",
+          "alt": "Councillors and guests in front of the Leigh Halfpenny mural in Gorseinon"
+        },
+        {
+          "photo": "images/gorseinon-10k.jpg",
+          "caption": "At the Gorseinon 10K",
+          "alt": "Councillors with runners at the Gorseinon 10K"
+        },
+        {
+          "photo": "images/gorseinon-boxing-club.jpg",
+          "caption": "£2,000 for Penyrheol Amateur Boxing Club",
+          "alt": "Councillors handing a cheque to Penyrheol Amateur Boxing Club beside the boxing ring"
+        },
+        {
+          "photo": "images/gorseinon-inshore-rescue.jpg",
+          "caption": "Supporting Loughor Inshore Rescue",
+          "alt": "Councillor with two Loughor Inshore Rescue crew members"
+        },
+        {
+          "photo": "images/gorseinon-lantern-parade.jpg",
+          "caption": "Gorseinon's Christmas lantern parade",
+          "alt": "Councillors holding a star lantern at the Gorseinon Christmas lantern parade"
+        },
+        {
+          "photo": "images/gorseinon-remembrance.jpg",
+          "caption": "Remembering the fallen",
+          "alt": "Councillors beside poppy wreaths at the war memorial"
+        }
+      ],
       "budget": {
         "period": "2022–27",
-        "asOf": "28 October 2026",
-        "used": 171930,
-        "payments": 126,
-        "grants": 77,
+        "asOf": "5 November 2026",
+        "used": 172930,
+        "payments": 127,
+        "grants": 78,
         "themes": [
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 39289
+            "amount": 40289
           },
           {
             "name": "Parks, play and green spaces",
