@@ -355,6 +355,7 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   border-bottom: 6px solid var(--slh-yellow);
 }
 .sl-gallery-grid figcaption { margin-top: 8px; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.sl-gallery-grid:has(> figure:nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); } /* four photos: one even row */
 .sl-budget-head {
   display: table;
   margin: 0 0 16px !important;

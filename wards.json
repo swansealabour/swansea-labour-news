@@ -93,8 +93,9 @@
           { "name": "Parks, play and green spaces", "amount": 44625 },
           { "name": "Grants to local groups, clubs and events", "amount": 21210 },
           { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 4330 },
-          { "name": "Community events, schools and charities", "amount": 1525 },
-          { "name": "Roads, parking and safety", "amount": 690 }
+          { "name": "Community events, schools and charities", "amount": 1025 },
+          { "name": "Roads, parking and safety", "amount": 690 },
+          { "name": "Murals and community artwork", "amount": 500 }
         ],
         "coming": [
           { "name": "Improvements at Bryn y Don Park and the Vetch" }
@@ -854,6 +855,62 @@
       "name": "Llwchwr",
       "slug": "llwchwr",
       "page": "/llwchwr",
+      "gallery": [
+        { "photo": "images/llwchwr-estuary.jpg", "caption": "By the Loughor estuary", "alt": "Llwchwr's Labour councillors by the Loughor estuary" },
+        { "photo": "images/llwchwr-play-area-slide.jpg", "caption": "At a local play area", "alt": "Llwchwr's Labour councillors by a play area slide" },
+        { "photo": "images/llwchwr-play-area-swings.jpg", "caption": "Out and about in Llwchwr", "alt": "Llwchwr's Labour councillors on the swings at a local play area" },
+        { "photo": "images/llwchwr-playing-field.jpg", "caption": "Your local Labour team in Llwchwr", "alt": "Llwchwr's Labour councillors on a playing field with a rugby ball" }
+      ],
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 151296,
+        "payments": 73,
+        "grants": 43,
+        "themes": [
+          { "name": "Roads, parking and safety", "amount": 41253 },
+          { "name": "Grants to local groups, clubs and events", "amount": 35575 },
+          { "name": "Parks, play and green spaces", "amount": 15129 },
+          { "name": "Community events, schools and charities", "amount": 5058 },
+          { "name": "Floral displays", "amount": 4029 },
+          { "name": "Murals and community artwork", "amount": 2090 },
+          { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 862 },
+          { "name": "Christmas lights and events", "amount": 800 }
+        ],
+        "coming": [
+          { "name": "A longer football pitch and a nature and sensory trail at Loughor Foreshore" }
+        ],
+        "groups": [
+          "Loughor RFC",
+          "Loughor Rovers AFC",
+          "Loughor Centurions Touch RFC",
+          "West Street Gymnastics",
+          "Gorseinon Cricket Club",
+          "Penyrheol Amateur Boxing Club",
+          "Leucarum Golf Society",
+          "Garden Village Sports & Social Club",
+          "Loughor Boating Club",
+          "Loughor Inshore Rescue",
+          "Loughor & District WMC",
+          "Royal British Legion",
+          "The Sharing Table",
+          "Food With Friends",
+          "Swansea Food Bank",
+          "Light up Loughor",
+          "Loughor Events Committee",
+          "Evolve Youth Club",
+          "ALN Connect Gorseinon",
+          "Boardability",
+          "Heart of the Community",
+          "Little Bears Parent, Toddler & Baby Group",
+          "New Bees Community Team",
+          "1st Loughor Brownies",
+          "2nd Llwchwr Guides & Rangers",
+          "Go Fish Gowerton CIC",
+          "Bantani Cymru"
+        ],
+        "note": "Some projects were shared with neighbouring wards."
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -979,9 +1036,9 @@
         "themes": [
           { "name": "Christmas lights, parades and events", "amount": 88202 },
           { "name": "Floral displays", "amount": 56058 },
-          { "name": "Parks, play and green spaces", "amount": 14800 },
+          { "name": "Parks, play and green spaces", "amount": 14250 },
           { "name": "Cleaning and tidier streets", "amount": 12782 },
-          { "name": "Roads, parking and safety", "amount": 10170 },
+          { "name": "Roads, parking and safety", "amount": 10720 },
           { "name": "Grants to local groups, clubs and events", "amount": 7029 },
           { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 1600 },
           { "name": "Community events, schools and charities", "amount": 80 }
