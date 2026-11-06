@@ -91,10 +91,8 @@
       ],
       "gallery": [
         { "photo": "images/castle-brynmelyn-park.jpg", "caption": "At the improved Brynmelyn Park, Waun Wen", "alt": "Castle's Labour team at the Brynmelyn Park play area" },
-        { "photo": "images/castle-vetch-table.jpg", "caption": "At the Vetch, by a table we funded", "alt": "Castle's Labour team at a picnic table on the Vetch" },
         { "photo": "images/castle-constitution-hill.jpg", "caption": "The new bench on Constitution Hill", "alt": "Castle's Labour team on a bench at the top of Constitution Hill" },
         { "photo": "images/castle-community-groups.jpg", "caption": "Supporting community groups", "alt": "Castle's Labour team presenting support to a local community group" },
-        { "photo": "images/castle-community-event.jpg", "caption": "Supporting community events", "alt": "Castle's Labour team with families and a costumed character at a community event" },
         { "photo": "images/castle-out-and-about.jpg", "caption": "Out and about in Castle", "alt": "Castle's Labour team on a path in the ward" }
       ],
       "budget": {
