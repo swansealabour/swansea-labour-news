@@ -952,6 +952,7 @@
       "name": "Morriston",
       "slug": "morriston",
       "page": "/morriston",
+      "newLayout": true,
       "delivered": [
         { "title": "New play areas", "text": "New play areas at Morriston, Ynystawe, Cwmrhydyceirw, Parc Gwernfadog and DFS." },
         { "title": "Free local events", "text": "Free local events, fun days and Christmas parades." },
@@ -960,6 +961,14 @@
         { "title": "Supporting our community", "text": "Grants and support for local groups, sports clubs and our local schools." },
         { "title": "Saving lives and floral displays", "text": "Life-saving defibrillator boxes and flower displays funded across Morriston." },
         { "title": "Safer roads", "text": "Major roads resurfaced, potholes repaired, and local highway safety and parking schemes delivered." }
+      ],
+      "gallery": [
+        { "photo": "images/morriston-play-area.jpg", "caption": "At the new Parc Gwernfadog play area", "alt": "Morriston's Labour councillors at the Parc Gwernfadog play area" },
+        { "photo": "images/morriston-library.jpg", "caption": "Outside Morriston Library", "alt": "Morriston's Labour councillors outside Morriston Library" },
+        { "photo": "images/morriston-leisure-centre.jpg", "caption": "At Morriston Leisure Centre", "alt": "Morriston's Labour councillors outside Morriston Leisure Centre" },
+        { "photo": "images/morriston-comprehensive.jpg", "caption": "At Morriston Comprehensive School", "alt": "Morriston's Labour councillors by the Morriston Comprehensive School sign" },
+        { "photo": "images/morriston-out-and-about.jpg", "caption": "Out and about in Morriston", "alt": "Morriston's Labour councillors at a local play area" },
+        { "photo": "images/morriston-local-team.jpg", "caption": "Your local Labour team in Morriston", "alt": "Morriston's Labour councillors at a picnic bench" }
       ],
       "budget": {
         "period": "2022–27",
@@ -1050,7 +1059,8 @@
         {
           "name": "Yvonne Jardine",
           "role": "",
-          "phone": "01792814894",
+          "phone": "07918656753",
+          "landline": "01792814894",
           "email": "cllr.yvonne.jardine@swansea.gov.uk",
           "photo": "images/councillors/yvonne-jardine.jpg",
           "bio": []

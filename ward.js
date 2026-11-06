@@ -153,6 +153,10 @@
         var p = el("p", "slw-contact");
         p.appendChild(document.createTextNode("Phone: "));
         p.appendChild(link(telHref(c.phone), prettyPhone(c.phone)));
+        if (c.landline) {
+          p.appendChild(document.createTextNode(" or "));
+          p.appendChild(link(telHref(c.landline), prettyPhone(c.landline)));
+        }
         card.appendChild(p);
       }
       if (c.email) {

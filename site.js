@@ -164,11 +164,12 @@
         card.appendChild(img);
       }
       card.appendChild(el("b", null, "Cllr " + c.name));
-      if (c.phone) {
-        var tel = el("a", "sl-help-phone", prettyPhone(c.phone));
-        tel.href = "tel:" + c.phone.replace(/\s+/g, "");
+      [c.phone, c.landline].forEach(function (n) { // mobile, then landline if there is one
+        if (!n) return;
+        var tel = el("a", "sl-help-phone", prettyPhone(n));
+        tel.href = "tel:" + n.replace(/\s+/g, "");
         card.appendChild(tel);
-      }
+      });
       if (c.email) {
         var mail = el("a", "sl-help-email", c.email);
         mail.href = "mailto:" + c.email;
