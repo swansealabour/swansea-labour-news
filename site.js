@@ -382,12 +382,13 @@
       slug = slug.slice("test2-".length);
       document.body.classList.add("sl-trial"); // trial styles in site.css
     }
-    Promise.all([getJson("wards.json"), testing ? getJson("capital.json") : null])
+    Promise.all([getJson("wards.json"), getJson("capital.json")])
       .then(function (res) {
         var ward = ((res[0] && res[0].wards) || []).filter(function (w) { return w.slug === slug; })[0];
         if (!ward) return;
         addAbout(h, ward);
-        if (testing) addTrials(h, ward, res[1]);
+        // the new sections: always on test2- pages, and on live pages once a ward is switched over
+        if (testing || ward.newLayout) addTrials(h, ward, res[1]);
       })
       .catch(function () {});
   }

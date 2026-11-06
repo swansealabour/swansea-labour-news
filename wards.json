@@ -82,6 +82,41 @@
       "name": "Castle",
       "slug": "castle",
       "page": "/castle",
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 225793,
+        "payments": 56,
+        "grants": 29,
+        "themes": [
+          { "name": "Cleaning and tidier streets", "amount": 127914 },
+          { "name": "Parks, play and green spaces", "amount": 44625 },
+          { "name": "Grants to local groups, clubs and events", "amount": 21210 },
+          { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 4330 },
+          { "name": "Community events, schools and charities", "amount": 1525 },
+          { "name": "Roads, parking and safety", "amount": 690 }
+        ],
+        "coming": [
+          { "name": "Improvements at Bryn y Don Park and the Vetch" }
+        ],
+        "groups": [
+          "Friends of Brynmelyn Park",
+          "Waun Wen & Brynmelyn Baby & Toddler Group",
+          "Matt's Café",
+          "Dyfatty Bowls Club",
+          "Dyfatty Community Centre",
+          "Dyfatty Junction",
+          "Brewtime Men's Club",
+          "Garrison Church",
+          "C3 Centre for Creativity & Culture",
+          "Get Together Group",
+          "Seaview Green Space",
+          "Swan TV",
+          "St Helen's Primary School",
+          "Terrace Road Primary School",
+          "St Joseph's Under 13s"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -460,6 +495,7 @@
           "text": "Parc Melin Mynach skate park upgraded with new ramps, banks and a quarter pipe."
         }
       ],
+      "newLayout": true,
       "gallery": [
         {
           "photo": "images/gorseinon-halfpenny-mural.jpg",
@@ -916,6 +952,46 @@
       "name": "Morriston",
       "slug": "morriston",
       "page": "/morriston",
+      "delivered": [
+        { "title": "New play areas", "text": "New play areas at Morriston, Ynystawe, Cwmrhydyceirw, Parc Gwernfadog and DFS." },
+        { "title": "Free local events", "text": "Free local events, fun days and Christmas parades." },
+        { "title": "Cleaner streets", "text": "Dedicated cleansing teams keeping our streets and parks clean." },
+        { "title": "Backing local business", "text": "Free WiFi and new CCTV in Morriston, grants secured for local businesses and tough action on illegal traders." },
+        { "title": "Supporting our community", "text": "Grants and support for local groups, sports clubs and our local schools." },
+        { "title": "Saving lives and floral displays", "text": "Life-saving defibrillator boxes and flower displays funded across Morriston." },
+        { "title": "Safer roads", "text": "Major roads resurfaced, potholes repaired, and local highway safety and parking schemes delivered." }
+      ],
+      "budget": {
+        "period": "2022–27",
+        "asOf": "4 November 2026",
+        "used": 245720,
+        "payments": 57,
+        "grants": 9,
+        "themes": [
+          { "name": "Christmas lights, parades and events", "amount": 88202 },
+          { "name": "Floral displays", "amount": 56058 },
+          { "name": "Parks, play and green spaces", "amount": 14800 },
+          { "name": "Cleaning and tidier streets", "amount": 12782 },
+          { "name": "Roads, parking and safety", "amount": 10170 },
+          { "name": "Grants to local groups, clubs and events", "amount": 7029 },
+          { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 1600 },
+          { "name": "Community events, schools and charities", "amount": 80 }
+        ],
+        "coming": [
+          { "name": "Better sporting facilities at Morriston AFC" },
+          { "name": "Christmas lights and floral displays for 2027" }
+        ],
+        "groups": [
+          "Tabernacle Morriston Choir",
+          "Swansea Council for Voluntary Service",
+          "Swansea Stroke Survivors Group",
+          "Morriston Chess Club",
+          "Morriston Town FC",
+          "Morriston Business Forum",
+          "Friends of Morriston Park",
+          "Morriston Primary School"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -1397,48 +1473,79 @@
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
-          "title": "Standing up for St Thomas",
-          "detail": "I will work with Welsh Water to address issues and reach a solution regarding the pollution from the sewage treatment works.",
+          "title": "Cost of living",
+          "detail": "I will help reduce the impact of the cost of living crisis on local residents.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
-          "title": "Safer communities",
-          "detail": "I will work with the police and other organisations to tackle anti-social behaviour and crime within St Thomas and the Eastside Community",
+          "title": "Monkey Park",
+          "detail": "I will improve the facilities at Monkey Park.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
-          "title": "Investing in our parks and play area",
-          "detail": "I will continue to invest and deliver improvements to our parks and green spaces across St Thomas Ward. We will commit to enclose Monkey Park in Port Tennant",
+          "title": "Community clubs and events",
+          "detail": "I will continue to work as a community volunteer, delivering for our community by running clubs, groups, events and trips.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
-          "title": "Protecting bus services",
-          "detail": "I will work to lobby First Cymru for improvement across the Eastside Community and work with the Labour Council and Welsh Government to ensure St Thomas benefits from the new metro developments",
+          "title": "Eastside Carnival",
+          "detail": "I will bring back the Eastside Carnival.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         },
         {
-          "title": "Parking for Residents",
-          "detail": "I will work to introduce zoned parking for additional areas within the Ward, protecting parking for residents",
-          "status": "",
-          "evidence": "",
-          "evidenceUrl": ""
-        },
-        {
-          "title": "Cleaner communities",
-          "detail": "I will fund a dedicated operative to clear litter, remove weeds, and keep our streets clean. We will also install new bins across the ward",
+          "title": "The Ashlands",
+          "detail": "I will improve the facilities at the Ashlands.",
           "status": "",
           "evidence": "",
           "evidenceUrl": ""
         }
       ],
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 148103,
+        "payments": 64,
+        "grants": 23,
+        "themes": [
+          { "name": "Grants to local groups, clubs and events", "amount": 23560 },
+          { "name": "Parks, play and green spaces", "amount": 12231 },
+          { "name": "Roads, parking and safety", "amount": 12013 },
+          { "name": "Christmas, summer fun days and events", "amount": 9181 },
+          { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 7720 },
+          { "name": "Community events, schools and charities", "amount": 2116 },
+          { "name": "Sport and clubs", "amount": 600 }
+        ],
+        "coming": [
+          { "name": "Jersey Bowls pavilion, a Port Tennant barrier, a pump track at Maesteg Park and a youth shelter" },
+          { "name": "Improvements at Monkey Park" }
+        ],
+        "groups": [
+          "Port Tennant Community Centre",
+          "Port Tennant Playgroup",
+          "The Cwtch",
+          "SOMM",
+          "Jersey Bowls Club",
+          "GSP Community Regeneration Partnership",
+          "Port Tennant Colts FC",
+          "1st Danygraig Brownies",
+          "1st Winch Wen Rainbows",
+          "Swansea Food Bank",
+          "Cando Hub",
+          "Sight Life",
+          "The Sharing Table",
+          "Baby Basics at St Thomas Church",
+          "Parish of St Thomas & Kilvey"
+        ],
+        "note": "Includes spending shared with the ward's other councillor before February 2026."
+      },
       "councillors": [
         {
           "name": "Hayley Gwilliam",
