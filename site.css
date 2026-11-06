@@ -332,6 +332,13 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
 /* Ward pages (body.sl-ward-page, set by site.js): title bigger with the out-card's yellow
    hand-drawn underline, grey divider lines gone */
 .sl-ward-page article .sqs-block-horizontalrule { display: none !important; }
+/* The solid red site header sits on top of the banner; start the banner photo below it so the
+   top of the photo (often heads, e.g. Llwchwr on phones) isn't hidden */
+.sl-ward-page section.page-section.has-background:first-child > .section-border > .section-background {
+  top: var(--header-height, 87px) !important;
+  bottom: 0 !important;
+  height: auto !important;
+}
 .sl-ward-page article .sqs-html-content h2 { font-size: clamp(46px, 6vw, 76px) !important; line-height: 1 !important; margin: 0 !important; }
 .sl-ward-page article .sqs-html-content h2::after {
   content: "";
