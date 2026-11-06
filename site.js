@@ -144,17 +144,21 @@
   // It replaces the page's own councillor list lower down (hidden by body.sl-help-shown in site.css).
   function buildHelp(ward) {
     var people = ward.councillors || [];
+    var candidates = ward.candidates || []; // Labour candidates standing alongside the ward's councillors
     var band = el("div", "sl-help");
     var top = el("div", "sl-help-top");
     top.appendChild(el("h2", "sl-display sl-yellow", "We're here to help!"));
     var box = el("div", "sl-help-box");
-    box.appendChild(el("p", null, people.length > 1
-      ? "Your " + (COUNT[people.length] || "") + " local councillors work for you all year round. Tell us what needs fixing in your street and we will act on it. No issue is too small. Call or email us and we will get back to you."
+    var who = people.length > 1 ? "Your " + (COUNT[people.length] || "") + " local councillors" : "Your local councillor";
+    if (candidates.length) who += " and Labour candidate" + (candidates.length > 1 ? "s" : "");
+    box.appendChild(el("p", null, people.length > 1 || candidates.length
+      ? who + " work for you all year round. Tell us what needs fixing in your street and we will act on it. No issue is too small. Call or email us and we will get back to you."
       : "Your local councillor works for you all year round. Tell me what needs fixing in your street and I will act on it. No issue is too small. Call or email and I will get back to you."));
     top.appendChild(box);
     band.appendChild(top);
     var list = el("div", "sl-help-people");
-    people.forEach(function (c) {
+    people.concat(candidates).forEach(function (c) {
+      var isCandidate = candidates.indexOf(c) > -1;
       var card = el("div", "sl-help-person");
       if (c.photo) {
         var img = el("img");
@@ -163,7 +167,8 @@
         img.loading = "lazy";
         card.appendChild(img);
       }
-      card.appendChild(el("b", null, "Cllr " + c.name));
+      card.appendChild(el("b", null, isCandidate ? c.name : "Cllr " + c.name));
+      if (isCandidate) card.appendChild(el("span", "sl-help-role", "Labour candidate"));
       [c.phone, c.landline].forEach(function (n) { // mobile, then landline if there is one
         if (!n) return;
         var tel = el("a", "sl-help-phone", prettyPhone(n));

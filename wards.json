@@ -82,6 +82,21 @@
       "name": "Castle",
       "slug": "castle",
       "page": "/castle",
+      "newLayout": true,
+      "delivered": [
+        { "title": "Better parks", "text": "Brynmelyn Park in Waun Wen enhanced with a play area, sports equipment and better access, with plans for the Vetch and Bryn y Don parks progressing." },
+        { "title": "Greening and flowers", "text": "Wildflowers, bulbs, rain gardens and flower troughs to brighten the ward and increase biodiversity." },
+        { "title": "Support for community groups", "text": "Practical support for a range of groups serving all ages and backgrounds." },
+        { "title": "Cleaner streets", "text": "An annual commitment to extra cleansing, targeting hotspots." }
+      ],
+      "gallery": [
+        { "photo": "images/castle-brynmelyn-park.jpg", "caption": "At the improved Brynmelyn Park, Waun Wen", "alt": "Castle's Labour team at the Brynmelyn Park play area" },
+        { "photo": "images/castle-vetch-table.jpg", "caption": "At the Vetch, by a table we funded", "alt": "Castle's Labour team at a picnic table on the Vetch" },
+        { "photo": "images/castle-constitution-hill.jpg", "caption": "The new bench on Constitution Hill", "alt": "Castle's Labour team on a bench at the top of Constitution Hill" },
+        { "photo": "images/castle-community-groups.jpg", "caption": "Supporting community groups", "alt": "Castle's Labour team presenting support to a local community group" },
+        { "photo": "images/castle-community-event.jpg", "caption": "Supporting community events", "alt": "Castle's Labour team with families and a costumed character at a community event" },
+        { "photo": "images/castle-out-and-about.jpg", "caption": "Out and about in Castle", "alt": "Castle's Labour team on a path in the ward" }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1537,6 +1552,30 @@
       "name": "St Thomas",
       "slug": "st-thomas",
       "page": "/st-thomas",
+      "candidates": [
+        {
+          "name": "Sarah O'Connor",
+          "phone": "",
+          "email": "s12soc@hotmail.co.uk",
+          "photo": "images/sarah-oconnor.jpg"
+        }
+      ],
+      "delivered": [
+        { "title": "Kids club", "text": "An after-school club for primary-age children (they call it fun club!) with a hot meal, arts and crafts, free play, table tennis, pool and party games, building confidence, social skills and support networks." },
+        { "title": "Youth club", "text": "For comprehensive-age young people, with a hot meal, arts and crafts, music, games, table tennis, pool, darts, dance and cookery, plus trips and community projects." },
+        { "title": "Jersey Park Men's Shed", "text": "A social group for local men with a hot meal, plenty of cuppas and a safe space for a chat, cards, darts and a quiz. All welcome." },
+        { "title": "Food and Friendship Fridays", "text": "A hot meal and prize bingo, with extra seasonal activities through the year." },
+        { "title": "Warm spaces", "text": "Warm spaces for all ages through the winter, with breakfast clubs in Jersey Park pavilion and a Friday club at Port Tennant Community Centre." },
+        { "title": "Port Tennant Colts", "text": "Support for Port Tennant Colts to progress up the league, with Community Investment Fund support for a spectator barrier and dugouts to protect the pitches." },
+        { "title": "Swansea Dockers Club", "text": "Economic Regeneration Fund support for a new disabled lift, making the large function room accessible to all." },
+        { "title": "New play facilities", "text": "Upgraded local parks, including a new play area in Jersey Park and new play equipment at Polly's Park, with more to come." }
+      ],
+      "gallery": [
+        { "photo": "images/st-thomas-fun-day.jpg", "caption": "At the summer fun day", "alt": "Councillor and community volunteers with costumed characters at a summer fun day" },
+        { "photo": "images/st-thomas-christmas-hampers.jpg", "caption": "Delivering Christmas hampers", "alt": "Hayley Gwilliam and Sarah O'Connor in Christmas jumpers beside a van of hampers" },
+        { "photo": "images/st-thomas-summer-party.jpg", "caption": "Celebrating summer with the community", "alt": "A balloon arch at a community summer party" },
+        { "photo": "images/st-thomas-community-trip.jpg", "caption": "On a community trip", "alt": "Hayley Gwilliam and Sarah O'Connor on a community trip" }
+      ],
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
