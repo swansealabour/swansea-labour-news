@@ -90,8 +90,9 @@
     return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\band\b/g, "&").replace(/[^a-z&]/g, "");
   }
   function colour(theme) { return THEMES[theme] || "#666666"; }
-  function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
-  // 1288681 -> "£1.3 million"; smaller sums stay in full
+  // 690946 -> "£691,000": £10,000 and over to the nearest thousand, smaller sums in full
+  function money(n) { return "£" + (n >= 1e4 ? Math.round(n / 1e3) * 1e3 : Math.round(n)).toLocaleString("en-GB"); }
+  // 1288681 -> "£1.3 million"
   function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
   function loadLeaflet() {
     if (window.L) return Promise.resolve(window.L);

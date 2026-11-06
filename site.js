@@ -233,8 +233,9 @@
     return box;
   }
 
-  function money(n) { return "£" + Math.round(n).toLocaleString("en-GB"); }
-  // 1288681 -> "£1.3 million"; smaller sums stay in full
+  // 690946 -> "£691,000": £10,000 and over to the nearest thousand, smaller sums in full
+  function money(n) { return "£" + (n >= 1e4 ? Math.round(n / 1e3) * 1e3 : Math.round(n)).toLocaleString("en-GB"); }
+  // 1288681 -> "£1.3 million"
   function bigMoney(n) { return n >= 1e6 ? "£" + (Math.round(n / 1e5) / 10) + " million" : money(n); }
   function norm(s) { return String(s || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z]/g, ""); }
 
