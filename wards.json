@@ -1153,6 +1153,12 @@
           "bio": []
         }
       ],
+      "candidates": [
+        {
+          "name": "Andrew Francis-Davies",
+          "photo": "images/andrew-francis-davies.jpg"
+        }
+      ],
       "documents": [
         {
           "title": "Election Address",
