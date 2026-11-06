@@ -219,8 +219,16 @@
     head.appendChild(el("span", "sl-cy", "Allan yn y gymuned"));
     box.appendChild(head);
     var grid = el("div", "sl-gallery-grid");
+    // Whole photos, never cropped: each row shares one height and photos get widths in proportion
+    // to their shape ("ratio" = width / height in wards.json). Rows are chosen to land near 300px tall.
+    var ratios = ward.gallery.map(function (p) { return p.ratio || 0.8; });
+    var rows = galleryRows(ratios), row = null, left = 0;
     ward.gallery.forEach(function (p, i) {
+      if (!left) { left = rows.shift(); row = el("div", "sl-gallery-row"); grid.appendChild(row); }
+      left--;
       var fig = el("figure");
+      fig.style.setProperty("--ar", ratios[i]);
+      fig.style.flexGrow = ratios[i];
       var btn = el("button", "sl-gallery-open");
       btn.type = "button";
       btn.setAttribute("aria-label", "Enlarge photo: " + p.caption);
@@ -232,10 +240,26 @@
       btn.addEventListener("click", function () { openLightbox(ward.gallery, i); });
       fig.appendChild(btn);
       fig.appendChild(el("figcaption", null, p.caption));
-      grid.appendChild(fig);
+      row.appendChild(fig);
     });
     box.appendChild(grid);
     return box;
+  }
+
+  // Split photos, in order, into rows of 1-4 so each row's height is as close as possible to ~320px
+  // at the ~890px desktop content width (rows over 500px are penalised). Returns the count per row.
+  function galleryRows(ratios) {
+    var W = 890, GAP = 18, best = null, bestScore = Infinity;
+    (function walk(start, counts, score) {
+      if (score >= bestScore) return;
+      if (start === ratios.length) { bestScore = score; best = counts; return; }
+      for (var c = 1; c <= 4 && start + c <= ratios.length; c++) {
+        var sum = ratios.slice(start, start + c).reduce(function (a, b) { return a + b; }, 0);
+        var h = (W - GAP * (c - 1)) / sum, d = Math.log(h / 320);
+        walk(start + c, counts.concat(c), score + d * d + (h > 500 ? 1 : 0));
+      }
+    })(0, [], 0);
+    return best;
   }
 
   // Click a gallery photo to see it large; arrows/Escape on keyboard, tap outside to close

@@ -90,10 +90,10 @@
         { "title": "Cleaner streets", "text": "An annual commitment to extra cleansing, targeting hotspots." }
       ],
       "gallery": [
-        { "photo": "images/castle-brynmelyn-park.jpg", "caption": "At the improved Brynmelyn Park, Waun Wen", "alt": "Castle's Labour team at the Brynmelyn Park play area" },
-        { "photo": "images/castle-constitution-hill.jpg", "caption": "The new bench on Constitution Hill", "alt": "Castle's Labour team on a bench at the top of Constitution Hill" },
-        { "photo": "images/castle-community-groups.jpg", "caption": "Supporting community groups", "alt": "Castle's Labour team presenting support to a local community group" },
-        { "photo": "images/castle-out-and-about.jpg", "caption": "Out and about in Castle", "alt": "Castle's Labour team on a path in the ward" }
+        { "photo": "images/castle-constitution-hill.jpg", "ratio": 0.931, "caption": "The new bench on Constitution Hill", "alt": "Castle's Labour team on a bench at the top of Constitution Hill" },
+        { "photo": "images/castle-community-groups.jpg", "ratio": 0.947, "caption": "Supporting community groups", "alt": "Castle's Labour team presenting support to a local community group" },
+        { "photo": "images/castle-community-event.jpg", "ratio": 2.167, "caption": "Supporting community events", "alt": "Castle's Labour team with local families at a community fun day by a new play area" },
+        { "photo": "images/castle-out-and-about.jpg", "ratio": 0.75, "caption": "Out and about in Castle", "alt": "Castle's Labour team on a path in the ward" }
       ],
       "budget": {
         "period": "2022–27",
@@ -512,32 +512,32 @@
       "newLayout": true,
       "gallery": [
         {
-          "photo": "images/gorseinon-halfpenny-mural.jpg",
+          "photo": "images/gorseinon-halfpenny-mural.jpg", "ratio": 0.8,
           "caption": "The Leigh Halfpenny mural, paid for by our community budget",
           "alt": "Councillors and guests in front of the Leigh Halfpenny mural in Gorseinon"
         },
         {
-          "photo": "images/gorseinon-10k.jpg",
+          "photo": "images/gorseinon-10k.jpg", "ratio": 1.333,
           "caption": "At the Gorseinon 10K",
           "alt": "Councillors with runners at the Gorseinon 10K"
         },
         {
-          "photo": "images/gorseinon-boxing-club.jpg",
+          "photo": "images/gorseinon-boxing-club.jpg", "ratio": 0.75,
           "caption": "£2,000 for Penyrheol Amateur Boxing Club",
           "alt": "Councillors handing a cheque to Penyrheol Amateur Boxing Club beside the boxing ring"
         },
         {
-          "photo": "images/gorseinon-inshore-rescue.jpg",
+          "photo": "images/gorseinon-inshore-rescue.jpg", "ratio": 1.333,
           "caption": "Supporting Loughor Inshore Rescue",
           "alt": "Councillor with two Loughor Inshore Rescue crew members"
         },
         {
-          "photo": "images/gorseinon-lantern-parade.jpg",
+          "photo": "images/gorseinon-lantern-parade.jpg", "ratio": 0.8,
           "caption": "Gorseinon's Christmas lantern parade",
           "alt": "Councillors holding a star lantern at the Gorseinon Christmas lantern parade"
         },
         {
-          "photo": "images/gorseinon-remembrance.jpg",
+          "photo": "images/gorseinon-remembrance.jpg", "ratio": 0.75,
           "caption": "Remembering the fallen",
           "alt": "Councillors beside poppy wreaths at the war memorial"
         }
@@ -870,10 +870,10 @@
       "page": "/llwchwr",
       "newLayout": true,
       "gallery": [
-        { "photo": "images/llwchwr-estuary.jpg", "caption": "By the Loughor estuary", "alt": "Llwchwr's Labour councillors by the Loughor estuary" },
-        { "photo": "images/llwchwr-play-area-slide.jpg", "caption": "At a local play area", "alt": "Llwchwr's Labour councillors by a play area slide" },
-        { "photo": "images/llwchwr-play-area-swings.jpg", "caption": "Out and about in Llwchwr", "alt": "Llwchwr's Labour councillors on the swings at a local play area" },
-        { "photo": "images/llwchwr-playing-field.jpg", "caption": "Your local Labour team in Llwchwr", "alt": "Llwchwr's Labour councillors on a playing field with a rugby ball" }
+        { "photo": "images/llwchwr-estuary.jpg", "ratio": 1.501, "caption": "By the Loughor estuary", "alt": "Llwchwr's Labour councillors by the Loughor estuary" },
+        { "photo": "images/llwchwr-play-area-slide.jpg", "ratio": 0.701, "caption": "At a local play area", "alt": "Llwchwr's Labour councillors by a play area slide" },
+        { "photo": "images/llwchwr-play-area-swings.jpg", "ratio": 1.503, "caption": "Out and about in Llwchwr", "alt": "Llwchwr's Labour councillors on the swings at a local play area" },
+        { "photo": "images/llwchwr-playing-field.jpg", "ratio": 1.497, "caption": "Your local Labour team in Llwchwr", "alt": "Llwchwr's Labour councillors on a playing field with a rugby ball" }
       ],
       "budget": {
         "period": "2022–27",
@@ -1034,12 +1034,12 @@
         { "title": "Safer roads", "text": "Major roads resurfaced, potholes repaired, and local highway safety and parking schemes delivered." }
       ],
       "gallery": [
-        { "photo": "images/morriston-play-area.jpg", "caption": "At the new Parc Gwernfadog play area", "alt": "Morriston's Labour councillors at the Parc Gwernfadog play area" },
-        { "photo": "images/morriston-library.jpg", "caption": "Outside Morriston Library", "alt": "Morriston's Labour councillors outside Morriston Library" },
-        { "photo": "images/morriston-leisure-centre.jpg", "caption": "At Morriston Leisure Centre", "alt": "Morriston's Labour councillors outside Morriston Leisure Centre" },
-        { "photo": "images/morriston-comprehensive.jpg", "caption": "At Morriston Comprehensive School", "alt": "Morriston's Labour councillors by the Morriston Comprehensive School sign" },
-        { "photo": "images/morriston-out-and-about.jpg", "caption": "Out and about in Morriston", "alt": "Morriston's Labour councillors at a local play area" },
-        { "photo": "images/morriston-local-team.jpg", "caption": "Your local Labour team in Morriston", "alt": "Morriston's Labour councillors at a picnic bench" }
+        { "photo": "images/morriston-play-area.jpg", "ratio": 0.75, "caption": "At the new Parc Gwernfadog play area", "alt": "Morriston's Labour councillors at the Parc Gwernfadog play area" },
+        { "photo": "images/morriston-library.jpg", "ratio": 0.75, "caption": "Outside Morriston Library", "alt": "Morriston's Labour councillors outside Morriston Library" },
+        { "photo": "images/morriston-leisure-centre.jpg", "ratio": 0.75, "caption": "At Morriston Leisure Centre", "alt": "Morriston's Labour councillors outside Morriston Leisure Centre" },
+        { "photo": "images/morriston-comprehensive.jpg", "ratio": 0.75, "caption": "At Morriston Comprehensive School", "alt": "Morriston's Labour councillors by the Morriston Comprehensive School sign" },
+        { "photo": "images/morriston-out-and-about.jpg", "ratio": 0.75, "caption": "Out and about in Morriston", "alt": "Morriston's Labour councillors at a local play area" },
+        { "photo": "images/morriston-local-team.jpg", "ratio": 0.75, "caption": "Your local Labour team in Morriston", "alt": "Morriston's Labour councillors at a picnic bench" }
       ],
       "budget": {
         "period": "2022–27",
@@ -1571,10 +1571,10 @@
         { "title": "New play facilities", "text": "Upgraded local parks, including a new play area in Jersey Park and new play equipment at Polly's Park, with more to come." }
       ],
       "gallery": [
-        { "photo": "images/st-thomas-fun-day.jpg", "caption": "At the summer fun day", "alt": "Councillor and community volunteers with costumed characters at a summer fun day" },
-        { "photo": "images/st-thomas-christmas-hampers.jpg", "caption": "Delivering Christmas hampers", "alt": "Hayley Gwilliam and Sarah O'Connor in Christmas jumpers beside a van of hampers" },
-        { "photo": "images/st-thomas-summer-party.jpg", "caption": "Celebrating summer with the community", "alt": "A balloon arch at a community summer party" },
-        { "photo": "images/st-thomas-community-trip.jpg", "caption": "On a community trip", "alt": "Hayley Gwilliam and Sarah O'Connor on a community trip" }
+        { "photo": "images/st-thomas-fun-day.jpg", "ratio": 1.333, "caption": "At the summer fun day", "alt": "Councillor and community volunteers with costumed characters at a summer fun day" },
+        { "photo": "images/st-thomas-christmas-hampers.jpg", "ratio": 0.946, "caption": "Delivering Christmas hampers", "alt": "Hayley Gwilliam and Sarah O'Connor in Christmas jumpers beside a van of hampers" },
+        { "photo": "images/st-thomas-summer-party.jpg", "ratio": 0.75, "caption": "Celebrating summer with the community", "alt": "A balloon arch at a community summer party" },
+        { "photo": "images/st-thomas-community-trip.jpg", "ratio": 1.079, "caption": "On a community trip", "alt": "Hayley Gwilliam and Sarah O'Connor on a community trip" }
       ],
       "pledgeHeading": "Our Pledges",
       "pledges": [

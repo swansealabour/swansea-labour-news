@@ -345,18 +345,21 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
 .sl-budget { margin: 46px 17px 10px; }
 
 /* "Out and about" photo gallery (wards.json gallery); a swipeable strip on phones */
-.sl-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.sl-gallery-grid figure { margin: 0; }
+/* Whole photos: site.js groups them into rows; each figure grows by its width/height ratio (--ar),
+   so every photo in a row is the same height and nothing is cropped */
+.sl-gallery-grid { display: flex; flex-direction: column; gap: 22px; }
+.sl-gallery-row { display: flex; gap: 18px; align-items: flex-start; }
+.sl-gallery-grid figure { margin: 0; flex: 1 1 0; min-width: 0; }
 .sl-gallery-grid img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: auto;
+  aspect-ratio: var(--ar, 4 / 5);
   object-fit: cover;
   border-radius: 6px;
   border-bottom: 6px solid var(--slh-yellow);
 }
 .sl-gallery-grid figcaption { margin-top: 8px; font-size: 15px; font-weight: 600; line-height: 1.35; }
-.sl-gallery-grid:has(> figure:nth-child(4):last-child) { grid-template-columns: repeat(4, 1fr); } /* four photos: one even row */
 .sl-gallery-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .sl-gallery-open:hover img { filter: brightness(1.06); }
 .sl-gallery-open:focus-visible { outline: 3px solid var(--slh-red); outline-offset: 3px; border-radius: 6px; }
@@ -524,8 +527,10 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   .sl-delivered { margin: 32px 0 6px; padding: 28px 20px; gap: 26px; }
   .sl-help-box p { font-size: 23px; }
   .sl-capital-map { font-size: 20px; }
-  .sl-gallery-grid { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
-  .sl-gallery-grid figure { flex: 0 0 72%; scroll-snap-align: start; }
+  .sl-gallery-grid { flex-direction: row; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .sl-gallery-row { display: contents; }
+  /* phone strip: every photo 260px tall, width from its shape (capped for very wide ones) */
+  .sl-gallery-grid figure { flex: 0 0 auto !important; width: min(calc(260px * var(--ar, .8)), 86vw); scroll-snap-align: start; }
   .sl-lightbox { padding: 60px 10px 70px; }
   .sl-lightbox-fig img { max-height: calc(100vh - 170px); }
   .sl-lightbox-nav { top: auto; bottom: 12px; transform: none; height: 44px; }
