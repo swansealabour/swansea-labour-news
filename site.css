@@ -596,4 +596,12 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   .sqs-html-content h4, .sl-ward h2.slw-h { font-size: 28px; }
   .user-items-list .list-item-content__title { font-size: 30px !important; }
   #footer-sections .content::before { font-size: 24px; }
+
+  /* Castle (Squarespace page id): its wide banner photo shows the councillors small on phones,
+     so zoom in on them there (desktop unchanged) */
+  body#collection-6256e544feb08e7ba4024d0c section.page-section.has-background:first-child > .section-border > .section-background { overflow: hidden; }
+  body#collection-6256e544feb08e7ba4024d0c section.page-section.has-background:first-child > .section-border > .section-background img {
+    transform: scale(1.8);
+    transform-origin: 49% 58%;
+  }
 }
