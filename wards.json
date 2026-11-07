@@ -5,6 +5,49 @@
       "name": "Bôn-y-maen",
       "slug": "bonymaen",
       "page": "/bonymaen",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 141203,
+        "payments": 55,
+        "grants": 2,
+        "themes": [
+          {
+            "name": "Roads, parking and safety",
+            "amount": 94369
+          },
+          {
+            "name": "Cleaning and tidier streets",
+            "amount": 21607
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 12013
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 4124
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 750
+          }
+        ],
+        "coming": [
+          {
+            "name": "A grant to help Swansea Eastside Foodbank buy Mount Zion Baptist Church"
+          }
+        ],
+        "groups": [
+          "FC Bonymaen",
+          "Bonymaen Colts FC",
+          "Kilvey Writers",
+          "Manic Productions",
+          "Bonymaen Kids Play Initiative",
+          "Swansea Eastside Foodbank"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -224,6 +267,60 @@
       "name": "Cockett",
       "slug": "cockett",
       "page": "/cockett",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 179292,
+        "payments": 56,
+        "grants": 18,
+        "themes": [
+          {
+            "name": "Roads, parking and safety",
+            "amount": 61199
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 44274
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 31418
+          },
+          {
+            "name": "Floral displays",
+            "amount": 2619
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 718
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 500
+          }
+        ],
+        "coming": [
+          {
+            "name": "Raven Hill Park refurbishment"
+          }
+        ],
+        "groups": [
+          "Fforestfach FC Juniors",
+          "Fforestfach Scouts",
+          "Fforestfach Senior Citizens Ladies Section",
+          "Friends of Ravenhill Park",
+          "Friends of Waunarlwydd Park",
+          "Gendros Community Centre Association",
+          "Cockett Amateur Operatic Society",
+          "Crazy Crocheters",
+          "Whizzknits",
+          "Kids Cancer Charity Swansea",
+          "Swansea Community Farm",
+          "Benefice of Swansea St Peter"
+        ],
+        "note": "Some projects were shared with neighbouring wards."
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -316,6 +413,75 @@
       "name": "Dunvant & Killay",
       "slug": "dunvant-killay",
       "page": "/dunvant-killay",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 60744,
+        "payments": 59,
+        "grants": 8,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 29139
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 12882
+          },
+          {
+            "name": "Murals and community artwork",
+            "amount": 3240
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 2537
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 2500
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 2283
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 1195
+          },
+          {
+            "name": "Sport and clubs",
+            "amount": 868
+          },
+          {
+            "name": "Floral displays",
+            "amount": 766
+          }
+        ],
+        "coming": [
+          {
+            "name": "A new pump track"
+          }
+        ],
+        "groups": [
+          "Dunvant RFC",
+          "Dunvant & Three Crosses AFC",
+          "Dunvant Women's Institute",
+          "Friends of Dunvant Park",
+          "Dunvant Social Centre",
+          "Killay and District Lunch Club",
+          "Killay Scouts & Guides Association",
+          "Forget Me Not Dementia Day Club",
+          "Nant Cillan Project",
+          "Petallica Flower Farm women's shed",
+          "The Sharing Table",
+          "Bikeability Wales",
+          "Pen-y-Fro Primary School",
+          "Dunvant Primary School",
+          "Hendrefoilan Primary School"
+        ],
+        "note": "Some costs were shared with the ward's other councillors."
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -625,6 +791,50 @@
       "name": "Gowerton",
       "slug": "gowerton",
       "page": "/gowerton",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 65004,
+        "payments": 46,
+        "grants": 11,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 33813
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 5354
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 5090
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 1138
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 625
+          }
+        ],
+        "coming": [
+          {
+            "name": "A skate park at Elba"
+          }
+        ],
+        "groups": [
+          "Gowerton Athletic Club",
+          "Gowerton Glitterati",
+          "Gowerton RFC",
+          "Rechabite Community Hall",
+          "The Sharing Table",
+          "Gowerton & La Gacilly Twinning Association"
+        ],
+        "note": "Some projects were shared with neighbouring wards."
+      },
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
@@ -698,6 +908,64 @@
       "name": "Landore",
       "slug": "landore",
       "page": "/landore",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 145735,
+        "payments": 68,
+        "grants": 18,
+        "themes": [
+          {
+            "name": "Community events, schools and charities",
+            "amount": 50243
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 31998
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 25283
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 16993
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 7140
+          },
+          {
+            "name": "Floral displays",
+            "amount": 7078
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 3520
+          },
+          {
+            "name": "Cleaning and tidier streets",
+            "amount": 3200
+          },
+          {
+            "name": "Murals and community artwork",
+            "amount": 280
+          }
+        ],
+        "groups": [
+          "Friends of Parc Llewelyn",
+          "Parc Llewelyn Community Centre",
+          "Montana Park Community Centre",
+          "Hafod-Morfa Copperworks",
+          "Liberty Church",
+          "Brynhyfryd Library",
+          "Brynhyfryd Primary School",
+          "Hafod Primary School",
+          "Plasmarl Primary School",
+          "Pentrehafod Comprehensive"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -775,6 +1043,71 @@
       "name": "Llansamlet",
       "slug": "llansamlet",
       "page": "/llansamlet",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 247035,
+        "payments": 130,
+        "grants": 39,
+        "themes": [
+          {
+            "name": "Christmas lights and events",
+            "amount": 88453
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 50367
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 35871
+          },
+          {
+            "name": "Floral displays",
+            "amount": 21637
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 15962
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 2445
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 2300
+          }
+        ],
+        "coming": [
+          {
+            "name": "A skate and pump track at Heol Las"
+          }
+        ],
+        "groups": [
+          "Birchgrove Food Bank",
+          "Birchgrove Community Centre",
+          "Royal British Legion",
+          "Birchgrove Primary School PTA",
+          "Talycopa Primary School",
+          "Birchgrove Dragonflies girls football",
+          "AFC Glais",
+          "Glais RFC",
+          "Glais Community Centre",
+          "Glais Community Development Trust",
+          "Trallwn Community Centre",
+          "Llansamlet Men's Shed",
+          "Llansamlet Bowls Club",
+          "Heol Las Park Cricket Club",
+          "Parish of Llansamlet",
+          "St Samlet's Church",
+          "Inclusability CIC",
+          "Friends of Primrose Park",
+          "Tiny Swans",
+          "Sight Life"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -1180,6 +1513,54 @@
       "name": "Mynyddbach",
       "slug": "mynyddbach",
       "page": "/mynyddbach",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 135753,
+        "payments": 21,
+        "grants": 7,
+        "themes": [
+          {
+            "name": "Roads, parking and safety",
+            "amount": 91508
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 14715
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 14395
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 8040
+          },
+          {
+            "name": "Cleaning and tidier streets",
+            "amount": 710
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 385
+          }
+        ],
+        "coming": [
+          {
+            "name": "Drainage and a new path at Cwmgelli Community Allotments"
+          }
+        ],
+        "groups": [
+          "Treboeth United FC",
+          "Faith in Families",
+          "Grace Church",
+          "Pen-y-Bryn School",
+          "St Alban's Church Hall",
+          "Swansea Silver Rhythmaires",
+          "Merched y Wawr"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -1265,6 +1646,63 @@
       "name": "Penclawdd",
       "slug": "penclawdd",
       "page": "/penclawdd",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 65026,
+        "payments": 65,
+        "grants": 9,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 17725
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 16596
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 11007
+          },
+          {
+            "name": "Sport and clubs",
+            "amount": 6400
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 3975
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 1224
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 600
+          }
+        ],
+        "coming": [
+          {
+            "name": "A men's shed, workshop and classroom at Graig y Coed"
+          }
+        ],
+        "groups": [
+          "Penclawdd RFC",
+          "Penclawdd AFC",
+          "Penclawdd Brass Band",
+          "Penclawdd Community Centre",
+          "Penclawdd Primary School",
+          "Llanmorlais & District Community Hall Trust",
+          "Llanmorlais Carnival",
+          "Gower Voluntary Transport",
+          "Gower Commons Safety Action Group",
+          "Tabernacle Church Mother & Toddler Group",
+          "The Sharing Table",
+          "Llanrhidian Higher Community Council"
+        ]
+      },
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
@@ -1334,6 +1772,58 @@
       "name": "Penderry",
       "slug": "penderry",
       "page": "/penderry",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 106744,
+        "payments": 38,
+        "grants": 25,
+        "themes": [
+          {
+            "name": "Community events, schools and charities",
+            "amount": 15900
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 15520
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 15348
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 13472
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 1539
+          },
+          {
+            "name": "Defibrillators, bleed kits and knife-crime work",
+            "amount": 1465
+          }
+        ],
+        "coming": [
+          {
+            "name": "A mini wheels course at Blaen-y-Maes and a skate park at Mynydd Newydd"
+          }
+        ],
+        "groups": [
+          "Blaen-y-Maes Community Centre",
+          "Blaen-y-Maes Drop In Centre",
+          "BYM Food Bank & Housebound Club",
+          "Penderry Community Hub",
+          "Penlan South Community Centre",
+          "Penlan RFC",
+          "Clwyd Community Primary School",
+          "Faith in Families",
+          "Kokomo Karate Club",
+          "Yokoso Karate Club"
+        ],
+        "note": "Some projects were shared with neighbouring wards."
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -1419,6 +1909,72 @@
       "name": "Pontarddulais",
       "slug": "pontarddulais",
       "page": "/pontarddulais",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 55704,
+        "payments": 52,
+        "grants": 22,
+        "themes": [
+          {
+            "name": "Community events, schools and charities",
+            "amount": 13656
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 7975
+          },
+          {
+            "name": "Cleaning and tidier streets",
+            "amount": 7530
+          },
+          {
+            "name": "Floral displays",
+            "amount": 6645
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 5373
+          },
+          {
+            "name": "Murals and community artwork",
+            "amount": 3105
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 1920
+          },
+          {
+            "name": "Sport and clubs",
+            "amount": 250
+          }
+        ],
+        "coming": [
+          {
+            "name": "A dirt track and social area"
+          }
+        ],
+        "groups": [
+          "Pontarddulais Food Bank",
+          "Pontarddulais RFC",
+          "Pontarddulais Football Club",
+          "Pontarddulais Town FC",
+          "Pontarddulais Town Council",
+          "Pontarddulais Car Share",
+          "Robert Davies Court",
+          "The Hollies",
+          "Garnswllt Hall Committee",
+          "Cwrt Community",
+          "Star Dance",
+          "Vision Impaired West Glamorgan",
+          "Welsh Freestyle Kickboxing Club",
+          "The Ivy's men's and women's shed",
+          "Elim Church",
+          "The Sharing Table"
+        ],
+        "note": "Many costs were shared with the ward's other councillor."
+      },
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
@@ -1488,6 +2044,45 @@
       "name": "Pontlliw & Tircoed",
       "slug": "pontlliw-tircoed",
       "page": "/pontlliw-tircoed",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 28646,
+        "payments": 20,
+        "grants": 12,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 11134
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 4860
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 2520
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 1150
+          }
+        ],
+        "coming": [
+          {
+            "name": "Safety barriers and a dug-out at Pontlliw Park"
+          }
+        ],
+        "groups": [
+          "Friends of Pontlliw Park",
+          "Pontlliw Football Club",
+          "11 o'clock Club",
+          "Pontlliw School",
+          "Pontarddulais Food Bank",
+          "The Sharing Table"
+        ]
+      },
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
@@ -1684,6 +2279,64 @@
       "name": "Townhill",
       "slug": "townhill",
       "page": "/townhill",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 163733,
+        "payments": 48,
+        "grants": 19,
+        "themes": [
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 66550
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 19000
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 12425
+          },
+          {
+            "name": "Sport and clubs",
+            "amount": 12100
+          },
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 10951
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 7141
+          },
+          {
+            "name": "Floral displays",
+            "amount": 5216
+          },
+          {
+            "name": "Murals and community artwork",
+            "amount": 350
+          }
+        ],
+        "coming": [
+          {
+            "name": "A skate park at the Phoenix Centre"
+          }
+        ],
+        "groups": [
+          "Phoenix Centre",
+          "Lifepoint Church Food Bank",
+          "Mayhill Washing Lake & Community Food Garden",
+          "Rosehill FC",
+          "Gwent Boxing Club",
+          "Seaview School",
+          "Townhill Community Primary School",
+          "Gors Community Primary School",
+          "The Sharing Table"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
@@ -1783,6 +2436,59 @@
       "name": "Waunarlwydd",
       "slug": "waunarlwydd",
       "page": "/waunarlwydd",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 72400,
+        "payments": 49,
+        "grants": 11,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 22304
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 13950
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 11937
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 3765
+          },
+          {
+            "name": "Christmas lights and events",
+            "amount": 2500
+          },
+          {
+            "name": "Sport and clubs",
+            "amount": 2500
+          },
+          {
+            "name": "Floral displays",
+            "amount": 400
+          }
+        ],
+        "coming": [
+          {
+            "name": "New safety surfacing at Victoria Park"
+          }
+        ],
+        "groups": [
+          "CÃ´r Waunarlwydd",
+          "Waunarlwydd Community Centre",
+          "Waunarlwydd Carnival Committee",
+          "Waunarlwydd RFC",
+          "Waunarlwydd Galaxy",
+          "Waunarlwydd Bowls Club",
+          "SPECS Spectrum CIC",
+          "Ysgol y Login Fach"
+        ]
+      },
       "pledgeHeading": "My Pledges",
       "pledges": [
         {
@@ -1851,6 +2557,44 @@
       "name": "West Cross",
       "slug": "west-cross",
       "page": "/west-cross",
+      "newLayout": true,
+      "budget": {
+        "period": "2022–27",
+        "asOf": "5 November 2026",
+        "used": 121524,
+        "payments": 23,
+        "grants": 3,
+        "themes": [
+          {
+            "name": "Parks, play and green spaces",
+            "amount": 45560
+          },
+          {
+            "name": "Roads, parking and safety",
+            "amount": 31159
+          },
+          {
+            "name": "Community events, schools and charities",
+            "amount": 10406
+          },
+          {
+            "name": "Grants to local groups, clubs and events",
+            "amount": 5900
+          }
+        ],
+        "coming": [
+          {
+            "name": "A better path and access ramp at Washing House Brook, near Oystermouth Castle"
+          }
+        ],
+        "groups": [
+          "Red Community Project",
+          "West Cross Community Centre",
+          "Llwynderw School",
+          "Mayals Primary School",
+          "The Sharing Table"
+        ]
+      },
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {

@@ -315,7 +315,8 @@
     if (n >= 1e4) return "£" + Math.round(n / 1e3) + "k";
     return money(n);
   }
-  function norm(s) { return String(s || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z]/g, ""); }
+  // accents folded first, so "Bôn-y-maen" matches "Bonymaen" in capital.json
+  function norm(s) { return String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/&/g, "and").replace(/[^a-z]/g, ""); }
 
   // "Investing in <ward>": the council's capital spend in the ward since 2022, from capital.json
   function buildCapital(ward, cap) {
