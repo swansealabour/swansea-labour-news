@@ -106,6 +106,9 @@
     return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\band\b/g, "&").replace(/[^a-z&]/g, "");
   }
   function monthYear(s) {
+    // "FY2022-23" (resurfacing list, financial year only) -> "2022–23"
+    var fy = /^FY(\d{4})-(\d{2})$/.exec(s || "");
+    if (fy) return fy[1] + "–" + fy[2];
     var d = new Date(s && s.length === 7 ? s + "-01" : s);
     return isNaN(d) ? "" : d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
   }

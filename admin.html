@@ -1027,7 +1027,7 @@ function editProject(id) {
     const lat = parseFloat(f.lat.value), lng = parseFloat(f.lng.value);
     if (!f.title.value.trim() || !f.summary.value.trim()) return setStatus("A project needs a title and a summary.", "err");
     if (!isFinite(lat) || !isFinite(lng)) return setStatus("Choose a location so the project can go on the map.", "err");
-    if (!/^\d{4}-\d{2}$/.test(f.date.value.trim())) return setStatus("Date should look like 2026-09.", "err");
+    if (!/^(\d{4}-\d{2}|FY\d{4}-\d{2})$/.test(f.date.value.trim())) return setStatus("Date should look like 2026-09 (or FY2024-25 for a financial year).", "err");
     const item = {
       id: p.id || slugify(f.title.value).slice(0, 60) + "-" + Date.now().toString(36).slice(-4),
       title: f.title.value.trim(), date: f.date.value.trim(), theme: f.theme.value, status: f.status.value,
@@ -1038,7 +1038,9 @@ function editProject(id) {
       setStatus("Saving…");
       const fresh = await readJson(conn.site, "delivery.json");
       const data = fresh ? fresh.data : { projects: [] };
-      data.projects = [item, ...data.projects.filter((x) => x.id !== item.id)].sort((a, b) => b.date.localeCompare(a.date));
+      // financial-year dates ("FY2024-25") sort as the end of that year (2025-03)
+      const sortKey = (d) => { const m = /^FY(\d{4})-\d{2}$/.exec(d || ""); return m ? (+m[1] + 1) + "-03" : (d || ""); };
+      data.projects = [item, ...data.projects.filter((x) => x.id !== item.id)].sort((a, b) => sortKey(b.date).localeCompare(sortKey(a.date)));
       data.updated = new Date().toISOString().slice(0, 10);
       await writeJson(conn.site, "delivery.json", data, fresh && fresh.sha, `Map: ${item.title}`);
       await loadAll(); showTab("map");

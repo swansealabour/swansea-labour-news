@@ -1,6 +1,454 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-07",
   "projects": [
+    {
+      "id": "chestnut-avenue-to-be-resurfaced-west-cross",
+      "title": "Chestnut Avenue to be resurfaced, West Cross",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.58872,
+      "lng": -4.01551,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "princess-way-to-be-resurfaced-city-centre",
+      "title": "Princess Way to be resurfaced, city centre",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Possibly due to be resurfaced by 2027, to be confirmed.",
+      "lat": 51.61801,
+      "lng": -3.94098,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "higher-lane-to-be-resurfaced-newton",
+      "title": "Higher Lane to be resurfaced, Newton",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.56987,
+      "lng": -3.99459,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "oystermouth-road-to-be-resurfaced-sandfields",
+      "title": "Oystermouth Road to be resurfaced, Sandfields",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.61322,
+      "lng": -3.95497,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "alexandra-road-to-be-resurfaced-gorseinon",
+      "title": "Alexandra Road to be resurfaced, Gorseinon",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.66903,
+      "lng": -4.04613,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "pontarddulais-road-to-be-resurfaced-fforestfach",
+      "title": "Pontarddulais Road to be resurfaced, Fforestfach",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.65144,
+      "lng": -3.9887,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "dyfatty-street-to-be-resurfaced",
+      "title": "Dyfatty Street to be resurfaced",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.62778,
+      "lng": -3.94402,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "fabian-way-park-and-ride-to-be-resurfaced",
+      "title": "Fabian Way park and ride to be resurfaced",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.62171,
+      "lng": -3.90957,
+      "ward": "St Thomas",
+      "councilWard": "St Thomas",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "lane-behind-st-helens-crescent-to-be-resurfaced-uplands",
+      "title": "Lane behind St Helen's Crescent to be resurfaced, Uplands",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "The rear lane of St Helen's Crescent is due to be resurfaced by 2027.",
+      "lat": 51.61493,
+      "lng": -3.95974,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "cefn-road-to-be-resurfaced-bonymaen",
+      "title": "Cefn Road to be resurfaced, Bonymaen",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.64349,
+      "lng": -3.90175,
+      "ward": "Bôn-y-maen",
+      "councilWard": "Bôn-y-maen",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "plasmarl-roundabout-to-be-resurfaced",
+      "title": "Plasmarl roundabout to be resurfaced",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.6491,
+      "lng": -3.93351,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "llwyn-mawr-road-to-be-resurfaced-sketty",
+      "title": "Llwyn Mawr Road to be resurfaced, Sketty",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.63102,
+      "lng": -3.99921,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "a48-to-be-resurfaced-felindre-roundabout-to-bryntywod",
+      "title": "A48 to be resurfaced, Felindre roundabout to Bryntywod",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced from Felindre roundabout to Bryntywod by 2027.",
+      "lat": 51.67433,
+      "lng": -3.9622,
+      "ward": "",
+      "councilWard": "Llangyfelach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "beech-crescent-to-be-resurfaced-gorseinon",
+      "title": "Beech Crescent to be resurfaced, Gorseinon",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.67663,
+      "lng": -4.05294,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "players-avenue-to-be-resurfaced-clydach",
+      "title": "Players Avenue to be resurfaced, Clydach",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.6992,
+      "lng": -3.9053,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "glebe-road-to-be-resurfaced-loughor",
+      "title": "Glebe Road to be resurfaced, Loughor",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.66365,
+      "lng": -4.06045,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "mill-lane-to-be-resurfaced-llanrhidian",
+      "title": "Mill Lane to be resurfaced, Llanrhidian",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.60817,
+      "lng": -4.17095,
+      "ward": "",
+      "councilWard": "Gower",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heol-dulais-to-be-resurfaced-birchgrove",
+      "title": "Heol Dulais to be resurfaced, Birchgrove",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.66972,
+      "lng": -3.88019,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "port-tennant-road-to-be-resurfaced-st-thomas",
+      "title": "Port Tennant Road to be resurfaced, St Thomas",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.62165,
+      "lng": -3.92639,
+      "ward": "St Thomas",
+      "councilWard": "St Thomas",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "danygraig-road-to-be-resurfaced-st-thomas",
+      "title": "Danygraig Road to be resurfaced, St Thomas",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.62364,
+      "lng": -3.91425,
+      "ward": "St Thomas",
+      "councilWard": "St Thomas",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heol-cadifor-to-be-resurfaced-tirdeunaw",
+      "title": "Heol Cadifor to be resurfaced, Tirdeunaw",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Planned",
+      "summary": "Due to be resurfaced by 2027.",
+      "lat": 51.65382,
+      "lng": -3.95877,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "christopher-road-resurfaced-ynysforgan",
+      "title": "Christopher Road resurfaced, Ynysforgan",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced so far in the 2026–27 financial year.",
+      "lat": 51.68192,
+      "lng": -3.91108,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heol-maes-eglwys-resurfaced",
+      "title": "Heol Maes Eglwys resurfaced",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced so far in the 2026–27 financial year.",
+      "lat": 51.68048,
+      "lng": -3.92783,
+      "ward": "Morriston",
+      "councilWard": "Morriston",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "pant-y-blawd-road-b4625-resurfaced-llansamlet",
+      "title": "Pant-y-Blawd Road (B4625) resurfaced, Llansamlet",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced so far in the 2026–27 financial year.",
+      "lat": 51.66649,
+      "lng": -3.9172,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "foxhole-road-resurfaced-st-thomas",
+      "title": "Foxhole Road resurfaced, St Thomas",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced so far in the 2026–27 financial year.",
+      "lat": 51.62887,
+      "lng": -3.93273,
+      "ward": "St Thomas",
+      "councilWard": "St Thomas",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "hendrefoilan-avenue-and-drive-resurfaced-sketty",
+      "title": "Hendrefoilan Avenue and Drive resurfaced, Sketty",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced so far in the 2026–27 financial year.",
+      "lat": 51.62222,
+      "lng": -4.00192,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "oldwalls-to-llanmadoc-road-resurfaced-gower",
+      "title": "Oldwalls to Llanmadoc road resurfaced, Gower",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced on the road from Oldwalls to Llanmadoc, so far in the 2026–27 financial year.",
+      "lat": 51.6214,
+      "lng": -4.24934,
+      "ward": "",
+      "councilWard": "Gower",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "mond-mini-roundabout-resurfaced-clydach",
+      "title": "Mond mini roundabout resurfaced, Clydach",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced at the mini roundabout by the Mond works, so far in the 2026–27 financial year.",
+      "lat": 51.69376,
+      "lng": -3.88995,
+      "ward": "",
+      "councilWard": "Clydach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
     {
       "id": "clyne-gardens-japanese-bridge-restoration",
       "title": "Clyne Gardens Japanese Bridge restoration",
@@ -511,6 +959,38 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/article/45889/Rain-gardens-installed-in-Swansea-communities"
+      }
+    },
+    {
+      "id": "brynmill-lane-resurfaced-uplands",
+      "title": "Brynmill Lane resurfaced, Uplands",
+      "date": "FY2025-26",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2025–26 financial year.",
+      "lat": 51.61457,
+      "lng": -3.9749,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gors-avenue-resurfaced-up-to-carmarthen-road",
+      "title": "Gors Avenue resurfaced up to Carmarthen Road",
+      "date": "FY2025-26",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from Gors Avenue to Carmarthen Road, in the 2025–26 financial year.",
+      "lat": 51.63208,
+      "lng": -3.97695,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
       }
     },
     {
@@ -1410,6 +1890,214 @@
       }
     },
     {
+      "id": "ysgubor-fach-street-resurfaced-waun-wen",
+      "title": "Ysgubor Fach Street resurfaced, Waun Wen",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.63442,
+      "lng": -3.94658,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gendros-crescent-resurfaced-gendros",
+      "title": "Gendros Crescent resurfaced, Gendros",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.63755,
+      "lng": -3.96613,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "carmarthen-road-resurfaced-cockett",
+      "title": "Carmarthen Road resurfaced, Cockett",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.64336,
+      "lng": -3.98059,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "st-johns-road-resurfaced-cwmbwrla",
+      "title": "St John's Road resurfaced, Cwmbwrla",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.6426,
+      "lng": -3.95341,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "lime-street-resurfaced-gorseinon",
+      "title": "Lime Street resurfaced, Gorseinon",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.66847,
+      "lng": -4.03926,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gorwydd-road-resurfaced-waunarlwydd",
+      "title": "Gorwydd Road resurfaced, Waunarlwydd",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.64251,
+      "lng": -4.02935,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "bryn-road-resurfaced-loughor",
+      "title": "Bryn Road resurfaced, Loughor",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.66737,
+      "lng": -4.05481,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "llangyfelach-road-resurfaced-llangyfelach",
+      "title": "Llangyfelach Road resurfaced, Llangyfelach",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.67174,
+      "lng": -3.95978,
+      "ward": "",
+      "councilWard": "Llangyfelach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "brynymor-road-penclawdd-road-and-gowerton-road-resurfaced",
+      "title": "Brynymor Road, Penclawdd Road and Gowerton Road resurfaced",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.64501,
+      "lng": -4.08395,
+      "ward": "Penclawdd",
+      "councilWard": "Pen-clawdd",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "pentregethin-road-resurfaced-blaenymaes",
+      "title": "Pentregethin Road resurfaced, Blaenymaes",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.65416,
+      "lng": -3.9859,
+      "ward": "Penderry",
+      "councilWard": "Penderry",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "home-farm-way-resurfaced-penllergaer",
+      "title": "Home Farm Way resurfaced, Penllergaer",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.66982,
+      "lng": -3.99119,
+      "ward": "",
+      "councilWard": "Penllergaer",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "ceri-road-resurfaced-townhill",
+      "title": "Ceri Road resurfaced, Townhill",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.62984,
+      "lng": -3.97035,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "beechwood-road-resurfaced-uplands",
+      "title": "Beechwood Road resurfaced, Uplands",
+      "date": "FY2024-25",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2024–25 financial year.",
+      "lat": 51.61699,
+      "lng": -3.97212,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
       "id": "bethel-road-resurfaced-llansamlet",
       "title": "Bethel Road resurfaced, Llansamlet",
       "date": "2025-03",
@@ -1871,6 +2559,230 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/Olchfapitchopening"
+      }
+    },
+    {
+      "id": "gors-avenue-resurfaced-by-gors-community-school",
+      "title": "Gors Avenue resurfaced by Gors Community School",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced outside Gors Community School, in the 2023–24 financial year.",
+      "lat": 51.63173,
+      "lng": -3.98066,
+      "ward": "Cockett",
+      "councilWard": "Cockett",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gowerton-bypass-a484-resurfaced",
+      "title": "Gowerton bypass (A484) resurfaced",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.65635,
+      "lng": -4.03851,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "neath-road-resurfaced-plasmarl",
+      "title": "Neath Road resurfaced, Plasmarl",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.64596,
+      "lng": -3.93622,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "church-road-and-walters-road-resurfaced-llansamlet",
+      "title": "Church Road and Walters Road resurfaced, Llansamlet",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.6696,
+      "lng": -3.89287,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "st-peters-road-resurfaced-newton",
+      "title": "St Peter's Road resurfaced, Newton",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.57347,
+      "lng": -4.01808,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "llangyfelach-road-resurfaced-treboeth",
+      "title": "Llangyfelach Road resurfaced, Treboeth",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.64966,
+      "lng": -3.94823,
+      "ward": "Mynyddbach",
+      "councilWard": "Mynydd-bach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "cwm-level-road-resurfaced-landore",
+      "title": "Cwm Level Road resurfaced, Landore",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.64672,
+      "lng": -3.94107,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "station-road-resurfaced-penclawdd",
+      "title": "Station Road resurfaced, Penclawdd",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.64191,
+      "lng": -4.10129,
+      "ward": "Penclawdd",
+      "councilWard": "Pen-clawdd",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heol-ddu-resurfaced-treboeth",
+      "title": "Heol Ddu resurfaced, Treboeth",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.65866,
+      "lng": -3.9535,
+      "ward": "Mynyddbach",
+      "councilWard": "Mynydd-bach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "old-a48-resurfaced-by-the-lliw-valley-offices-penllergaer",
+      "title": "Old A48 resurfaced by the Lliw Valley offices, Penllergaer",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced on the old A48 by the former Lliw Valley council offices, in the 2023–24 financial year.",
+      "lat": 51.6748,
+      "lng": -3.98112,
+      "ward": "",
+      "councilWard": "Llangyfelach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "mumbles-road-resurfaced-singleton",
+      "title": "Mumbles Road resurfaced, Singleton",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.607,
+      "lng": -3.9862,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "tycoch-road-resurfaced-tycoch",
+      "title": "Tycoch Road resurfaced, Tycoch",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.62183,
+      "lng": -3.9852,
+      "ward": "",
+      "councilWard": "Sketty",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gors-avenue-resurfaced-mayhill",
+      "title": "Gors Avenue resurfaced, Mayhill",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.63251,
+      "lng": -3.9574,
+      "ward": "Townhill",
+      "councilWard": "Townhill",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "west-cross-lane-resurfaced-west-cross",
+      "title": "West Cross Lane resurfaced, West Cross",
+      "date": "FY2023-24",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2023–24 financial year.",
+      "lat": 51.58445,
+      "lng": -4.01428,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
       }
     },
     {
@@ -2383,6 +3295,518 @@
       "source": {
         "name": "Swansea Council",
         "url": "https://www.swansea.gov.uk/article/22484/Former-council-building-transformed-into-spectacular-new-homes"
+      }
+    },
+    {
+      "id": "carmarthen-road-resurfaced-dyfatty",
+      "title": "Carmarthen Road resurfaced, Dyfatty",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from the Ysgubor Fach Street junction to the Dyfatty lights, in the 2022–23 financial year.",
+      "lat": 51.631,
+      "lng": -3.9447,
+      "ward": "Castle",
+      "councilWard": "Castle",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "pentregethin-road-resurfaced-cwmbwrla",
+      "title": "Pentregethin Road resurfaced, Cwmbwrla",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from the Elgin Street junction to Cwmbwrla roundabout, in the 2022–23 financial year.",
+      "lat": 51.63969,
+      "lng": -3.95703,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "penfilia-road-resurfaced-brynhyfryd",
+      "title": "Penfilia Road resurfaced, Brynhyfryd",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from outside the Manselton Hotel to Brynhyfryd Cross, in the 2022–23 financial year.",
+      "lat": 51.64465,
+      "lng": -3.94576,
+      "ward": "Mynyddbach",
+      "councilWard": "Mynydd-bach",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "brondeg-crescent-resurfaced-manselton",
+      "title": "Brondeg Crescent resurfaced, Manselton",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.63942,
+      "lng": -3.95512,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "vicarage-lane-resurfaced-cwmbwrla",
+      "title": "Vicarage Lane resurfaced, Cwmbwrla",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.63711,
+      "lng": -3.96314,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "harlington-road-resurfaced-cwmbwrla",
+      "title": "Harlington Road resurfaced, Cwmbwrla",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.63708,
+      "lng": -3.96368,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "bohun-street-resurfaced-manselton",
+      "title": "Bohun Street resurfaced, Manselton",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.63999,
+      "lng": -3.94778,
+      "ward": "",
+      "councilWard": "Cwmbwrla",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "killan-road-resurfaced-dunvant",
+      "title": "Killan Road resurfaced, Dunvant",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.62636,
+      "lng": -4.04025,
+      "ward": "Dunvant & Killay",
+      "councilWard": "Dunvant and Killay",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "hen-parc-lane-resurfaced-killay",
+      "title": "Hen Parc Lane resurfaced, Killay",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from Gower Road to Blackhills, in the 2022–23 financial year.",
+      "lat": 51.60983,
+      "lng": -4.03399,
+      "ward": "",
+      "councilWard": "Fairwood",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "blackhills-lane-resurfaced-killay",
+      "title": "Blackhills Lane resurfaced, Killay",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from the A4118 junction to Hen Parc Lane, in the 2022–23 financial year.",
+      "lat": 51.60295,
+      "lng": -4.05223,
+      "ward": "",
+      "councilWard": "Fairwood",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "gorseinon-town-centre-junction-resurfaced",
+      "title": "Gorseinon town centre junction resurfaced",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced at the junction of High Street, Heol y Mynydd and Gorseinon Road, in the 2022–23 financial year.",
+      "lat": 51.67014,
+      "lng": -4.03347,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "coalbrook-road-resurfaced-gorseinon",
+      "title": "Coalbrook Road resurfaced, Gorseinon",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from No. 103 to the Box Road junction, in the 2022–23 financial year.",
+      "lat": 51.68495,
+      "lng": -4.03943,
+      "ward": "Gorseinon & Penyrheol",
+      "councilWard": "Gorseinon and Penyrheol",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "brynymor-road-resurfaced-gowerton",
+      "title": "Brynymor Road resurfaced, Gowerton",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.64952,
+      "lng": -4.05283,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "sterry-road-resurfaced-gowerton",
+      "title": "Sterry Road resurfaced, Gowerton",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.64772,
+      "lng": -4.03914,
+      "ward": "Gowerton",
+      "councilWard": "Gowerton",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "road-to-horton-resurfaced-gower",
+      "title": "Road to Horton resurfaced, Gower",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced on the road from the A4118 to Horton, in the 2022–23 financial year.",
+      "lat": 51.55143,
+      "lng": -4.20249,
+      "ward": "",
+      "councilWard": "Gower",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "south-gower-road-resurfaced-llanddewi-to-scurlage",
+      "title": "South Gower road resurfaced, Llanddewi to Scurlage",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced between Llanddewi and Scurlage, in the 2022–23 financial year.",
+      "lat": 51.56633,
+      "lng": -4.21717,
+      "ward": "",
+      "councilWard": "Gower",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "cwm-level-roundabout-resurfaced-landore",
+      "title": "Cwm Level roundabout resurfaced, Landore",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced at the A4067 Cwm Level roundabout, in the 2022–23 financial year.",
+      "lat": 51.6448,
+      "lng": -3.9351,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "normandy-road-resurfaced-landore",
+      "title": "Normandy Road resurfaced, Landore",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.64129,
+      "lng": -3.93273,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "mannesmann-close-resurfaced-llansamlet",
+      "title": "Mannesmann Close resurfaced, Llansamlet",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.65879,
+      "lng": -3.90517,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "birchgrove-road-resurfaced-in-three-phases",
+      "title": "Birchgrove Road resurfaced in three phases",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in three phases, from outside St John's Church to the Bowens Arms, in the 2022–23 financial year.",
+      "lat": 51.67325,
+      "lng": -3.87547,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "nantyffin-road-and-jersey-road-resurfaced-bonymaen",
+      "title": "Nantyffin Road and Jersey Road resurfaced, Bonymaen",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.65382,
+      "lng": -3.90531,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "trallwn-road-resurfaced-llansamlet",
+      "title": "Trallwn Road resurfaced, Llansamlet",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.65316,
+      "lng": -3.88983,
+      "ward": "Llansamlet",
+      "councilWard": "Llansamlet",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "castle-street-resurfaced-loughor",
+      "title": "Castle Street resurfaced, Loughor",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.66328,
+      "lng": -4.07401,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "clos-llandyfan-resurfaced-kingsbridge",
+      "title": "Clos Llandyfan resurfaced, Kingsbridge",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.6622,
+      "lng": -4.04614,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "taliesin-place-resurfaced-loughor",
+      "title": "Taliesin Place resurfaced, Loughor",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.6667,
+      "lng": -4.07023,
+      "ward": "Llwchwr",
+      "councilWard": "Llwchwr",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heneage-drive-resurfaced-mayals",
+      "title": "Heneage Drive resurfaced, Mayals",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.59291,
+      "lng": -3.99983,
+      "ward": "",
+      "councilWard": "Mayals",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "mumbles-road-resurfaced-mumbles-village",
+      "title": "Mumbles Road resurfaced, Mumbles village",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from the White Rose to Myrtle Terrace, in the 2022–23 financial year.",
+      "lat": 51.57294,
+      "lng": -3.99595,
+      "ward": "",
+      "councilWard": "Mumbles",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "trewyddfa-road-resurfaced-phase-2",
+      "title": "Trewyddfa Road resurfaced (phase 2)",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.64848,
+      "lng": -3.93956,
+      "ward": "Landore",
+      "councilWard": "Landore",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "pentre-road-resurfaced-pontarddulais",
+      "title": "Pentre Road resurfaced, Pontarddulais",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced from the Bolgoed Road junction to No. 97, in the 2022–23 financial year.",
+      "lat": 51.70466,
+      "lng": -4.03748,
+      "ward": "Pontarddulais",
+      "councilWard": "Pontarddulais",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "heol-y-twyn-resurfaced-pontlliw",
+      "title": "Heol y Twyn resurfaced, Pontlliw",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.69196,
+      "lng": -4.01249,
+      "ward": "Pontlliw & Tircoed",
+      "councilWard": "Pontlliw and Tircoed",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "the-grove-resurfaced-uplands",
+      "title": "The Grove resurfaced, Uplands",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.61909,
+      "lng": -3.96738,
+      "ward": "",
+      "councilWard": "Uplands",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "brookvale-road-resurfaced-west-cross",
+      "title": "Brookvale Road resurfaced, West Cross",
+      "date": "FY2022-23",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "Resurfaced in the 2022–23 financial year.",
+      "lat": 51.5862,
+      "lng": -4.00812,
+      "ward": "West Cross",
+      "councilWard": "West Cross",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
       }
     },
     {
