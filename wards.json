@@ -6,6 +6,14 @@
       "slug": "bonymaen",
       "page": "/bonymaen",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£300k on roads and pavements, including Mansel Road and Cwm Chapel Road, and 939 potholes repaired." },
+        { "title": "Safer streets", "text": "Speed humps and signs on Bonymaen Road, new railings, double yellow lines on Carmel Road and new pavements on Caldicot Road." },
+        { "title": "Cleaner streets", "text": "New litter bins on Jersey Road, Brokesby Road, Cefn Road, Caldicot Road and Mansel Road, emptied and maintained." },
+        { "title": "Play and sport", "text": "The Bonymaen and Brokesby Road play areas made over, and a £7.5m indoor sports barn and leisure centre at Cefn Hengoed." },
+        { "title": "Better schools", "text": "£704k improving local schools and £270k on school buildings." },
+        { "title": "Backing local groups", "text": "Support for Swansea Eastside Foodbank, Kilvey Writers, FC Bonymaen and Bonymaen Colts." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -268,6 +276,13 @@
       "slug": "cockett",
       "page": "/cockett",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£679k on roads and pavements, including Carmarthen Road, Gendros Crescent and Middle Road, and 913 potholes repaired." },
+        { "title": "Safer roads", "text": "A renewed crossing on Pentregethin Road, new bus stops on Ystrad Road and pedestrian guard rails on Cave Street." },
+        { "title": "Better play areas", "text": "Gendros and Denver Road play areas upgraded, with Raven Hill Park refurbishment on the way." },
+        { "title": "Better schools", "text": "£988k improving local schools and £1.1m on school buildings." },
+        { "title": "Backing local groups", "text": "18 grants to groups including Fforestfach FC Juniors, Fforestfach Scouts, Swansea Community Farm and Gendros Community Centre." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -414,6 +429,13 @@
       "slug": "dunvant-killay",
       "page": "/dunvant-killay",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£719k on roads and pavements, including Killan Road, Wimmerfield Drive, Ridgeway and Goetre Fawr Road, and 701 potholes repaired." },
+        { "title": "Better parks", "text": "Dunvant Park play area refurbished, plus a new gate, spinner, play markings and notice board at Dunvant Park and Dunvant Meadow, with a pump track on the way." },
+        { "title": "Supporting schools", "text": "Help for Pen-y-Fro, Dunvant and Hendrefoilan primary schools, from playground equipment to canopies and outdoor storage." },
+        { "title": "Community buildings", "text": "Repairs and new equipment for Dunvant Social Centre and the Killay scout hall, and the Killan Colliery memorial restored." },
+        { "title": "Backing local groups", "text": "Support for Dunvant RFC, Killay and District Lunch Club, Dunvant WI, the Sharing Table and more." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -792,6 +814,13 @@
       "slug": "gowerton",
       "page": "/gowerton",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£843k on roads and pavements, including Cecil Road, Gorwydd Road, Mill Street, Sterry Road and the Elba junction, and 552 potholes repaired." },
+        { "title": "Better schools", "text": "£2.7m improving local schools, with new learning spaces planned at Gowerton School." },
+        { "title": "Walking and cycling", "text": "A new walking and cycling link to Gowerton station, with a railway heritage sculpture beside the route." },
+        { "title": "Parks and sport", "text": "New benches and planting, including on the cycle path and in Gowerton Park, the Elba hockey pitch refurbished, and a skate park at Elba on the way." },
+        { "title": "Backing local groups", "text": "Support for Gowerton RFC, Gowerton Athletic Club, Gowerton Glitterati, the Rechabite Hall and the Sharing Table's Christmas hampers." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -909,6 +938,13 @@
       "slug": "landore",
       "page": "/landore",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£647k on roads and pavements, including Neath Road, Cwm Level Road and roundabout, Normandy Road and Trewyddfa Road, and 469 potholes repaired." },
+        { "title": "New play areas", "text": "New play areas at Rees Row Park and Cwm Level Park, and upgrades at Parc Llewelyn and Hafod Park." },
+        { "title": "Copperworks reborn", "text": "The Hafod-Morfa Copperworks brought back to life, with the Penderyn distillery and a river pontoon, and the bascule bridge and Laboratory Building being restored." },
+        { "title": "Supporting schools", "text": "A new access ramp and grounds at Hafod Primary and new railings at Pentrehafod School, from our community budget." },
+        { "title": "Christmas for families", "text": "Christmas hampers through local schools every year, and support for Parc Llewelyn's Christmas fête." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1044,6 +1080,13 @@
       "slug": "llansamlet",
       "page": "/llansamlet",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£2.3m on roads and pavements, including Birchgrove Road, Valley Way, Bethel Road and Fendrod Way, and 1,796 potholes repaired." },
+        { "title": "Safer walking", "text": "New pavements on Ynysallan Road, giving Parc Bryn Heulog safe walking access." },
+        { "title": "Better play areas", "text": "Play areas at Heol Talycopa, Tregoff Village and Herbert Thomas Way improved, with a skate and pump track at Heol Las on the way." },
+        { "title": "Events and trips", "text": "Christmas hampers for older residents, summer bus trips, floral displays and community events across the ward." },
+        { "title": "Backing local groups", "text": "39 grants, backing Llansamlet Men's Shed, Birchgrove Food Bank, Glais and Trallwn community centres, AFC Glais and more." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1202,6 +1245,13 @@
       "slug": "llwchwr",
       "page": "/llwchwr",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£896k on roads and pavements, including Swansea Road, Bryn Road, Castle Street and the Gowerton bypass, and 766 potholes repaired." },
+        { "title": "New play area", "text": "A new play area at Garden Village, Myrtle Road, with a longer football pitch and nature trail at Loughor Foreshore on the way." },
+        { "title": "Safer roads", "text": "£41k from our community budget on road safety, parking and pavements." },
+        { "title": "Better schools", "text": "£344k improving local schools." },
+        { "title": "Backing local groups", "text": "43 grants to groups including Loughor RFC, Loughor Inshore Rescue, the Sharing Table and Swansea Food Bank." }
+      ],
       "gallery": [
         { "photo": "images/llwchwr-estuary.jpg", "ratio": 1.501, "caption": "By the Loughor estuary", "alt": "Llwchwr's Labour councillors by the Loughor estuary" },
         { "photo": "images/llwchwr-play-area-slide.jpg", "ratio": 0.701, "caption": "At a local play area", "alt": "Llwchwr's Labour councillors by a play area slide" },
@@ -1514,6 +1564,13 @@
       "slug": "mynyddbach",
       "page": "/mynyddbach",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£946k on roads and pavements, including Llangyfelach Road, Heol Ddu, Penfilia Road and Rheidol Avenue, and 699 potholes repaired." },
+        { "title": "Safer streets", "text": "The Penlan Road and Clasemont Road closure scheme, paid for from our community budget." },
+        { "title": "Better schools", "text": "£3.1m improving local schools." },
+        { "title": "Life-saving defibrillators", "text": "New defibrillators across the ward." },
+        { "title": "Backing local groups", "text": "Support for Treboeth United FC, Grace Church, Faith in Families and St Alban's Church Hall, with drainage and a new path at Cwmgelli Allotments on the way." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1647,6 +1704,13 @@
       "slug": "penclawdd",
       "page": "/penclawdd",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£622k on roads and pavements, including the North Gower road from Penclawdd to Oldwalls and Station Road, and 384 potholes repaired." },
+        { "title": "New play area", "text": "The £120,000 pirate ship play area, with a zip wire and inclusive equipment." },
+        { "title": "Community shed", "text": "A community shed, workshop and classroom at Graig y Coed." },
+        { "title": "Safer roads", "text": "Gateway signs, a new lay-by on Hermon Lane and double yellow lines on Hendy Road." },
+        { "title": "Backing local groups", "text": "Support for Penclawdd RFC, Penclawdd AFC, Penclawdd Brass Band and the Llanmorlais carnival." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1681,11 +1745,6 @@
           {
             "name": "Defibrillators, bleed kits and knife-crime work",
             "amount": 600
-          }
-        ],
-        "coming": [
-          {
-            "name": "A men's shed, workshop and classroom at Graig y Coed"
           }
         ],
         "groups": [
@@ -1773,6 +1832,13 @@
       "slug": "penderry",
       "page": "/penderry",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£592k on roads and pavements, including Mynydd Newydd Road and Pentregethin Road, a renewed crossing on Pentregethin Road, and 636 potholes repaired." },
+        { "title": "Skate and games areas", "text": "An upgraded skate park at Mynydd Newydd and a new games area on Broughton Avenue, with a mini wheels course at Blaen-y-Maes on the way." },
+        { "title": "New homes", "text": "New council flats at the former Penlan housing office and the old Sparks youth centre." },
+        { "title": "Community centres", "text": "New sports hall flooring and CCTV at Blaen-y-Maes Community Centre, and safety surfacing at Heol Frank." },
+        { "title": "Backing local groups", "text": "25 grants to groups such as Penderry Community Hub, Blaen-y-Maes Drop In Centre, Penlan RFC and local karate clubs." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -1807,7 +1873,7 @@
         ],
         "coming": [
           {
-            "name": "A mini wheels course at Blaen-y-Maes and a skate park at Mynydd Newydd"
+            "name": "A mini wheels course at Blaen-y-Maes"
           }
         ],
         "groups": [
@@ -1910,6 +1976,13 @@
       "slug": "pontarddulais",
       "page": "/pontarddulais",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£410k on roads and pavements, including Glynhir Road and Pentre Road, and 838 potholes repaired." },
+        { "title": "Skate park and play", "text": "A new skate park at Coed Bach, play areas at Coed Bach Park and Garnswllt upgraded, and a dirt track on the way." },
+        { "title": "Better schools", "text": "£594k improving local schools and £1.1m on school buildings." },
+        { "title": "A brighter town", "text": "Hanging baskets and street cleaning with Pontarddulais Town Council, and a new mural." },
+        { "title": "Backing local groups", "text": "Support for Pontarddulais Food Bank, Pontarddulais RFC, Robert Davies Court, the Hollies and more." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -2045,6 +2118,12 @@
       "slug": "pontlliw-tircoed",
       "page": "/pontlliw-tircoed",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£100k on roads and pavements, including Heol y Twyn, and 64 potholes repaired." },
+        { "title": "Better play", "text": "Pontlliw play area upgraded, with safety barriers and a dug-out at Pontlliw Park on the way." },
+        { "title": "Community hub", "text": "Support for Friends of Pontlliw Park's community hub, warm hub and holiday hunger work." },
+        { "title": "Backing local groups", "text": "Help for Pontlliw Football Club, the 11 o'clock Club, Pontlliw School and Christmas hampers through the food bank." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -2280,6 +2359,14 @@
       "slug": "townhill",
       "page": "/townhill",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£854k on roads and pavements, including Townhill Road, Gors Avenue, High View and Ceri Road, and 419 potholes repaired." },
+        { "title": "Phoenix Centre", "text": "A new skate park, play area and all-weather pitch at the Phoenix Centre, plus help from our community budget for its roof and upgrades." },
+        { "title": "New play areas", "text": "New play areas at Gors Avenue and Long Ridge." },
+        { "title": "Better schools", "text": "A £4.9m new dining hall and games area under way at Townhill Community Primary." },
+        { "title": "Walking and cycling", "text": "The Ravine turned from a fly-tipping hotspot into a walking and cycling route." },
+        { "title": "Tackling food poverty", "text": "Support for the Lifepoint Church and Phoenix Centre food banks and Christmas hampers." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -2437,6 +2524,13 @@
       "slug": "waunarlwydd",
       "page": "/waunarlwydd",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£292k on roads and pavements, including Roseland Road, and 590 potholes repaired." },
+        { "title": "Parks and green spaces", "text": "Planters, benches and planting across the ward, with new safety surfacing at Victoria Park on the way." },
+        { "title": "Safer roads", "text": "£14k from our community budget on road safety and parking." },
+        { "title": "Community events", "text": "Support for Waunarlwydd Community Centre, the carnival, Côr Waunarlwydd and children's Christmas parties." },
+        { "title": "Local sport", "text": "Kit for Waunarlwydd RFC juniors and Waunarlwydd Galaxy, and help for the bowls club." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -2479,7 +2573,7 @@
           }
         ],
         "groups": [
-          "CÃ´r Waunarlwydd",
+          "Côr Waunarlwydd",
           "Waunarlwydd Community Centre",
           "Waunarlwydd Carnival Committee",
           "Waunarlwydd RFC",
@@ -2558,6 +2652,13 @@
       "slug": "west-cross",
       "page": "/west-cross",
       "newLayout": true,
+      "delivered": [
+        { "title": "Roads and pavements", "text": "£539k on roads and pavements, including West Cross Avenue, Westland Avenue, West Cross Lane and Brookvale Road, and 409 potholes repaired." },
+        { "title": "Play and outdoors", "text": "New play areas at West Cross Woodland and on the seafront, Yalton play area upgraded, and a trim trail and space net in West Cross Woods." },
+        { "title": "Safer roads", "text": "A crossing at Llwynderw School and bollards outside Mayals Primary." },
+        { "title": "New homes", "text": "Six new energy-saving council bungalows at The Circle." },
+        { "title": "Community centre", "text": "New lighting at West Cross Community Centre, with better access at Washing House Brook on the way." }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
