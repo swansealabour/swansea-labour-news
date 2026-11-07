@@ -63,6 +63,8 @@
     "#sl-map .slm-actions{font-size:.9em}" +
     "#sl-map .slm-actions button{background:none;border:0;padding:0;font:inherit;color:#E4003B;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}" +
     "#sl-map .slm-actions a{color:inherit}" +
+    "#sl-map .slm-more{display:block;margin:22px auto 0;padding:10px 22px;border:0;border-radius:999px;background:#E4003B;color:#fff;font:inherit;font-weight:600;cursor:pointer}" +
+    "#sl-map .slm-more[hidden]{display:none}" +
     "#sl-map .slm-imprint{margin-top:2em;font-size:.85em;opacity:.75}" +
     "#sl-map .slm-invest{background:#E4003B;color:#fff;border-radius:8px;border-bottom:6px solid #FBE70D;padding:18px 22px;margin:0 0 16px}" +
     "#sl-map .slm-invest[hidden]{display:none}" +
@@ -215,7 +217,10 @@
     var canvas = el("div", "slm-canvas");
     canvas.style.height = height + "px";
     root.appendChild(canvas);
-    var map = L.map(canvas, { scrollWheelZoom: false, tap: true });
+    // zoomSnap .25: fitting all of Swansea into a phone-width map can use an in-between zoom level
+    // instead of rounding right down to a view of half of south Wales
+    var map = L.map(canvas, { scrollWheelZoom: false, tap: true, zoomSnap: 0.25 });
+    var fitPad = canvas.offsetWidth < 500 ? [8, 8] : [30, 30];
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -225,6 +230,21 @@
 
     var list = showList ? el("ul", "slm-list") : null;
     if (list) root.appendChild(list);
+    // The list shows PAGE items at a time (255+ pins makes a very long page on a phone)
+    var PAGE = 24, shown = PAGE, lastVisible = [];
+    var more = el("button", "slm-more");
+    more.type = "button";
+    more.onclick = function () { shown += PAGE; drawList(); };
+    if (list) root.appendChild(more);
+    function drawList() {
+      if (!list) return;
+      lastVisible.forEach(function (it, i) {
+        if (i < shown) list.appendChild(it.li); else if (it.li.parentNode) it.li.parentNode.removeChild(it.li);
+      });
+      var left = lastVisible.length - shown;
+      more.hidden = left <= 0;
+      more.textContent = "Show more (" + Math.max(left, 0) + " left)";
+    }
 
     function popup(p) {
       var d = el("div", "slm-pop");
@@ -278,19 +298,20 @@
       items.forEach(function (it) {
         var ok = activeThemes[it.p.theme] !== false && (!w || norm(it.p.ward || it.p.councilWard) === norm(w));
         if (ok) { it.marker.addTo(map); visible.push(it); } else { it.marker.remove(); }
-        if (it.li) { if (ok) list.appendChild(it.li); else if (it.li.parentNode) it.li.parentNode.removeChild(it.li); }
+        if (it.li && !ok && it.li.parentNode) it.li.parentNode.removeChild(it.li);
       });
+      lastVisible = visible; shown = PAGE; drawList();
       count.textContent = visible.length + (visible.length === 1 ? " project" : " projects") + " on the map" + (w ? " in " + w : " across Swansea");
       if (capWards.length) showInvest(w);
       if (fit && visible.length) {
         var b = L.latLngBounds(visible.map(function (it) { return [it.p.lat, it.p.lng]; }));
-        map.fitBounds(b, { padding: [30, 30], maxZoom: 15 });
+        map.fitBounds(b, { padding: fitPad, maxZoom: 15 });
       }
     }
     apply(false);
     var start = items.filter(function (it) { return !wardSel.value || norm(it.p.ward || it.p.councilWard) === norm(wardSel.value); });
     if (!start.length) start = items; // a ward with figures but no pins yet
-    map.fitBounds(L.latLngBounds(start.map(function (it) { return [it.p.lat, it.p.lng]; })), { padding: [30, 30], maxZoom: 15 });
+    map.fitBounds(L.latLngBounds(start.map(function (it) { return [it.p.lat, it.p.lng]; })), { padding: fitPad, maxZoom: 15 });
 
     if (showImprint && news && news.imprint) root.appendChild(el("p", "slm-imprint", news.imprint));
   }).catch(function () {
