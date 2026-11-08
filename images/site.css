@@ -1,0 +1,619 @@
+/* Swansea Labour site style (out-card look) for every page on swansealabour.org.
+ *
+ * Squarespace: Website Tools > Code Injection > Header:
+ *   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@500;700&family=Kaushan+Script&display=swap">
+ *   <link rel="stylesheet" href="https://news.swansealabour.org/site.css?v=1">
+ * Bump ?v= after each upload so phones load the new copy.
+ *
+ * The homepage adds its own layout on top (home.js). Labour red #e4003b and out-card
+ * yellow #fbe70d only: no green anywhere, it reads as Plaid Cymru.
+ */
+:root {
+  --slh-red: #e4003b;
+  --slh-red-dark: #b8002f;
+  --slh-yellow: #fbe70d;
+  --slh-ink: #1c1c1c;
+  --slh-shadow: 3px 3px 0 rgba(0, 0, 0, .35);
+}
+
+/* Header and footer: Labour red edged with the out-card's yellow rule */
+#header { border-bottom: 4px solid var(--slh-yellow); }
+#footer-sections { border-top: 5px solid var(--slh-yellow); }
+#footer-sections .section-background { background: var(--slh-red) !important; }
+#footer-sections .content::before {
+  content: "Building a Better Swansea \00B7  Adeiladu Abertawe gwell";
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: .5px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+/* Body text a touch heavier, as in the leaflets */
+.sqs-html-content p,
+.sqs-html-content li,
+.list-item-content__description p { font-weight: 400; }
+
+/* Page titles: Anton capitals in Labour red (yellow on dark or photo backgrounds) */
+.sqs-html-content h1,
+.sqs-html-content h2 {
+  font-family: Anton, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content h1 em, .sqs-html-content h1 strong,
+.sqs-html-content h2 em, .sqs-html-content h2 strong { font-style: normal; font-weight: inherit; }
+
+/* Section headings: the out-card's red label with white Bebas lettering */
+.sqs-html-content h3,
+.sqs-html-content h4,
+.sl-ward h2.slw-h {
+  display: table;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: .5px;
+  line-height: 1;
+  padding: 10px 18px 5px;
+  background: var(--slh-red);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content h3:empty, .sqs-html-content h4:empty { display: none; }
+.sqs-html-content h3 { font-size: 36px; }
+.sqs-html-content h4, .sl-ward h2.slw-h { font-size: 32px; }
+.sqs-html-content h3 *, .sqs-html-content h4 * { color: inherit !important; font-style: normal; font-weight: inherit; }
+
+/* Squarespace summary blocks (e.g. Louise's "Local Councillor Blog" on Dunvant & Killay): heading as a red label */
+.summary-header-text {
+  display: inline-block;
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 32px !important;
+  letter-spacing: .5px !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  padding: 10px 18px 5px;
+  margin-bottom: 14px;
+  background: var(--slh-red);
+  color: #fff !important;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+
+/* Dark sections (the councillor lists) in Labour red, with yellow headings */
+section[data-section-theme="dark"] .section-background { background-color: var(--slh-red); }
+section[data-section-theme="dark"] .sqs-html-content h1,
+section[data-section-theme="dark"] .sqs-html-content h2,
+section[data-section-theme="black"] .sqs-html-content h1,
+section[data-section-theme="black"] .sqs-html-content h2,
+.list-section-title,
+.list-section-title p {
+  font-family: Anton, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  color: var(--slh-yellow) !important;
+  text-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.list-section-title em, .list-section-title strong { font-style: normal; font-weight: inherit; }
+section[data-section-theme="dark"] .sqs-html-content h3,
+section[data-section-theme="dark"] .sqs-html-content h4,
+section[data-section-theme="black"] .sqs-html-content h3,
+section[data-section-theme="black"] .sqs-html-content h4 { background: var(--slh-yellow); color: var(--slh-red-dark); }
+
+/* Councillor cards: names in Bebas, contact details in white with yellow links */
+.user-items-list .list-item-content__title {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 34px !important;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  -webkit-font-smoothing: auto;
+}
+section[data-section-theme="dark"] .list-item-content__description a { color: var(--slh-yellow) !important; }
+
+/* Buttons: Bebas on Labour red, yellow on red or dark backgrounds */
+.sqs-block-button-element,
+.list-item-content__button,
+.form-submit-button,
+.sqs-editable-button {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 22px !important;
+  letter-spacing: 1px !important;
+  line-height: 1.6 !important;
+  text-transform: none !important;
+  padding: 10px 26px 8px !important;
+  border-radius: 4px !important;
+  background: var(--slh-red) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: var(--slh-shadow);
+  transition: transform .15s;
+  -webkit-font-smoothing: auto;
+}
+.sqs-block-button-element:hover,
+.list-item-content__button:hover,
+.form-submit-button:hover { transform: translateY(-2px); }
+section[data-section-theme="dark"] .sqs-block-button-element,
+section[data-section-theme="dark"] .list-item-content__button,
+section[data-section-theme="black"] .sqs-block-button-element,
+section[data-section-theme="black"] .form-submit-button { background: var(--slh-yellow) !important; color: var(--slh-red-dark) !important; }
+
+/* News reel, ward pages and map: out-card headline font on cards and names */
+#sl-news .sl-title,
+.sl-ward .slw-ctitle,
+.sl-ward .slw-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  letter-spacing: .3px;
+  line-height: 1.05;
+  -webkit-font-smoothing: auto;
+}
+#sl-news .sl-title { font-size: 26px; }
+.sl-ward .slw-ctitle { font-size: 24px; }
+.sl-ward .slw-name { font-size: 28px; }
+#sl-news p, .sl-ward p { font-weight: 400; }
+
+/* Ward pledges, rebuilt by site.js as a tick list like the out-card's "You asked - we delivered!" */
+.sqs-html-content h4.sl-pledge-head .sl-cy { color: var(--slh-yellow) !important; }
+.sqs-html-content h4.sl-pledge-head .sl-bar { opacity: .55; margin: 0 6px; }
+.sqs-html-content ul.sl-pledges {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.sqs-html-content ul.sl-pledges li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 14px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+.sqs-html-content ul.sl-pledges li::before { content: none; display: none; }
+.sqs-html-content ul.sl-pledges svg { width: 30px; height: 30px; margin-top: 2px; }
+.sqs-html-content ul.sl-pledges b {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: .5px;
+  line-height: 1.1;
+  color: var(--slh-red);
+  margin-bottom: 3px;
+  -webkit-font-smoothing: auto;
+}
+.sqs-html-content ul.sl-pledges span { font-size: 16px; font-weight: 400; line-height: 1.55; }
+
+/* Old newsletters and 2022 election addresses now live on /leaflet-archive, so their buttons
+   come off the ward pages. Listed by file so any new leaflet button still shows. */
+.sqs-block-button:has(a[href="/s/Bonymaen-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Castle-Election-Address-updated.pdf"]),
+.sqs-block-button:has(a[href="/s/Cockett-Election-Address.pdf"]),
+.sqs-block-button:has(a[href="/s/Penyrheol-Gorseinon-Autumn-2021.pdf"]),
+.sqs-block-button:has(a[href="/s/Gorseinon-and-Penyrheol-Budget.pdf"]),
+.sqs-block-button:has(a[href="/s/Gorseinon-Penyrheol-Election-Address-Update-1.pdf"]),
+.sqs-block-button:has(a[href="/s/Gowerton-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/Landore-Election-Address-updated.pdf"]),
+.sqs-block-button:has(a[href="/s/Llansamlet-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Llwchwr-Budget-Leaflet.pdf"]),
+.sqs-block-button:has(a[href="/s/Llwchwr-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Morriston-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Mynyddbach-budget.pdf"]),
+.sqs-block-button:has(a[href="/s/Penclawdd-Ward-Budget-Leaflet.pdf"]),
+.sqs-block-button:has(a[href="/s/Penderry-Election-Address-Final.pdf"]),
+.sqs-block-button:has(a[href="/s/Pontarddulais-Election-Address.pdf"]),
+.sqs-block-button:has(a[href="/s/Pontlliw-Tircoed-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/TOWNHILL-WARD-2.pdf"]),
+.sqs-block-button:has(a[href="/s/Waunarlwydd-Election-Address-final.pdf"]),
+.sqs-block-button:has(a[href="/s/West-Cross.pdf"]),
+.sqs-block-button:has(a[href="/s/West-Cross-Election-Address-Final.pdf"]) { display: none !important; }
+
+/* Leaflet archive page: each leaflet as a red link marked PDF */
+.sqs-html-content ul:has(a[href^="/s/"]) { list-style: none; padding-left: 0; margin: 12px 0 28px; }
+.sqs-html-content ul:has(a[href^="/s/"]) li::before { content: none; display: none; }
+.sqs-html-content ul:has(a[href^="/s/"]) a { color: var(--slh-red); font-weight: 600; }
+.sqs-html-content ul:has(a[href^="/s/"]) a::after {
+  content: "PDF";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1.5;
+  vertical-align: 2px;
+}
+
+/* Trial sections on test pages (site.js): "We're here to help!" and "You asked - we delivered!" */
+.sl-display {
+  font-family: Anton, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  text-transform: uppercase !important;
+  letter-spacing: .5px !important;
+  line-height: 1.02 !important;
+  margin: 0 !important;
+  -webkit-font-smoothing: auto;
+}
+.sl-yellow { color: var(--slh-yellow) !important; text-shadow: var(--slh-shadow); }
+
+.sl-help {
+  background: var(--slh-red);
+  box-shadow: 0 0 0 100vmax var(--slh-red);
+  clip-path: inset(0 -100vmax);
+  color: #fff;
+  margin: 30px 0 46px;
+  padding: 46px 17px;
+}
+.sl-help-top { display: grid; grid-template-columns: 1fr 1.25fr; gap: 36px; align-items: center; }
+.sl-help h2 { font-size: clamp(46px, 6vw, 76px) !important; }
+.sl-help-box { border: 3px dashed var(--slh-yellow); border-radius: 12px; padding: 22px 26px; text-align: center; }
+.sl-help-box p {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: .3px;
+  color: #fff;
+  -webkit-font-smoothing: auto;
+}
+.sl-help-people { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 34px; }
+/* six people (e.g. Morriston: five councillors and a candidate): two even rows of three */
+@media (min-width: 768px) { .sl-help-people:has(> :nth-child(6):last-child) { grid-template-columns: repeat(3, 1fr); } }
+.sl-help-person { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.sl-help-person img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--slh-yellow);
+  margin-bottom: 8px;
+}
+.sl-help-person b {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  -webkit-font-smoothing: auto;
+}
+.sl-help-person .sl-help-phone { color: var(--slh-yellow) !important; font-weight: 700; font-size: 18px; text-decoration: none; }
+.sl-help-person .sl-help-email { color: #fff !important; font-size: 14px; word-break: break-all; }
+.sl-help-person .sl-help-role { font-size: 14px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; opacity: .9; }
+/* the band already shows the councillors, so drop the page's own list once it's in */
+body.sl-help-shown .user-items-list-section { display: none !important; }
+
+.sl-delivered {
+  margin: 40px 17px 10px;
+  background: var(--slh-red);
+  color: #fff;
+  border: 6px solid var(--slh-yellow);
+  border-radius: 6px;
+  padding: 40px 44px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 36px;
+}
+.sl-delivered h2 { font-size: clamp(36px, 3.8vw, 46px) !important; color: #fff !important; }
+.sl-underline { display: block; width: 240px; max-width: 100%; height: 18px; margin-top: 4px; }
+.sl-delivered-intro p { margin: 20px 0 0; font-size: 17px; font-weight: 400; color: #fff; }
+.sl-delivered-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.sl-delivered-list li { display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: start; margin: 0; padding: 0; }
+.sl-delivered-list li::before { content: none; display: none; }
+.sl-delivered-list svg { width: 32px; height: 32px; }
+.sl-delivered-list b {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: .5px;
+  line-height: 1.1;
+  color: var(--slh-yellow);
+  -webkit-font-smoothing: auto;
+}
+.sl-delivered-list span { font-size: 16px; font-weight: 400; color: #fff; }
+
+/* Ward pages (body.sl-ward-page, set by site.js): title bigger with the out-card's yellow
+   hand-drawn underline, grey divider lines gone */
+.sl-ward-page article .sqs-block-horizontalrule { display: none !important; }
+/* The solid red site header sits on top of the banner; start the banner photo below it so the
+   top of the photo (often heads, e.g. Llwchwr on phones) isn't hidden */
+.sl-ward-page section.page-section.has-background:first-child > .section-border > .section-background {
+  top: var(--header-height, 87px) !important;
+  bottom: 0 !important;
+  height: auto !important;
+}
+.sl-ward-page article .sqs-html-content h2 { font-size: clamp(46px, 6vw, 76px) !important; line-height: 1 !important; margin: 0 !important; }
+.sl-ward-page article .sqs-html-content h2::after {
+  content: "";
+  display: block;
+  width: min(420px, 80%);
+  height: 20px;
+  margin-top: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 18' preserveAspectRatio='none'%3E%3Cpath d='M4 12 C 60 4, 140 3, 256 8' stroke='%23fbe70d' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+
+.sl-budget { margin: 46px 17px 10px; }
+
+/* "Out and about" photo gallery (wards.json gallery); a swipeable strip on phones */
+/* Whole photos: site.js groups them into rows; each figure grows by its width/height ratio (--ar),
+   so every photo in a row is the same height and nothing is cropped */
+.sl-gallery-grid { display: flex; flex-direction: column; gap: 22px; }
+.sl-gallery-row { display: flex; gap: 18px; align-items: flex-start; }
+.sl-gallery-grid figure { margin: 0; flex: 1 1 0; min-width: 0; }
+.sl-gallery-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--ar, 4 / 5);
+  object-fit: cover;
+  border-radius: 6px;
+  border-bottom: 6px solid var(--slh-yellow);
+}
+.sl-gallery-grid figcaption { margin-top: 8px; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.sl-gallery-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.sl-gallery-open:hover img { filter: brightness(1.06); }
+.sl-gallery-open:focus-visible { outline: 3px solid var(--slh-red); outline-offset: 3px; border-radius: 6px; }
+
+/* Lightbox: a gallery photo shown large */
+.sl-lightbox {
+  position: fixed; inset: 0; z-index: 100000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 56px 64px; background: rgba(0, 0, 0, .88);
+}
+.sl-lightbox-fig { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; }
+.sl-lightbox-fig img {
+  display: block; max-width: 100%; max-height: calc(100vh - 150px); width: auto; height: auto;
+  border-radius: 6px; border-bottom: 6px solid var(--slh-yellow);
+}
+.sl-lightbox-cap { margin: 12px 0 0; color: #fff; font-size: 16px; font-weight: 600; text-align: center; }
+.sl-lightbox button { position: absolute; border: 0; color: #fff; background: var(--slh-red); cursor: pointer; font-family: inherit; line-height: 1; }
+.sl-lightbox-close { top: 14px; right: 14px; width: 44px; height: 44px; border-radius: 50%; font-size: 30px; }
+.sl-lightbox-nav { top: 50%; transform: translateY(-50%); width: 44px; height: 64px; border-radius: 6px; font-size: 40px; }
+.sl-lightbox-prev { left: 12px; }
+.sl-lightbox-next { right: 12px; }
+.sl-lightbox button:focus-visible { outline: 3px solid var(--slh-yellow); outline-offset: 2px; }
+.sl-budget-head {
+  display: table;
+  margin: 0 0 16px !important;
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 32px !important;
+  letter-spacing: .5px !important;
+  line-height: 1 !important;
+  padding: 10px 18px 5px;
+  background: var(--slh-red);
+  color: #fff !important;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sl-budget-head .sl-cy { color: var(--slh-yellow); }
+.sl-budget-head .sl-bar { opacity: .55; margin: 0 6px; }
+.sl-budget-intro { font-size: 17px; font-weight: 400; margin: 0 0 22px; max-width: 760px; }
+.sl-budget h5 {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 26px !important;
+  letter-spacing: .5px !important;
+  color: var(--slh-red) !important;
+  margin: 30px 0 14px !important;
+  -webkit-font-smoothing: auto;
+}
+.sl-budget-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sl-budget-stat { background: var(--slh-red); color: #fff; border-radius: 6px; padding: 20px 22px; border-bottom: 6px solid var(--slh-yellow); }
+.sl-budget-stat b {
+  display: block;
+  font-family: Anton, sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.05;
+  color: var(--slh-yellow);
+  text-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sl-budget-stat span { display: block; margin-top: 6px; font-size: 15px; line-height: 1.4; }
+.sl-budget-bar { display: grid; grid-template-columns: minmax(180px, 1.2fr) 2fr 84px; gap: 14px; align-items: center; margin-bottom: 10px; }
+.sl-budget-label { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.sl-budget-track { display: block; height: 18px; background: #f1ece6; border-radius: 9px; overflow: hidden; }
+.sl-budget-fill { display: block; height: 100%; background: var(--slh-red); border-radius: 9px; }
+.sl-budget-amount {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  text-align: right;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sl-budget-next {
+  margin-top: 22px;
+  padding: 18px 22px;
+  border: 3px dashed var(--slh-red);
+  border-radius: 10px;
+  background: #fffbe0;
+}
+.sl-budget-next b {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: .5px;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sl-budget-next span { font-size: 16px; }
+.sl-budget-next-list { list-style: none; margin: 10px 0 0; padding: 0; }
+.sl-budget-next-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}
+.sl-budget-next-list li::before { content: none; display: none; }
+.sl-budget-next .sl-budget-amount { flex: none; font-size: 24px; }
+.sl-budget-next .sl-budget-note { margin-top: 10px; }
+.sl-budget-groups { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sl-budget-groups li {
+  margin: 0;
+  padding: 4px 14px;
+  border: 2px solid var(--slh-red);
+  border-radius: 30px;
+  color: var(--slh-red);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.sl-budget-groups li::before { content: none; display: none; }
+.sl-budget-note { margin: 18px 0 0; font-size: 13px; opacity: .75; }
+
+/* "Investing in <ward>" (capital.json), shares the budget's tiles */
+.sl-capital .sl-budget-stats { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.sl-capital-total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 18px;
+  margin: 0 0 18px;
+  padding: 20px 24px;
+  background: var(--slh-yellow);
+  border-radius: 6px;
+  border-left: 8px solid var(--slh-red);
+}
+.sl-capital-total b {
+  font-family: Anton, sans-serif;
+  font-weight: 700;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1;
+  color: var(--slh-red);
+  -webkit-font-smoothing: auto;
+}
+.sl-capital-total span { flex: 1 1 260px; font-size: 18px; font-weight: 600; line-height: 1.35; color: #000; }
+.sl-capital-map {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: var(--slh-red);
+  color: #fff !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: .5px;
+  text-decoration: none !important;
+  -webkit-font-smoothing: auto;
+}
+.sl-capital-map::after { content: "\00a0\2192"; } /* non-breaking space keeps the arrow with "map" */
+
+@media (max-width: 767px) {
+  .sl-budget { margin: 36px 0 6px; }
+  .sl-budget-head { font-size: 28px !important; }
+  .sl-budget-head .sl-bar { display: none; }
+  .sl-budget-head .sl-cy { display: block; margin-top: 4px; }
+  .sl-budget-stats { grid-template-columns: 1fr; }
+  .sl-budget-bar { grid-template-columns: 1fr 74px; }
+  .sl-budget-track { grid-column: 1 / -1; grid-row: 2; }
+  .sl-help { padding: 36px 0; }
+  .sl-help-top, .sl-delivered { grid-template-columns: 1fr; }
+  .sl-delivered { margin: 32px 0 6px; padding: 28px 20px; gap: 26px; }
+  .sl-help-box p { font-size: 23px; }
+  .sl-capital-map { font-size: 20px; }
+  .sl-gallery-grid { flex-direction: row; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .sl-gallery-row { display: contents; }
+  /* phone strip: every photo 260px tall, width from its shape (capped for very wide ones) */
+  .sl-gallery-grid figure { flex: 0 0 auto !important; width: min(calc(260px * var(--ar, .8)), 86vw); scroll-snap-align: start; }
+  .sl-lightbox { padding: 60px 10px 70px; }
+  .sl-lightbox-fig img { max-height: calc(100vh - 170px); }
+  .sl-lightbox-nav { top: auto; bottom: 12px; transform: none; height: 44px; }
+  .sl-lightbox-prev { left: calc(50% - 56px); }
+  .sl-lightbox-next { right: calc(50% - 56px); }
+}
+
+/* "About the ward" box added by site.js under the pledges */
+.sl-about {
+  margin: 34px 17px 10px;
+  padding: 28px 30px 24px;
+  background: #f6f4f1;
+  border-left: 6px solid var(--slh-yellow);
+  border-radius: 4px;
+}
+.sl-about .sl-about-head {
+  display: table;
+  margin: 0 0 16px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: .5px;
+  line-height: 1;
+  padding: 10px 18px 5px;
+  background: var(--slh-red);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: var(--slh-shadow);
+  -webkit-font-smoothing: auto;
+}
+.sl-about .sl-about-text { margin: 0 0 16px; font-size: 17px; font-weight: 400; line-height: 1.6; }
+.sl-about .sl-about-facts { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.sl-about .sl-about-facts li {
+  margin: 0;
+  padding: 4px 14px;
+  border: 2px solid var(--slh-red);
+  border-radius: 30px;
+  color: var(--slh-red);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.sl-about .sl-about-facts li::before { content: none; display: none; }
+.sl-about .sl-about-source { margin: 0; font-size: 13px; opacity: .75; }
+.sl-about .sl-about-source a { color: inherit; }
+
+@media (max-width: 767px) {
+  .sl-about { margin: 28px 0 6px; padding: 22px 18px 18px; }
+  .sl-about .sl-about-head { font-size: 28px; }
+  .sqs-html-content h4.sl-pledge-head .sl-bar { display: none; }
+  .sqs-html-content h4.sl-pledge-head .sl-cy { display: block; margin-top: 4px; }
+
+  .sqs-html-content h3 { font-size: 30px; }
+  .sqs-html-content h4, .sl-ward h2.slw-h { font-size: 28px; }
+  .user-items-list .list-item-content__title { font-size: 30px !important; }
+  #footer-sections .content::before { font-size: 24px; }
+
+  /* Castle (Squarespace page id): its wide banner photo shows the councillors small on phones,
+     so zoom in on them there (desktop unchanged) */
+  body#collection-6256e544feb08e7ba4024d0c section.page-section.has-background:first-child > .section-border > .section-background { overflow: hidden; }
+  body#collection-6256e544feb08e7ba4024d0c section.page-section.has-background:first-child > .section-border > .section-background img {
+    transform: scale(1.8);
+    transform-origin: 49% 58%;
+  }
+  /* Cockett (page id): the three councillors stand across almost the whole farm-sign photo, so on
+     phones the banner is a little shorter and leans right, showing 8%-97% of the width */
+  body#collection-62565d1d0756b52a83761c3c section.page-section.has-background:first-child { min-height: 411px !important; }
+  body#collection-62565d1d0756b52a83761c3c section.page-section.has-background:first-child > .section-border > .section-background img {
+    object-position: 71% 50% !important;
+  }
+  /* Bôn-y-maen (page id): Mandy and Paul stand across 25%-77% of the photo, so the same shorter
+     banner centred on them keeps both in shot on phones */
+  body#collection-62557631194d325e820209f2 section.page-section.has-background:first-child { min-height: 411px !important; }
+  body#collection-62557631194d325e820209f2 section.page-section.has-background:first-child > .section-border > .section-background img {
+    object-position: 53% 50% !important;
+  }
+}
