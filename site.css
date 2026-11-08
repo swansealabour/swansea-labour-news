@@ -604,4 +604,16 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
     transform: scale(1.8);
     transform-origin: 49% 58%;
   }
+  /* Cockett (page id): the three councillors stand across almost the whole farm-sign photo, so on
+     phones the banner is a little shorter and leans right, showing 8%-97% of the width */
+  body#collection-62565d1d0756b52a83761c3c section.page-section.has-background:first-child { min-height: 411px !important; }
+  body#collection-62565d1d0756b52a83761c3c section.page-section.has-background:first-child > .section-border > .section-background img {
+    object-position: 71% 50% !important;
+  }
+  /* Bôn-y-maen (page id): Mandy and Paul stand across 25%-77% of the photo, so the same shorter
+     banner centred on them keeps both in shot on phones */
+  body#collection-62557631194d325e820209f2 section.page-section.has-background:first-child { min-height: 411px !important; }
+  body#collection-62557631194d325e820209f2 section.page-section.has-background:first-child > .section-border > .section-background img {
+    object-position: 53% 50% !important;
+  }
 }
