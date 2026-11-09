@@ -1247,7 +1247,7 @@
       "newLayout": true,
       "delivered": [
         { "title": "Roads and pavements", "text": "£896k on roads and pavements, including Swansea Road, Bryn Road, Castle Street and the Gowerton bypass, and 766 potholes repaired." },
-        { "title": "New play area", "text": "A new play area at Garden Village, Myrtle Road, with a longer football pitch and nature trail at Loughor Foreshore on the way." },
+        { "title": "New play area", "text": "A new play area at Garden Village, Myrtle Road, with improvements at Kingsbridge playing fields and a nature trail at Loughor Foreshore on the way." },
         { "title": "Safer roads", "text": "£41k from our community budget on road safety, parking and pavements." },
         { "title": "Better schools", "text": "£344k improving local schools." },
         { "title": "Backing local groups", "text": "43 grants to groups including Loughor RFC, Loughor Inshore Rescue, the Sharing Table and Swansea Food Bank." }
@@ -1275,7 +1275,8 @@
           { "name": "Christmas lights and events", "amount": 800 }
         ],
         "coming": [
-          { "name": "A longer football pitch and a nature and sensory trail at Loughor Foreshore" }
+          { "name": "Improvements at Kingsbridge playing fields" },
+          { "name": "A nature and sensory trail at Loughor Foreshore" }
         ],
         "groups": [
           "Loughor RFC",
