@@ -222,27 +222,48 @@
     // Whole photos, never cropped: each row shares one height and photos get widths in proportion
     // to their shape ("ratio" = width / height in wards.json). Rows are chosen to land near 300px tall.
     var ratios = ward.gallery.map(function (p) { return p.ratio || 0.8; });
-    var rows = galleryRows(ratios), row = null, left = 0;
+    var rows = galleryRows(ratios), row = null, left = 0, rowCount = 0, SHOW_ROWS = 2;
     ward.gallery.forEach(function (p, i) {
-      if (!left) { left = rows.shift(); row = el("div", "sl-gallery-row"); grid.appendChild(row); }
+      if (!left) {
+        left = rows.shift();
+        // On desktop only the first two rows show until "See all" is pressed (phones swipe through them all)
+        row = el("div", "sl-gallery-row" + (rowCount >= SHOW_ROWS ? " sl-gallery-extra" : ""));
+        rowCount++;
+        grid.appendChild(row);
+      }
       left--;
       var fig = el("figure");
       fig.style.setProperty("--ar", ratios[i]);
       fig.style.flexGrow = ratios[i];
-      var btn = el("button", "sl-gallery-open");
+      var btn = el("button", "sl-gallery-open" + (p.video ? " sl-gallery-video" : ""));
       btn.type = "button";
-      btn.setAttribute("aria-label", "Enlarge photo: " + p.caption);
+      btn.setAttribute("aria-label", (p.video ? "Play video: " : "Enlarge photo: ") + p.caption);
+      // a video's tile is its poster picture ("photo") with a play badge
       var img = el("img");
       img.src = base + p.photo;
       img.alt = p.alt || p.caption;
       img.loading = "lazy";
       btn.appendChild(img);
+      if (p.video) btn.appendChild(el("span", "sl-gallery-play"));
       btn.addEventListener("click", function () { openLightbox(ward.gallery, i); });
       fig.appendChild(btn);
       fig.appendChild(el("figcaption", null, p.caption));
       row.appendChild(fig);
     });
     box.appendChild(grid);
+    var n = ward.gallery.length;
+    if (rowCount > SHOW_ROWS) {
+      var more = el("button", "sl-gallery-more", "See all " + n);
+      more.type = "button";
+      more.addEventListener("click", function () {
+        box.classList.add("sl-gallery-all");
+        more.remove();
+        var first = grid.querySelector(".sl-gallery-extra .sl-gallery-open");
+        if (first) first.focus();
+      });
+      box.appendChild(more);
+    }
+    if (n > 2) box.appendChild(el("p", "sl-gallery-hint", "Swipe to see all " + n + " ›"));
     return box;
   }
 
@@ -268,7 +289,7 @@
     var lb = el("div", "sl-lightbox");
     lb.setAttribute("role", "dialog");
     lb.setAttribute("aria-modal", "true");
-    var img = el("img"), cap = el("p", "sl-lightbox-cap");
+    var media = null, cap = el("p", "sl-lightbox-cap");
     var close = el("button", "sl-lightbox-close", "×");
     close.type = "button";
     close.setAttribute("aria-label", "Close");
@@ -277,14 +298,28 @@
     prev.type = next.type = "button";
     prev.setAttribute("aria-label", "Previous photo");
     next.setAttribute("aria-label", "Next photo");
+    // Photos show as a picture; videos play with controls (and stop when you move on or close)
     function show() {
       var p = photos[i];
-      img.src = base + (p.full || p.photo);
-      img.alt = p.alt || p.caption;
+      if (media) { if (media.pause) media.pause(); media.remove(); }
+      if (p.video) {
+        media = el("video");
+        media.controls = true;
+        media.autoplay = true;
+        media.playsInline = true;
+        media.poster = base + p.photo;
+        media.src = base + p.video;
+        media.setAttribute("aria-label", p.alt || p.caption);
+      } else {
+        media = el("img");
+        media.src = base + (p.full || p.photo);
+        media.alt = p.alt || p.caption;
+      }
+      fig.insertBefore(media, cap);
       cap.textContent = p.caption + "  (" + (i + 1) + " of " + photos.length + ")";
     }
     function step(d) { i = (i + d + photos.length) % photos.length; show(); }
-    function shut() { document.removeEventListener("keydown", key); lb.remove(); document.body.style.overflow = ""; if (opener) opener.focus(); }
+    function shut() { if (media && media.pause) media.pause(); document.removeEventListener("keydown", key); lb.remove(); document.body.style.overflow = ""; if (opener) opener.focus(); }
     function key(e) {
       if (e.key === "Escape") shut();
       else if (e.key === "ArrowLeft") step(-1);
@@ -295,7 +330,6 @@
     close.addEventListener("click", shut);
     lb.addEventListener("click", function (e) { if (e.target === lb) shut(); });
     var fig = el("figure", "sl-lightbox-fig");
-    fig.appendChild(img);
     fig.appendChild(cap);
     lb.appendChild(fig);
     if (photos.length > 1) { lb.appendChild(prev); lb.appendChild(next); }
