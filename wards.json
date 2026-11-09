@@ -2251,8 +2251,18 @@
         { "title": "New play facilities", "text": "Upgraded local parks, including a new play area in Jersey Park and new play equipment at Polly's Park, with more to come." }
       ],
       "gallery": [
-        { "photo": "images/st-thomas-fun-day.jpg", "ratio": 1.333, "caption": "At the summer fun day", "alt": "Councillor and community volunteers with costumed characters at a summer fun day" },
+        { "photo": "images/st-thomas-knife-crime-outreach.jpg", "ratio": 0.75, "caption": "Anti-knife crime youth outreach", "alt": "A large group of young people at an anti-knife crime outreach session" },
+        { "photo": "images/st-thomas-eastside-youth-club.jpg", "ratio": 1.333, "caption": "Eastside youth club project with Charles Thomas House", "alt": "Young people and youth workers from the Eastside youth club project" },
+        { "photo": "images/st-thomas-bake-off.jpg", "ratio": 0.757, "caption": "Bake off with local teenagers", "alt": "Two teenagers holding a home-made pie at a bake off" },
+        { "video": "images/st-thomas-kids-club.mp4", "photo": "images/st-thomas-kids-club.jpg", "ratio": 1.778, "caption": "Kids Club", "alt": "Children dancing together at Kids Club" },
+        { "photo": "images/st-thomas-welsh-stall.jpg", "ratio": 0.75, "caption": "Youth club Welsh stall at a community cohesion event", "alt": "Three women at the youth club's Welsh stall, one holding a Welsh dragon decoration" },
+        { "photo": "images/st-thomas-merchant-memorial.jpg", "ratio": 0.461, "caption": "Merchant Navy Memorial Day in SA1", "alt": "Two sea cadets beside the Merchant Navy memorial in SA1" },
+        { "photo": "images/st-thomas-mens-shed.jpg", "ratio": 0.754, "caption": "At the Men's Shed", "alt": "Members of the Men's Shed together in their meeting room" },
+        { "photo": "images/st-thomas-fundraiser.jpg", "ratio": 1.333, "caption": "A fundraiser organised by Sarah and Hayley", "alt": "A large group holding up their paintings at a fundraiser" },
         { "photo": "images/st-thomas-christmas-hampers.jpg", "ratio": 0.946, "caption": "Delivering Christmas hampers", "alt": "Hayley Gwilliam and Sarah O'Connor in Christmas jumpers beside a van of hampers" },
+        { "photo": "images/st-thomas-fun-day.jpg", "ratio": 1.333, "caption": "At the summer fun day", "alt": "Councillor and community volunteers with costumed characters at a summer fun day" },
+        { "photo": "images/st-thomas-easter-lunch.jpg", "ratio": 1.333, "caption": "Easter community lunch", "alt": "Older residents sharing a meal in a room decorated for Easter" },
+        { "photo": "images/st-thomas-community-event.jpg", "ratio": 1.333, "caption": "Community cohesion event", "alt": "Gazebos and stalls on the grass at an outdoor community event" },
         { "photo": "images/st-thomas-summer-party.jpg", "ratio": 0.75, "caption": "Celebrating summer with the community", "alt": "A balloon arch at a community summer party" },
         { "photo": "images/st-thomas-community-trip.jpg", "ratio": 1.079, "caption": "On a community trip", "alt": "Hayley Gwilliam and Sarah O'Connor on a community trip" }
       ],
