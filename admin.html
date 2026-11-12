@@ -523,42 +523,52 @@ function defaultSourceName(d) {
   return who === "Swansea Council" ? "a Swansea Council Facebook post" : `a Facebook post by ${who}`;
 }
 
-// Optional quotes from the story's local Labour councillors. The daily task may suggest some
-// (draft.ward_quotes); none goes into the article unless its box is ticked.
+// Optional quotes from the story's local Labour councillors and Labour candidates (the ward's
+// "candidates" in wards.json). The daily task may suggest some (draft.ward_quotes); none goes
+// into the article unless its box is ticked.
 function labourCouncillors(taggedWards) {
   const tagged = new Set(taggedWards.map((w) => w.toLowerCase()));
   return ((state.wards && state.wards.data.wards) || [])
-    .flatMap((w) => (w.councillors || []).map((c) => ({ name: c.name, ward: w.name, local: tagged.has(w.name.toLowerCase()) })))
-    .sort((a, b) => Number(b.local) - Number(a.local) || a.ward.localeCompare(b.ward) || a.name.localeCompare(b.name));
+    .flatMap((w) => [
+      ...(w.councillors || []).map((c) => ({ name: c.name, ward: w.name, candidate: false })),
+      ...(w.candidates || []).map((c) => ({ name: c.name, ward: w.name, candidate: true })),
+    ].map((p) => ({ ...p, local: tagged.has(w.name.toLowerCase()) })))
+    .sort((a, b) => Number(b.local) - Number(a.local) || a.ward.localeCompare(b.ward) || Number(a.candidate) - Number(b.candidate) || a.name.localeCompare(b.name));
 }
-function wardQuoteCard(q, councillors, onChange) {
+function wardQuoteCard(q, people, onChange) {
   let removed = false;
-  const known = councillors.some((c) => c.name === q.name && c.ward === q.ward);
-  const options = [...(q.name && !known ? [{ name: q.name, ward: q.ward }] : []), ...councillors];
+  const same = (p) => p.name === q.name && p.ward === q.ward;
+  const options = [...(q.name && !people.some(same) ? [{ name: q.name, ward: q.ward, candidate: !!q.candidate }] : []), ...people];
   const who = el("select", { onchange: onChange },
-    el("option", { value: "" }, "Choose a councillor…"),
-    options.map((c) => el("option", { value: `${c.name}|${c.ward}`, selected: c.name === q.name && c.ward === q.ward }, `${c.name} (${c.ward})`)));
-  const text = el("textarea", { oninput: onChange, placeholder: "The councillor's words, without quotation marks" }, q.text || "");
+    el("option", { value: "" }, "Choose a councillor or candidate…"),
+    options.map((p) => el("option", { value: `${p.name}|${p.ward}|${p.candidate ? 1 : 0}`, selected: same(p) },
+      `${p.name} (${p.ward}${p.candidate ? ", Labour candidate" : ""})`)));
+  const text = el("textarea", { oninput: onChange, placeholder: "Their words, without quotation marks" }, q.text || "");
   const use = el("input", { type: "checkbox", onchange: onChange });
   const box = el("div", { class: "card" },
-    el("label", { text: "Councillor" }), who,
+    el("label", { text: "Councillor or candidate" }), who,
     el("label", { text: "Quote" }), text,
-    el("label", { style: "display:flex;gap:8px;align-items:center;font-weight:400" }, use, "Add this quote to the article (the councillor has agreed the wording)"),
+    el("label", { style: "display:flex;gap:8px;align-items:center;font-weight:400" }, use, "Add this quote to the article (they have agreed the wording)"),
     el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { removed = true; box.remove(); onChange(); } }, "Remove")));
   return {
     el: box,
     ticked: () => !removed && use.checked,
     value: () => {
-      const [name = "", ward = ""] = who.value.split("|");
-      return { name, ward, text: text.value.trim().replace(/^["“]+|["”]+$/g, "").trim() };
+      const [name = "", ward = "", candidate = "0"] = who.value.split("|");
+      return { name, ward, candidate: candidate === "1", text: text.value.trim().replace(/^["“]+|["”]+$/g, "").trim() };
     },
   };
 }
-// One paragraph per quote; a second councillor from the same ward is introduced as "Fellow".
+// One paragraph per quote. A second councillor from the same ward is introduced as "Fellow";
+// candidates aren't councillors, so they get no "Cllr".
 function wardQuoteParagraphs(quotes) {
-  return quotes.map((q, i) => i > 0 && quotes[i - 1].ward === q.ward
-    ? `Fellow ${q.ward} Labour councillor Cllr ${q.name} added: “${q.text}”`
-    : `Local Labour councillor for ${q.ward}, Cllr ${q.name}, said: “${q.text}”`);
+  return quotes.map((q, i) => {
+    const after = i > 0 && quotes[i - 1].ward === q.ward;
+    if (q.candidate) return `Labour candidate for ${q.ward}, ${q.name}, ${after ? "added" : "said"}: “${q.text}”`;
+    return after && !quotes[i - 1].candidate
+      ? `Fellow ${q.ward} Labour councillor Cllr ${q.name} added: “${q.text}”`
+      : `Local Labour councillor for ${q.ward}, Cllr ${q.name}, said: “${q.text}”`;
+  });
 }
 
 function draftEditor(d) {
@@ -614,7 +624,7 @@ function draftEditor(d) {
   const wardQuotes = [];
   const addQuote = (q) => { const c = wardQuoteCard(q, councillors, update); wardQuotes.push(c); quoteBox.append(c.el); };
   (d.ward_quotes || []).forEach(addQuote);
-  const addQuoteBtn = el("button", { class: "secondary", type: "button", onclick: () => { addQuote({}); update(); } }, "Add a ward councillor quote");
+  const addQuoteBtn = el("button", { class: "secondary", type: "button", onclick: () => { addQuote({}); update(); } }, "Add a councillor or candidate quote");
   const quoteHint = el("p", { class: "hint" });
 
   function update() {
@@ -625,7 +635,7 @@ function draftEditor(d) {
       ? "No photos came with this press release. Without one, the story shows a red Swansea Labour panel."
       : missingAlt ? "Every photo you use needs a description before you can publish." : "";
     const badQuote = wardQuotes.some((q) => q.ticked() && (!q.value().name || !q.value().text));
-    quoteHint.textContent = badQuote ? "A ticked quote needs a councillor and their words before you can publish." : "";
+    quoteHint.textContent = badQuote ? "A ticked quote needs a councillor or candidate and their words before you can publish." : "";
     const ticks = [...factChecks, ...(anyUsed ? [permission] : [])];
     publishBtn.disabled = !imprintOk(state.config.data.imprint) || missingAlt || badQuote || ticks.some((l) => !l.firstChild.checked);
   }
@@ -702,8 +712,8 @@ function draftEditor(d) {
     el("label", { text: "Wards this story is about (optional, comma separated)" }), f.wards,
     el("p", { class: "hint", text: "Tag every ward the story is about, including wards without Labour councillors. Wards with a Labour page show the story there too. Spell them as listed: " + WARDS.join(", ") + "." }),
     el("label", { text: "People quoted" }), people,
-    el("label", { text: "Ward councillor quotes (optional)" }),
-    el("p", { class: "hint", text: "Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor has agreed the wording. Leave them unticked to publish the story as it is." }),
+    el("label", { text: "Ward councillor and candidate quotes (optional)" }),
+    el("p", { class: "hint", text: "Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor or candidate has agreed the wording. Leave them unticked to publish the story as it is." }),
     quoteBox, quoteHint, el("div", { class: "btns", style: "margin-top:8px" }, addQuoteBtn),
     el("label", { text: "Based on (shown under the article)" }), f.sourceName,
     el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
