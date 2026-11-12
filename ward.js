@@ -75,6 +75,9 @@
       ".sl-ward a.slw-card:hover .slw-ctitle{text-decoration:underline;text-decoration-color:var(--sl-accent);text-underline-offset:4px}" +
       ".sl-ward .slw-media{aspect-ratio:16/10;border-radius:6px;overflow:hidden;margin:0 0 12px;background:var(--sl-accent);position:relative}" +
       ".sl-ward .slw-media img{width:100%;height:100%;object-fit:cover;display:block}" +
+      // Tall or square pictures are shown whole over a blurred copy, as on the news page.
+      ".sl-ward .slw-blur{position:absolute;inset:-24px;background-size:cover;background-position:center;filter:blur(18px) brightness(.6)}" +
+      ".sl-ward .slw-media.slw-fit img{position:relative;object-fit:contain}" +
       ".sl-ward .slw-ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px;color:#fff;font-weight:700;font-size:1.1em;background:linear-gradient(135deg,var(--sl-accent),color-mix(in srgb,var(--sl-accent) 70%,#000))}" +
       ".sl-ward .slw-meta{font-size:.75em;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:0 0 6px}" +
       ".sl-ward .slw-ctitle{font-size:1.15em;line-height:1.25;font-weight:600;margin:0 0 6px}" +
@@ -284,6 +287,14 @@
         var i = el("img");
         i.src = resolve(img.src); i.alt = img.alt || ""; i.loading = "lazy";
         media.appendChild(i);
+        var fit = function () {
+          var blur = el("div", "slw-blur");
+          blur.style.backgroundImage = 'url("' + i.src.replace(/"/g, "%22") + '")';
+          media.className += " slw-fit";
+          media.insertBefore(blur, i);
+        };
+        if (img.width && img.height) { if (img.width / img.height < 1.15) fit(); }
+        else i.addEventListener("load", function () { if (i.naturalWidth / i.naturalHeight < 1.15) fit(); });
       } else {
         media.appendChild(el("div", "slw-ph", "Swansea Labour"));
       }
