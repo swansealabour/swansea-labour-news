@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>News Review</title>
+<style>
+  :root {
+    --bg: #f6f5f3; --panel: #ffffff; --text: #1d1d1f; --muted: #66625e; --line: #e2dfdb;
+    --accent: #e4003b; --accent-text: #ffffff; --ok: #1a7f4b; --warn-bg: #fff4e0; --warn: #8a5300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161514; --panel: #201f1d; --text: #f2f0ed; --muted: #a9a49e; --line: #36332f;
+      --accent: #ff3b63; --accent-text: #160006; --ok: #4cc38a; --warn-bg: #3a2a10; --warn: #ffc56b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { background: var(--accent); color: var(--accent-text); padding: 14px 16px; }
+  header h1 { margin: 0; font-size: 18px; }
+  nav { display: flex; gap: 4px; padding: 10px 16px 0; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+  nav button { border: 1px solid var(--line); border-bottom: 0; background: transparent; color: var(--muted); padding: 8px 14px; border-radius: 8px 8px 0 0; font: inherit; cursor: pointer; }
+  nav button[aria-selected="true"] { background: var(--panel); color: var(--text); font-weight: 600; }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 16px 40px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 0 10px 10px 10px; padding: 20px; }
+  .layout { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+  .list { display: flex; flex-direction: column; gap: 8px; }
+  .item { text-align: left; border: 1px solid var(--line); background: transparent; color: inherit; border-radius: 8px; padding: 10px 12px; font: inherit; cursor: pointer; }
+  .item[aria-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+  .item small { display: block; color: var(--muted); }
+  label { display: block; font-weight: 600; margin: 14px 0 4px; }
+  input[type=text], input[type=password], input[type=url], textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+  textarea { min-height: 80px; resize: vertical; }
+  textarea.body { min-height: 360px; }
+  .hint { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  button.primary, button.secondary { padding: 9px 16px; border-radius: 6px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.primary { background: var(--accent); color: var(--accent-text); border: 0; }
+  button.primary:disabled { opacity: .45; cursor: not-allowed; }
+  button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .checks { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 12px 14px; margin-top: 16px; }
+  .checks label { font-weight: 400; display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
+  .checks input { margin-top: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  td, th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .status { margin: 0 0 12px; min-height: 1.5em; }
+  .status.ok { color: var(--ok); }
+  .status.err { color: var(--accent); }
+  .empty { color: var(--muted); }
+  .banner { background: var(--warn-bg); color: var(--warn); padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; }
+  .photo { display: grid; grid-template-columns: 200px 1fr; gap: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-top: 10px; }
+  .photo .thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--bg); display: block; }
+  .photo label { margin-top: 8px; }
+  .photo label:first-child { margin-top: 0; }
+  .photo .row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+  .photo .row label { display: flex; gap: 6px; align-items: center; font-weight: 400; margin: 0; }
+  .photo.off { opacity: .5; }
+  @media (max-width: 600px) { .photo { grid-template-columns: 1fr; } }
+  .mini { width: 72px; height: 48px; object-fit: cover; border-radius: 3px; display: block; background: var(--bg); }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin-top: 12px; }
+  .card h3 { margin: 0 0 6px; font-size: 15px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  @media (max-width: 600px) { .two { grid-template-columns: 1fr; } }
+  .person { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }
+  .person .face { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; background: var(--bg); display: block; }
+  select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
+  .row-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .row-btns button { padding: 5px 10px; font-size: 13px; }
+  .results { list-style: none; padding: 0; margin: 6px 0 0; }
+  .results li button { text-align: left; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin-top: 4px; color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+  .wardgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 2px 12px; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+  .wardgrid label { font-weight: 400; display: flex; gap: 6px; align-items: center; margin: 2px 0; }
+  .wardgrid label.labour { font-weight: 600; }
+  .warn { color: var(--warn); }
+  .sticky { position: sticky; bottom: 0; background: var(--panel); padding: 12px 0 4px; border-top: 1px solid var(--line); margin-top: 18px; }
+</style>
+</head>
+<body>
+<header><h1>Swansea Labour · News review</h1></header>
+<nav role="tablist">
+  <button role="tab" data-tab="drafts" aria-selected="true">Drafts</button>
+  <button role="tab" data-tab="published" aria-selected="false">Published</button>
+  <button role="tab" data-tab="wards" aria-selected="false">Wards</button>
+  <button role="tab" data-tab="map" aria-selected="false">Map</button>
+  <button role="tab" data-tab="settings" aria-selected="false">Settings</button>
+  <button role="tab" data-tab="connect" aria-selected="false">Connect</button>
+</nav>
+<main>
+  <div class="panel">
+    <p id="status" class="status" role="status"></p>
+    <section id="tab-drafts"></section>
+    <section id="tab-published" hidden></section>
+    <section id="tab-wards" hidden></section>
+    <section id="tab-map" hidden></section>
+    <section id="tab-settings" hidden></section>
+    <section id="tab-connect" hidden>
+      <p>This page talks to your two GitHub repositories. These details are saved only in this browser. Use this page on your own computer only.</p>
+      <label for="c-owner">GitHub organisation or username that owns the repositories</label>
+      <input id="c-owner" type="text" autocomplete="off" placeholder="swansealabour">
+      <label for="c-engine">Private engine repository name</label>
+      <input id="c-engine" type="text" value="swansea-labour-news-engine" autocomplete="off">
+      <label for="c-site">Public site repository name</label>
+      <input id="c-site" type="text" value="swansea-labour-news" autocomplete="off">
+      <label for="c-token">GitHub access token</label>
+      <input id="c-token" type="password" autocomplete="off">
+      <p class="hint">A fine-grained token with Contents: read and write on just these two repositories.</p>
+      <div class="btns"><button class="primary" id="c-save">Save and connect</button></div>
+    </section>
+  </div>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const store = {
+  get(k) { try { return localStorage.getItem("slnews." + k) || ""; } catch { return ""; } },
+  set(k, v) { try { localStorage.setItem("slnews." + k, v); } catch {} },
+};
+let conn = { owner: store.get("owner"), engine: store.get("engine"), site: store.get("site"), token: store.get("token") };
+let state = { drafts: [], published: null, config: null, selected: null };
+
+const DEFAULT_PAGE_URL = "https://www.swansealabour.org/news";
+// All 32 Swansea wards, including those without Labour councillors (same list as engine/scripts/prompt.mjs).
+const WARDS = ["Bishopston", "Bôn-y-maen", "Castle", "Clydach", "Cockett", "Cwmbwrla", "Dunvant & Killay",
+  "Fairwood", "Gorseinon & Penyrheol", "Gower", "Gowerton", "Landore", "Llangyfelach", "Llansamlet",
+  "Llwchwr", "Mayals", "Morriston", "Mumbles", "Mynyddbach", "Penclawdd", "Penderry", "Penllergaer",
+  "Pennard", "Pontarddulais", "Pontlliw & Tircoed", "Sketty", "St Thomas", "Townhill", "Uplands",
+  "Waterfront", "Waunarlwydd", "West Cross"];
+
+function setStatus(msg, kind = "") { const s = $("#status"); s.textContent = msg; s.className = "status " + kind; }
+function el(tag, attrs = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (k === "text") e.textContent = v;
+    else if (v !== false && v != null) e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null) e.append(kid);
+  return e;
+}
+
+// An imprint only counts once it has been filled in with real details.
+function imprintOk(text) {
+  const t = (text || "").trim();
+  if (t.length < 20) return false;
+  if (/\bXX|\[name\]|\[address\]/i.test(t)) return false;
+  return /promoted by/i.test(t);
+}
+function pageUrlOf(config) {
+  return ((config && config.data.pageUrl) || DEFAULT_PAGE_URL).replace(/\/+$/, "");
+}
+// The public site repository is served at its custom domain, not github.io. GitHub forwards
+// github.io addresses there over plain http, which secure pages refuse to load.
+const SITE_ORIGIN = "https://news.swansealabour.org/";
+function siteUrl(path) {
+  return /^(https?:)?\/\//.test(path) ? path : SITE_ORIGIN + path;
+}
+// Photos on a published article. Understands the older single "image" field too.
+function imagesOf(a) {
+  const list = (a.images || []).filter((i) => i && i.src);
+  if (!list.length && a.image) list.push({ src: a.image, alt: a.imageAlt || "", caption: "", credit: "" });
+  return list;
+}
+
+// ---- Facebook post text ----
+// Zapier posts each feed item's description as the Facebook post text. By default that is the
+// summary plus a few hashtags: the story's wards (up to two), one topic tag, then the fixed tags
+// from Settings. Facebook does best with a handful of tags, not a wall of them. An article's own
+// "facebookText" (edited on the review page) replaces the automatic text entirely.
+const DEFAULT_FACEBOOK_TAGS = "#Swansea #SwanseaLabour";
+const WARD_TAGS = {
+  "Bôn-y-maen": ["Bonymaen"], "Dunvant & Killay": ["Killay", "Dunvant"], "Gorseinon & Penyrheol": ["Gorseinon", "Penyrheol"],
+  "Pontlliw & Tircoed": ["Pontlliw", "Tircoed"], "St Thomas": ["StThomas"], "West Cross": ["WestCross"],
+};
+// First match wins, so the specific patterns come before the general ones.
+const TOPIC_TAGS = [
+  [/\bflood|storm drain|drainage/i, "Flooding"],
+  [/\bvapes?\b|counterfeit|trading standards|illegal (tobacco|cigarettes)/i, "TradingStandards"],
+  [/cost of living|winter support|pension credit|free school meals|warm (hub|space)|fuel|hardship/i, "CostOfLiving"],
+  [/christmas|festive|xmas/i, "Christmas"],
+  [/half[- ]term|bonfire|fireworks|festival|family fun|free events|what's on/i, "WhatsOn"],
+  [/pothole|resurfac|\broads? (repair|programme|resurfac)|carriageway|road (works|closure|repair)|resurfacing/i, "Roads"],
+  [/\bschools?\b|pupils?|estyn|learners|classrooms?/i, "Schools"],
+  [/council homes|\bhomes\b|housing|apartments|tenants?/i, "Housing"],
+  [/have your say|consultation|survey|your views|shape the future/i, "HaveYourSay"],
+  [/bascule|bridge restoration|heritage|historic|listed building|restor(e|ed|ation)/i, "Heritage"],
+  [/recycl|\bbins?\b|litter|fly-?tipping|\bleaf\b|leaves|cleansing|street clean/i, "CleanerSwansea"],
+  [/play (area|park|ground)|playground|\bparks?\b|skate/i, "Parks"],
+  [/e-bike|cycl|active travel|walking route|footpath|footway/i, "ActiveTravel"],
+  [/\blibrar/i, "Libraries"],
+  [/\bbus(es)?\b/i, "Buses"],
+  [/city centre|high street|oxford street|castle square|kingsway|wind street/i, "CityCentre"],
+  [/beach|seafront|\bbay\b|coast|promenade|foreshore/i, "SwanseaBay"],
+  [/anti-?social|cctv|police|safer|crime/i, "CommunitySafety"],
+  [/\bscam|fraud/i, "ScamAware"],
+  [/\broads?\b|junction|traffic/i, "Roads"],
+  [/business|jobs|investment|regenerat|development/i, "Regeneration"],
+  [/one stop shop|y storfa|support|advice/i, "CommunitySupport"],
+];
+function wardTags(wards) {
+  const list = (wards || []).length > 3 ? [] : wards || []; // four or more wards is really a city-wide story
+  const out = [];
+  for (const w of list) for (const t of WARD_TAGS[w] || [w.replace(/[^A-Za-z]/g, "")]) if (t && !out.includes(t)) out.push(t);
+  return out.slice(0, 2);
+}
+const cleanTag = (t) => String(t || "").replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "");
+// The topic the keywords suggest, used when a story has no "topic" of its own.
+function guessTopic(a) {
+  return (TOPIC_TAGS.find(([re]) => re.test(`${a.headline || ""} ${a.summary || ""}`)) || [])[1] || "";
+}
+function hashtagsFor(a, fixed) {
+  // A story's own topic (chosen by the daily task, or typed on the review page) beats the keyword guess.
+  const topic = cleanTag(a.topic) || guessTopic(a);
+  const tags = wardTags(a.wards);
+  if (topic && !tags.some((x) => x.toLowerCase() === topic.toLowerCase())) tags.push(topic);
+  for (const t of (fixed == null ? DEFAULT_FACEBOOK_TAGS : fixed).split(/\s+/)) {
+    const clean = cleanTag(t);
+    if (clean && !tags.some((x) => x.toLowerCase() === clean.toLowerCase())) tags.push(clean);
+  }
+  return tags.map((t) => "#" + t).join(" ");
+}
+function autoFacebookText(a, config) {
+  const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined);
+  return [(a.summary || "").trim(), tags].filter(Boolean).join("\n\n");
+}
+function facebookTextOf(a, config) {
+  return (a.facebookText || "").trim() || autoFacebookText(a, config);
+}
+// X post text: headline, link and the same hashtags, within X's 280 characters (X counts any
+// link as 23). Tags are dropped from the end until it fits. Buffer posts it as written.
+const X_LIMIT = 280, X_LINK_LENGTH = 23;
+function xTextOf(a, config) {
+  // X caches link previews by URL, so each send adds its own ?v= to fetch the current photo.
+  const version = (a.facebookGuid || "").split("-").pop();
+  const link = siteUrl(`share/${encodeURIComponent(a.id)}.html`) + (a.facebookGuid ? `?v=${version}` : "");
+  const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined).split(" ").filter(Boolean);
+  let headline = (a.headline || "").trim();
+  const length = (t) => headline.length + 2 + X_LINK_LENGTH + (t.length ? 2 + t.join(" ").length : 0);
+  while (tags.length && length(tags) > X_LIMIT) tags.pop();
+  if (length(tags) > X_LIMIT) headline = headline.slice(0, X_LIMIT - 2 - X_LINK_LENGTH - 1).trimEnd() + "…";
+  return [headline, link, tags.join(" ")].filter(Boolean).join("\n\n");
+}
+
+// ---- GitHub contents API ----
+const b64encode = (str) => {
+  const bytes = new TextEncoder().encode(str); let bin = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+};
+const b64decode = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
+const bytesToB64 = (buf) => {
+  const bytes = new Uint8Array(buf); let bin = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+};
+
+const api = (repo, path) => `https://api.github.com/repos/${conn.owner}/${repo}/contents/${path}`;
+async function gh(repo, path, opts = {}) {
+  const res = await fetch(api(repo, path), {
+    ...opts,
+    headers: { Authorization: `Bearer ${conn.token}`, Accept: "application/vnd.github+json", ...(opts.headers || {}) },
+    cache: "no-store",
+  });
+  if (res.status === 404 && !opts.method) return null;
+  if (!res.ok) throw new Error(`GitHub ${res.status}: ${(await res.json().catch(() => ({}))).message || res.statusText}`);
+  return res.json();
+}
+// Raw file bytes as base64, any size (works for private repositories).
+async function readRawB64(repo, path) {
+  const res = await fetch(api(repo, path), {
+    headers: { Authorization: `Bearer ${conn.token}`, Accept: "application/vnd.github.raw" },
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`GitHub ${res.status} reading ${path}`);
+  return bytesToB64(await res.arrayBuffer());
+}
+async function readJson(repo, path) {
+  const f = await gh(repo, path);
+  if (!f) return null;
+  // GitHub leaves "content" empty for files over 1 MB, so those are fetched as raw bytes.
+  const text = b64decode(f.content || await readRawB64(repo, path));
+  return { data: JSON.parse(text), sha: f.sha };
+}
+const put = (repo, path, content, sha, message) =>
+  gh(repo, path, { method: "PUT", body: JSON.stringify({ message, content, ...(sha && { sha }) }) });
+const writeJson = (repo, path, data, sha, message) => put(repo, path, b64encode(JSON.stringify(data, null, 2) + "\n"), sha, message);
+const writeText = (repo, path, text, sha, message) => put(repo, path, b64encode(text), sha, message);
+// For files built from articles.json (sitemap, share pages, feed): GitHub sometimes rejects a
+// save made straight after another (409), so fetch the latest sha and try again.
+async function writeGenerated(repo, path, text, sha, message) {
+  for (let attempt = 1; ; attempt++) {
+    try { return await writeText(repo, path, text, sha, message); } catch (e) {
+      if (attempt >= 3 || !/GitHub (409|422)/.test(e.message)) throw e;
+      await new Promise((r) => setTimeout(r, 1500 * attempt));
+      const existing = await gh(repo, path);
+      if (existing && b64decode(existing.content) === text) return;
+      sha = existing && existing.sha;
+    }
+  }
+}
+async function writeB64(repo, path, b64, message) {
+  const existing = await gh(repo, path);
+  return put(repo, path, b64, existing && existing.sha, message);
+}
+const deleteFile = (repo, path, sha, message) =>
+  gh(repo, path, { method: "DELETE", body: JSON.stringify({ message, sha }) });
+async function deleteFolder(repo, path, message) {
+  const items = await gh(repo, path);
+  if (!Array.isArray(items)) return;
+  for (const f of items) if (f.type === "file") await deleteFile(repo, f.path, f.sha, message);
+}
+
+// Shrink a photo chosen on this computer to fit 1600 x 1600 and return base64 JPEG.
+// Re-drawing it on a canvas also removes location and camera details.
+async function resizePhoto(file) {
+  const bmp = await createImageBitmap(file);
+  const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bmp.width * scale);
+  canvas.height = Math.round(bmp.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  const blob = await new Promise((r) => canvas.toBlob(r, "image/jpeg", 0.9));
+  return { b64: bytesToB64(await blob.arrayBuffer()), width: canvas.width, height: canvas.height };
+}
+
+// ---- Sitemap: one entry per article on the website page that hosts the reel ----
+function sitemapXml(pageUrl, articles) {
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const rows = [`  <url><loc>${esc(pageUrl)}</loc></url>`];
+  for (const a of articles) {
+    const mod = (a.updated || a.date || "").slice(0, 10);
+    rows.push(`  <url><loc>${esc(pageUrl + "?article=" + encodeURIComponent(a.id))}</loc>${mod ? `<lastmod>${mod}</lastmod>` : ""}</url>`);
+  }
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows.join("\n")}\n</urlset>\n`;
+}
+async function writeSitemap(articles) {
+  const existing = await gh(conn.site, "sitemap.xml");
+  await writeGenerated(conn.site, "sitemap.xml", sitemapXml(pageUrlOf(state.config), articles), existing && existing.sha, "Update sitemap");
+}
+// ---- Share pages: share/<id>.html, one per article ----
+// Facebook, X and WhatsApp build link previews from raw HTML without running scripts, so the
+// news reel's own pages always preview as the plain News page. Each article gets a tiny static
+// page with its own title, summary and photo; it sends people straight on to the real article.
+const DEFAULT_SHARE_IMAGE = { src: "https://static1.squarespace.com/static/60f66d93c0d6ed6055a56101/t/6255bbcacff6531bcd7f814b/1649785802379/Swansea+Bay+Credit+Jack+Wodehouse.jpg?format=1500w", width: 1500, height: 842, alt: "Swansea Bay" };
+function shareHtml(a, pageUrl) {
+  const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const shareUrl = siteUrl(`share/${encodeURIComponent(a.id)}.html`);
+  const articleUrl = `${pageUrl}?article=${encodeURIComponent(a.id)}`;
+  const img = imagesOf(a)[0];
+  const image = img ? { src: siteUrl(img.src), width: img.width, height: img.height, alt: img.alt } : DEFAULT_SHARE_IMAGE;
+  const title = `${a.headline} | Swansea Labour`;
+  return `<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(a.summary)}">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${esc(articleUrl)}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Swansea Labour">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="${esc(a.headline)}">
+<meta property="og:description" content="${esc(a.summary)}">
+<meta property="og:url" content="${esc(shareUrl)}">
+<meta property="og:image" content="${esc(image.src)}">
+${image.width ? `<meta property="og:image:width" content="${image.width}">\n<meta property="og:image:height" content="${image.height}">\n` : ""}<meta property="og:image:alt" content="${esc(image.alt)}">
+<meta property="article:published_time" content="${esc(a.date)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(a.headline)}">
+<meta name="twitter:description" content="${esc(a.summary)}">
+<meta name="twitter:image" content="${esc(image.src)}">
+<meta name="twitter:image:alt" content="${esc(image.alt)}">
+<script>location.replace(${JSON.stringify(articleUrl)});<\/script>
+<style>body{font-family:system-ui,sans-serif;margin:3em auto;max-width:36em;padding:0 1em;line-height:1.5}a{color:#E4003B}</style>
+</head>
+<body>
+<p>Taking you to the story…</p>
+<p><a href="${esc(articleUrl)}">${esc(a.headline)}</a></p>
+</body>
+</html>
+`;
+}
+// Writes only the pages that are new or have changed, so most saves add no extra commits.
+async function writeSharePages(articles) {
+  const pageUrl = pageUrlOf(state.config);
+  const dir = (await gh(conn.site, "share")) || [];
+  const shas = new Map((Array.isArray(dir) ? dir : []).map((f) => [f.name, f.sha]));
+  for (const a of articles) {
+    const name = `${a.id}.html`;
+    const html = shareHtml(a, pageUrl);
+    const sha = shas.get(name);
+    if (sha) {
+      const f = await gh(conn.site, `share/${name}`);
+      if (f && b64decode(f.content) === html) continue;
+    }
+    await writeGenerated(conn.site, `share/${name}`, html, sha, `Share page: ${a.headline}`);
+  }
+}
+// ---- Social feeds: feed.xml (Facebook) and x.xml (X) list the articles ticked "Post to Facebook and X" ----
+// Zapier watches this feed and posts each new item to the Swansea Labour Councillors page.
+// An article's "facebook" field holds when it was sent; each item's link is its share page,
+// so Facebook shows the photo, headline and summary. The description is the post text (summary
+// plus hashtags, see facebookTextOf). Zapier skips guids it has seen, so each send gets its own
+// "facebookGuid" (older articles fall back to their id). x.xml lists the same stories with X-length
+// text (xTextOf) for a second Zap that sends them to Buffer, which posts them to X.
+function feedXml(pageUrl, articles, config, textOf = facebookTextOf, about = "the Swansea Labour Councillors Facebook page") {
+  const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const items = articles.filter((a) => a.facebook)
+    .sort((a, b) => b.facebook.localeCompare(a.facebook))
+    .slice(0, 20)
+    .map((a) => {
+      const img = imagesOf(a)[0];
+      return `  <item>
+    <title>${esc(a.headline)}</title>
+    <link>${esc(siteUrl(`share/${encodeURIComponent(a.id)}.html`))}</link>
+    <guid isPermaLink="false">${esc(a.facebookGuid || a.id)}</guid>
+    <description>${esc(textOf(a, config))}</description>
+    <pubDate>${new Date(a.facebook).toUTCString()}</pubDate>${img ? `\n    <enclosure url="${esc(siteUrl(img.src))}" type="image/jpeg" length="0"/>` : ""}
+  </item>`;
+    });
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Swansea Labour news</title>
+  <link>${esc(pageUrl)}</link>
+  <description>Stories from Swansea Labour, for ${esc(about)}</description>
+  <language>en-gb</language>
+${items.join("\n")}
+</channel>
+</rss>
+`;
+}
+async function writeFeed(articles) {
+  const pageUrl = pageUrlOf(state.config);
+  for (const [path, xml, message] of [
+    ["feed.xml", feedXml(pageUrl, articles, state.config), "Update Facebook feed"],
+    ["x.xml", feedXml(pageUrl, articles, state.config, xTextOf, "X"), "Update X feed"],
+  ]) {
+    const existing = await gh(conn.site, path);
+    if (existing && b64decode(existing.content) === xml) continue;
+    await writeGenerated(conn.site, path, xml, existing && existing.sha, message);
+  }
+}
+async function writeSite(data, sha, message) {
+  const payload = { imprint: data.imprint, pageUrl: pageUrlOf(state.config), articles: data.articles };
+  await writeJson(conn.site, "articles.json", payload, sha, message);
+  await writeSharePages(payload.articles);
+  await writeFeed(payload.articles);
+  await writeSitemap(payload.articles);
+}
+
+// ---- Loading ----
+async function loadAll() {
+  setStatus("Loading…");
+  const [config, published, dir, wards, delivery] = await Promise.all([
+    readJson(conn.engine, "config.json"),
+    readJson(conn.site, "articles.json"),
+    gh(conn.engine, "data/drafts"),
+    readJson(conn.site, "wards.json"),
+    readJson(conn.site, "delivery.json"),
+  ]);
+  state.wards = wards || { data: { wards: [] }, sha: undefined };
+  state.delivery = delivery || { data: { projects: [] }, sha: undefined };
+  state.config = config || { data: {}, sha: undefined };
+  state.published = published || { data: { imprint: "", articles: [] }, sha: undefined };
+  const files = (dir || []).filter((f) => f.type === "file" && f.name.endsWith(".json"));
+  state.drafts = (await Promise.all(files.map(async (f) => {
+    const r = await readJson(conn.engine, f.path);
+    return r && { ...r.data, _path: f.path, _sha: r.sha };
+  }))).filter(Boolean).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
+  setStatus(`${state.drafts.length} draft(s) waiting.`);
+  // A story being edited is left alone, so unsaved changes aren't wiped by a refresh.
+  if (!state.dirty) { renderDrafts(); renderPublished(); }
+  renderWards(); renderMap(); renderSettings();
+}
+// Unsaved changes in the story editor: ask before leaving them behind.
+function leaveEdits() {
+  if (state.dirty && !confirm("You have changes that aren't saved. Leave without saving them?")) return false;
+  state.dirty = false;
+  return true;
+}
+window.addEventListener("beforeunload", (e) => { if (state.dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+// ---- Drafts ----
+function renderDrafts() {
+  const root = $("#tab-drafts"); root.innerHTML = "";
+  if (!imprintOk(state.config.data.imprint)) {
+    root.append(el("p", { class: "banner", text: "Publishing is switched off until you add a real digital imprint in Settings (legally required on political material). Placeholder text such as XX does not count." }));
+  }
+  if (!state.drafts.length) {
+    root.append(el("p", { class: "empty", text: "No drafts waiting. New ones from Facebook and swansea.gov.uk are added each morning at 7am." }));
+    return;
+  }
+  if (!state.selected || !state.drafts.find((d) => d.id === state.selected)) state.selected = state.drafts[0].id;
+  const list = el("div", { class: "list" }, state.drafts.map((d) =>
+    el("button", { class: "item", "aria-current": String(d.id === state.selected), onclick: () => { if (d.id === state.selected || !leaveEdits()) return; state.selected = d.id; renderDrafts(); } },
+      d.headline || d.sourceFile,
+      el("small", { text: [d.status === "needs-attention" ? "Needs attention" : "", d.editedAt ? "Edited" : "", (d.images || []).length ? `${d.images.length} photo(s)` : "", d.sourceFile || "", d.createdAt ? new Date(d.createdAt).toLocaleString("en-GB") : ""].filter(Boolean).join(" · ") }))));
+  root.append(el("div", { class: "layout" }, list, storyEditor(state.drafts.find((d) => d.id === state.selected), "draft")));
+}
+
+// One photo in the story editor. It is a draft's file in the engine repo (p.file), a published
+// story's photo on the website (p.src), or a photo picked on this computer (p.b64 only).
+function photoCard(p, group, isLead, onChange) {
+  const thumb = el("img", { class: "thumb", alt: "" });
+  if (p.b64) thumb.src = "data:image/jpeg;base64," + p.b64;
+  else if (p.src) thumb.src = siteUrl(p.src);
+  else readRawB64(conn.engine, p.file).then((b) => { p.b64 = b; thumb.src = "data:image/jpeg;base64," + b; }).catch(() => { thumb.alt = "Preview unavailable"; });
+  const small = p.width && p.width < 600 ? `Small photo (${p.width} pixels wide): it may look soft, and Facebook will only show a small thumbnail.`
+    : p.width && p.width < 800 ? `Smallish photo (${p.width} pixels wide): it may look a little soft on large screens.` : "";
+  const f = {
+    alt: el("input", { type: "text", value: p.alt || "", placeholder: "What the photo shows, for screen-reader users", oninput: onChange }),
+    caption: el("input", { type: "text", value: p.caption || "", placeholder: "Optional caption shown under the photo" }),
+    credit: el("input", { type: "text", value: p.credit || "", placeholder: "Optional, e.g. Voi" }),
+    use: el("input", { type: "checkbox", checked: p.use !== false, onchange: () => { box.classList.toggle("off", !f.use.checked); onChange(); } }),
+    lead: el("input", { type: "radio", name: group, checked: isLead, onchange: onChange }),
+  };
+  const box = el("div", { class: "photo" + (p.use === false ? " off" : "") },
+    el("div", {}, thumb, el("p", { class: "hint", text: p.file ? "From the original post or press release" : p.src ? "On the website now" : "Added by you" }),
+      small ? el("p", { class: "hint warn", text: small }) : null),
+    el("div", {},
+      el("label", { text: "Description (required if used)" }), f.alt,
+      el("label", { text: "Caption" }), f.caption,
+      el("label", { text: "Photo credit" }), f.credit,
+      el("div", { class: "row" }, el("label", {}, f.use, "Use this photo"), el("label", {}, f.lead, "Lead photo"))));
+  return {
+    el: box,
+    p,
+    used: () => f.use.checked,
+    lead: () => f.lead.checked,
+    valid: () => !f.use.checked || f.alt.value.trim().length > 0,
+    value: () => ({ alt: f.alt.value.trim(), caption: f.caption.value.trim(), credit: f.credit.value.trim(), width: p.width, height: p.height }),
+    bytes: async () => p.b64 || (p.b64 = await readRawB64(conn.engine, p.file)),
+  };
+}
+
+// What the article page says the story is "Based on". Facebook drafts are labelled
+// "Facebook: <who>" by the daily task; everything else came from a council press release.
+function defaultSourceName(d) {
+  if (d.sourceName) return d.sourceName;
+  const fb = /^Facebook: (.+)$/.exec(d.sourceFile || "");
+  if (!fb) return "a Swansea Council press release";
+  const who = fb[1].replace(/\bRob Stewart\b/, "Cllr Rob Stewart");
+  if (/ and /.test(who)) return `Facebook posts by ${who}`;
+  return who === "Swansea Council" ? "a Swansea Council Facebook post" : `a Facebook post by ${who}`;
+}
+
+// Optional quotes from the story's local Labour councillors and Labour candidates (the ward's
+// "candidates" in wards.json). The daily task may suggest some (draft.ward_quotes); none goes
+// into the article unless its box is ticked.
+function labourCouncillors(taggedWards) {
+  const tagged = new Set(taggedWards.map((w) => w.toLowerCase()));
+  return ((state.wards && state.wards.data.wards) || [])
+    .flatMap((w) => [
+      ...(w.councillors || []).map((c) => ({ name: c.name, ward: w.name, candidate: false })),
+      ...(w.candidates || []).map((c) => ({ name: c.name, ward: w.name, candidate: true })),
+    ].map((p) => ({ ...p, local: tagged.has(w.name.toLowerCase()) })))
+    .sort((a, b) => Number(b.local) - Number(a.local) || a.ward.localeCompare(b.ward) || Number(a.candidate) - Number(b.candidate) || a.name.localeCompare(b.name));
+}
+function wardQuoteCard(q, people, onChange) {
+  let removed = false;
+  const same = (p) => p.name === q.name && p.ward === q.ward;
+  const options = [...(q.name && !people.some(same) ? [{ name: q.name, ward: q.ward, candidate: !!q.candidate }] : []), ...people];
+  const who = el("select", { onchange: onChange },
+    el("option", { value: "" }, "Choose a councillor or candidate…"),
+    options.map((p) => el("option", { value: `${p.name}|${p.ward}|${p.candidate ? 1 : 0}`, selected: same(p) },
+      `${p.name} (${p.ward}${p.candidate ? ", Labour candidate" : ""})`)));
+  const text = el("textarea", { oninput: onChange, placeholder: "Their words, without quotation marks" }, q.text || "");
+  const use = el("input", { type: "checkbox", checked: !!q.agreed, onchange: onChange });
+  const box = el("div", { class: "card" },
+    el("label", { text: "Councillor or candidate" }), who,
+    el("label", { text: "Quote" }), text,
+    el("label", { style: "display:flex;gap:8px;align-items:center;font-weight:400" }, use, "Add this quote to the article (they have agreed the wording)"),
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { removed = true; box.remove(); onChange(); } }, "Remove")));
+  return {
+    el: box,
+    removed: () => removed,
+    ticked: () => !removed && use.checked,
+    value: () => {
+      const [name = "", ward = "", candidate = "0"] = who.value.split("|");
+      return { name, ward, candidate: candidate === "1", text: text.value.trim().replace(/^["“]+|["”]+$/g, "").trim() };
+    },
+  };
+}
+// One paragraph per quote. A second councillor from the same ward is introduced as "Fellow";
+// candidates aren't councillors, so they get no "Cllr".
+function wardQuoteParagraphs(quotes) {
+  return quotes.map((q, i) => {
+    const after = i > 0 && quotes[i - 1].ward === q.ward;
+    if (q.candidate) return `Labour candidate for ${q.ward}, ${q.name}, ${after ? "added" : "said"}: “${q.text}”`;
+    return after && !quotes[i - 1].candidate
+      ? `Fellow ${q.ward} Labour councillor Cllr ${q.name} added: “${q.text}”`
+      : `Local Labour councillor for ${q.ward}, Cllr ${q.name}, said: “${q.text}”`;
+  });
+}
+
+// Tick boxes for the 32 wards; wards with a Labour team are in bold. Tags that aren't on the
+// list (from older stories) are kept as extra boxes so nothing is lost.
+function wardPicker(selected, onChange) {
+  const labour = new Set(((state.wards && state.wards.data.wards) || []).map((w) => w.name));
+  const names = [...WARDS, ...selected.filter((w) => !WARDS.includes(w))];
+  const boxes = names.map((w) => [w, el("input", { type: "checkbox", checked: selected.includes(w), onchange: onChange })]);
+  return {
+    el: el("div", { class: "wardgrid" }, boxes.map(([w, box]) => el("label", { class: labour.has(w) ? "labour" : "" }, box, w))),
+    value: () => boxes.filter(([, box]) => box.checked).map(([w]) => w),
+  };
+}
+
+// The story form. It is used for a waiting draft (mode "draft") and for a story already on the
+// website (mode "published", passed in the same shape as a draft: see articleAsDraft).
+function storyEditor(d, mode) {
+  const isDraft = mode === "draft";
+  const markDirty = () => { state.dirty = true; };
+  const f = {
+    sourceName: el("input", { type: "text", value: defaultSourceName(d) }),
+    headline: el("input", { type: "text", value: d.headline || "" }),
+    summary: el("textarea", {}, d.summary || ""),
+    body: el("textarea", { class: "body" }, (d.body || []).join("\n\n")),
+    topic: el("input", { type: "text", value: d.topic || "" }),
+    sourceTitle: el("input", { type: "text", value: d.source_title || d.sourceTitle || "" }),
+    sourceDate: el("input", { type: "text", value: d.source_date || d.sourceDate || "" }),
+    sourceUrl: el("input", { type: "url", value: d.sourceUrl || "", placeholder: "https://www.swansea.gov.uk/…" }),
+  };
+  const wards = wardPicker(d.wards || [], () => refreshAuto());
+  const collect = () => ({
+    headline: f.headline.value.trim(),
+    summary: f.summary.value.trim(),
+    body: f.body.value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+    wards: wards.value(),
+    topic: cleanTag(f.topic.value),
+    sourceName: f.sourceName.value.trim(),
+    sourceTitle: f.sourceTitle.value.trim(),
+    sourceDate: f.sourceDate.value.trim(),
+    sourceUrl: f.sourceUrl.value.trim(),
+  });
+
+  const group = `lead-${mode}-${d.id}`;
+  const photoBox = el("div");
+  const photos = [];
+  const addCard = (p, isLead) => { const c = photoCard(p, group, isLead, update); photos.push(c); photoBox.append(c.el); };
+  (d.images || []).filter((i) => i && (i.file || i.src)).forEach((p, i) => addCard({ ...p }, i === 0));
+  // Photos being used, lead photo first.
+  const usedPhotos = () => photos.filter((p) => p.used()).sort((a, b) => Number(b.lead()) - Number(a.lead()));
+
+  const picker = el("input", { type: "file", accept: "image/*", multiple: true, style: "display:none" });
+  picker.addEventListener("change", async () => {
+    for (const file of picker.files) {
+      try { const r = await resizePhoto(file); addCard({ b64: r.b64, width: r.width, height: r.height, alt: "", caption: "", credit: "" }, photos.length === 0); }
+      catch (e) { setStatus(`Could not read ${file.name}: ${e.message}`, "err"); }
+    }
+    picker.value = "";
+    markDirty();
+    update();
+  });
+  const addBtn = el("button", { class: "secondary", type: "button", onclick: () => picker.click() }, "Add a photo");
+  const photoHint = el("p", { class: "hint" });
+
+  const checkTexts = isDraft
+    ? [...(d.checks || []), "I have read the article and every fact matches the original source."]
+    : ["I have read my changes and every fact matches the original source."];
+  const factChecks = checkTexts.map((c) => el("label", {}, el("input", { type: "checkbox", onchange: update }), c));
+  const permission = el("label", {}, el("input", { type: "checkbox", onchange: update }), "We have permission to publish the photos being used, and anyone identifiable in them is happy to be pictured.");
+
+  // Facebook and X (drafts only; published stories are sent from the Published list).
+  const articles = (state.published && state.published.data.articles) || [];
+  const prevPublished = isDraft ? articles.find((a) => a.id === d.id) : null;
+  const alreadySent = !!(prevPublished && prevPublished.facebook);
+  const sentBefore = !alreadySent && d.sent && d.sent.facebook;
+  const facebookBox = el("input", { type: "checkbox", checked: alreadySent, disabled: alreadySent });
+  const facebook = el("label", {}, facebookBox, alreadySent
+    ? "Already sent to the Swansea Labour Councillors Facebook page and X."
+    : sentBefore
+      ? `This story was sent to Facebook and X before, on ${new Date(d.sent.facebook).toLocaleDateString("en-GB")}. Tick to post it again.`
+      : "Also post to the Swansea Labour Councillors Facebook page and X (usually appears within about 15 minutes).");
+  // What Zapier will post: the summary plus hashtags, refreshed as the story changes until the
+  // text is edited by hand. Only an edited text is saved with the story (facebookText).
+  const autoText = () => autoFacebookText({ headline: f.headline.value, summary: f.summary.value, wards: wards.value(), topic: f.topic.value }, state.config);
+  const savedText = (prevPublished && prevPublished.facebookText) || d.facebookText || "";
+  const fbText = el("textarea", { style: "min-height:110px" }, savedText || autoText());
+  let fbEdited = !!savedText;
+  fbText.addEventListener("input", () => { fbEdited = fbText.value.trim() !== autoText(); });
+  function refreshAuto() {
+    const guess = guessTopic({ headline: f.headline.value, summary: f.summary.value });
+    f.topic.placeholder = guess ? `Automatic: ${guess}` : "e.g. Housing";
+    if (!fbEdited) fbText.value = autoText();
+  }
+  for (const k of ["headline", "summary", "topic"]) f[k].addEventListener("input", refreshAuto);
+  refreshAuto();
+  const fbReset = el("button", { class: "secondary", type: "button", onclick: () => { fbEdited = false; fbText.value = autoText(); markDirty(); } }, "Reset to automatic");
+
+  const people = labourCouncillors(d.wards || []);
+  const quoteBox = el("div");
+  const wardQuotes = [];
+  const quoteChanged = () => { markDirty(); update(); };
+  const addQuote = (q) => { const c = wardQuoteCard(q, people, quoteChanged); wardQuotes.push(c); quoteBox.append(c.el); };
+  (d.ward_quotes || []).forEach(addQuote);
+  const addQuoteBtn = el("button", { class: "secondary", type: "button", onclick: () => { addQuote({}); quoteChanged(); } }, "Add a councillor or candidate quote");
+  const quoteHint = el("p", { class: "hint" });
+  // Ticked quotes go in just before the closing paragraph.
+  const withQuotes = (body) => {
+    const quotes = wardQuoteParagraphs(wardQuotes.filter((q) => q.ticked()).map((q) => q.value()));
+    const out = body.slice();
+    if (quotes.length) out.splice(Math.max(out.length - 1, 0), 0, ...quotes);
+    return out;
+  };
+
+  const mainBtn = el("button", { class: "primary", onclick: isDraft ? publish : saveEdit }, isDraft ? "Publish to website" : "Save changes");
+  const saveBtn = isDraft ? el("button", { class: "secondary", onclick: saveDraft }, "Save draft") : null;
+  let busy = false;
+  function update() {
+    const anyUsed = photos.some((p) => p.used());
+    const missingAlt = photos.some((p) => !p.valid());
+    permission.style.display = anyUsed ? "" : "none";
+    photoHint.textContent = !photos.length
+      ? "No photos came with this story. Without one, it shows a red Swansea Labour panel."
+      : missingAlt ? `Every photo you use needs a description before you can ${isDraft ? "publish" : "save"}.`
+      : !isDraft && photos.some((p) => !p.used()) ? "Unticked photos are taken off the story, and off the website, when you save." : "";
+    const badQuote = wardQuotes.some((q) => q.ticked() && (!q.value().name || !q.value().text));
+    quoteHint.textContent = badQuote ? `A ticked quote needs a councillor or candidate and their words before you can ${isDraft ? "publish" : "save"}.` : "";
+    const ticks = [...factChecks, ...(anyUsed ? [permission] : [])];
+    mainBtn.disabled = busy || !imprintOk(state.config.data.imprint) || missingAlt || badQuote || ticks.some((l) => !l.firstChild.checked);
+    if (saveBtn) saveBtn.disabled = busy;
+  }
+  const working = (on) => { busy = on; update(); };
+
+  async function publish() {
+    working(true);
+    try {
+      const images = [];
+      for (const [i, p] of usedPhotos().entries()) {
+        setStatus(`Uploading photo ${i + 1}…`);
+        const src = `images/${d.id}/${i + 1}.jpg`;
+        await writeB64(conn.site, src, await p.bytes(), `Photo for ${d.id}`);
+        images.push({ src, ...p.value() });
+      }
+      setStatus("Publishing…");
+      const fresh = await readJson(conn.site, "articles.json") || { data: { imprint: "", articles: [] } };
+      const now = new Date().toISOString();
+      const previous = fresh.data.articles.find((a) => a.id === d.id);
+      const v = collect();
+      const article = {
+        id: d.id,
+        // A story put back into Drafts keeps the date it was first published.
+        date: previous ? previous.date : d.originalDate || now,
+        updated: now,
+        headline: v.headline,
+        summary: v.summary,
+        body: withQuotes(v.body),
+        images,
+        wards: v.wards,
+        ...(v.topic && { topic: v.topic }),
+        sourceName: v.sourceName,
+        sourceTitle: v.sourceTitle,
+        sourceDate: v.sourceDate,
+        sourceUrl: v.sourceUrl,
+      };
+      const customText = fbText.value.trim();
+      if (customText && customText !== autoFacebookText(article, state.config)) article.facebookText = customText;
+      if (previous && previous.facebook) Object.assign(article, facebookFields(previous));
+      else if (facebookBox.checked) Object.assign(article, newFacebookSend(d.id));
+      else if (sentBefore) Object.assign(article, facebookFields(d.sent));
+      const list = [article, ...fresh.data.articles.filter((a) => a.id !== d.id)];
+      await writeSite({ imprint: state.config.data.imprint, articles: list }, fresh.sha, `Publish: ${article.headline}`);
+      await deleteFile(conn.engine, d._path, d._sha, `Published draft ${d.id}`);
+      await deleteFolder(conn.engine, `data/drafts/${d.id}`, `Published draft ${d.id}`);
+      state.dirty = false;
+      await loadAll();
+      setStatus("Published. It will show on the website within a few minutes.", "ok");
+    } catch (e) { setStatus(e.message, "err"); working(false); }
+  }
+  // Keeps the edits on the draft without publishing it: text, wards, photos and their
+  // descriptions, quote wording and which quotes are ticked.
+  async function saveDraft() {
+    working(true);
+    try {
+      setStatus("Saving draft…");
+      const v = collect();
+      const ordered = photos.slice().sort((a, b) => Number(b.used() && b.lead()) - Number(a.used() && a.lead()));
+      const images = [];
+      for (const [i, p] of ordered.entries()) {
+        let file = p.p.file;
+        if (!file) {
+          file = `data/drafts/${d.id}/${Date.now().toString(36)}-${i}.jpg`;
+          await writeB64(conn.engine, file, await p.bytes(), `Photo for draft ${d.id}`);
+        }
+        images.push({ file, use: p.used(), ...p.value() });
+      }
+      const { _path, _sha, sourceTitle, sourceDate, facebookText, topic, ...rest } = d;
+      const custom = fbText.value.trim();
+      const next = {
+        ...rest,
+        headline: v.headline,
+        summary: v.summary,
+        body: v.body,
+        wards: v.wards,
+        ...(v.topic && { topic: v.topic }),
+        sourceName: v.sourceName,
+        source_title: v.sourceTitle,
+        source_date: v.sourceDate,
+        sourceUrl: v.sourceUrl,
+        images,
+        ward_quotes: wardQuotes.filter((q) => !q.removed()).map((q) => ({ ...q.value(), ...(q.ticked() && { agreed: true }) })).filter((q) => q.name || q.text),
+        ...(custom && custom !== autoText() && { facebookText: custom }),
+        editedAt: new Date().toISOString(),
+      };
+      await writeJson(conn.engine, _path, next, _sha, `Draft edited: ${v.headline}`);
+      state.dirty = false;
+      await loadAll();
+      setStatus("Draft saved. It is still waiting to be published.", "ok");
+    } catch (e) { setStatus(e.message, "err"); working(false); }
+  }
+  // Saves changes to a story that is already on the website.
+  async function saveEdit() {
+    working(true);
+    try {
+      const images = [];
+      for (const [i, p] of usedPhotos().entries()) {
+        let src = p.p.src;
+        if (!src) {
+          setStatus("Uploading photo…");
+          src = `images/${d.id}/${Date.now().toString(36)}-${i}.jpg`;
+          await writeB64(conn.site, src, await p.bytes(), `Photo for ${d.id}`);
+        }
+        images.push({ src, ...p.value() });
+      }
+      setStatus("Saving…");
+      const fresh = await readJson(conn.site, "articles.json");
+      const previous = fresh && fresh.data.articles.find((a) => a.id === d.id);
+      if (!previous) throw new Error("This story is no longer on the website, so the changes were not saved.");
+      const v = collect();
+      const { image, imageAlt, topic, ...rest } = previous;
+      const article = {
+        ...rest,
+        updated: new Date().toISOString(),
+        headline: v.headline,
+        summary: v.summary,
+        body: withQuotes(v.body),
+        images,
+        wards: v.wards,
+        ...(v.topic && { topic: v.topic }),
+        sourceName: v.sourceName,
+        sourceTitle: v.sourceTitle,
+        sourceDate: v.sourceDate,
+        sourceUrl: v.sourceUrl,
+      };
+      fresh.data.articles = fresh.data.articles.map((x) => (x.id === d.id ? article : x));
+      await writeSite(fresh.data, fresh.sha, `Edit: ${article.headline}`);
+      // Photos taken off the story are removed from the website too.
+      const keep = new Set(images.map((i) => i.src));
+      const dir = await gh(conn.site, `images/${d.id}`);
+      for (const file of Array.isArray(dir) ? dir : []) {
+        if (file.type === "file" && !keep.has(file.path)) await deleteFile(conn.site, file.path, file.sha, `Photo no longer used by ${d.id}`);
+      }
+      state.dirty = false;
+      state.editing = null;
+      await loadAll();
+      setStatus(previous.facebook
+        ? "Saved. It will show on the website within a few minutes. This story has been sent to Facebook: if you changed the photo or headline, use \"Refresh Facebook preview\" so the post shows the change."
+        : "Saved. It will show on the website within a few minutes.", "ok");
+    } catch (e) { setStatus(e.message, "err"); working(false); }
+  }
+  async function reject() {
+    if (!confirm("Reject and delete this draft and its photos?")) return;
+    try {
+      await deleteFile(conn.engine, d._path, d._sha, `Rejected draft ${d.id}`);
+      await deleteFolder(conn.engine, `data/drafts/${d.id}`, `Rejected draft ${d.id}`);
+      state.dirty = false;
+      await loadAll();
+      setStatus("Draft rejected.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+
+  const quoted = d.people_quoted || [];
+  const quotedTable = quoted.length
+    ? el("table", {}, el("tr", {}, el("th", { text: "Quoted" }), el("th", { text: "Role" }), el("th", { text: "Treated as" })),
+        quoted.map((p) => el("tr", {}, el("td", { text: p.name }), el("td", { text: p.role }), el("td", { text: p.treatment }))))
+    : el("p", { class: "hint", text: "No one is quoted." });
+
+  const root = el("div", {},
+    el("label", { text: "Headline" }), f.headline,
+    el("label", { text: "Summary (shown on the news card)" }), f.summary,
+    el("label", { text: "Article" }), f.body,
+    el("p", { class: "hint", text: "Leave a blank line between paragraphs." }),
+    el("label", { text: "Photos" }), photoBox, photoHint, picker, el("div", { class: "btns", style: "margin-top:8px" }, addBtn),
+    el("label", { text: "Wards this story is about (optional)" }), wards.el,
+    el("p", { class: "hint", text: "Tick every ward the story is about, including wards without Labour councillors. Wards in bold have a Labour page, which shows the story too. Leave them all unticked for a city-wide story." }),
+    el("label", { text: "Topic hashtag (optional, one word)" }), f.topic,
+    el("p", { class: "hint", text: "Used in the Facebook and X posts, after the ward tags. Leave it empty to use the automatic one." }),
+    isDraft ? [el("label", { text: "People quoted" }), quotedTable] : null,
+    el("label", { text: "Ward councillor and candidate quotes (optional)" }),
+    el("p", { class: "hint", text: `Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor or candidate has agreed the wording. Leave them unticked to ${isDraft ? "publish the story as it is" : "leave the article as it is"}.` }),
+    quoteBox, quoteHint, el("div", { class: "btns", style: "margin-top:8px" }, addQuoteBtn),
+    el("label", { text: "Based on (shown under the article)" }), f.sourceName,
+    el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
+    el("label", { text: "Original title" }), f.sourceTitle,
+    el("label", { text: "Original date" }), f.sourceDate,
+    el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl,
+    el("div", { class: "checks confirm" }, el("strong", { text: isDraft ? "Before publishing, confirm:" : "Before saving, confirm:" }), factChecks, permission),
+    isDraft ? el("div", { class: "checks" }, el("strong", { text: "Facebook and X" }), facebook,
+      el("label", { text: "Facebook post text" }), fbText,
+      el("p", { class: "hint", text: "The summary plus a few hashtags: the story's wards, one topic, then the fixed tags from Settings. Edit it for different wording or tags; the photo, headline and link come from the share page. The X post is the headline, the link and the same hashtags." }),
+      el("div", { class: "row-btns" }, fbReset)) : null,
+    el("div", { class: "btns" }, mainBtn, saveBtn,
+      isDraft ? el("button", { class: "secondary", onclick: reject }, "Reject")
+        : el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = null; renderPublished(); } }, "Cancel")));
+  // Anything typed or ticked in the form counts as an unsaved change, apart from the
+  // confirmation ticks, which are never saved.
+  const changed = (e) => { if (!e.target.closest(".confirm")) markDirty(); };
+  root.addEventListener("input", changed);
+  root.addEventListener("change", changed);
+  update();
+  return root;
+}
+
+// ---- Published ----
+// A published story in the shape the story editor expects.
+function articleAsDraft(a) {
+  return {
+    id: a.id, headline: a.headline, summary: a.summary, body: a.body || [], wards: a.wards || [], topic: a.topic || "",
+    sourceName: a.sourceName || "", source_title: a.sourceTitle || "", source_date: a.sourceDate || "", sourceUrl: a.sourceUrl || "",
+    images: imagesOf(a).map((i) => ({ ...i, use: true })), checks: [], ward_quotes: [], people_quoted: [],
+  };
+}
+function renderPublished() {
+  const root = $("#tab-published"); root.innerHTML = "";
+  const list = state.published.data.articles;
+  const editing = state.editing && list.find((a) => a.id === state.editing);
+  if (editing) {
+    root.append(
+      el("div", { class: "btns", style: "margin-top:0" }, el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = null; renderPublished(); } }, "← All published stories")),
+      el("p", { class: "hint", text: "You are editing a story that is on the website. Changes show there a few minutes after you save." }),
+      storyEditor(articleAsDraft(editing), "published"));
+    return;
+  }
+  state.editing = null;
+  const rebuild = el("button", { class: "secondary", onclick: async () => {
+    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); await writeFeed(list); setStatus("Sitemap, share pages and the Facebook and X feeds rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
+  } }, "Rebuild sitemap, share pages and social feeds");
+  if (!list.length) { root.append(el("p", { class: "empty", text: "Nothing published yet." }), el("div", { class: "btns" }, rebuild)); return; }
+  root.append(el("table", {},
+    el("tr", {}, el("th", { text: "Photo" }), el("th", { text: "Date" }), el("th", { text: "Headline" }), el("th", {})),
+    list.map((a) => {
+      const imgs = imagesOf(a);
+      const fbHolder = el("div");
+      const fbToggle = el("button", { class: "secondary", onclick: () => {
+        if (fbHolder.firstChild) fbHolder.innerHTML = ""; else fbHolder.append(facebookTextEditor(a));
+      } }, a.facebookText ? "Facebook text (custom)" : "Facebook text");
+      const debuggerUrl = "https://developers.facebook.com/tools/debug/?q=" + encodeURIComponent(siteUrl(`share/${encodeURIComponent(a.id)}.html`));
+      return el("tr", {},
+        el("td", {}, imgs[0] ? el("img", { class: "mini", src: siteUrl(imgs[0].src), alt: imgs[0].alt || "" }) : el("span", { class: "hint", text: "None" })),
+        el("td", { text: new Date(a.date).toLocaleDateString("en-GB") }),
+        el("td", {}, el("a", { href: pageUrlOf(state.config) + "?article=" + encodeURIComponent(a.id), target: "_blank", rel: "noopener", text: a.headline })),
+        el("td", {}, el("div", { class: "btns", style: "margin:0" },
+          el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = a.id; renderPublished(); window.scrollTo(0, 0); } }, "Edit"),
+          a.facebook ? el("span", { class: "hint", text: "Sent to Facebook and X " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
+          el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook and X again" : "Post to Facebook and X"),
+          fbToggle,
+          // Facebook keeps the photo and headline it saw first; its Sharing Debugger ("Scrape Again") refreshes them.
+          a.facebook ? el("a", { class: "hint", href: debuggerUrl, target: "_blank", rel: "noopener", title: "Opens Facebook's Sharing Debugger. Click Scrape Again there after changing a sent story's photo or headline.", text: "Refresh Facebook preview ↗" }) : null,
+          el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish")), fbHolder));
+    })),
+    el("div", { class: "btns" }, rebuild));
+}
+// Edits the text Zapier posts for one published story. Saving the automatic text unchanged
+// clears any custom text, so later edits to the summary flow through again.
+function facebookTextEditor(a) {
+  const auto = autoFacebookText(a, state.config);
+  const ta = el("textarea", { style: "min-height:110px" }, facebookTextOf(a, state.config));
+  const hint = el("p", { class: "hint", text: a.facebookText
+    ? "Custom text. Reset to go back to the automatic summary and hashtags."
+    : "Automatic: the summary plus hashtags. Edit it to change what Zapier posts next time this story is sent." });
+  async function save(text) {
+    try {
+      setStatus("Saving…");
+      const fresh = await readJson(conn.site, "articles.json");
+      fresh.data.articles = fresh.data.articles.map((x) => {
+        if (x.id !== a.id) return x;
+        const { facebookText, ...rest } = x;
+        return text ? { ...rest, facebookText: text } : rest;
+      });
+      await writeSite(fresh.data, fresh.sha, `Facebook text: ${a.headline}`);
+      await loadAll();
+      setStatus(text ? "Facebook text saved. It is used the next time this story is sent to Facebook." : "Facebook text reset to automatic.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+  return el("div", { class: "card" }, el("h3", { text: "Facebook post text" }), ta, hint,
+    el("div", { class: "row-btns" },
+      el("button", { class: "primary", onclick: () => save(ta.value.trim() === auto ? "" : ta.value.trim()) }, "Save"),
+      el("button", { class: "secondary", onclick: () => save("") }, "Reset to automatic")));
+}
+function newFacebookSend(id) {
+  const sentAt = new Date().toISOString();
+  return { facebook: sentAt, facebookGuid: `${id}-${Date.parse(sentAt).toString(36)}` };
+}
+function facebookFields(a) {
+  return a.facebookGuid ? { facebook: a.facebook, facebookGuid: a.facebookGuid } : { facebook: a.facebook };
+}
+async function postToFacebook(a) {
+  const question = a.facebook
+    ? `"${a.headline}" was already sent to Facebook and X on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
+    : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page and X? It usually appears within about 15 minutes.`;
+  if (!confirm(`${question}\n\nFacebook post:\n${facebookTextOf(a, state.config)}\n\nX post:\n${xTextOf(a, state.config)}`)) return;
+  try {
+    const fresh = await readJson(conn.site, "articles.json");
+    fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
+    await writeSite(fresh.data, fresh.sha, `Send to Facebook and X: ${a.headline}`);
+    await loadAll();
+    setStatus("Sent to the Facebook and X feeds. Zapier will post it shortly.", "ok");
+  } catch (e) { setStatus(e.message, "err"); }
+}
+// What an unpublished story's share page becomes, so old links from Facebook and X land on
+// the news page with a note instead of an error.
+function removedShareHtml(id, pageUrl) {
+  const url = `${pageUrl}?article=${encodeURIComponent(id)}`;
+  return `<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swansea Labour news</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Swansea Labour news">
+<script>location.replace(${JSON.stringify(url)});<\/script>
+</head>
+<body>
+<p>This story is no longer available. <a href="${pageUrl}">See the latest Swansea Labour news</a>.</p>
+</body>
+</html>
+`;
+}
+// Takes a story off the website and puts it back in Drafts with its photos, so it can be
+// edited and published again. Its photos and share preview come off the website too.
+async function unpublish(a) {
+  if (!leaveEdits()) return;
+  if (!confirm(`Take "${a.headline}" off the website?\n\nIt goes back to Drafts with its photos, so you can edit it and publish it again, or reject it there to delete it. Its photos and share preview are removed from the website.`)) return;
+  try {
+    setStatus("Moving the story back to Drafts…");
+    const now = new Date();
+    const images = [];
+    for (const [i, im] of imagesOf(a).entries()) {
+      if (/^(https?:)?\/\//.test(im.src)) continue;
+      const file = `data/drafts/${a.id}/${i + 1}.jpg`;
+      await writeB64(conn.engine, file, await readRawB64(conn.site, im.src), `Photo for unpublished ${a.id}`);
+      images.push({ file, use: true, width: im.width, height: im.height, alt: im.alt || "", caption: im.caption || "", credit: im.credit || "" });
+    }
+    const draft = {
+      id: a.id, status: "draft", createdAt: now.toISOString(), sourceFile: "Taken off the website",
+      sourceName: a.sourceName || "", sourceUrl: a.sourceUrl || "", not_a_press_release: false,
+      headline: a.headline, summary: a.summary, body: a.body || [],
+      source_title: a.sourceTitle || "", source_date: a.sourceDate || "", people_quoted: [],
+      checks: [`This story was taken off the website on ${now.toLocaleDateString("en-GB")}. Check it is right to publish again.`],
+      wards: a.wards || [], images, ward_quotes: [], originalDate: a.date,
+      ...(a.topic && { topic: a.topic }),
+      ...(a.facebookText && { facebookText: a.facebookText }),
+      ...(a.facebook && { sent: facebookFields(a) }),
+    };
+    const path = `data/drafts/${a.id}.json`;
+    const existing = await gh(conn.engine, path);
+    await writeJson(conn.engine, path, draft, existing && existing.sha, `Unpublished: ${a.headline}`);
+    const fresh = await readJson(conn.site, "articles.json");
+    fresh.data.articles = fresh.data.articles.filter((x) => x.id !== a.id);
+    await writeSite(fresh.data, fresh.sha, `Unpublish: ${a.headline}`);
+    const share = await gh(conn.site, `share/${a.id}.html`);
+    if (share) await writeGenerated(conn.site, `share/${a.id}.html`, removedShareHtml(a.id, pageUrlOf(state.config)), share.sha, `Share page: story unpublished`);
+    await deleteFolder(conn.site, `images/${a.id}`, `Unpublished ${a.id}`);
+    await loadAll();
+    setStatus("Taken off the website and put back in Drafts.", "ok");
+  } catch (e) { setStatus(e.message, "err"); }
+}
+
+// ---- Wards: councillors and pledges (wards.json in the site repository) ----
+const PLEDGE_STATUS = [["", "Not set (no badge shown)"], ["delivered", "Delivered"], ["in-progress", "In progress"], ["ongoing", "Ongoing"], ["not-yet", "Not yet started"]];
+const slugify = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+// Square-crop a photo to 480 x 480 for the councillor directory.
+async function squarePhoto(file) {
+  const bmp = await createImageBitmap(file);
+  const side = Math.min(bmp.width, bmp.height);
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = 480;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, 480, 480);
+  ctx.drawImage(bmp, (bmp.width - side) / 2, Math.max(0, (bmp.height - side) / 4), side, side, 0, 0, 480, 480);
+  const blob = await new Promise((r) => canvas.toBlob(r, "image/jpeg", 0.85));
+  return bytesToB64(await blob.arrayBuffer());
+}
+
+function renderWards() {
+  const root = $("#tab-wards"); root.innerHTML = "";
+  const wards = state.wards.data.wards || [];
+  if (!wards.length) { root.append(el("p", { class: "empty", text: "wards.json has not been uploaded to the site repository yet." })); return; }
+  if (!state.wardSel || !wards.find((w) => w.slug === state.wardSel)) state.wardSel = wards[0].slug;
+  const pick = el("select", { onchange: () => { state.wardSel = pick.value; renderWards(); } },
+    wards.map((w) => el("option", { value: w.slug, selected: w.slug === state.wardSel }, w.name)));
+  root.append(el("label", { text: "Ward" }), pick,
+    el("p", { class: "hint", text: "Changes show on the ward page within a few minutes of saving." }));
+
+  const ward = JSON.parse(JSON.stringify(wards.find((w) => w.slug === state.wardSel)));
+  const pendingPhotos = new Map(); // councillor index -> base64
+
+  // Councillors
+  const peopleBox = el("div");
+  function drawPeople() {
+    peopleBox.innerHTML = "";
+    ward.councillors.forEach((c, i) => {
+      const face = el("img", { class: "face", alt: "", src: pendingPhotos.has(i) ? "data:image/jpeg;base64," + pendingPhotos.get(i) : c.photo ? siteUrl(c.photo) : "" });
+      const file = el("input", { type: "file", accept: "image/*", style: "display:none" });
+      file.addEventListener("change", async () => {
+        if (!file.files[0]) return;
+        try { pendingPhotos.set(i, await squarePhoto(file.files[0])); drawPeople(); } catch (e) { setStatus(e.message, "err"); }
+      });
+      const f = (key, label, attrs = {}) => {
+        const input = el("input", { type: "text", value: c[key] || "", ...attrs });
+        input.addEventListener("input", () => { c[key] = input.value; });
+        return [el("label", { text: label }), input];
+      };
+      const bio = el("textarea", {}, (c.bio || []).join("\n\n"));
+      bio.addEventListener("input", () => { c.bio = bio.value.split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean); });
+      peopleBox.append(el("div", { class: "card person" },
+        el("div", {}, face, file, el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => file.click() }, "Photo"))),
+        el("div", {},
+          el("div", { class: "two" }, el("div", {}, ...f("name", "Name")), el("div", {}, ...f("role", "Role (optional)", { placeholder: "e.g. Cabinet Member for Education" }))),
+          el("div", { class: "two" }, el("div", {}, ...f("phone", "Phone")), el("div", {}, ...f("email", "Email"))),
+          el("label", { text: "About (optional; blank line between paragraphs)" }), bio,
+          el("div", { class: "row-btns" },
+            el("button", { class: "secondary", type: "button", onclick: () => { if (i > 0) { ward.councillors.splice(i - 1, 0, ward.councillors.splice(i, 1)[0]); drawPeople(); } } }, "Move up"),
+            el("button", { class: "secondary", type: "button", onclick: () => { if (confirm(`Remove ${c.name || "this councillor"} from ${ward.name}?`)) { ward.councillors.splice(i, 1); pendingPhotos.delete(i); drawPeople(); } } }, "Remove")))));
+    });
+  }
+  drawPeople();
+
+  // Pledges
+  const pledgeBox = el("div");
+  function drawPledges() {
+    pledgeBox.innerHTML = "";
+    ward.pledges.forEach((p, i) => {
+      const t = el("input", { type: "text", value: p.title || "" }); t.addEventListener("input", () => { p.title = t.value; });
+      const d = el("textarea", {}, p.detail || ""); d.addEventListener("input", () => { p.detail = d.value; });
+      const s = el("select", {}, PLEDGE_STATUS.map(([v, l]) => el("option", { value: v, selected: (p.status || "") === v }, l)));
+      s.addEventListener("change", () => { p.status = s.value; });
+      const ev = el("input", { type: "text", value: p.evidence || "", placeholder: "e.g. New play area opened at Gors Avenue in June 2025." }); ev.addEventListener("input", () => { p.evidence = ev.value; });
+      const eu = el("input", { type: "url", value: p.evidenceUrl || "", placeholder: "https://…" }); eu.addEventListener("input", () => { p.evidenceUrl = eu.value; });
+      pledgeBox.append(el("div", { class: "card" },
+        el("label", { text: "Pledge" }), t,
+        el("label", { text: "What was promised" }), d,
+        el("div", { class: "two" }, el("div", {}, el("label", { text: "Progress" }), s), el("div", {}, el("label", { text: "Link to evidence (optional)" }), eu)),
+        el("label", { text: "What has happened (optional)" }), ev,
+        el("div", { class: "row-btns" },
+          el("button", { class: "secondary", type: "button", onclick: () => { if (i > 0) { ward.pledges.splice(i - 1, 0, ward.pledges.splice(i, 1)[0]); drawPledges(); } } }, "Move up"),
+          el("button", { class: "secondary", type: "button", onclick: () => { if (confirm("Remove this pledge?")) { ward.pledges.splice(i, 1); drawPledges(); } } }, "Remove"))));
+    });
+  }
+  drawPledges();
+  const heading = el("input", { type: "text", value: ward.pledgeHeading || "Our pledges" });
+  heading.addEventListener("input", () => { ward.pledgeHeading = heading.value; });
+
+  async function save() {
+    try {
+      for (const [i, b64] of pendingPhotos) {
+        const c = ward.councillors[i]; if (!c) continue;
+        setStatus(`Uploading photo of ${c.name}…`);
+        const path = `images/councillors/${slugify(c.name || "councillor")}-${Date.now().toString(36)}.jpg`;
+        await writeB64(conn.site, path, b64, `Photo for ${c.name}`);
+        c.photo = path;
+      }
+      setStatus("Saving…");
+      const fresh = await readJson(conn.site, "wards.json");
+      const data = fresh ? fresh.data : { wards: [] };
+      data.wards = data.wards.map((w) => (w.slug === ward.slug ? ward : w));
+      data.updated = new Date().toISOString().slice(0, 10);
+      await writeJson(conn.site, "wards.json", data, fresh && fresh.sha, `Update ${ward.name} ward`);
+      await loadAll(); showTab("wards");
+      setStatus(`${ward.name} saved. The ward page updates within a few minutes.`, "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+
+  root.append(
+    el("h2", { text: "Councillors", style: "font-size:18px;margin:22px 0 0" }), peopleBox,
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { ward.councillors.push({ name: "", role: "", phone: "", email: "", photo: "", bio: [] }); drawPeople(); } }, "Add councillor")),
+    el("h2", { text: "Pledges", style: "font-size:18px;margin:28px 0 0" }),
+    el("label", { text: "Heading shown on the page" }), heading,
+    el("p", { class: "hint", text: "Pledges with no progress set show without a badge. The progress bar appears once at least one has a status." }),
+    pledgeBox,
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { ward.pledges.push({ title: "", detail: "", status: "", evidence: "", evidenceUrl: "" }); drawPledges(); } }, "Add pledge")),
+    el("div", { class: "sticky" }, el("button", { class: "primary", onclick: save }, `Save ${ward.name}`)));
+}
+
+// ---- Map: delivery projects (delivery.json in the site repository) ----
+const THEMES = ["Play", "Sport and leisure", "Homes", "Active travel", "Regeneration", "Coast and countryside", "Community", "Roads"];
+const SITE_WARD_NAMES = ["Bôn-y-maen", "Castle", "Cockett", "Dunvant & Killay", "Gorseinon & Penyrheol", "Gowerton", "Landore", "Llansamlet", "Llwchwr", "Morriston", "Mynyddbach", "Penclawdd", "Penderry", "Pontarddulais", "Pontlliw & Tircoed", "St Thomas", "Townhill", "Waunarlwydd", "West Cross"];
+const wardKey = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\band\b/g, "&").replace(/[^a-z&]/g, "");
+
+async function wardAt(lat, lng) {
+  const j = await (await fetch(`https://api.postcodes.io/postcodes?lon=${lng}&lat=${lat}&radius=1000&limit=1`)).json();
+  const councilWard = j.result?.[0]?.admin_ward || "";
+  return { councilWard, ward: SITE_WARD_NAMES.find((w) => wardKey(w) === wardKey(councilWard)) || "" };
+}
+
+function renderMap() {
+  const root = $("#tab-map"); root.innerHTML = "";
+  const projects = state.delivery.data.projects || [];
+  root.append(el("p", { class: "hint", text: `${projects.length} projects on the map. Click a title to edit it.` }),
+    el("div", { class: "btns", style: "margin-top:8px" }, el("button", { class: "primary", onclick: () => editProject(null) }, "Add a project")));
+  root.append(el("table", { style: "margin-top:14px" },
+    el("tr", {}, el("th", { text: "Date" }), el("th", { text: "Project" }), el("th", { text: "Ward" }), el("th", { text: "Status" })),
+    projects.map((p) => el("tr", {},
+      el("td", { text: p.date || "" }),
+      el("td", {}, el("a", { href: "#", onclick: (e) => { e.preventDefault(); editProject(p.id); }, text: p.title })),
+      el("td", { text: p.ward || p.councilWard || "" }),
+      el("td", { text: p.status || "" })))));
+}
+
+function editProject(id) {
+  const root = $("#tab-map"); root.innerHTML = "";
+  const existing = (state.delivery.data.projects || []).find((p) => p.id === id);
+  const p = existing ? JSON.parse(JSON.stringify(existing)) : { id: "", title: "", date: new Date().toISOString().slice(0, 7), theme: "Play", status: "Completed", summary: "", lat: null, lng: null, ward: "", councilWard: "", source: { name: "Swansea Council", url: "" } };
+  const input = (val, attrs = {}) => el("input", { type: "text", value: val ?? "", ...attrs });
+  const f = {
+    title: input(p.title), date: input(p.date, { placeholder: "YYYY-MM" }),
+    theme: el("select", {}, THEMES.map((t) => el("option", { value: t, selected: p.theme === t }, t))),
+    status: el("select", {}, ["Completed", "Under way"].map((t) => el("option", { value: t, selected: p.status === t }, t))),
+    summary: el("textarea", {}, p.summary || ""),
+    sourceName: input(p.source?.name || "Swansea Council"), sourceUrl: input(p.source?.url || "", { type: "url", placeholder: "https://www.swansea.gov.uk/…" }),
+    search: input("", { placeholder: "e.g. Gors Avenue, Townhill" }),
+    lat: input(p.lat ?? "", { placeholder: "51.62" }), lng: input(p.lng ?? "", { placeholder: "-3.94" }),
+  };
+  const where = el("p", { class: "hint", text: p.lat ? `Ward: ${p.ward || p.councilWard || "unknown"}` : "No location yet." });
+  const results = el("ul", { class: "results" });
+  async function setPoint(lat, lng) {
+    f.lat.value = (+lat).toFixed(5); f.lng.value = (+lng).toFixed(5);
+    where.textContent = "Finding ward…";
+    try { const w = await wardAt(lat, lng); p.ward = w.ward; p.councilWard = w.councilWard; where.textContent = `Ward: ${w.ward || w.councilWard || "outside Swansea?"}`; }
+    catch { where.textContent = "Could not look up the ward."; }
+  }
+  async function search() {
+    results.innerHTML = "";
+    const q = f.search.value.trim(); if (!q) return;
+    const u = new URL("https://nominatim.openstreetmap.org/search");
+    u.search = new URLSearchParams({ q, format: "jsonv2", limit: "5", countrycodes: "gb", viewbox: "-4.33,51.76,-3.83,51.53", bounded: "1" });
+    try {
+      const j = await (await fetch(u)).json();
+      if (!j.length) results.append(el("li", { class: "hint", text: "Nothing found. Try a street or park name." }));
+      j.forEach((r) => results.append(el("li", {}, el("button", { type: "button", onclick: () => { results.innerHTML = ""; setPoint(r.lat, r.lon); } }, r.display_name))));
+    } catch (e) { results.append(el("li", { class: "hint", text: "Search failed: " + e.message })); }
+  }
+  f.lat.addEventListener("change", () => { if (f.lat.value && f.lng.value) setPoint(f.lat.value, f.lng.value); });
+  f.lng.addEventListener("change", () => { if (f.lat.value && f.lng.value) setPoint(f.lat.value, f.lng.value); });
+
+  async function save() {
+    const lat = parseFloat(f.lat.value), lng = parseFloat(f.lng.value);
+    if (!f.title.value.trim() || !f.summary.value.trim()) return setStatus("A project needs a title and a summary.", "err");
+    if (!isFinite(lat) || !isFinite(lng)) return setStatus("Choose a location so the project can go on the map.", "err");
+    if (!/^(\d{4}-\d{2}|FY\d{4}-\d{2})$/.test(f.date.value.trim())) return setStatus("Date should look like 2026-09 (or FY2024-25 for a financial year).", "err");
+    const item = {
+      id: p.id || slugify(f.title.value).slice(0, 60) + "-" + Date.now().toString(36).slice(-4),
+      title: f.title.value.trim(), date: f.date.value.trim(), theme: f.theme.value, status: f.status.value,
+      summary: f.summary.value.trim(), lat: +lat.toFixed(5), lng: +lng.toFixed(5), ward: p.ward || "", councilWard: p.councilWard || "",
+      source: { name: f.sourceName.value.trim(), url: f.sourceUrl.value.trim() },
+    };
+    try {
+      setStatus("Saving…");
+      const fresh = await readJson(conn.site, "delivery.json");
+      const data = fresh ? fresh.data : { projects: [] };
+      // financial-year dates ("FY2024-25") sort as the end of that year (2025-03)
+      const sortKey = (d) => { const m = /^FY(\d{4})-\d{2}$/.exec(d || ""); return m ? (+m[1] + 1) + "-03" : (d || ""); };
+      data.projects = [item, ...data.projects.filter((x) => x.id !== item.id)].sort((a, b) => sortKey(b.date).localeCompare(sortKey(a.date)));
+      data.updated = new Date().toISOString().slice(0, 10);
+      await writeJson(conn.site, "delivery.json", data, fresh && fresh.sha, `Map: ${item.title}`);
+      await loadAll(); showTab("map");
+      setStatus("Saved. The map updates within a few minutes.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+  async function remove() {
+    if (!confirm(`Remove "${p.title}" from the map?`)) return;
+    try {
+      const fresh = await readJson(conn.site, "delivery.json");
+      fresh.data.projects = fresh.data.projects.filter((x) => x.id !== p.id);
+      await writeJson(conn.site, "delivery.json", fresh.data, fresh.sha, `Map: remove ${p.title}`);
+      await loadAll(); showTab("map");
+      setStatus("Removed from the map.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+
+  root.append(
+    el("div", { class: "btns", style: "margin-top:0" }, el("button", { class: "secondary", onclick: renderMap }, "← All projects")),
+    el("label", { text: "Title" }), f.title,
+    el("div", { class: "two" }, el("div", {}, el("label", { text: "Month (YYYY-MM)" }), f.date), el("div", {}, el("label", { text: "Status" }), f.status)),
+    el("label", { text: "Type" }), f.theme,
+    el("label", { text: "Summary (one or two sentences, in your own words)" }), f.summary,
+    el("div", { class: "two" }, el("div", {}, el("label", { text: "Source name" }), f.sourceName), el("div", {}, el("label", { text: "Source link" }), f.sourceUrl)),
+    el("label", { text: "Find the location" }), el("div", { style: "display:flex;gap:8px" }, f.search, el("button", { class: "secondary", type: "button", onclick: search }, "Search")), results,
+    el("div", { class: "two" }, el("div", {}, el("label", { text: "Latitude" }), f.lat), el("div", {}, el("label", { text: "Longitude" }), f.lng)),
+    where,
+    el("div", { class: "sticky" }, el("div", { class: "btns", style: "margin:0" },
+      el("button", { class: "primary", onclick: save }, existing ? "Save changes" : "Add to map"),
+      existing ? el("button", { class: "secondary", onclick: remove }, "Remove from map") : null)));
+}
+
+// ---- Settings ----
+function renderSettings() {
+  const root = $("#tab-settings"); root.innerHTML = "";
+  const c = state.config.data;
+  const f = {
+    imprint: el("textarea", { placeholder: "Promoted by [name] on behalf of Swansea Labour, both at [address]." }, c.imprint || ""),
+    pageUrl: el("input", { type: "url", value: c.pageUrl || DEFAULT_PAGE_URL }),
+    councillors: el("textarea", {}, (c.labourCouncillors || []).join("\n")),
+    councilDescription: el("input", { type: "text", value: c.councilDescription || "" }),
+    styleNotes: el("textarea", {}, c.styleNotes || ""),
+    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #Swansea #SwanseaLabour" }),
+    driveInboxFolderId: el("input", { type: "text", value: c.driveInboxFolderId || "" }),
+  };
+  async function save() {
+    try {
+      const fresh = await readJson(conn.engine, "config.json") || { data: {} };
+      const next = {
+        ...fresh.data,
+        imprint: f.imprint.value.trim(),
+        pageUrl: f.pageUrl.value.trim().replace(/\/+$/, ""),
+        labourCouncillors: f.councillors.value.split("\n").map((s) => s.trim()).filter(Boolean),
+        councilDescription: f.councilDescription.value.trim(),
+        styleNotes: f.styleNotes.value.trim(),
+        facebookTags: f.facebookTags.value.trim(),
+        driveInboxFolderId: f.driveInboxFolderId.value.trim(),
+      };
+      await writeJson(conn.engine, "config.json", next, fresh.sha, "Update settings");
+      state.config = { data: next, sha: undefined };
+      const site = await readJson(conn.site, "articles.json");
+      if (site && (site.data.imprint !== next.imprint || site.data.pageUrl !== next.pageUrl)) {
+        await writeSite({ ...site.data, imprint: next.imprint }, site.sha, "Update imprint and page address");
+      }
+      await loadAll();
+      setStatus("Settings saved.", "ok");
+    } catch (e) { setStatus(e.message, "err"); }
+  }
+  root.append(
+    el("label", { text: "Digital imprint" }), f.imprint,
+    el("p", { class: "hint", text: "Shown under every article and the news reel. Publishing stays off until this is filled in properly." }),
+    el("label", { text: "Website page that shows the news reel" }), f.pageUrl,
+    el("p", { class: "hint", text: "Used to build the links Google is given for each article, e.g. https://www.swansealabour.org/news" }),
+    el("label", { text: "Labour councillors (one per line, e.g. \"Cllr Jane Jones, Cabinet Member for Education\")" }), f.councillors,
+    el("p", { class: "hint", text: "Only these people are quoted as Labour without a check." }),
+    el("label", { text: "How to describe the council" }), f.councilDescription,
+    el("label", { text: "Writing style notes" }), f.styleNotes,
+    el("label", { text: "Hashtags added to every Facebook post" }), f.facebookTags,
+    el("p", { class: "hint", text: "Added after the story's ward tags (up to two) and one topic tag, e.g. \"#Killay #Dunvant #Flooding #Swansea #SwanseaLabour\". Facebook does best with a few tags, not many. Leave empty for none." }),
+    el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
+    el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." }),
+    el("div", { class: "btns" }, el("button", { class: "primary", onclick: save }, "Save settings")));
+}
+
+// ---- Tabs & connect ----
+function showTab(name) {
+  document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === name)));
+  document.querySelectorAll("main section").forEach((s) => (s.hidden = s.id !== "tab-" + name));
+}
+document.querySelectorAll("nav button").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.tab)));
+
+$("#c-owner").value = conn.owner;
+if (conn.engine) $("#c-engine").value = conn.engine;
+if (conn.site) $("#c-site").value = conn.site;
+$("#c-token").value = conn.token;
+$("#c-save").addEventListener("click", async () => {
+  conn = { owner: $("#c-owner").value.trim(), engine: $("#c-engine").value.trim(), site: $("#c-site").value.trim(), token: $("#c-token").value.trim() };
+  for (const [k, v] of Object.entries(conn)) store.set(k, v);
+  await start();
+});
+
+async function start() {
+  if (!conn.owner || !conn.token) { showTab("connect"); setStatus("Connect your GitHub repositories to begin."); return; }
+  try { await loadAll(); showTab("drafts"); }
+  catch (e) { showTab("connect"); setStatus(e.message, "err"); }
+}
+start();
+</script>
+</body>
+</html>
