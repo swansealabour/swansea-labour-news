@@ -46,6 +46,18 @@
     "#sl-news .sl-media{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:6px;margin-bottom:16px;background:var(--sl-accent)}" +
     "#sl-news .sl-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}" +
     "#sl-news .sl-card:hover .sl-media img{transform:scale(1.04)}" +
+    // Tall or square pictures (posters, portraits) are shown whole over a blurred copy of
+    // themselves instead of having their top and bottom cut off by the wide frame.
+    "#sl-news .sl-blur{position:absolute;inset:-24px;background-size:cover;background-position:center;filter:blur(18px) brightness(.6)}" +
+    "#sl-news .sl-fit img{position:relative;object-fit:contain}" +
+    "#sl-news .sl-frame{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:6px;background:#222}" +
+    "#sl-news .sl-figure.sl-hero .sl-frame img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;border-radius:0}" +
+    "#sl-news .sl-figure.sl-tall img{width:auto;max-width:100%;max-height:min(80vh,640px);margin:0 auto}" +
+    "#sl-news .sl-figure.sl-tall figcaption{text-align:center}" +
+    "#sl-news .sl-notice{padding:12px 16px;border-radius:6px;background:rgba(127,127,127,.14);margin:0 0 24px}" +
+    "#sl-news .sl-morewrap{text-align:center;margin:32px 0 0}" +
+    "#sl-news .sl-morebtn{font:inherit;font-weight:600;padding:12px 26px;border-radius:999px;border:1.5px solid var(--sl-accent);background:transparent;color:var(--sl-accent);cursor:pointer}" +
+    "#sl-news .sl-morebtn:hover,#sl-news .sl-morebtn:focus-visible{background:var(--sl-accent);color:#fff}" +
     "#sl-news .sl-ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:700;" +
     "font-size:1.15em;line-height:1.1;letter-spacing:-.01em;background:linear-gradient(135deg,var(--sl-accent),color-mix(in srgb,var(--sl-accent) 70%,#000))}" +
     "#sl-news .sl-date{font-size:.75em;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:0 0 6px}" +
@@ -200,6 +212,19 @@
     return showImprint && text ? el("p", "sl-imprint", text) : document.createDocumentFragment();
   }
 
+  // Calls back once we know whether a picture is too tall for a wide frame: straight away
+  // when its size was saved with the story, otherwise when it has loaded.
+  function whenTall(img, i, cb) {
+    var tall = function (w, h) { return w && h && w / h < 1.15; };
+    if (img.width && img.height) { if (tall(img.width, img.height)) cb(); return; }
+    i.addEventListener("load", function () { if (tall(i.naturalWidth, i.naturalHeight)) cb(); });
+  }
+  function blurOf(src) {
+    var b = el("div", "sl-blur");
+    b.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")';
+    return b;
+  }
+
   function media(a) {
     var box = el("div", "sl-media");
     var img = imagesOf(a)[0];
@@ -209,6 +234,7 @@
       i.alt = img.alt || "";
       i.loading = "lazy";
       box.appendChild(i);
+      whenTall(img, i, function () { box.classList.add("sl-fit"); box.insertBefore(blurOf(i.src), i); });
     } else {
       box.appendChild(el("div", "sl-ph", label));
     }
@@ -223,6 +249,13 @@
     i.loading = hero ? "eager" : "lazy";
     if (img.width && img.height) { i.width = img.width; i.height = img.height; }
     f.appendChild(i);
+    whenTall(img, i, function () {
+      if (!hero) { f.classList.add("sl-tall"); return; }
+      var frame = el("div", "sl-frame sl-fit");
+      f.insertBefore(frame, i);
+      frame.appendChild(blurOf(i.src));
+      frame.appendChild(i);
+    });
     var cap = [img.caption, img.credit ? "Photo: " + img.credit : ""].filter(Boolean).join(" ");
     if (cap) f.appendChild(el("figcaption", null, cap));
     return f;
@@ -239,15 +272,18 @@
   }
 
   // ---- Views ----
-  function renderList(data) {
+  var shown = limit; // grows by "limit" each time "Show more news" is pressed
+  function renderList(data, notice) {
     root.innerHTML = "";
-    var items = visibleArticles(data).slice(0, limit);
+    if (notice) root.appendChild(el("p", "sl-notice", notice));
+    var all = visibleArticles(data);
+    var items = all.slice(0, linkTo ? limit : shown);
     if (!items.length) {
       var p = el("p", "sl-empty", wardFilter ? "No news for this ward yet. " : "No news yet. Check back soon.");
       if (wardFilter && allUrl) {
-        var all = el("a", null, "See all Swansea Labour news");
-        all.href = allUrl;
-        p.appendChild(all);
+        var allLink = el("a", null, "See all Swansea Labour news");
+        allLink.href = allUrl;
+        p.appendChild(allLink);
       }
       root.appendChild(p);
       return;
@@ -277,10 +313,23 @@
     root.appendChild(grid);
     if (linkTo) {
       var more = el("p", "sl-all");
-      var all = el("a", "sl-more", "See all news →");
-      all.href = allUrl || linkTo;
-      more.appendChild(all);
+      var seeAll = el("a", "sl-more", "See all news →");
+      seeAll.href = allUrl || linkTo;
+      more.appendChild(seeAll);
       root.appendChild(more);
+    } else if (all.length > items.length) {
+      var wrap = el("p", "sl-morewrap");
+      var btn = el("button", "sl-morebtn", "Show more news");
+      btn.type = "button";
+      btn.onclick = function () {
+        var firstNew = items.length;
+        shown += limit;
+        renderList(data);
+        var card = root.querySelectorAll(".sl-card")[firstNew];
+        if (card) card.focus({ preventScroll: true });
+      };
+      wrap.appendChild(btn);
+      root.appendChild(wrap);
     }
     root.appendChild(imprintEl(data.imprint));
   }
@@ -345,12 +394,19 @@
 
     var imgs = imagesOf(a);
     if (imgs[0]) art.appendChild(figure(imgs[0], true));
+    // Extra photos are spread evenly through the article rather than stacked together.
     var body = a.body || [];
+    var extra = imgs.slice(1);
+    var after = {};
+    extra.forEach(function (im, k) {
+      var at = Math.min(Math.max(Math.round((k + 1) * body.length / (extra.length + 1)) - 1, 0), Math.max(body.length - 1, 0));
+      (after[at] = after[at] || []).push(im);
+    });
     body.forEach(function (p, idx) {
       art.appendChild(el("p", null, p));
-      if (idx === 0) imgs.slice(1).forEach(function (im) { art.appendChild(figure(im, false)); });
+      (after[idx] || []).forEach(function (im) { art.appendChild(figure(im, false)); });
     });
-    if (!body.length) imgs.slice(1).forEach(function (im) { art.appendChild(figure(im, false)); });
+    if (!body.length) extra.forEach(function (im) { art.appendChild(figure(im, false)); });
 
     art.appendChild(shareBar(a));
 
@@ -384,7 +440,7 @@
     var a = id && (data.articles || []).find(function (x) { return x.id === id; });
     applyHead(a || null);
     if (a) renderArticle(data, a);
-    else renderList(data);
+    else renderList(data, id ? "Sorry, that story is no longer available. Here is our latest news." : "");
   }
 
   root.textContent = "Loading news…";
