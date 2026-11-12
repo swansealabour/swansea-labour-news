@@ -223,7 +223,9 @@ function facebookTextOf(a, config) {
 // link as 23). Tags are dropped from the end until it fits. Buffer posts it as written.
 const X_LIMIT = 280, X_LINK_LENGTH = 23;
 function xTextOf(a, config) {
-  const link = siteUrl(`share/${encodeURIComponent(a.id)}.html`);
+  // X caches link previews by URL, so each send adds its own ?v= to fetch the current photo.
+  const version = (a.facebookGuid || "").split("-").pop();
+  const link = siteUrl(`share/${encodeURIComponent(a.id)}.html`) + (a.facebookGuid ? `?v=${version}` : "");
   const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined).split(" ").filter(Boolean);
   let headline = (a.headline || "").trim();
   const length = (t) => headline.length + 2 + X_LINK_LENGTH + (t.length ? 2 + t.join(" ").length : 0);
