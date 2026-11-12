@@ -5,7 +5,7 @@
     {
       "id": "2026-11-12-labour-councillors-bring-morriston-s-christmas-par-fb361",
       "date": "2026-11-12T09:57:41.263Z",
-      "updated": "2026-11-12T09:57:41.263Z",
+      "updated": "2026-11-12T10:00:51.603Z",
       "headline": "Labour councillors bring Morriston's Christmas parade and lights switch-on back",
       "summary": "Morriston's Christmas parade and lights switch-on returns on Friday 27 November from 5pm, organised and funded by the ward's Labour councillors.",
       "body": [
@@ -25,12 +25,20 @@
       ],
       "images": [
         {
-          "src": "images/2026-11-12-labour-councillors-bring-morriston-s-christmas-par-fb361/1.jpg",
-          "alt": "Poster heading: The Great Morriston Christmas Lights Switch On 2026, brought to you by your local Labour Morriston councillors",
+          "src": "images/2026-11-12-labour-councillors-bring-morriston-s-christmas-par-fb361/poster-lead.jpg",
+          "alt": "Poster for the Great Morriston Christmas Lights Switch On 2026, brought to you by your local Labour Morriston councillors, on Friday 27 November from 5pm",
           "caption": "",
           "credit": "",
-          "width": 1134,
-          "height": 709
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "images/2026-11-12-labour-councillors-bring-morriston-s-christmas-par-fb361/poster-full.jpg",
+          "alt": "Full poster: Santa and his sleigh, a parade, local choirs and a Christmas tree switch-on, with host Phil Hoyles and Regan Preece; festivities start at 5pm, switch-on at 6pm on Friday 27 November 2026, followed by fireworks",
+          "caption": "The full event poster",
+          "credit": "",
+          "width": 1206,
+          "height": 1702
         }
       ],
       "wards": [
