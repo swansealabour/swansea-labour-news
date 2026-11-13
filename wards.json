@@ -2667,6 +2667,12 @@
         { "title": "New homes", "text": "Six new energy-saving council bungalows at The Circle." },
         { "title": "Community centre", "text": "New lighting at West Cross Community Centre, with better access at Washing House Brook on the way." }
       ],
+      "gallery": [
+        { "photo": "images/west-cross-woodland-path.jpg", "ratio": 0.75, "caption": "A new woodland path", "alt": "Councillor Rebecca Fogarty sitting on a stone and Councillor Sara Keeton standing beside a new woodland path" },
+        { "photo": "images/west-cross-play-area.jpg", "ratio": 0.75, "caption": "At a local play area", "alt": "Councillors Rebecca Fogarty and Sara Keeton in front of a play area" },
+        { "photo": "images/west-cross-space-net.jpg", "ratio": 0.75, "caption": "Trying out the space net", "alt": "Councillors Rebecca Fogarty and Sara Keeton at a rope space net climbing frame in a park" },
+        { "photo": "images/west-cross-street-trees.jpg", "ratio": 0.75, "caption": "Out and about in West Cross", "alt": "Councillors Rebecca Fogarty and Sara Keeton beside new street trees and cycle racks" }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
