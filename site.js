@@ -210,6 +210,50 @@
     return panel;
   }
 
+  // "Pledges in action": what's been done on each pledge (wards.json pledges[].done), one row per
+  // pledge that opens to show its list. Long lists show the first few with a "Show all" button.
+  function buildRecord(ward) {
+    var pledges = ward.pledges.filter(function (p) { return p.done && p.done.length; });
+    var SHOW = 6;
+    var box = el("div", "sl-budget sl-record");
+    var head = el("h4", "sl-budget-head");
+    head.appendChild(document.createTextNode("Pledges in action "));
+    head.appendChild(el("span", "sl-bar", "|"));
+    head.appendChild(el("span", "sl-cy", "Addewidion ar waith"));
+    box.appendChild(head);
+    box.appendChild(el("p", "sl-budget-intro", ward.pledgeRecordIntro || "What we've done on each of our pledges. Tap a pledge to see the list."));
+    pledges.forEach(function (p, n) {
+      var item = el("details", "sl-record-item");
+      var sum = el("summary");
+      sum.appendChild(el("span", "sl-record-num", String(n + 1)));
+      var title = el("span", "sl-record-title");
+      title.appendChild(el("b", null, p.title));
+      title.appendChild(el("span", "sl-record-count", p.done.length + (p.done.length === 1 ? " thing done" : " things done")));
+      sum.appendChild(title);
+      sum.appendChild(el("span", "sl-record-chev"));
+      item.appendChild(sum);
+      var list = el("ul", "sl-record-list");
+      p.done.forEach(function (d, i) {
+        var li = el("li", i >= SHOW ? "sl-record-extra" : null);
+        li.innerHTML = TICK;
+        li.appendChild(el("span", null, d));
+        list.appendChild(li);
+      });
+      item.appendChild(list);
+      if (p.done.length > SHOW) {
+        var more = el("button", "sl-record-more","Show all " + p.done.length);
+        more.type = "button";
+        more.addEventListener("click", function () {
+          item.classList.add("sl-record-all");
+          more.remove();
+        });
+        item.appendChild(more);
+      }
+      box.appendChild(item);
+    });
+    return box;
+  }
+
   // "Out and about": a few photos of the councillors at local events (wards.json gallery)
   function buildGallery(ward) {
     var box = el("div", "sl-budget sl-gallery");
@@ -477,6 +521,7 @@
       row.parentNode.insertBefore(buildHelp(ward), row);
       document.body.classList.add("sl-help-shown"); // hides the page's own councillor list
     }
+    if ((ward.pledges || []).some(function (p) { return p.done && p.done.length; })) place(buildRecord(ward));
     if (ward.delivered && ward.delivered.length) place(buildDelivered(ward));
     if (ward.gallery && ward.gallery.length) place(buildGallery(ward));
     var cap = ((capital && capital.wards) || []).filter(function (w) { return norm(w.name) === norm(ward.name); })[0];

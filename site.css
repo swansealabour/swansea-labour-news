@@ -506,6 +506,39 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
 .sl-budget-groups li::before { content: none; display: none; }
 .sl-budget-note { margin: 18px 0 0; font-size: 13px; opacity: .75; }
 
+/* "Pledges in action": one row per pledge that opens to show what's been done */
+.sl-record-item { margin: 0 0 12px; background: #fff; border: 2px solid #f1ece6; border-left: 6px solid var(--slh-red); border-radius: 6px; }
+.sl-record-item[open] { border-color: var(--slh-red); }
+.sl-record-item > summary {
+  display: grid; grid-template-columns: 44px 1fr 28px; gap: 16px; align-items: center;
+  padding: 16px 20px; cursor: pointer; list-style: none;
+}
+.sl-record-item > summary::-webkit-details-marker { display: none; }
+.sl-record-item > summary:focus-visible { outline: 3px solid var(--slh-yellow); outline-offset: 2px; }
+.sl-record-num {
+  display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--slh-yellow); color: var(--slh-red-dark);
+  font-family: "Bebas Neue", sans-serif; font-size: 26px; line-height: 1; -webkit-font-smoothing: auto;
+}
+.sl-record-title b {
+  display: block; font-family: "Bebas Neue", sans-serif; font-weight: 400; font-size: 25px;
+  letter-spacing: .5px; line-height: 1.1; color: var(--slh-red); -webkit-font-smoothing: auto;
+}
+.sl-record-count { display: block; margin-top: 3px; font-size: 15px; font-weight: 600; opacity: .75; }
+.sl-record-chev { width: 14px; height: 14px; justify-self: center; border-right: 3px solid var(--slh-red); border-bottom: 3px solid var(--slh-red); transform: rotate(45deg) translate(-3px, -3px); transition: transform .2s; }
+.sl-record-item[open] .sl-record-chev { transform: rotate(-135deg) translate(-3px, -3px); }
+.sl-record-list { list-style: none; margin: 0; padding: 4px 20px 6px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+.sl-record-list li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; margin: 0; padding: 0; font-size: 15px; line-height: 1.5; }
+.sl-record-list li::before { content: none; display: none; }
+.sl-record-list svg { width: 24px; height: 24px; margin-top: 1px; }
+.sl-record-item:not(.sl-record-all) .sl-record-extra { display: none; }
+.sl-record-more {
+  display: block; margin: 18px 0 20px 80px; padding: 11px 26px; border: 0; border-radius: 30px;
+  background: var(--slh-red); color: #fff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer;
+}
+.sl-record-more:hover { filter: brightness(1.08); }
+.sl-record-more:focus-visible { outline: 3px solid var(--slh-yellow); outline-offset: 3px; }
+
 /* "Investing in <ward>" (capital.json), shares the budget's tiles */
 .sl-capital .sl-budget-stats { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
 .sl-capital-total {
@@ -556,6 +589,11 @@ body.sl-help-shown .user-items-list-section { display: none !important; }
   .sl-delivered { margin: 32px 0 6px; padding: 28px 20px; gap: 26px; }
   .sl-help-box p { font-size: 23px; }
   .sl-capital-map { font-size: 20px; }
+  .sl-record-item > summary { grid-template-columns: 36px 1fr 20px; gap: 12px; padding: 14px 14px; }
+  .sl-record-num { width: 36px; height: 36px; font-size: 22px; }
+  .sl-record-title b { font-size: 22px; }
+  .sl-record-list { grid-template-columns: 1fr; padding: 2px 14px 4px 14px; }
+  .sl-record-more { margin: 16px 0 18px 14px; }
   .sl-gallery-grid { flex-direction: row; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
   .sl-gallery-row { display: contents; }
   /* phone strip: every photo 260px tall, width from its shape (capped for very wide ones) */

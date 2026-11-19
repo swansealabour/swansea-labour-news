@@ -436,6 +436,15 @@
         { "title": "Community buildings", "text": "Repairs and new equipment for Dunvant Social Centre and the Killay scout hall, and the Killan Colliery memorial restored." },
         { "title": "Backing local groups", "text": "Support for Dunvant RFC, Killay and District Lunch Club, Dunvant WI, the Sharing Table and more." }
       ],
+      "gallery": [
+        { "photo": "images/dunvant-killay-pen-y-fro-cheque.jpg", "ratio": 1.333, "caption": "£1,500 for the Friends of Pen-y-Fro", "alt": "Cllr Louise Gibbard and four Pen-y-Fro Primary School pupils holding a large £1,500 cheque for the Friends of Pen-y-Fro outside the school" },
+        { "photo": "images/dunvant-killay-killan-memorial.jpg", "ratio": 0.563, "caption": "The refurbished Killan Colliery disaster memorial", "alt": "Cllr Louise Gibbard beside the stone memorial to the victims of the Killan Colliery disaster of 27 November 1924" },
+        { "photo": "images/dunvant-killay-ebeneser-chapel.jpg", "ratio": 0.75, "caption": "At Ebeneser Chapel, Dunvant", "alt": "Cllr Louise Gibbard with her arms raised outside Ebeneser Chapel, with hanging baskets either side of the doors" },
+        { "photo": "images/dunvant-killay-killan-box.jpg", "ratio": 1.777, "caption": "A painted utility box remembering the Killan Mining Disaster", "alt": "Cllr Louise Gibbard beside a utility box painted with miners, a pick and a shovel, dedicated to those who lost their lives in the Killan Mining Disaster" },
+        { "photo": "images/dunvant-killay-history-panel.jpg", "ratio": 0.75, "caption": "New history panels on the Old Carriage Drive", "alt": "Cllr Louise Gibbard beside a new interpretation panel about the old racecourse in Clyne Valley Country Park" },
+        { "photo": "images/dunvant-killay-dunvant-box.jpg", "ratio": 1.777, "caption": "The Dunvant / Dyfnant utility box", "alt": "Cllr Louise Gibbard leaning on a utility box painted with the words Dunvant and Dyfnant" },
+        { "photo": "images/dunvant-killay-family-session.jpg", "ratio": 0.75, "caption": "Books and play with local families", "alt": "Cllr Louise Gibbard and another volunteer sitting on a rug with two children and picture books in a community hall" }
+      ],
       "budget": {
         "period": "2022–27",
         "asOf": "5 November 2026",
@@ -505,41 +514,129 @@
         "note": "Some costs were shared with the ward's other councillors."
       },
       "pledgeHeading": "Our Pledges",
+      "pledgeRecordIntro": "What Cllr Louise Gibbard has done on each of her pledges, in her own words. Tap a pledge to see the list.",
       "pledges": [
         {
           "title": "Invest in our community",
           "detail": "Support the people and places that make our community great like our parks, our library and voluntary groups across Dunvant and Killay",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Organising and running a monthly Sunday Kids Club at Dunvant Social Centre.",
+            "Organising and running a weekly summer breakfast club for families at Dunvant Social Centre.",
+            "Secured funding for a new community Pétanque Piste at Dunvant Park, funded a sign explaining the rules for all users, and organised an introductory session and a Bastille Day fun tournament with bread, cheese and French music, working with Friends of Dunvant Park.",
+            "Annual supporter of Dunvant Horticultural Society Show, honoured to be asked to present prizes and draw the raffle.",
+            "Secretary of Friends of Dunvant Park and very active volunteer, helping to organise and run fun days every summer and autumn, weekly summer Free Play Friday sessions, annual Carols in the Park, monthly volunteer days and other activities.",
+            "Helping to fund Killay Community Council and Swansea Bay Street Market's now regular Killay Market in the Precinct to keep pitch costs down for traders. Also helping to produce posters for the event.",
+            "Supporter of Dunvant WI, making a donation from my community budget to help fund their fortnightly Knit and Knatter sessions.",
+            "Organising and running toy share events at Dunvant Social Centre and Killay Scout and Guides HQ.",
+            "Supported the now annual Ecumenical Songs of Praise in Killay Square, as part of the organising group alongside local churches and chapels, and funded the printing of the songbooks.",
+            "Part-funded new interpretation panels along the Old Carriage Drive path to share the history of the area with path users.",
+            "Organising and running weekly Warm Hub sessions over the winter at Dunvant Social Centre, bringing the community together for hot drinks, refreshments, stretching and tai chi sessions, and information from local organisations.",
+            "Organising Christmas hampers for local residents with Tonia Antoniazzi MP and the Sharing Table, making a donation to help fund them and delivering them over the Christmas period.",
+            "Organising and helping to run the Annual Community Christmas Afternoon Tea at Dunvant Social Centre, bringing together local organisations including churches, chapels, WI, Horticultural Society, Dunvant Male Choir and Clyne Valley Community Project to share their activities and encourage new members. Residents can enjoy free refreshments, Christmas music, crackers and decorations.",
+            "Helping Ty Cila to arrange a visit from Father Christmas and Mrs Claus at their Christmas party.",
+            "Organising and distributing Christmas supermarket vouchers for families and individuals who may be struggling at this costly time of year.",
+            "Patron of the historic Dunvant Male Choir and regular attendee at their concerts.",
+            "Committee member and regular volunteer with Nant Cillan Project, which aims to maintain and enhance the area around Dunvant Social Centre, the Scout Hut and Ebeneser Chapel, with the Cillan stream at its centre.",
+            "Organised a very successful and well-attended VE Day 80 celebration at Dunvant Social Centre.",
+            "Donated funds from my community budget to help Dunvant Social Centre install new flooring.",
+            "Helping to run the monthly Community Cinema and Chat at Dunvant Social Centre, giving residents the opportunity to catch up over a cuppa and enjoy a good film on the big screen.",
+            "Regular attendee at Killay Community Council meetings and supporter of its community events, including the One Killay multicultural showcase day and St David's Day singing in the Precinct.",
+            "Volunteer with Killay Community Council Public Rights of Way Committee, helping to walk footpaths and bridlepaths in the Killay part of the ward and report issues to the Countryside Access Team.",
+            "Attended an Alzheimer's Society event at the invitation of a local resident.",
+            "Took part in the memorial service organised by Ebeneser Chapel to mark the centenary of the Killan Mining Disaster. Honoured to be asked to give a reading.",
+            "Worked with the Council's Gower National Landscape team to secure refurbishment of the Killan Mining Disaster memorial.",
+            "Supported the campaign to save the Ospreys, signing and sharing the petition, attending the public meeting called by Cllr Rob Stewart and passing on correspondence from residents.",
+            "Supported Dunvant RFC, personally sponsoring an advertising hoarding at the ground and using my community budget to help fund new floodlights.",
+            "Made a donation to Killay Lunch Club to help fund the ongoing hire of St Hilary's.",
+            "Funded the printing of songbooks and orders of service for the Forget Me Not dementia club carol concert at Siloam Chapel.",
+            "Worked with Killay Community Council and Dunvant RFC on a large community event for the Queen's Platinum Jubilee.",
+            "Invited to attend the local community Holi event at Killay Scout and Guide HQ.",
+            "Rewarding local volunteers for their efforts with access to free Swansea City FC tickets, including Nicci, who makes one of the brilliant postbox toppers, and Michelle, who volunteers at Social Centre events.",
+            "Trained as a Health Walk Leader so I can work with Friends of Dunvant Park and other community groups to organise short wellbeing walks in the area.",
+            "Joined Bikeability Wales on its leg of the Cerebra Relay Your Way event, raising money and awareness of the work to champion the 1.5 million disabled young people in the UK and promote inclusive sport, adventure and play.",
+            "Funded hats, T-shirts and signage for Bikeability based at Dunvant RFC."
+          ]
         },
         {
           "title": "Keep our streets clean & improve our environment",
           "detail": "Take action on litter, dog fouling, fly tipping and problems with flooding. Plant trees, wildflowers and daffodils",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Monthly submissions to the Cleansing Ward Operative Team identifying cleaning, cutting back, litter picking and other tasks around the ward, sharing before-and-after photographs to keep residents informed.",
+            "Funded the repainting of playground games on the paths in Dunvant Park.",
+            "Annual funding of wildflower and bulb planting around the ward, as well as hanging baskets at Ebeneser Chapel and planters in Dunvant Square and Dunvant Road.",
+            "Liaising annually with Swansea Council's Nature Recovery Team and Friends of Dunvant Park to count the beautiful native orchids in Dunvant Park.",
+            "Reporting potholes and other highways defects for Council teams to rectify as quickly as possible. Also putting forward areas around the ward for the annual Small Area Resurfacing Team.",
+            "Working with relevant Cabinet Members and Council officers to ensure vital improvements take place, including the Killay Square flooding alleviation scheme, and keeping residents informed of progress.",
+            "Organised and funded improvements in Dunvant Park that children and young people wanted to see, including a new shelter, large Spacenet climbing frame and resurfacing of the tarmac area by the playground.",
+            "Organised and funded the repainting and tidying of the historic gates in Dunvant Park on Goetre Fawr and Goetre Fach Roads.",
+            "Supported the Council-wide bin replacement and rationalisation scheme in the ward, suggesting where smaller old bins and dog bins could be replaced, relocated or additional bins installed around Dunvant and Killay.",
+            "Regularly reporting graffiti and other cleansing issues for the relevant Council teams to action.",
+            "Worked with Nant Cillan Project and the Orchard Project to plant and maintain a small community orchard of native apple, pear and plum trees in Dunvant Meadow, liaising with relevant Council teams to secure the necessary permissions.",
+            "Organised and funded the painting of utility boxes around the ward to reflect local history themes, including the Killan Mining Disaster and brickmaking, with three designs created by pupils at the local primary schools.",
+            "Worked with the Council's Tree Services Unit and Celtic Wildflowers to plant three new rare native Black Poplar trees in Woodcote.",
+            "Organised and funded a new bench at the top of the big field in Dunvant Park to help dog walkers and other park users.",
+            "Organised and funded new gates for Dunvant Meadow.",
+            "Arranged repairs to Dunvant Park Pavilion and donated funds to the bowls clubs for improvements.",
+            "Organised improvements to the basketball nets in Dunvant Park at the request of a young person who plays basketball for Wales and wanted to train there.",
+            "Supported the local community in its objections to the proposed new mobile phone mast on Derlwyn and successfully helped secure changes to the plans.",
+            "Supported a local Olchfa pupil with their Welsh Baccalaureate qualification through litter picking.",
+            "Worked with Nant Cillan Project to maintain and enhance the area around Dunvant Social Centre, the Scout Hut and Ebeneser Chapel."
+          ]
         },
         {
           "title": "Address community safety concerns",
           "detail": "Work with the police and Council to promote road safety, reduce speeding and tackle anti-social behaviour",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Regular engagement with local policing, including monthly meetings with the Neighbourhood Police Inspector and attending Cuppa with a Copper sessions with PCSOs. Sharing information and following up on community concerns regarding crime, anti-social behaviour, road safety and other issues.",
+            "Member of Dunvant and Killay Community Speedwatch group, carrying out speed monitoring exercises at key locations highlighted as concerns by residents.",
+            "Liaising with local organisations, the police team and Swansea Council Parking Enforcement to help ensure events in the area, such as the annual Dunvant RFC Junior Rugby Festival and Fireworks Display, run smoothly while minimising disruption and parking issues.",
+            "Met with concerned residents, attended a public meeting and successfully lobbied behind the scenes for changes to the Active Travel plan for the Old Carriage Drive route through Clyne Valley Country Park. Successfully secured changes to plans for tarmac, replacing them with less intrusive drainage and levelling works.",
+            "Organising annual CPR and defibrillator training sessions with Heartbeat Trust UK at various Dunvant and Killay venues, including St Hilary's, Dunvant RFC and Gospel Hall, Dunvant Road.",
+            "Funded a defibrillator for Dunvant Park Pavilion for emergency use by the bowls clubs and Friends of Dunvant Park.",
+            "Organised and funded repairs to the fencing around the football goals in Dunvant Meadow, following a request submitted by pupils at Pen-y-Fro Primary School.",
+            "Ongoing support for women born in the 1950s in their fight for Pension Justice, supporting their demonstration at the Guildhall and speaking to a motion in their favour at Full Council.",
+            "Moved a motion at Full Council raising awareness of violence against women and girls."
+          ]
         },
         {
           "title": "Support and value our local schools",
           "detail": "Serve as school governors, invest in school facilities and recognise the important role schools play in our communities",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Vice Chair of Governors at Pen-y-Fro Primary School, regularly visiting the school and attending concerts, art exhibitions and other events. Honoured to be invited to judge the Easter Bonnet Parade and Eisteddfod.",
+            "Attending local school events, including Christmas concerts and coffee mornings, to support pupils and celebrate their efforts.",
+            "Providing funding to Pen-y-Fro Primary School for outdoor equipment, Hendrefoilan for a storage shed/Wendy house and Dunvant Primary School for Calm Classroom supplies.",
+            "Organised and funded the painting of utility boxes around the ward to reflect local history themes, including the Killan Mining Disaster and brickmaking, with three designs created by pupils at the local primary schools."
+          ]
         },
         {
           "title": "Be visible, responsive and accessible to all residents",
           "detail": "Keep you all up to date with regular surgeries, newsletters and community events",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Holding monthly councillor surgeries, alternating between Dunvant and Killay, providing residents with regular opportunities to raise concerns and discuss local issues.",
+            "Keeping residents informed about local issues, activities and developments through Facebook.",
+            "Highlighting the achievements of members of our community on my Facebook page.",
+            "Keeping residents informed about delays to refuse and recycling collections, chasing up missed collections and arranging replacement bags and bins.",
+            "Supporting Tonia Antoniazzi MP's annual stationery drop campaign in the ward, with Killay Library serving as a collection point.",
+            "Regularly attending Killay Community Council meetings, listening to local issues and supporting its community events.",
+            "Attending community events and meetings, listening to residents and following up on issues raised.",
+            "Supporting residents who raise concerns about local developments and community issues, including helping secure changes to the proposed mobile phone mast on Derlwyn.",
+            "Supporting the community's campaign to save the Ospreys, including passing on residents' correspondence and raising concerns through the appropriate channels."
+          ]
         }
       ],
       "councillors": [
