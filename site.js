@@ -228,7 +228,6 @@
       sum.appendChild(el("span", "sl-record-num", String(n + 1)));
       var title = el("span", "sl-record-title");
       title.appendChild(el("b", null, p.title));
-      title.appendChild(el("span", "sl-record-count", p.done.length + (p.done.length === 1 ? " thing done" : " things done")));
       sum.appendChild(title);
       sum.appendChild(el("span", "sl-record-chev"));
       item.appendChild(sum);
