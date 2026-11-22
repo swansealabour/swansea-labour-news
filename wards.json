@@ -1097,10 +1097,15 @@
       "newLayout": true,
       "delivered": [
         { "title": "Roads and pavements", "text": "£647k on roads and pavements, including Neath Road, Cwm Level Road and roundabout, Normandy Road and Trewyddfa Road, and 469 potholes repaired." },
-        { "title": "New play areas", "text": "New play areas at Rees Row Park and Cwm Level Park, and upgrades at Parc Llewelyn and Hafod Park." },
+        { "title": "New play areas", "text": "All four of Landore's play areas modernised, around £460,000 in all: new play areas at Rees Row Park and Cwm Level Park, and upgrades at Parc Llewelyn and Hafod Park." },
         { "title": "Copperworks reborn", "text": "The Hafod-Morfa Copperworks brought back to life, with the Penderyn distillery and a river pontoon, and the bascule bridge and Laboratory Building being restored." },
         { "title": "Supporting schools", "text": "A new access ramp and grounds at Hafod Primary and new railings at Pentrehafod School, from our community budget." },
         { "title": "Christmas for families", "text": "Christmas hampers through local schools every year, and support for Parc Llewelyn's Christmas fête." }
+      ],
+      "gallery": [
+        { "photo": "images/landore-cwm-level-park.jpg", "ratio": 1.777, "caption": "The new play area at Cwm Level Park", "alt": "Councillors Beverley Hopkins and Mike White in the new play area at Cwm Level Park, Plasmarl" },
+        { "photo": "images/landore-neath-road-bus-shelter.jpg", "ratio": 1.333, "caption": "A new bus shelter on Neath Road, Plasmarl", "alt": "Councillors Mike White and Beverley Hopkins at a new Swansea Council bus shelter on Neath Road, Plasmarl" },
+        { "photo": "images/landore-davies-street.jpg", "ratio": 1.333, "caption": "Davies Street resurfaced outside Plasmarl Primary", "alt": "Councillors Mike White and Beverley Hopkins on newly resurfaced Davies Street, with fresh school keep-clear markings outside Plasmarl Primary School" }
       ],
       "budget": {
         "period": "2022–27",
@@ -1166,35 +1171,91 @@
           "detail": "We will continue to support a rolling programme to resurface pavements and roads across Landore Ward",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Davies Street resurfaced outside Plasmarl Primary School.",
+            "Neath Road resurfaced in Landore and in Plasmarl.",
+            "Cwm Level Road and the Cwm Level roundabout resurfaced.",
+            "Normandy Road and Trewyddfa Road resurfaced.",
+            "Over £640,000 spent on Landore's roads and pavements, and 469 potholes repaired.",
+            "We walked the ward street by street and sent the Highways patching team to the roads that were breaking up. We'll keep pushing for more.",
+            "The Plasmarl roundabout is next in line for resurfacing.",
+            "New bus shelters put in across the ward after residents asked for them, including on Neath Road in Plasmarl, paid for with help from our community budget.",
+            "Faded street name plates being replaced across the ward, including Sharpsburg Place and Trewyddfa Road, part-paid from our community budget.",
+            "New road signs and markings on Jersey Street.",
+            "Permit parking and \"H\" bar markings on Cwm Terrace and Llwyd Road.",
+            "Bollards to stop parking on the verges, including 30 wooden bollards on Roseberry Terrace."
+          ]
         },
         {
           "title": "Safer communities",
           "detail": "We will continue to work with the Police, & our PCSO’s to tackle anti social behaviour and make our streets safer. We will support local Community Groups across Landore Ward",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "A new public defibrillator and cabinet in Plasmarl, and help for the Friends of Parc Llewelyn to buy one for the park.",
+            "Extra street lighting on Philadelphia Lane and on the lane next to David Issac Close.",
+            "Safety railings on Bryn Road at the junction with Llangyfelach Road, and new signs and repairs on Caryl Terrace.",
+            "Supported the SAFE project at Pentrehafod School.",
+            "Paid for summer Splash trips for local children, run with schools and the police.",
+            "Repaired the safety flooring at Plasmarl Community Centre, and paid for its members' day trips, including to Porthcawl.",
+            "Supported the over-60s group at Montana Park with events, and bought new equipment for Montana Park Community Centre.",
+            "Helped the Friends of Parc Llewelyn with the new boardwalk in the park.",
+            "Backed the Friends of the Hafod-Morfa Copperworks with a gazebo, equipment to welcome visitors and their planning costs."
+          ]
         },
         {
           "title": "Cleaner communities",
           "detail": "We will fund a local operative to keep our streets clean by clearing litter and weeds and work to deal quickly any fly tipping problems. We will also install new bins in the ward",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Working with the council's Cleansing Ward Operative Team to clear lanes and footpaths across the ward of overgrowth, weeds, litter and fly-tipping, after residents told us where the problems were.",
+            "Fly-tipping and overgrowth cleared from the lane at Odo Street.",
+            "Dumped waste cleared from the rear of Pentre Treharne Road.",
+            "A new dog waste and litter bin in Plasmarl.",
+            "Flower troughs, a planter, hanging baskets and lamp-post flowers on Trewyddfa Road.",
+            "Floral displays across Landore every year.",
+            "Daffodil bulbs planted at sites across the ward every year.",
+            "Helped Brynhyfryd Primary School clear its woodland area."
+          ]
         },
         {
           "title": "Investing in parks and play",
           "detail": "We will continue to invest and improve our local parks and play facilities, and continue with tree planting in appropriate areas to improve our environment",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Pledge delivered: all four of Landore's children's play areas have been modernised, around £460,000 in all, after parents asked us for better places to play.",
+            "A brand new accessible play area at Rees Row Park, opposite Plasmarl Primary School, opened with help from the pupils.",
+            "Cwm Level Park in Plasmarl turned from a tired open space into a new play area with swings, a roundabout, a multiplay unit, a trampoline and picnic benches.",
+            "A brand new play area at Parc Llewelyn.",
+            "Play area improvements at Hafod Park.",
+            "New gates and replacement railings at Cwm Level Playing Fields.",
+            "A new picnic table and benches in Parc Llewelyn.",
+            "Summer fun days in four of our parks, with entertainers for the children."
+          ]
         },
         {
           "title": "Standing up for Landore",
           "detail": "We will be accessible to all residents and continue to speak up for the community we represent to ensure your voice is always heard",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Took residents' requests for bus shelters, new street signs and cleaner lanes to the council, and got them done.",
+            "Christmas hampers for families every year through Hafod, Plasmarl and Brynhyfryd primary schools and Pentrehafod School.",
+            "Supported the Parc Llewelyn Christmas fête and Christmas gifts for the children.",
+            "A new access ramp, grounds and an outdoor classroom at Hafod Primary School.",
+            "New railings at Pentrehafod School.",
+            "Helped Brynhyfryd Primary School celebrate its 150th anniversary, and paid for a children's mural project there.",
+            "Helped with sports days and school trips at Plasmarl and Brynhyfryd primary schools.",
+            "Easter activities and events at Brynhyfryd Library.",
+            "The historic Hafod-Morfa Copperworks brought back to life, with the Penderyn distillery open and the bascule bridge and Laboratory Building being restored."
+          ]
         }
       ],
       "councillors": [
