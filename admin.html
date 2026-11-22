@@ -4,100 +4,249 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>News Review</title>
+<title>News desk | Swansea Labour</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23d40038'/%3E%3Cpath d='M9 23V9h3.2l7.1 9.2V9H22v14h-3.1L11.7 13.7V23z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
+  /* The look of the tool (v2). Colours are the website's own: red, yellow, ink. No green. */
   :root {
-    --bg: #f6f5f3; --panel: #ffffff; --text: #1d1d1f; --muted: #66625e; --line: #e2dfdb;
-    --accent: #e4003b; --accent-text: #ffffff; --ok: #1a7f4b; --warn-bg: #fff4e0; --warn: #8a5300;
+    --red: #e4003b; --red-text: #d40038; --red-dark: #b8002f; --yellow: #fbe70d;
+    --bg: #f6f4f1; --panel: #ffffff; --field: #ffffff; --soft: #faf9f7;
+    --text: #1c1c1c; --muted: #625d58; --line: #e3dfd9; --line-strong: #c9c3bb;
+    --warn-bg: #fff4dc; --warn: #6f4300; --warn-line: #efd7a3;
+    --err-bg: #fde8ed; --err: #a8002b; --err-line: #f5b8c6;
+    --note-bg: #1c1c1c; --note-text: #ffffff; --note-tick: #fbe70d;
+    --focus: #1c1c1c;
+    --shadow: 0 1px 2px rgba(28, 28, 28, .05), 0 6px 18px rgba(28, 28, 28, .05);
+    --radius: 12px;
+    --display: "Bebas Neue", "Arial Narrow", system-ui, sans-serif;
+    /* names the script already uses */
+    --accent: var(--red-text); --accent-text: #ffffff; --ok: var(--text);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #161514; --panel: #201f1d; --text: #f2f0ed; --muted: #a9a49e; --line: #36332f;
-      --accent: #ff3b63; --accent-text: #160006; --ok: #4cc38a; --warn-bg: #3a2a10; --warn: #ffc56b;
+      --bg: #151413; --panel: #1f1e1c; --field: #171615; --soft: #1a1917;
+      --text: #f3f1ee; --muted: #aba59e; --line: #35322e; --line-strong: #55504a;
+      --warn-bg: #33260f; --warn: #ffd58a; --warn-line: #5c4620;
+      --err-bg: #3a1019; --err: #ff9db1; --err-line: #6b2233;
+      --note-bg: #f3f1ee; --note-text: #1c1c1c; --note-tick: #d40038;
+      --focus: #fbe70d; --shadow: none;
     }
   }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  header { background: var(--accent); color: var(--accent-text); padding: 14px 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  header .version { font-size: 13px; font-weight: 600; opacity: .85; }
-  header h1 { margin: 0; font-size: 18px; }
-  nav { display: flex; gap: 4px; padding: 10px 16px 0; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-  nav button { border: 1px solid var(--line); border-bottom: 0; background: transparent; color: var(--muted); padding: 8px 14px; border-radius: 8px 8px 0 0; font: inherit; cursor: pointer; }
-  nav button[aria-selected="true"] { background: var(--panel); color: var(--text); font-weight: 600; }
-  main { max-width: 1100px; margin: 0 auto; padding: 0 16px 40px; }
-  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 0 10px 10px 10px; padding: 20px; }
-  .layout { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
-  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--red-text); text-underline-offset: 2px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) main a { color: #ff7d98; } }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--panel); color: var(--text); padding: 8px 12px; border-radius: 6px; z-index: 50; }
+  .skip:focus { left: 8px; }
+
+  /* Top band and tabs */
+  .top { background: var(--red-text); color: #fff; border-bottom: 4px solid var(--yellow); }
+  .top-in { max-width: 1180px; margin: 0 auto; padding: 14px 20px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px 20px; flex-wrap: wrap; }
+  .brand { margin: 0; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; font: 400 32px/1 var(--display); letter-spacing: .02em; text-transform: uppercase; }
+  .brand span { color: var(--yellow); font-size: 26px; letter-spacing: .04em; }
+  .top-right { display: flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }
+  .top-right a { color: #fff; }
+  .conn { display: inline-flex; align-items: center; gap: 7px; }
+  .conn::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, .5); }
+  .conn.on::before { background: var(--yellow); }
+  .conn:empty { display: none; }
+  /* "Live on the website": quiet when all is well, an amber badge while a story is on its way */
+  .live { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .live::before { content: "✓ "; color: var(--red-text); font-weight: 800; }
+  [data-live]:empty { display: none; }
+  .version { border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; padding: 1px 10px; font-size: 12.5px; }
+  nav { position: sticky; top: 0; z-index: 20; background: var(--panel); border-bottom: 1px solid var(--line); }
+  .nav-in { max-width: 1180px; margin: 0 auto; padding: 0 10px; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .nav-in::-webkit-scrollbar { display: none; }
+  nav button { appearance: none; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--muted); font: inherit; font-weight: 650; padding: 13px 12px 10px; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
+  nav button:hover { color: var(--text); }
+  nav button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--red); }
+  .count { display: inline-block; min-width: 22px; padding: 1px 7px; border-radius: 999px; background: var(--bg); color: var(--muted); font-size: 12px; font-weight: 700; line-height: 1.5; text-align: center; }
+  .count:empty { display: none; }
+  .count.hot { background: var(--red-text); color: #fff; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 16px 20px 90px; }
+  /* What the tool is doing, or has just done. Stays in view under the tabs while you scroll. */
+  .status { position: sticky; top: 47px; z-index: 15; margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow); font-weight: 600; display: flex; gap: 10px; align-items: baseline; }
+  .status:empty { display: none; }
+  .status.idle { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); border: 0; white-space: nowrap; }
+  .status::before { content: "•"; color: var(--muted); font-weight: 800; }
+  .status.ok { background: var(--note-bg); color: var(--note-text); border-color: transparent; }
+  .status.ok::before { content: "✓"; color: var(--note-tick); }
+  .status.err { background: var(--err-bg); color: var(--err); border-color: var(--err-line); }
+  .status.err::before { content: "!"; color: var(--err); }
+  .status.ok, .status.err { cursor: pointer; }
+  .status.ok::after, .status.err::after { content: "×"; margin-left: auto; padding-left: 12px; font-weight: 400; opacity: .7; }
+
+  /* Cards and headings */
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px 20px; margin-top: 14px; box-shadow: var(--shadow); }
+  .card > :first-child { margin-top: 0; }
+  .card-title, .section-title, .rail-title { font: 400 23px/1.1 var(--display); letter-spacing: .03em; text-transform: uppercase; margin: 0 0 2px; display: flex; align-items: center; gap: 10px; }
+  .card-title::before, .section-title::before { content: ""; flex: none; width: 6px; height: 19px; background: var(--red); border-radius: 2px; }
+  .section-title { font-size: 27px; margin: 30px 0 0; }
+  .card h3:not(.card-title) { margin: 0 0 6px; font-size: 15px; }
+  .card .card, .card .photo { box-shadow: none; background: var(--soft); }
+  .banner { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-line); padding: 12px 16px; border-radius: var(--radius); margin: 0 0 14px; font-weight: 600; }
+  .empty { background: var(--panel); border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: 28px 22px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+  .empty strong { color: var(--text); font: 400 24px/1.1 var(--display); letter-spacing: .03em; text-transform: uppercase; }
+  .badge { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; line-height: 1.5; padding: 1px 9px; border-radius: 999px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); white-space: nowrap; }
+  .badge.warn { background: var(--warn-bg); color: var(--warn); border-color: var(--warn-line); }
+  .badge.ink { background: var(--note-bg); color: var(--note-text); border-color: transparent; }
+
+  /* Drafts: the waiting list beside the story */
+  .layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 22px; align-items: start; }
+  .rail { position: sticky; top: 62px; max-height: calc(100vh - 80px); overflow: auto; padding: 2px 2px 8px; }
+  main:has(.status:not(:empty):not(.idle)) .rail { top: 112px; max-height: calc(100vh - 130px); }
+  .rail-title { font-size: 21px; margin: 0 0 10px; }
+  .rail, .editor { min-width: 0; }
+  @media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .rail, main:has(.status:not(:empty):not(.idle)) .rail { position: static; max-height: none; } }
   .list { display: flex; flex-direction: column; gap: 8px; }
-  .item { text-align: left; border: 1px solid var(--line); background: transparent; color: inherit; border-radius: 8px; padding: 10px 12px; font: inherit; cursor: pointer; }
-  .item[aria-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
-  .item small { display: block; color: var(--muted); }
-  label { display: block; font-weight: 600; margin: 14px 0 4px; }
-  input[type=text], input[type=password], input[type=url], textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
-  textarea { min-height: 80px; resize: vertical; }
-  textarea.body { min-height: 360px; }
-  .hint { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
-  .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-  button.primary, button.secondary { padding: 9px 16px; border-radius: 6px; font: inherit; font-weight: 600; cursor: pointer; }
-  button.primary { background: var(--accent); color: var(--accent-text); border: 0; }
-  button.primary:disabled { opacity: .45; cursor: not-allowed; }
-  button.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); }
-  .checks { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 12px 14px; margin-top: 16px; }
-  .checks label { font-weight: 400; display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
-  .checks input { margin-top: 4px; }
-  table { border-collapse: collapse; width: 100%; font-size: 14px; }
-  td, th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .status { margin: 0 0 12px; min-height: 1.5em; }
-  .status.ok { color: var(--ok); }
-  .status.err { color: var(--accent); }
-  .empty { color: var(--muted); }
-  .banner { background: var(--warn-bg); color: var(--warn); padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; }
-  .photo { display: grid; grid-template-columns: 200px 1fr; gap: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-top: 10px; }
-  .photo .thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; background: var(--bg); display: block; }
-  .photo label { margin-top: 8px; }
-  .photo label:first-child { margin-top: 0; }
-  .photo .row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
-  .photo .row label { display: flex; gap: 6px; align-items: center; font-weight: 400; margin: 0; }
-  .photo.off { opacity: .5; }
-  @media (max-width: 600px) { .photo { grid-template-columns: 1fr; } }
-  .mini { width: 72px; height: 48px; object-fit: cover; border-radius: 3px; display: block; background: var(--bg); }
-  .card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; margin-top: 12px; }
-  .card h3 { margin: 0 0 6px; font-size: 15px; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
-  @media (max-width: 600px) { .two { grid-template-columns: 1fr; } }
-  .person { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }
-  .person .face { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; background: var(--bg); display: block; }
-  select { padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; }
-  .row-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .row-btns button { padding: 5px 10px; font-size: 13px; }
-  .results { list-style: none; padding: 0; margin: 6px 0 0; }
-  .results li button { text-align: left; width: 100%; background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; margin-top: 4px; color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
-  .wardgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 2px 12px; border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
-  .wardgrid label { font-weight: 400; display: flex; gap: 6px; align-items: center; margin: 2px 0; }
-  .wardgrid label.labour { font-weight: 600; }
+  .item { display: block; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--panel); color: inherit; border-radius: 10px; padding: 12px 14px; font: inherit; cursor: pointer; }
+  .item:hover { border-color: var(--line-strong); }
+  .item[aria-current="true"] { border-color: var(--red); box-shadow: inset 4px 0 0 var(--red); }
+  .item-title { display: block; font-weight: 650; line-height: 1.35; }
+  .item-meta { display: flex; flex-wrap: wrap; gap: 5px 8px; align-items: center; margin-top: 7px; color: var(--muted); font-size: 12.5px; }
+  .editor > .card:first-of-type { margin-top: 10px; }
+  .editor-head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; min-height: 26px; }
+  .editor-head .hint { margin: 0; }
+
+  /* Forms */
+  label { display: block; font-weight: 650; margin: 16px 0 5px; }
+  input[type=text], input[type=password], input[type=url], input[type=search], textarea, select { width: 100%; padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--field); color: var(--text); font: inherit; }
+  select { width: auto; max-width: 100%; }
+  input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+  input::placeholder, textarea::placeholder { color: var(--muted); opacity: .8; }
+  input[type=checkbox], input[type=radio] { width: 18px; height: 18px; margin: 0; flex: none; accent-color: var(--red-text); }
+  textarea { min-height: 88px; resize: vertical; line-height: 1.5; display: block; }
+  textarea.body { min-height: 380px; }
+  input.headline-input { font-size: 19px; font-weight: 650; padding: 11px 12px; }
+  .hint { color: var(--muted); font-size: 13px; margin: 5px 0 0; }
   .warn { color: var(--warn); }
-  .sticky { position: sticky; bottom: 0; background: var(--panel); padding: 12px 0 4px; border-top: 1px solid var(--line); margin-top: 18px; }
+  .tick { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; margin: 12px 0 0; }
+  .tick input { margin-top: 2px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  @media (max-width: 640px) { .two { grid-template-columns: 1fr; } }
+
+  /* Buttons */
+  button { font: inherit; }
+  button.primary, button.secondary { padding: 10px 18px; border-radius: 8px; font-weight: 650; line-height: 1.2; cursor: pointer; }
+  button.primary { background: var(--red-text); color: #fff; border: 1px solid transparent; }
+  button.primary:hover:not(:disabled) { background: var(--red-dark); }
+  button.primary:disabled { opacity: .45; cursor: not-allowed; }
+  button.secondary { background: var(--panel); color: var(--text); border: 1px solid var(--line-strong); }
+  button.secondary:hover:not(:disabled) { border-color: var(--text); }
+  button.secondary:disabled { opacity: .5; cursor: not-allowed; }
+  button.danger { color: var(--err); }
+  button.danger:hover:not(:disabled) { border-color: var(--err); }
+  .btns { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 18px; }
+  .row-btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  .row-btns button, .story-actions button { padding: 6px 12px; font-size: 13.5px; }
+  /* The bar that keeps the main buttons in reach at the bottom of the screen */
+  .actionbar, .sticky { position: sticky; bottom: 0; z-index: 10; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; background: var(--panel); border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius) var(--radius) 0 0; box-shadow: 0 -6px 18px rgba(28, 28, 28, .08); padding: 12px 16px; margin-top: 16px; }
+  .actionbar .btns, .sticky .btns { margin: 0; }
+  .why { margin: 0 0 0 auto; color: var(--muted); font-size: 13.5px; font-weight: 600; }
+  .why:empty { display: none; }
+
+  /* Confirmations before publishing */
+  .checks { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn-line); border-radius: var(--radius); padding: 16px 20px; margin-top: 14px; }
+  .checks strong { display: block; font: 400 23px/1.1 var(--display); letter-spacing: .03em; text-transform: uppercase; margin-bottom: 4px; }
+  .checks label { font-weight: 500; display: flex; gap: 10px; align-items: flex-start; margin: 10px 0 0; }
+  .checks input { margin-top: 2px; }
+
+  /* Photos */
+  .photo { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px; border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-top: 12px; }
+  .photo .thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; background: var(--line); display: block; }
+  .photo label { margin-top: 10px; }
+  .photo label:first-child { margin-top: 0; }
+  .photo .row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px; }
+  .photo .row label { display: flex; gap: 8px; align-items: center; font-weight: 500; margin: 0; }
+  .photo.off { opacity: .55; }
+  @media (max-width: 640px) { .photo { grid-template-columns: 1fr; } }
+
+  /* Ward tick boxes */
+  .wardgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 6px; }
+  .wardgrid label { font-weight: 500; display: flex; gap: 8px; align-items: center; margin: 0; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--soft); cursor: pointer; font-size: 14px; line-height: 1.3; }
+  .wardgrid label.labour { font-weight: 700; }
+  .wardgrid label:hover { border-color: var(--line-strong); }
+  .wardgrid label:has(input:checked) { background: var(--red-text); border-color: var(--red-text); color: #fff; }
+  .wardgrid input { width: 16px; height: 16px; accent-color: #1c1c1c; }
+
+  /* Tables (people quoted, the map list) */
+  .tablewrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); margin-top: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  td, th { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+  tr:last-child td { border-bottom: 0; }
+  .tablewrap tr:hover td { background: var(--soft); }
+
+  /* Published stories */
+  .toolbar { display: flex; gap: 10px 14px; align-items: center; flex-wrap: wrap; }
+  .toolbar input[type=search] { flex: 1 1 260px; max-width: 460px; }
+  .toolbar .hint { margin: 0; }
+  .stories { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .story { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 2px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px 12px 12px; box-shadow: var(--shadow); }
+  .story-thumb { grid-row: 1 / span 2; width: 120px; height: 82px; object-fit: cover; border-radius: 8px; background: var(--line); display: block; }
+  .story-thumb.none { display: grid; place-items: center; background: var(--red-text); color: #fff; font-size: 12px; font-weight: 700; }
+  .story-title { font-weight: 650; font-size: 16px; line-height: 1.35; color: var(--text); text-decoration: none; }
+  .story-title:hover { text-decoration: underline; }
+  .story-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; margin-top: 4px; color: var(--muted); font-size: 13px; }
+  .story-actions { grid-column: 2; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+  .story-actions .hint { margin: 0; }
+  .story-extra { grid-column: 1 / -1; }
+  .story-extra .card { margin-top: 12px; }
+  @media (max-width: 560px) { .story { grid-template-columns: 84px minmax(0, 1fr); } .story-thumb { width: 84px; height: 58px; grid-row: auto; } .story-actions { grid-column: 1 / -1; } }
+  .mini { width: 72px; height: 48px; object-fit: cover; border-radius: 4px; display: block; background: var(--line); }
+
+  /* Wards and the map */
+  .person { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; }
+  .person .face { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; background: var(--line); display: block; }
+  @media (max-width: 560px) { .person { grid-template-columns: 1fr; } }
+  .results { list-style: none; padding: 0; margin: 6px 0 0; }
+  .results li button { text-align: left; width: 100%; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px; margin-top: 4px; color: inherit; font-size: 13.5px; cursor: pointer; }
+  .results li button:hover { border-color: var(--line-strong); }
+  .narrow { max-width: 760px; }
+  @media (max-width: 560px) { main { padding: 12px 12px 90px; } .top-in { padding: 12px 14px 10px; } .brand { font-size: 28px; } .brand span { font-size: 24px; } .card { padding: 14px 14px 16px; } }
+  /* Bebas Neue, the website's heading font (SIL Open Font License 1.1), built into this page so
+     nothing else has to be uploaded with it */
+  @font-face { font-family: "Bebas Neue"; font-style: normal; font-weight: 400; font-display: swap; src: url(data:font/woff2;base64,d09GMgABAAAAADXIABEAAAAAiLwAADVkAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGm4bnwAciT4GYACEfgiBAgmcFREICoGnHIGUCAuEHAABNgIkA4gmBCAFhAQHiEAMgUsb33s1jNsvCegOdEqJ7NmTKIKNAwkzeD8SYapZbyP4/09ITsaQzQJmqr06mDEwk+VSd+dVKFwFgwY7R6EwOxxtQox9rUo2myeb61Y+iFL0z8mjmfA+74OFimpQYGQkQ4fh4xhXfPM3u1p65sN3OgdGNISd/fZJ6qtn/KMhpgxfoEgpqrQiYfs9hJNMv1twxuRWtq323noGto38SU5eomgtKrJ654DYPapnyeQYUKF6hagJsIfn5/Z/7t1d3cGoWNRdwYBVw5IaYwWMqYgwYEMYyAYWYtUT0f76jXxR+lIFo+K99mXiS59QVCf17CGmPBqDiEbs64F0Ucb2QTSqRqqWCxBMIEUCpEiJQRKZJVHpsi78P/7fIaaid9GmpnNRRY1Lu208uLZGS0RiJRSaSqdrE3/RHe8y1IbbiZplU8kBIs1cdAZtU3kDRPeOq1RJXaHfq7NmpCTFn7g74JKoJCgBZcuxsqsjKLpjt9br77gD5i60Wqiuvv4HoA/of9pSLiqHFXjKT3U3uwEyoBYuYZv1g5JvfUV9Ra2uelozgtMZSlccZTBvvb59+v+vM7vw3v+S7QCQl7xcIyiAc1w5csCjqRIvlHMU2rLcsl4d6gjWTO3a+QFBzvkXhLYulQMjgN2EWVSca6wfK3lgTIUrwAYArBL4f6aa7fxdQCBBB+5FylG6FKU7v56igkOK9dWD+Qvszs4uQSwICgsQCqB0BkkFALxASRcWSYKguyzpQswdBYo6kJfoFGIVcqjcu+hcuSjtsnLpomxduqjMw9eZvHkT7I2SLWURe9hvxjPhTgVKtRSswhW7lcv1x1D7PhQzqlcJEkWvf437/X59g7nuwzaNJRyJcIQRCc28j/977uFv+k3bq+gfkqCDEOdibHvPoahts4gfKpHSXpD/UgWwAsAkkKdIYECBARQYLAmCDsJUBFKiBEROAaJSCmLRDdKjB6RPHKTfQpCnnsJ5ZgK0VBocCDCBVh94401dAcB8SyIGqBCALmkgOPhi60BBEA7Zry8G5Cc20vsDSdNHt0ewL0DgABYFH1pk8sV1zSooQgFBAtUDJoPqSkmSVLGzM9OSk5OQE2DLB/nntIA8IptkLzQJcBIAawGAHRJJnnrO3upnyNiMy/hMyMRwGaKhrO4KTOvv60jeEPyVbcsHszvbsjHDWZFFmg8SH6BVe9OZcJoSBPch1xVnyqLHzErFRLjoPBvUEKl2To9mZP8b0UbP/FWn3/zgVKuwWleV/tXWB3Keo+TRGlNBk3TVzlypxTudY6tLp4W3atrpPYgHxibrdDN2GNgRzTY0a4474Hy8C3ES66R7zh5Oo3bOLBsunxbJCG/VtKFXMApEMmAqOjRP5BIRp8Lzamo1ulmyRYvW+9vgAXPaAwTQGOHT6gEYCTLh/vrNCGpOkp+BkynBiEAn7Wpoi/QN80qXRWI57Fe/ER9E4VAUnCUUPJUCMTkEZloVZlUBpxIKol+BzPvgEQxZAAb5FQQCZ+0QoKbplCQJMAEK35tGuPC9EgoAlUBvRTeAvBgKzwuOiHOJwiI7iAktM8VuyJrmJg77LwIggaWdJZ6UZ1ChNa0NxDOOuqo5ShbQK78C7VBK5YDMTstL9DeVukY2BZTR1bV0pPqqfxfNnjV8/W84aN7ytne864gxx5102lnnXXTZFVddc9Mtt91x1z33PfDQI++B0SBQEAoKWDIqVI4cKBYWHKFiKBkZlIoKQk2PwsAAz8iIwMSEyKwUiYUFmVUFSKVKsGouqDp1UB1iUDPMgOrXDzFgDoq55sIbNIhgnnmIhixAstBCZJC3CCAQACMATIAHjAdMBLS2NbypRkkCotgeAnMS3R08rBcCjHlq6JONaZrTRYKcyvRtg42+EGiiUakvqRnqZPzmTFcep9zxD3NFF696zn9Zx2KPVVHt7pICc+/wUSFf3OriujNSCrkKmNowSttjN9YE+4UesVx5cIedwxbm34Kuf7KFNsUuPypvoKN1AZeoi7bI4pp25NS+xrST0DcHGbkFfp0x50Qx701SNVPACNJ5cj5Kz1kFehRIkb2/qeiWYsEW7SzwA7mK1FV7Bq9CKjWXyVFEDhmNSW8iACOwNrnHeWoN69gZQA9USO1MHvsnM5ia24uB9kPtIS7WhFoIurLS1xqIlmogTwJiYIKauWLk0XIS0k2vnSEAIznPOFt/AyeQFOe+3veDgtGOA7zYbFYCMCR+FaH4CHJVNTIe3+i+1QrYEFxbhScdoVEb67PcY7E94dj0klHGWfy8L99y+hANllisCDgTaA9sZSHiuPU63z46ZTTMAR+KaunsRA+6Ie7YNkXL0ZQ11QJweHyfe46UwmHUePS/gEKGyAE2idEzcXBlEVLI2ZsAFvx/nRLTtLDr0MNphoVqwTQbDhwcOlyPoxALhCrw2w4CIhIydD0FDg6ux4ljv/sI/OaDgIiEDHUuhlIssljq9irSK5600c1JNyqUfMeVDCeVXKcVmnNKmgtKmkszp7nsmgw3lXS3lEy3lSx3lEx3lSz3FKr7SooHCtVDkbJJO9l+hZLnt5kZnvhDsj8ppkMoZjoQGID6cLWR1R/Gnm4ccr4XivvGociCSpIMmCLlsPdUadJlnAkwCyqnoInKaHjBnBAgowfyOw9JbwOR/s5wepvBSHA51BlJYEEI4F5hCPKmwzY1NVs0tZVf12nfhGtNsRwaLRDrbLDRZt/5WqGQjCg4GxTYRoVgs4BSRybKeEFMBUGMbT8Csm5BwQGh34m/tDII4EiTESC5zPaBuGqm9O+TdUrcgmqorFkQbzkCpOVQvJvuIjgFijKC6NoxiGQzoyogkiZkjEJA6SrDMk6GLZwPRWMhn7bUv4fv+M+Med8f8RiiMUvIwQYHbZaAUtbbfG1D1ZZQW6fbZbfrA/o2a8BXLYrX0nsqe6BNqrR24UE3drNKFFbO3R/GTovXwtKZu8PYYfaY6x3cHsZ2k9tMZ+94GNuMLrnWzs1hdDU4ZRpb14fREvQOtc0O2JLTL6KCt6sMLqGaWlu7e6Ex6RAajvV0Q++4/zOlJyj0yr66elq7oIPybnmbvFEellccUhfF+rv7oEHey5sVGgApMU979xVAAEGVSTJZxsuIDMk4mSDDQEw1lPUuGSjcGTCzO3kuFVG2sumoAb7FPdjvOUPC1EQg50eGvNLJEOVQJlgmlMZgK9hxhZe3EsbVYmNNGArG1ozYmaXp8lCOBbkCAqXpkLW2KmOA5QIoXA4miwEQM9DK/+xlGKDPmq7s8wpk/UNuwqtMDulOz5WpfNJMzCQBalVZarhAr+BBVgNVGROAGyhWLSvTQRYXIfK11fkgjktWiy1ZdHpIrk9iWi1YxXHJR8lNqUYEkgIHFpu5MwOm/v2DQ9sMDZrgck62hgfq4goCtpJ/1Nmdp/1ATRwzpqqGCmCsxntk48dXA8okr/i4Jf/fA6A9mqZlwDUA9ViNAZb5LoDYdRYcSEHq4FdsPWyIXMlK6AyZkMn43/CxulDv14cNaqM2btmwD/ux89lMNpctYOvZdnuAU3HTuVkTE5iMTUpvd2R8hx0Bru162bls+iy6v5X6bwG7AHQ58P8tWkSZKBWeCZJwXMFZTADAhz+8Hu/AXVj5yaCVbyEAAdYB7Oh9INcrXkrOzQpvanPUI6d84he/ec9Z55z0hbdd9pbTm+b/KeA73/jWqF8hkiRLkSZbjlx5WDi4MHxCJWTkFFTUDIxMzCwuOuOSn1yPzKpKtRq1AurUa9BkmhZhbTr0mKFPXL8Bcw2aZ8hC5/3tgh984JiPPPaxz/xjPJInFrnnR1f8Eeov33vN68H72e+Oh+BVi933hsPeNIYEjwBFREZBlSVdhkxM+WjoUgkUEhErUuArEnoaWjqlpBKcbOwqOJSr5OLn4eUzRaOQSdzaTRcR1a3T17rMMdMss83Xa4FiMXfcdcMtt90E5rzyS5gLQH4FulIRKQYS7pmx5Gay3cmko5lSJKcgpcdobn/M0r74Pak/7npWZl/nffaa2BjxoW8U+HoD7/wrjctfnpcrXN6HCdKHd6Qeby0ZlM5YTo21xKfEc6l7EGFwBQlYzNCwFwqxYhtqQHeuzd6dcRVDInhnzHS2crntYS4Pp6CbniNWsSM7m/a0VuM5wLL72Gpze29utv0YOUdcH+qMZzQh3vFn2sdauzNhOVowoo90lcTBjm+oQQf+d0aWf/VLHWMzbmhse0vNdf+3n8o16RPjO2d3XD1tHhXLjveKDItjx2UIKqlPOhgHA/JfFiZIv5QW4Tx0jAJjcIV0Ta7jQXVmAlKnyzHxnider7i1dROkef78MN4IGSNHvNGlUu2ikkQOekL0XciY4rSgDjQg89iBJnc9zeRoJWesVZK3gkbYaSQxkM3KoRMbt2nGwaQ42duxmHrLDsWJJN7o3zXyoc/J8p4Puybuqxe1CqpLTxKGn+CQtlbQBG0Oe9DpJla2nZyAyDNF0mpC0qHjXa2CbYB0rsfxDZNqNFAS6k0hGurizjh6e1zYuIGdQcQpnFGma80hIf1FZB7M5aku6IJuI5uYlSxWqAIXp+ZOs77XcRndJsJmGVDySDw2skbno1Hp2d711ojVgeVhPjKtbfMH/+KCAocOJHx+uVGgQScTSqGE90BQRCQMDE4D3DDppLpQMiDVVNNBIg0DfD30mb3X+oKjrkw7JFyy578efESMPeRwr2NkBDzSA7UaSXGUoWMboO6y/wliGMm8gJpnI4cxn8xd+sXuv1i0rMyHVKbBERqQWGeUPkc7pUC3yKSVM5V3mYGZVJOQePxLVL8aR5jJ0O1DzyA5NPRUhqNE5qGBjzsNAkm5ni7OypQsiasYI/r4DQwziTweDP4aK8+1YIyMKDSZSIRMJUoSSSOpxEgm6SSXDDKTTDKXLLKQ7AUDZELq0nj7eugFJcnz40P36k0nX+z5bL/1dZ6vm6XADGuMHH32XLL3Aj+hhAIqMKjBoAGDFgw6MOjBYAkGKzBYg/XtgPUEJvvcwOkbKmmLKsY6KcZuFncd4NLj0FvGzXIGYITpTUtclpW+fKRhWCDn6ns6e/3bc3A0nrWyrnONf6XeWhdhKhvbdwm89yB1hRnYwLbrJElQKqmfEPE/ICJbm7KcL3XO55vlGljHyI848Xz7Oip4g/L+esFjH6qpIzA3/BaZyryjTAmifnwyn9Mvu0kMRPhTswwPT64/qs7dGYTcOxDx9+QjwrzG7o2zK206HJ6lXQLW0/HRwX03SruH0kjOKAF+s8gMV+f+nNmiGTWQF5fVLb2DnEi14Y2UNtBg/hph+VOfU1tgDJ1QZ+xOnV25sYyw9BU1daJgaZwsbVw2Qs6W1K/o7FQDjoYAF4cRJsXRPcqinRNkeTCSc00Fl1aXS10/Oh844ejG9AxxWV8e8T2KkuP0FuzuLJqdjzE4KpVx2pnhA19iXazRPgzQs1jHiOHmep9fZtTJLJn0wagZae53PjljFIK1EXY8RccemuoBBUHJJpWNJ/S7Zl891rXMB50dumZ9+uT7ZnfDz2yUbXi1n4N3cefsF8D7SMWTpdpGpmOfHBoseVgkL0YRp6mZIxCPdE81BOyky+xSlLLsJvclZN7rDmt9bv9DjJKZ+cbWs8uvy7KxaROzSpe8vAB3wQ5/xaTPmJUy6JUWCnjVjB5/u0em60v9puvWnLyWeR0ZpBnhTdTf8PLbK3lzW4i3BSXaVBfW7Lcws+lQoJXzNnpgJ8E7EiHv+onAe5KS9xVgFz6QCPnQTwQ+kjT3Y5wDQoZPZEI+bSECn8lKPt8OUPhCJuTLFiLwlazG165hW/qGCfKt3xoEloTYClEFOBKI60fgSYRPD+xywAoStiCIZCIGBpDIIGkLgky2MkcmNpGiUEaodk8J2qiCjwKMXg9YwJLGC7n1gnTziVuH3sNh8HAxAn7DFOxIZi/I4gVZ55P4hs0jYPcIODwCziCQywtye8Ef+CS8HgmfR8LvkYD0UxDIz15CfvGSvl/x67zqvvY0VnpW69n2Yo1VdUNaXWqbu9On9l9tUSoI1CVTATIZoBYEfAhMWhGYOgDtNaA9B6y6AB4A1Rs5Cg7EAIchrRlw460IE65c1vya1pKh0hb/laV/Hqq5IfYlKIPO0lSUxJfWFfqusaoaFRpqLQ00WTNwQ5QapW1o7jVLnsSTFWJWySoejUi4+kDYTDDJeX7Juee5fO4yzzUMJlyPx4YRcJd7fMIzvkytwBIe55ntjLDQWHVxcFiRc3P2OQF3r73YqWeXsrcljJmsTYwmY06j4/p5O3c8rirLYtlrygZhq1a5uzmspsxlteMbIVLD9Bj3+NEfHHF0hciFSLkl3NI00dQaL2XJ1xXxfuzGU6iZIiBXIwe9DCEj1MAWeA4mBJLabrIO9JoSBvC9S+fxOFw4Sbh8yEGt1S8b8HHI4AFdRoNhuERFO/9KMEvPWu5K9gdg9VF06RB/P/VN/du5QMqbHDxyM7y7MaeODS939buIqf+afA0WLWmlUg44C0YQUm2MAjkT1Za8KNFSg4airBpezIU2jcUfkTrUz4M4yVsoDDH7KNFbpnZa4haH1tHGMGoAOly4Do0jFSHtPnriwedhqlWSqoaHXXNWllQG3fWx+IPXzG4OFtwedVld+G2O3nF4kTgKbpNYp26YqvZ0+X/1+9GKzjEWbwo5QhgZVOi2iYC3L5ftSNBtl6c2rKLMvjBONJJHkZG3kiuk/CEPdv/N+8XvVEJmMD0sR5stPznghFD73WBw+R2XxnLXkEirLauqOgVyuEJSsfw7GUzBgA/kCtbdsl5OoebEGVzGj6dVXKQ0noQOhjk4hB4rb73e904xQpi4Y/Q69fsW/9ZknAKGSjpRI8zVosAXf1N5EziSB4df/y4oCOxY78cPyywk4V4srRO3CkXNzRs+HFGWkGpGWj6ZV+V9WbATJQQCa+S3wSFnEy4hsPWsv0rTldKp+4BB0sAtJJFQu5fOSN7nmByKunnUyDcRHlMUjMLG4ySawm6z2oPgqvoRHDi8yygwNk87T568+E9AT4Im6e6pV4ZtE+ygs1CyoNeFvYb4lQZ8u3EHKm0Z5iaF4LdCHokv/XCQeLRMOmJKDLlXKO91utXQMb+SWpCq3V5rigL6l8N9VF/7u2NwXCJLU/xcuHkXO3BzE+c+evy8i3MR1yYb824i6eWox1z8CTLoKp1UQrLZugY21F7ktKgTDHg9JztV2X2//bPh+yXSIofQhAVHNzd5m6f69Wqm0EyInWh0nr/+JrH7WnGhxGdfts1smom56GbXs5KElXaLmBaDZljuwhFPyFF4ObYUxYSWf6Yw1gdE1trWiLOYnoJDZfXMkq7gBo3JMoZZuCV/gyk6IMggeosHQtTccLxLNJhL64SabSBLWFTPhh++TqYqNuAx2lXugkh7MGnXTFIj1U4T8fIpAcnkWkd2CYMvAJR/rkL8ZTT+cT/570LlIp9/1z1KWKCm7bwDEq2x+zZaLfQ8TMwR4/YY59ufK6ldft22QrfCMzt6TkdfAOtkEiztIJgsYipioW5baszj9t3DwKcsncnDh79th/w+Z7aLKQBsPDy7g9aDG1jIpoGpNhzGFHXEJSv1bLYntbtMujMz08JNrzsVDCepO9+3wPuoeRIfoEAdNVDYDpf8pj276YQbqxdDTri3rzl0jVc31y+FeXV705HEycvKmSEz2+EZnBx9DpSzcBkDDoMpTTlTZRMuvlZ6txeZ2cBZKyg8CU4abgpRHymL++i+FX878Hqhb4K3W04wu/LAYE/MeRrJ72jzNXbc8UbdgQybg77ymkdehsT7RE256oFZbwP1l4gYywPolB9fG8InXO2n0xE9/mqU+45Shzc71s++3t9hwdXjEc/UkrbYKFjJSsrhkYAE54wpLVl4KrIhiv7Tr3Dg8NI8dPPl3Ri+wkosKEfYSxbucgYVNPKXxuqJtaNgTi86JQ1IRYHM4fyyTi5l4qTg6Zgw8rLdOzHe/+M7o2Ckq/dZi895/WQ3cSBrU6JMpVW+MubP3mzk3qzmvddwi7I/H0k1OjA2wF1562sCUsepackbKig+H1TzRjfNGI1lrILnZaxo//ZraSNc0lh4bjQaPnF0S3jLwxNhycou7oron1/XwF6XRTR6sK7G7aOruTYz7KUNGL2BgO/VrTs5kEgo2MNQHTXrGScEJikikD00Jci+Rt8s3yNSW3sOr4p4LRqNZXkZ0mXTI63Xz9j23833P4FqR9BCYHL5efwcZXEeG60ioZfJ1GPJVFoGXmojOBtcVkeamDN/9AWft6GupS7cp++FA620m1gXdpOmHRcoRovVzNImKfsF1fNVzpi2Sfu+dlzXvKFKMk5dbDbmhd8+OxwelsV4CbI/VNdbd4l4PI3hxojNodM55tuRZ1+pCe/6soMeWdtijDHAiI3FDAOGGMekxvgZNlv490zOL9y8WHa92+8Vd8cVrhbEFoElx+KTNYXBT2LsfXnw7TAvT46/sr6z0nnNRTsc43CZYcdYJB2uTZu8CE5v5nQnt6pzL7yvZWzG4mdqYs0cINdNCvQGSo/X+0Na2+oYohigQcmkBF939XqNs8lH6c4fs77dEEvbInF3z1gh9+jiDIXbA7G8Xdc6rg2iridjL7eSo5GSEduzgPYq5sdepSkfFoycLtaqrMgxH+MOizllqdbvC7zDvRPnD41ZaWlhxvRtQ06Xikb3pdEXQWF3OR2ey640z2UqZ/R6TMIF0i8FAkls01oOJFIL9jDkl+QdZG+oThSR2nX0U3yJ0NpkM6iaTX5/yFPrCdUxIhh2iKaxCUSWJrtBMc1aH5jkXScadbe4xurzl9VSdWhhWoIpjWhTKt5OBGOqoYZ4OBCOGzZt1oTXzY4xsZs02k2M2Zk9xdkcymhPOROuG7RFR9fTqKOd0jxYkTfrocON7KnO0ZWyhzBGXs9Z2TarLlH5GK5+HMEkhtoStb/D3t8jrDXiJev6qwAMfTpGKogx0qddffIS1raoD+Nf2Cq2u6YVIyabvhJW8Znpv+ckW8k9bbI8Fd5QAieK17aWWyQMsoDT3nfPfu9Koyuq2q6KKhRl/dLCfYVYekbOvpyM9GjHnzMq0e+xqTol7VPMHxsPK79lsHL/H0vMl9fnTFbcXbI280zVWIwhqK4u6TSVGcuKJ8mLztCxoDpiT37a/aSdXeXGccr4KbfDZnec7GsM6CJmh45+RqKT5gr4YREHEimw23kqS3GEH/A1umu9wUCejm8fgl/nl2vNAV/Q+/anQ3fCFx/Nek8ZVs6PfZ4GT0+Vz+Y+oYmUPlbGDnITEyIZy7jhU6SD8GdlRpPXvXMo9tDs8SQ633mBUjw5kjmRz7ovXQZfK0ea80bntw++PQbtupkT9uNwVfPLk3pZCXIwGDArOU4/zGVblYxAfdDrla9kgBG28WE/x6k0B4JBv+4Fp8ap15f7NNlrbbVm89myx8l3Nb2DsnXtJ0M3gK3MDJIb1b+oG5XKyzyz5B8Jhr19Ahcs9lXJCpd/UjzmZHilDHu04wNeLiEDk4itfHWFQlGuLOS7fnsczEtaWnqlqp5cqeZbCyRYejZdxKrIzS2lFUgZ9Ox0TEKzZqsrFYpKdQZvzioYqeCb8de31y6/UUMSVxGnlONxguHXYftr8hC5Up1nZRRiWGF4MOOSrUnPiNK5yHSYLRaEZe1l+JxJ5Kj6x/h0xcIrSbBSJFimkDUZzioStMpq1VGFubAWXr/aQqz00OBw6R1TbMjJCJJXqXj25+Hny3JUq5TKZnNOWbOdly9ILeGWCIUXGcFteYk8M+DWn6mkE6EgYGPfnQzM4dkpDT7hsL14k/iy8hlXUf9k9q/M3ZOnf9akJz7zM5IVfMItP1PlcDrz4sOhmquRZ5y7PpB5e2TUSa0XZYiinSmeUYOV/KnqRQqD6KufA6dgKGzeYAdiVGqY0fCBiy3RZFuwGJb8sY/iPh2WYpQiUJFNDxreSazEZ/xs6/fyvEoxdohGO4S5Io46b6jW4wvVFbMDiX9W0ATNyA2Upn+8xxfpZzeJNtLrz237zmqVStsNmKa50Z6tbFpg2JaxIxTpi7Zom94tKle6lomG9LKLMmKNLP0dObFGnrq7gUW5pCvauuKWiXjmxYadl6PrWNYNL6ep9NGpGSbpMneuzOnw/+RPw7khGm0O9hM2B+cPcUXCH8P+rn+huetkDzVHeFv5If5W3hHNQ5k2lErbKdrsPA2fdm4W7aSlhrTa5deK9h5Vrv/xnVBFV0XoHa7wUmdvI+Su/TD8Ye5qSUiSxxgvxnNRiUfCrolS7PhM4ThFWmWIf+7Z0KQ4uzyXFx+moxoYkhtd3R5ttzbuKY9XU6umWxPHUr9UFLrHXlgdt0OVoo/OHKRK14La9VxxPn+0N/+xYfZjYeZ8pzPwo8Ldn0RpaInoHIb67a5QzWp9neOp45JZbQtZt9+91g72XuaXG+kCIW0jqLrD59+pAhtpQgFduWJt/FpubvND7dxG3W6ssxVHVCadrlQ41GhVqibpLXr/c6aQabshYMuM0MwajREbDFlVqslGu7F+uzNUupjsCdX10TXHrsa6ZsTjuRmVExHxX6fRXuc3b9MIew5WpzFrRN91kh9yp5yT1RSlFU+uq1rT85+o3N/g9njne8UR6aydpDDLIf5sTl2HkuZdfDlcHhvpaXQ0VsoRfEOz+qsRuBqZ3sjUO6ZUTkF2b0xXMBrIi6um7VYvcy9b7l6uJrHSLchfEnKHcoU/R7sjXfZoF9Mkd2d1dhPWF3RWkZmGwchMo5Erwe473c6AzHBVyJ1gWuSRLa5ihyDUKuG5MhKB9+tgbNA92OfuA1N8e84SSukXbn7aB7t3V1HSZvWt+mis5aiT3KGHbvOe0arh5FDji2JoiBNUN6pfX77x0v5vyZKRVvZLjq6DgcvJn83Hhc0dvthOvWPYcWzffN/VgwMzNy7ctazXtDpolHjxFvinDzlFVF1SFhpO3dBhNsIrptCzUzIyhaIV/pZpvW1LVp19bTCxImFsZmQRp/40Ldco4cXITZTs/sy8MRkpQM2PZE1cnmzyuis1/MrdcA/m1Ca//n3iD4UHaTexQhHEKXR3uVlh1ldM5YxYfyqc+jNvcuvw3gJBrrScdzzv1KvSAmuhoEam8LWGAmMM33XjdR9voDPgLhNF8phfMBiPGTQr8NPLavSFPEcYrrpZaKn3e72DT5kZSXlwGxw6sYbY/YjO3TTvT2n45mTyzimN+9rbEy0nbW1VDXM75lU6l/j9ROmktbXilTE4hg1njGu12rVGrKJAKhRKr20et2ZjhdYwrP3Z7vu9+8+Evl1Hdqrh0RkihXCxW4/RFdy5tPxXXZ2/ZQ/Qk/NF2Vg84ptbWfaorBJzHmmNih7DwsfRsDUFVlHV9ZcIp5iU6y9WVqpUZVZW1Y/Z2T+BfFzno2xt0l126JtQ7tkZCV2iV4SLegs6O6eWxIpqiJ97W9pb/tfGk+DjeN5we5hN4jXNcvT52WCfhs5pOFtTxDuCQODn8D/h8vncDet930tPTU2nUr89LelNYsERevqL3ywhkpLSNtaev0JaosL6lfsrtmr9L5C95TLVb5Yj3w50MMCFAJoJ8DKgLKL0NHtWJnWltGNleP5tZ9mTddqFqJ+lvFOZUIpWtD1t/udZx/LGbfir8oDwZgK8JIooPc2eTVLXar5yda7O1Z3ZfPy88HQoiASPgIiEDEWRJBlVilRp0mXIlCVbjtxmnnw0dAzMJgsbBxcPhk9ASESsQCGJIsVKSMnIKSipqGlo6egZGJmYlSpjsdRg+5c941/+k3/FL/6V3b/qd//q//zPfe1f8789/G9EYf93YaVDyQ9otidO693R4UGs5cv+t2MtSRbjb/nBGZkwqWOegufZ/dO8kWorYz/cyLxoHHr8pNT4jXpqE3bgSGAFIMDYPwGTgJzXmqCWt/COKC3EfJd+ERH2AsGafBzpNcDn0BXv4yjIDc29xW/1L0/dp2PZmfHs1oKzf6ynmKjlVdMAfOguIsJesYIM5CwI+bN5a8zffaNArTlj/DTaO3f/WHtdkLuZnhzH8PfP+bBLJTwhwNbMLytqD07BwiWvNT4jfb6mCTe/1jW0am0tvD/JZ7vjQKmyeBw5Z7/a7HoQl+UcoFazV32ETJE6mVV+wqk8G1aT2jorLnxPjfFDKD++KPjR/v4UoJYEQmnOJRbZbtH4QwbsEvKvPx3wiy1y3SsXZPLJ2qLywelUFTZDt7Arzw+8jyAfIkTfVAehDMfLXIp3XF6SnjSiYFfYqJN4m8Uz7kR9n8HWZEtXmYIqYcMCPkjTZzWvWVyNV2Z5jdfdrPbUp/G3ET3zdTq+/f5r8jz3xumkbUq12AFQQxvFpHcUmyto3s6Vfog/5Y5IoeeZQS05Auy0gBjaBWjf1JBzUv5uZ+3sSCmFwbODeiyJkh2CG3njNSjRlA0kVuYjIyJXVuZcr0Z6SKaE11xwXhzUnYUUO0PIUA7YNxhqiuAK558WexbIusyavEkmMg3STWHx9PD67/adv2pAFOKWsML7SOgB7N6EnWsjc6HXUG33jY+xfPWn8i4gQxrUVdiaPDecBI3sXA674WghtDxNhJgxa9qcsWRk2ULQY9pAIsZ9DmD1NM0neOvc678vPsd73MwaS9jO9vYS0nUsN0Hd2djIGEt9Wf2oVADgAhfLcR02UVBXDi8Nqo7awxjpoxHnUcEP52gLnacHdalDhazihgivHPvGm6gVKwAd3gKSf1F/AoERZkdka/PMoLrZBVEspQRHdS61Gjy/4aJHcs6qa0rnuRkDrZQ8tzNmbI4zld4qZWGYHX4TcixpAL9vhlyWhjUkZw4yS2gLw7kBnT3XKNsCejVc9M6gYZrWUYC5gjrIofoAXUvSnBZgJnGsZj0yM5upUwG7wB7EDqxBIFhOdsYuknoMIt2l0BidoYCGoKNYRy1Q16PmLuV79LJQ2RvKsNCzWFtDYDVCeBUq9L0xe4VckCoL8E559wTzZ9ENg6fiu+I6CqnyfExN00lj2N1G8LuH3yCxhww42h26wVvXu1V7t86beBMTKhN2KTWiTjnBEgBBFqRRCAnhpb/lY/c6DMociLAgcB6W+3jgXqNrwi6MkNUZQJDBHMwiSCwPAvGsX9fJsff4j2xLYX41PQg92YF0tBZ66TMixsLKxPWF7q/EqQkwKSaLPEWMqG8rq9OhexMKdieJscxBxjT2Tz2lZTcrOh54/Xfnzt/4thQIbwEhXoCoSTodSLdHZ8Bt11ycAPehW7XVNx4jmNNKZvXo6nDNjDjqnE7aJzSORTouFwxr5PUS9prSLwnasteGw04pALIiIUNRJSo1p7g5XqunvdBMoVVC9IU6z7ThegSV2QjlnT1IgpOCQDXCQA4erirnzTajllDqqasaIEACETv5kjodIGip40MslbyaiB4wkreCv6SVU8Srut/vkzufqA0oQW2RxTcGMCrKQIO2aZ9EtUYfUhHfKvHBztyybgaMMF9dst3MUbNGvkn2yfxWrE6aZfxKdW2T1Vk1nyFFElZhFbm9iINhw5oDgYx8Yg0cjOfbo83yLPU+7zXyJqs/6clFzbyMAkiW2jgt2P7oiTCSmeckFRwxqYpil3qtWrmN4AS+Adq7lmEljHbeCa2WggAaYd01JfSE6uibchzR4BZAG5bYsVpbeoeaVTt1j7Da/EeeqYOl7kE8rKd65g30cOQWm1CJNsFqiyi9KBrn1LVDz8LkUfWW9ZIIHKFb7dg23SOw2XyVBYA9dnXQlm0V2rwwqL0LUZfulX+YlEyEsAsSXfVYtR2cHjwSDUSY9LCIWto20JQyRhc1WCAXC4czVevGyKu3dJdA4D6o436EBea1lGXdd5KM2YYRW8GJGZfbsji1W7+llKBExEKUoqdgpIJ7/amiPAfyNm/KRXCot9FubGM/Us4A0iZoTiOIvN/207GhYXaWEenoqDvTmMii0bmfzYD+0O8361k3y2MWyJFtbZ4aTg5/1Qmq6uM0Cquc0o0W+ySxnmBIBcpmKL0PMJLO3vjXkk4V2sMQAX9KKrTQ6w8PX6bVKv3wduB3tLYLfNjwIPFFtAmCjobyaPHh21RGpz1at9jMvuFcqt8ZUwV7CDpaHzmQJXLzLnx0NJTLVPjwBmOoB06JR4ijG1G9ASFSMVgSZBosLqYy0a4JY6xUG24MAUpsTts/CfSQXGk6UagJr+yhSVOg2TabVZ/WabWYIcF02H3p6sEBMyRQ3egyIJLYKGCUlC0LuVsdnM9nWnh8qDq32nqK0o0pyZGMcDxBAI7TlxatVN6to5WmYoGdbuHndruTSXNH63IZ6ekbKmOq+PZsgfj3eSdvkA2vsEAbhebi2Wpfa63I5VKVvvnuC2Xle6bQ6WeQ6AHsyM2bv1zQvw49jKf3cYECB/b1UrLKl+T2924JDuwL4Weh9oaZGhexs81fven9Wu5LBSy+b2b9umQ9jdTopbQi0u4b+du5DAqpC0nllKWUFfoSMTUWPRpZmaelVj2rbUhQgL6E3IDg52ZRCVxFPcvT00ptYyHOeWTsZM0dOPkJmBQv6cBoT1SrmBlqCjYyu38Xzn+CJDw9ZaoJJHXo7M4cdOZDLJJ0UEZSTrXw4sTA9tVNAd9+QV5lwVCN0pRdnYXf/TKpw+X3qPUCupHsF5T8IjBKxZrwpLqpfZGw9oH1EkjWigN2BLB2GFLg7cUWWbm0nKgXCN4FcDC5rpleMvGmjc/mGvVm+A1Ai7dOkDp5L5gpH3QcFBPuNr8zZxNhSmwKr3PYyHQ6d2qv9AUfYT7L0mT6v1MFyUUJaf0SWLqoql1Zh9paIiU6q8l3AUL43hjZ5i5AQchPQNAExDFiYFAUol56NSGy1Ur4rhkgwIgBkRlLIrI3MvIuQIliKFsZpehNe1OY3ab7sY0FpkRA0ATEScTAXLIcirm3FmOXN9JOZEW0bsu/a9Tyhjr9gA9lLd/aLb+YfxhPv3WuBz/+54QMPDnWAbYCMYNEqAMKSpm0GY8eqSRdmCLMC4zyfNl6+iYtq0nBLmV0aEtjYx1U39i7S4uSRAJyTECcLI64xVDSVWlm4iJaUQHJK20TgdnIMVvAliC2BK7iRh94C0bttI7wOcsMwJiKtrZBiqO+kciaqtktg3+RV6YqBlWzBYiCg6SRMeM+6CQtyfSEheXSDKae+6VU4pigxq0TSG6nNZAQMmt9EiAxDNo7hkJwVruiOgJh+gkr8rL2svLYAeiBAbS5bD1F397sSpcok+1uJG/lc3/NmpJFOBuPQxK0ulzC7+ciit8CXfXzFXkp9V1392pIn3f9ZmXwX9mHOKSuD0CT6jbeuMxWxRDNHBXJ7GTeHlVUV42dLjm+K4pLbplhOp1tLTcUrY3HCTEjNigla0I+2cZ0emBdHDiwGGUGq2/bubQwm47Qre7a2LweAXNO6pZDfFj3MassFjKshS7jNkKfl4YT2FRDGK+DFgxvNRaivtudl1yz1mZF08ytlBcpKCq5U9RzdyjjOuxkZFvyvmsOb79GXT9G064jLUyiSdUGJpM5LwwIJDmUHOIpBO/4PwnybmpQpnYkBpEhGxMgEWMuF9FIDvxlJ7/YxNKsr5rnRgsPO6xFX1Ruqfv/MswvFAg3ZVJ+F1vVNjezdS8VOwVgPqai3sE3+jIvOt7odmQBRk/w+xmiv0GL2ESUHiC5nEvdPbRN9WXRIasS2hmHWEsBsmPqQwhun1ORFStaHluePqXA3ltihlwmo6zauWA3QlqGt3ZQNhOxTe4RgV6A3Zsjbes+lXYwnWCAgYal2YtyQto5HE5FXTDhFiHuDRw5FpCeVC0H8Mp163WeBwGwvlif77f5Kl/W5acQQyaRFP4cZ4KXeP33GX5MbkY6f38ptWgPkfklaYxunOv1dWbpixR71T0/bdfYZnjBEytGm26HNJUiK58GatPUpSHE+8iINXc7XP+cWprcnCbJyZIWTlVdkC6IXwYNJN6Y+alKjkfg+NLxxSePcIPrpqnDrmnb0Ve/zd7YyoJ0OSfZuhP0j2AFjZK3ihpmq9zzcbftaNvSh1Ipc0PYxpryktIaYaPVjopjGPekamKeaDoMwHA1XO63WGPlENJtuXWTT7uAhgk0ukxvYeMzJglmF9gf2f5vhzGTHGWN4qub62NhMp+nguwFfgdlKQr64avKqsxeRLIFyG3rYpGndVBDK9d6IDVvblNr8wKABjQQKBlloM7YurZ7EdnkaAdgjmlV3TVE9ear+/dudd/IZm5GYDI2cVUUQgDFfXF3c315vt9iy12IhZhPY/g4OB/xlANBGzPty55kE7MwzN1nom1Cqm9ag5JNGYh9uevvu/Ts27vn989vjzdX+11V7Aa/PRsL/gmU46roQf+bIbcXAHvaArFj4ZrSZKdqdUMBhEfL2lZglNSAe8q9A5HigMEO5fjGFSIE9qwFnCe467jlwDXHG0q9T61XtXJZ41739SpbQ9bJbK8LRKx84Oo3Qr6FHsxCbCESzLYkQbIJ/Oo1hbz34x/Gku6SOTTCKagVzcblCEGPd6YpJjIY1yEO9iMIAqDABxf+uln553/6/h+WArz+J+4HeOuL/jyh6NpWsCOAsWAAAX4HN98GdJGSMwZp7DNj6mNq5p3t5ylXSRq1NobmWuLm4x74Zos/34NDigoIHnw5TvuJnSJY89bMrnrItkaWCtZOs2kNxJMf62V4aiM4Rk7RPJbEImJAPd+gpydkt+XGd0nK1fhCH6I7rTVKyfUouRgZ/hkPluF/+Rz8/eDh2Lkxy4/XJvfg8QohBQQck8AFumCCwit9vNwGZDaMmtPRWxlyw5JyqXyLBiU/HuhBAFwrByw+BtgnFAevYY+mcZ21hr79olxjxAflNY7lDvnUpsswMuEuk8TroJTcKrWlyKDMSgU8yII8YVAnqfIgXxLIr4C8iscU5MGDIQbVLaqnU7OdNKBCGhcABGquAedKBRJYgEEO8IACaV6aJZKBb6nVgEESZBsZMZtwavDmiLz24HZavt2++UxW26mHYqCycddhKtB/wQkIrPAGRoiABlzcvfKRP2GLhEGzLLdHDwjIZC5EzfBgIgFrAOdMyQoHBxinHQ40Gg94xE+q3SGZ3t8dRnVtdxytjbsjML274+Wr352AS8mpqR84UEJM76VXkhvXqk/U5omgFIvzLs17uu/6DiVqOblYtWkxTZxbm35tivi06dCvyzR96rXpszJajxg2uWLSlqsOs0UHbLfR16uBXQWfGgbnhcrSDofa9Og121fRwQGjOJqUjA5bQIRUGVRzPfr06Ayi1ZxbciIhwhEahEWcWvEq2SGKdPq1EG9d4N1dHs6MJu9WTsLsNd6WXK59RQvF4KXznVPzaP0HmslACgwHc9lFLV7V6jUj+ATChL4l0uaSK64SK1BI4prrbvjHTUXhFCsJISXTTu6W2zrctc7rDlH4kZKKOjwNrXvui3hAR8/A6HujTOyipuvSKabbbg5OPcp9p0KvPnEzVKpSzeWhhAEzI+hXEzHjuNVG5uE1i89scw2aY495DvP7SUCdeis1CBqywELzNQqZZLIfHDPFDjuDypApy40DukD4NxAlkzI5UzI106RJlyFTlmw5cuXJR0PHwMTCxsHFg+ETEBIRK1DYmHFP/CFNCgamlyH24drrrOWSEaQrRZGkSTOzMqlJesObrM457y5z+otecuILHg/NGoqVtMRxxKzdUpsji+pnvziCjYNlg2n2sySPhIdshWVWW+U5i031TQpKKmoaWjp6BsbW+Ngjw2ze95H33BruOpeL0h+LSqUWpVQhlSGucE+CeJMvc+gc5GixJ550wFdNXNsrV2j2tKgt3i7aTFhtxM+q5HW1E3pibX07MbMUJAfQgc0g+oXGYTQ6sG27eHQW+r9mJTqzZmU0Fj1JkK9lfoY4qagjTAyBCiXIwgKF25kQlDqGUncwIaqY1yAGjjAQFRSCBYIwsFBBqSAIFnhPKalVV3nlHoXfYme+3YPTXqltRd5kiFlKLlPtVsPt5Vbbjgqp9uQa8kfk12/7FfsgeVprfyINbrHkwQ1YyIloV7jyKO9WrgHVR8Cle8HDEDTceAgyGV2/9zAgWt8GoGQiYD01ZhlqQBQIj5RFRNCZg5XCGriQQMePR7EeTwEjYAN9AUCAwyQlBso6jAmPAhxAfRiDVniDh8pWBBPygyTqPUICcR7qRtphYZp1jLQAQIi/pzWwgrUmWYaaYBXMJ+TgEWrBEWjiHZE1h+Gh/DfxYQJ4wQ4AAA==) format("woff2"); }
 </style>
 </head>
 <body>
-<header><h1>Swansea Labour · News review</h1><span class="version">v1.1</span></header>
-<nav role="tablist">
-  <button role="tab" data-tab="drafts" aria-selected="true">Drafts</button>
-  <button role="tab" data-tab="published" aria-selected="false">Published</button>
-  <button role="tab" data-tab="wards" aria-selected="false">Wards</button>
-  <button role="tab" data-tab="map" aria-selected="false">Map</button>
-  <button role="tab" data-tab="settings" aria-selected="false">Settings</button>
-  <button role="tab" data-tab="connect" aria-selected="false">Connect</button>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top">
+  <div class="top-in">
+    <h1 class="brand">Swansea Labour <span>News desk</span></h1>
+    <div class="top-right">
+      <a id="site-link" href="https://www.swansealabour.org/news" target="_blank" rel="noopener">View the website ↗</a>
+      <span id="conn" class="conn">Not connected</span>
+      <span id="site-state" class="conn" role="status"></span>
+      <span class="version">v2.0</span>
+    </div>
+  </div>
+</header>
+<nav aria-label="Sections">
+  <div class="nav-in" role="tablist">
+    <button role="tab" data-tab="drafts" aria-selected="true">Drafts <span class="count" id="count-drafts"></span></button>
+    <button role="tab" data-tab="published" aria-selected="false">Published <span class="count" id="count-published"></span></button>
+    <button role="tab" data-tab="wards" aria-selected="false">Wards</button>
+    <button role="tab" data-tab="map" aria-selected="false">Map <span class="count" id="count-map"></span></button>
+    <button role="tab" data-tab="settings" aria-selected="false">Settings</button>
+    <button role="tab" data-tab="connect" aria-selected="false">Connect</button>
+  </div>
 </nav>
-<main>
-  <div class="panel">
-    <p id="status" class="status" role="status"></p>
-    <section id="tab-drafts"></section>
-    <section id="tab-published" hidden></section>
-    <section id="tab-wards" hidden></section>
-    <section id="tab-map" hidden></section>
-    <section id="tab-settings" hidden></section>
-    <section id="tab-connect" hidden>
+<main id="main">
+  <p id="status" class="status" role="status"></p>
+  <section id="tab-drafts"></section>
+  <section id="tab-published" hidden></section>
+  <section id="tab-wards" hidden></section>
+  <section id="tab-map" hidden></section>
+  <section id="tab-settings" hidden></section>
+  <section id="tab-connect" hidden>
+    <div class="card narrow">
+      <h2 class="card-title">Connect to GitHub</h2>
       <p>This page talks to your two GitHub repositories. These details are saved only in this browser. Use this page on your own computer only.</p>
       <label for="c-owner">GitHub organisation or username that owns the repositories</label>
       <input id="c-owner" type="text" autocomplete="off" placeholder="swansealabour">
@@ -109,8 +258,9 @@
       <input id="c-token" type="password" autocomplete="off">
       <p class="hint">A fine-grained token with Contents: read and write on just these two repositories.</p>
       <div class="btns"><button class="primary" id="c-save">Save and connect</button></div>
-    </section>
-  </div>
+      <p class="hint" style="margin-top:18px">Something not working in this version? The previous version of this tool is kept at <a href="admin-v1.html">admin-v1.html</a>. It uses the same connection.</p>
+    </div>
+  </section>
 </main>
 
 <script>
@@ -141,6 +291,115 @@ function el(tag, attrs = {}, ...kids) {
   for (const kid of kids.flat()) if (kid != null) e.append(kid);
   return e;
 }
+
+// ---- v2: how the page is laid out. None of this changes what is saved or published. ----
+// A titled white card: the building block of every form. (A div, not a section: showTab hides
+// every section inside main that isn't the chosen tab.)
+const card = (title, ...kids) => el("div", { class: "card" }, el("h3", { class: "card-title", text: title }), ...kids);
+const plural = (n, one, many = one + "s") => `${n} ${n === 1 ? one : many}`;
+const shortDate = (iso) => new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+const shortDateTime = (iso) => new Date(iso).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+// The little numbers on the tabs, and the "Connected" light in the top band.
+function setCounts() {
+  const show = (id, n) => { const e = $("#count-" + id); if (e) e.textContent = n ? String(n) : ""; };
+  show("drafts", state.drafts.length);
+  show("published", state.published ? state.published.data.articles.length : 0);
+  show("map", state.delivery ? (state.delivery.data.projects || []).length : 0);
+  $("#count-drafts").classList.toggle("hot", state.drafts.length > 0);
+}
+function setConn(on) { const c = $("#conn"); c.textContent = on ? "Connected" : "Not connected"; c.classList.toggle("on", on); }
+// A search box that hides the rows that don't match. rows: [{ el, text }].
+function searchBox(placeholder, rows, one, many) {
+  const input = el("input", { type: "search", placeholder, "aria-label": placeholder });
+  const shown = el("span", { class: "hint", role: "status" });
+  const filter = () => {
+    const q = input.value.trim().toLowerCase();
+    let n = 0;
+    for (const r of rows) { const on = !q || r.text.includes(q); r.el.hidden = !on; if (on) n++; }
+    shown.textContent = q ? `${n} of ${plural(rows.length, one, many)}` : plural(rows.length, one, many);
+  };
+  input.addEventListener("input", filter);
+  filter();
+  return { input, shown };
+}
+// Ties each label to the box straight after it, so clicking the label puts the cursor in the box
+// and screen readers read the label out.
+let labelSeq = 0;
+function linkLabels() {
+  for (const l of document.querySelectorAll("main label:not([for])")) {
+    const next = l.nextElementSibling;
+    if (l.querySelector("input, select, textarea") || !next || !/^(INPUT|TEXTAREA|SELECT)$/.test(next.tagName)) continue;
+    if (!next.id) next.id = "field-" + (++labelSeq);
+    l.htmlFor = next.id;
+  }
+}
+new MutationObserver(linkLabels).observe($("main"), { childList: true, subtree: true });
+// ---- v2: is each story live on the website yet? ----
+// The website rebuilds itself a few minutes after anything is saved here. It publishes its own
+// copy of the story list (data/articles.json) and a fingerprint of the data it was built from
+// (data/version.json). Comparing that copy with the list here says, story by story, whether the
+// website has caught up. This only reads: nothing is saved, and if the website can't be read
+// the markers simply don't appear.
+const web = { copy: null, version: "", timer: null, checks: 0 };
+// What the website shows of a story: everything except the Facebook fields, which it doesn't use.
+const liveSig = (a) => { const { facebook, facebookGuid, facebookText, ...rest } = a; return JSON.stringify(rest); };
+const websiteFile = async (name) => {
+  const r = await fetch(new URL(`/data/${name}?t=${Date.now()}`, pageUrlOf(state.config)), { cache: "no-store" });
+  if (!r.ok) throw new Error("Website " + r.status);
+  return r.json();
+};
+// "live", "changed" (an older version is on the website), "coming" (not there yet), or "" (not known)
+function liveState(a) {
+  if (!web.copy) return "";
+  const there = web.copy.get(a.id);
+  return there === undefined ? "coming" : there === liveSig(a) ? "live" : "changed";
+}
+// Fills in every marker on the page, the line above the Published list and the light in the top
+// band. Returns how many stories the website still has to catch up on.
+function paintLive() {
+  const list = (state.published && state.published.data.articles) || [];
+  const byId = new Map(list.map((a) => [a.id, a]));
+  for (const m of document.querySelectorAll("[data-live]")) {
+    const a = byId.get(m.dataset.live);
+    const s = a ? liveState(a) : "";
+    m.textContent = s === "live" ? "Live on the website" : s === "changed" ? "Changes on their way to the website" : s === "coming" ? "On its way to the website" : "";
+    m.className = s === "live" ? "live" : "badge warn";
+  }
+  const waiting = web.copy ? list.filter((a) => liveState(a) !== "live").length : 0;
+  const leaving = web.copy ? [...web.copy.keys()].filter((id) => !byId.has(id)).length : 0;
+  const top = $("#site-state");
+  top.textContent = !web.copy ? "" : waiting + leaving ? "Website catching up" : "Website up to date";
+  top.classList.toggle("on", !!web.copy && !(waiting + leaving));
+  const note = $("#live-note");
+  if (note) {
+    note.textContent = !web.copy ? "" : !(waiting + leaving) ? "Every story here is live on the website."
+      : [waiting ? `${plural(waiting, "story is", "stories are")} on the way to the website` : "",
+         leaving ? `${plural(leaving, "story", "stories")} taken down here ${leaving === 1 ? "is" : "are"} still on the website` : ""].filter(Boolean).join(", and ")
+        + ". It rebuilds itself, usually within ten minutes.";
+  }
+  return waiting + leaving;
+}
+// Reads the website's copy. While anything is still on its way it looks again every half minute
+// (for up to half an hour), reading the small fingerprint first and the full list only when the
+// fingerprint has changed.
+async function checkWebsite(full = true) {
+  clearTimeout(web.timer);
+  if (full) web.checks = 0;
+  try {
+    const v = await websiteFile("version.json").catch(() => null);
+    const version = (v && v.version) || "";
+    if (full || !web.copy || !version || version !== web.version) {
+      const data = await websiteFile("articles.json");
+      web.copy = new Map((data.articles || []).map((a) => [a.id, liveSig(a)]));
+      web.version = version;
+    }
+  } catch { web.copy = null; }
+  const pending = paintLive();
+  if (web.copy && pending && web.checks++ < 60) web.timer = setTimeout(() => checkWebsite(false), 30000);
+}
+
+// A finished or failed message stays under the tabs until the next action. Clicking it puts it away.
+$("#status").addEventListener("click", () => { if (/\b(ok|err)\b/.test($("#status").className)) $("#status").className = "status idle"; });
 
 // An imprint only counts once it has been filled in with real details.
 function imprintOk(text) {
@@ -476,10 +735,15 @@ async function loadAll() {
     const r = await readJson(conn.engine, f.path);
     return r && { ...r.data, _path: f.path, _sha: r.sha };
   }))).filter(Boolean).sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""));
-  setStatus(`${state.drafts.length} draft(s) waiting.`);
+  // (kind "idle": read out to screen readers but not shown, as the tabs now carry the numbers)
+  setStatus(state.drafts.length ? `${plural(state.drafts.length, "draft")} waiting.` : "No drafts waiting.", "idle");
+  setCounts();
+  setConn(true);
+  $("#site-link").href = pageUrlOf(state.config);
   // A story being edited is left alone, so unsaved changes aren't wiped by a refresh.
   if (!state.dirty) { renderDrafts(); renderPublished(); }
   renderWards(); renderMap(); renderSettings();
+  checkWebsite(); // v2: fills in the "live on the website" markers when the answer comes back
 }
 // Unsaved changes in the story editor: ask before leaving them behind.
 function leaveEdits() {
@@ -496,15 +760,20 @@ function renderDrafts() {
     root.append(el("p", { class: "banner", text: "Publishing is switched off until you add a real digital imprint in Settings (legally required on political material). Placeholder text such as XX does not count." }));
   }
   if (!state.drafts.length) {
-    root.append(el("p", { class: "empty", text: "No drafts waiting. New ones from Facebook and swansea.gov.uk are added each morning at 7am." }));
+    root.append(el("div", { class: "empty" }, el("strong", { text: "No drafts waiting" }), el("span", { text: "New ones from Facebook and swansea.gov.uk are added each morning at 7am." })));
     return;
   }
   if (!state.selected || !state.drafts.find((d) => d.id === state.selected)) state.selected = state.drafts[0].id;
   const list = el("div", { class: "list" }, state.drafts.map((d) =>
     el("button", { class: "item", "aria-current": String(d.id === state.selected), onclick: () => { if (d.id === state.selected || !leaveEdits()) return; state.selected = d.id; renderDrafts(); } },
-      d.headline || d.sourceFile,
-      el("small", { text: [d.status === "needs-attention" ? "Needs attention" : "", d.editedAt ? "Edited" : "", (d.images || []).length ? `${d.images.length} photo(s)` : "", d.sourceFile || "", d.createdAt ? new Date(d.createdAt).toLocaleString("en-GB") : ""].filter(Boolean).join(" · ") }))));
-  root.append(el("div", { class: "layout" }, list, storyEditor(state.drafts.find((d) => d.id === state.selected), "draft")));
+      el("span", { class: "item-title", text: d.headline || d.sourceFile }),
+      el("span", { class: "item-meta" },
+        d.status === "needs-attention" ? el("span", { class: "badge warn", text: "Needs attention" }) : null,
+        d.editedAt ? el("span", { class: "badge", text: "Edited" }) : null,
+        el("span", { text: [(d.images || []).length ? plural(d.images.length, "photo") : "", d.sourceFile || "", d.createdAt ? shortDateTime(d.createdAt) : ""].filter(Boolean).join(" · ") })))));
+  root.append(el("div", { class: "layout" },
+    el("aside", { class: "rail" }, el("h2", { class: "rail-title" }, "Waiting", el("span", { class: "count hot", text: String(state.drafts.length) })), list),
+    storyEditor(state.drafts.find((d) => d.id === state.selected), "draft")));
 }
 
 // One photo in the story editor. It is a draft's file in the engine repo (p.file), a published
@@ -578,8 +847,8 @@ function wardQuoteCard(q, people, onChange) {
   const box = el("div", { class: "card" },
     el("label", { text: "Councillor or candidate" }), who,
     el("label", { text: "Quote" }), text,
-    el("label", { style: "display:flex;gap:8px;align-items:center;font-weight:400" }, use, "Add this quote to the article (they have agreed the wording)"),
-    el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { removed = true; box.remove(); onChange(); } }, "Remove")));
+    el("label", { class: "tick" }, use, "Add this quote to the article (they have agreed the wording)"),
+    el("div", { class: "row-btns" }, el("button", { class: "secondary danger", type: "button", onclick: () => { removed = true; box.remove(); onChange(); } }, "Remove")));
   return {
     el: box,
     removed: () => removed,
@@ -621,7 +890,7 @@ function storyEditor(d, mode) {
   const markDirty = () => { state.dirty = true; };
   const f = {
     sourceName: el("input", { type: "text", value: defaultSourceName(d) }),
-    headline: el("input", { type: "text", value: d.headline || "" }),
+    headline: el("input", { type: "text", class: "headline-input", value: d.headline || "" }),
     summary: el("textarea", {}, d.summary || ""),
     body: el("textarea", { class: "body" }, (d.body || []).join("\n\n")),
     topic: el("input", { type: "text", value: d.topic || "" }),
@@ -675,7 +944,7 @@ function storyEditor(d, mode) {
   const alreadySent = !!(prevPublished && prevPublished.facebook);
   const sentBefore = !alreadySent && d.sent && d.sent.facebook;
   const facebookBox = el("input", { type: "checkbox", checked: alreadySent, disabled: alreadySent });
-  const facebook = el("label", {}, facebookBox, alreadySent
+  const facebook = el("label", { class: "tick" }, facebookBox, alreadySent
     ? "Already sent to the Swansea Labour Councillors Facebook page and X."
     : sentBefore
       ? `This story was sent to Facebook and X before, on ${new Date(d.sent.facebook).toLocaleDateString("en-GB")}. Tick to post it again.`
@@ -714,6 +983,8 @@ function storyEditor(d, mode) {
 
   const mainBtn = el("button", { class: "primary", onclick: isDraft ? publish : saveEdit }, isDraft ? "Publish to website" : "Save changes");
   const saveBtn = isDraft ? el("button", { class: "secondary", onclick: saveDraft }, "Save draft") : null;
+  // v2: says, beside the buttons, what is still needed before the main button will work
+  const why = el("p", { class: "why", "aria-live": "polite" });
   let busy = false;
   function update() {
     const anyUsed = photos.some((p) => p.used());
@@ -728,6 +999,11 @@ function storyEditor(d, mode) {
     const ticks = [...factChecks, ...(anyUsed ? [permission] : [])];
     mainBtn.disabled = busy || !imprintOk(state.config.data.imprint) || missingAlt || badQuote || ticks.some((l) => !l.firstChild.checked);
     if (saveBtn) saveBtn.disabled = busy;
+    why.textContent = busy || !mainBtn.disabled ? ""
+      : !imprintOk(state.config.data.imprint) ? "Publishing is off until the imprint is added in Settings."
+      : missingAlt ? "A photo you are using still needs a description."
+      : badQuote ? "A ticked quote is missing a name or its words."
+      : `Tick the confirmations to ${isDraft ? "publish" : "save"}.`;
   }
   const working = (on) => { busy = on; update(); };
 
@@ -884,33 +1160,47 @@ function storyEditor(d, mode) {
         quoted.map((p) => el("tr", {}, el("td", { text: p.name }), el("td", { text: p.role }), el("td", { text: p.treatment }))))
     : el("p", { class: "hint", text: "No one is quoted." });
 
-  const root = el("div", {},
-    el("label", { text: "Headline" }), f.headline,
-    el("label", { text: "Summary (shown on the news card)" }), f.summary,
-    el("label", { text: "Article" }), f.body,
-    el("p", { class: "hint", text: "Leave a blank line between paragraphs." }),
-    el("label", { text: "Photos" }), photoBox, photoHint, picker, el("div", { class: "btns", style: "margin-top:8px" }, addBtn),
-    el("label", { text: "Wards this story is about (optional)" }), wards.el,
-    el("p", { class: "hint", text: "Tick every ward the story is about, including wards without Labour councillors. Wards in bold have a Labour page, which shows the story too. Leave them all unticked for a city-wide story." }),
-    el("label", { text: "Topic hashtag (optional, one word)" }), f.topic,
-    el("p", { class: "hint", text: "Used in the Facebook and X posts, after the ward tags. Leave it empty to use the automatic one." }),
-    isDraft ? [el("label", { text: "People quoted" }), quotedTable] : null,
-    el("label", { text: "Ward councillor and candidate quotes (optional)" }),
-    el("p", { class: "hint", text: `Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor or candidate has agreed the wording. Leave them unticked to ${isDraft ? "publish the story as it is" : "leave the article as it is"}.` }),
-    quoteBox, quoteHint, el("div", { class: "btns", style: "margin-top:8px" }, addQuoteBtn),
-    el("label", { text: "Based on (shown under the article)" }), f.sourceName,
-    el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
-    el("label", { text: "Original title" }), f.sourceTitle,
-    el("label", { text: "Original date" }), f.sourceDate,
-    el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl,
-    el("div", { class: "checks confirm" }, el("strong", { text: isDraft ? "Before publishing, confirm:" : "Before saving, confirm:" }), factChecks, permission),
-    isDraft ? el("div", { class: "checks" }, el("strong", { text: "Facebook and X" }), facebook,
+  // v2: the same boxes as before, grouped into titled cards. The confirmations now sit last,
+  // straight above the buttons, with Facebook and X just before them.
+  const head = el("div", { class: "editor-head" },
+    isDraft ? el("span", { class: "badge", text: d.sourceFile || "Draft" }) : [el("span", { class: "badge ink", text: "Published" }), el("span", { "data-live": d.id })],
+    isDraft && d.status === "needs-attention" ? el("span", { class: "badge warn", text: "Needs attention" }) : null,
+    isDraft && d.createdAt ? el("span", { class: "hint", text: "Added " + shortDateTime(d.createdAt) }) : null,
+    isDraft ? null : el("a", { class: "hint", href: pageUrlOf(state.config) + "?article=" + encodeURIComponent(d.id), target: "_blank", rel: "noopener", text: "View it on the website ↗" }));
+  const root = el("div", { class: "editor" },
+    head,
+    card("Story",
+      el("label", { text: "Headline" }), f.headline,
+      el("label", { text: "Summary (shown on the news card)" }), f.summary,
+      el("label", { text: "Article" }), f.body,
+      el("p", { class: "hint", text: "Leave a blank line between paragraphs." })),
+    card("Photos", photoBox, photoHint, picker, el("div", { class: "row-btns" }, addBtn)),
+    card("Wards and topic",
+      el("label", { text: "Wards this story is about (optional)" }), wards.el,
+      el("p", { class: "hint", text: "Tick every ward the story is about, including wards without Labour councillors. Wards in bold have a Labour page, which shows the story too. Leave them all unticked for a city-wide story." }),
+      el("label", { text: "Topic hashtag (optional, one word)" }), f.topic,
+      el("p", { class: "hint", text: "Used in the Facebook and X posts, after the ward tags. Leave it empty to use the automatic one." })),
+    card("Quotes",
+      isDraft ? [el("label", { text: "People quoted" }), quotedTable] : null,
+      el("label", { text: "Ward councillor and candidate quotes (optional)" }),
+      el("p", { class: "hint", text: `Only ticked quotes go into the article, just before the closing paragraph. Tick one only once the councillor or candidate has agreed the wording. Leave them unticked to ${isDraft ? "publish the story as it is" : "leave the article as it is"}.` }),
+      quoteBox, quoteHint, el("div", { class: "row-btns" }, addQuoteBtn)),
+    card("Source",
+      el("label", { text: "Based on (shown under the article)" }), f.sourceName,
+      el("p", { class: "hint", text: "Reads \"Based on …\", e.g. \"a Swansea Council press release\" or \"a Facebook post by Cllr Rob Stewart\"." }),
+      el("div", { class: "two" },
+        el("div", {}, el("label", { text: "Original title" }), f.sourceTitle),
+        el("div", {}, el("label", { text: "Original date" }), f.sourceDate)),
+      el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl),
+    isDraft ? card("Facebook and X", facebook,
       el("label", { text: "Facebook post text" }), fbText,
       el("p", { class: "hint", text: "The summary plus a few hashtags: the story's wards, one topic, then the fixed tags from Settings. Edit it for different wording or tags; the photo, headline and link come from the share page. The X post is the headline, the link and the same hashtags." }),
       el("div", { class: "row-btns" }, fbReset)) : null,
-    el("div", { class: "btns" }, mainBtn, saveBtn,
-      isDraft ? el("button", { class: "secondary", onclick: reject }, "Reject")
-        : el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = null; renderPublished(); } }, "Cancel")));
+    el("div", { class: "checks confirm" }, el("strong", { text: isDraft ? "Before publishing, confirm" : "Before saving, confirm" }), factChecks, permission),
+    el("div", { class: "actionbar" }, mainBtn, saveBtn,
+      isDraft ? el("button", { class: "secondary danger", onclick: reject }, "Reject")
+        : el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = null; renderPublished(); } }, "Cancel"),
+      why));
   // Anything typed or ticked in the form counts as an unsaved change, apart from the
   // confirmation ticks, which are never saved.
   const changed = (e) => { if (!e.target.closest(".confirm")) markDirty(); };
@@ -938,36 +1228,49 @@ function renderPublished() {
       el("div", { class: "btns", style: "margin-top:0" }, el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = null; renderPublished(); } }, "← All published stories")),
       el("p", { class: "hint", text: "You are editing a story that is on the website. Changes show there a few minutes after you save." }),
       storyEditor(articleAsDraft(editing), "published"));
+    paintLive();
     return;
   }
   state.editing = null;
   const rebuild = el("button", { class: "secondary", onclick: async () => {
     try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); await writeFeed(list); setStatus("Sitemap, share pages and the Facebook and X feeds rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
   } }, "Rebuild sitemap, share pages and social feeds");
-  if (!list.length) { root.append(el("p", { class: "empty", text: "Nothing published yet." }), el("div", { class: "btns" }, rebuild)); return; }
-  root.append(el("table", {},
-    el("tr", {}, el("th", { text: "Photo" }), el("th", { text: "Date" }), el("th", { text: "Headline" }), el("th", {})),
-    list.map((a) => {
-      const imgs = imagesOf(a);
-      const fbHolder = el("div");
-      const fbToggle = el("button", { class: "secondary", onclick: () => {
-        if (fbHolder.firstChild) fbHolder.innerHTML = ""; else fbHolder.append(facebookTextEditor(a));
-      } }, a.facebookText ? "Facebook text (custom)" : "Facebook text");
-      const debuggerUrl = "https://developers.facebook.com/tools/debug/?q=" + encodeURIComponent(siteUrl(`share/${encodeURIComponent(a.id)}.html`));
-      return el("tr", {},
-        el("td", {}, imgs[0] ? el("img", { class: "mini", src: siteUrl(imgs[0].src), alt: imgs[0].alt || "" }) : el("span", { class: "hint", text: "None" })),
-        el("td", { text: new Date(a.date).toLocaleDateString("en-GB") }),
-        el("td", {}, el("a", { href: pageUrlOf(state.config) + "?article=" + encodeURIComponent(a.id), target: "_blank", rel: "noopener", text: a.headline })),
-        el("td", {}, el("div", { class: "btns", style: "margin:0" },
-          el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = a.id; renderPublished(); window.scrollTo(0, 0); } }, "Edit"),
-          a.facebook ? el("span", { class: "hint", text: "Sent to Facebook and X " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null,
-          el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook and X again" : "Post to Facebook and X"),
-          fbToggle,
-          // Facebook keeps the photo and headline it saw first; its Sharing Debugger ("Scrape Again") refreshes them.
-          a.facebook ? el("a", { class: "hint", href: debuggerUrl, target: "_blank", rel: "noopener", title: "Opens Facebook's Sharing Debugger. Click Scrape Again there after changing a sent story's photo or headline.", text: "Refresh Facebook preview ↗" }) : null,
-          el("button", { class: "secondary", onclick: () => unpublish(a) }, "Unpublish")), fbHolder));
-    })),
-    el("div", { class: "btns" }, rebuild));
+  const upkeep = el("div", { class: "card" }, el("h3", { class: "card-title", text: "Housekeeping" }),
+    el("p", { class: "hint", text: "Writes the sitemap, the share pages and the Facebook and X feeds again from the published stories." }),
+    el("div", { class: "row-btns" }, rebuild));
+  if (!list.length) { root.append(el("div", { class: "empty" }, el("strong", { text: "Nothing published yet" })), upkeep); return; }
+  // v2: one card per story, with a search box, in place of the table. Same buttons as before.
+  const rows = list.map((a) => {
+    const imgs = imagesOf(a);
+    const fbHolder = el("div", { class: "story-extra" });
+    const fbToggle = el("button", { class: "secondary", onclick: () => {
+      if (fbHolder.firstChild) fbHolder.innerHTML = ""; else fbHolder.append(facebookTextEditor(a));
+    } }, a.facebookText ? "Facebook text (custom)" : "Facebook text");
+    const debuggerUrl = "https://developers.facebook.com/tools/debug/?q=" + encodeURIComponent(siteUrl(`share/${encodeURIComponent(a.id)}.html`));
+    const item = el("li", { class: "story" },
+      imgs[0] ? el("img", { class: "story-thumb", src: siteUrl(imgs[0].src), alt: imgs[0].alt || "", loading: "lazy" }) : el("span", { class: "story-thumb none", text: "No photo" }),
+      el("div", {},
+        el("a", { class: "story-title", href: pageUrlOf(state.config) + "?article=" + encodeURIComponent(a.id), target: "_blank", rel: "noopener", text: a.headline }),
+        el("div", { class: "story-meta" },
+          el("span", { text: shortDate(a.date) }),
+          el("span", { "data-live": a.id }),
+          (a.wards || []).length ? el("span", { text: a.wards.join(", ") }) : null,
+          a.facebook ? el("span", { class: "badge", text: "Sent to Facebook and X " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null)),
+      el("div", { class: "story-actions" },
+        el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = a.id; renderPublished(); window.scrollTo(0, 0); } }, "Edit"),
+        el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook and X again" : "Post to Facebook and X"),
+        fbToggle,
+        // Facebook keeps the photo and headline it saw first; its Sharing Debugger ("Scrape Again") refreshes them.
+        a.facebook ? el("a", { class: "hint", href: debuggerUrl, target: "_blank", rel: "noopener", title: "Opens Facebook's Sharing Debugger. Click Scrape Again there after changing a sent story's photo or headline.", text: "Refresh Facebook preview ↗" }) : null,
+        el("button", { class: "secondary danger", onclick: () => unpublish(a) }, "Unpublish")),
+      fbHolder);
+    return { el: item, text: `${a.headline} ${(a.wards || []).join(" ")} ${a.topic || ""}`.toLowerCase() };
+  });
+  const find = searchBox("Search published stories by headline or ward", rows, "story", "stories");
+  root.append(el("div", { class: "toolbar" }, find.input, find.shown),
+    el("p", { class: "hint", id: "live-note", role: "status" }),
+    el("ul", { class: "stories" }, rows.map((r) => r.el)), upkeep);
+  paintLive();
 }
 // Edits the text Zapier posts for one published story. Saving the automatic text unchanged
 // clears any custom text, so later edits to the summary flow through again.
@@ -1100,8 +1403,9 @@ function renderWards() {
   if (!state.wardSel || !wards.find((w) => w.slug === state.wardSel)) state.wardSel = wards[0].slug;
   const pick = el("select", { onchange: () => { state.wardSel = pick.value; renderWards(); } },
     wards.map((w) => el("option", { value: w.slug, selected: w.slug === state.wardSel }, w.name)));
-  root.append(el("label", { text: "Ward" }), pick,
-    el("p", { class: "hint", text: "Changes show on the ward page within a few minutes of saving." }));
+  root.append(el("div", { class: "card" }, el("label", { text: "Ward" }), pick,
+    el("p", { class: "hint" }, "Changes show on the ward page within a few minutes of saving. ",
+      el("a", { href: new URL("/" + encodeURIComponent(state.wardSel), pageUrlOf(state.config)).href, target: "_blank", rel: "noopener", text: "View the ward page ↗" }))));
 
   const ward = JSON.parse(JSON.stringify(wards.find((w) => w.slug === state.wardSel)));
   const pendingPhotos = new Map(); // councillor index -> base64
@@ -1132,7 +1436,7 @@ function renderWards() {
           el("label", { text: "About (optional; blank line between paragraphs)" }), bio,
           el("div", { class: "row-btns" },
             el("button", { class: "secondary", type: "button", onclick: () => { if (i > 0) { ward.councillors.splice(i - 1, 0, ward.councillors.splice(i, 1)[0]); drawPeople(); } } }, "Move up"),
-            el("button", { class: "secondary", type: "button", onclick: () => { if (confirm(`Remove ${c.name || "this councillor"} from ${ward.name}?`)) { ward.councillors.splice(i, 1); pendingPhotos.delete(i); drawPeople(); } } }, "Remove")))));
+            el("button", { class: "secondary danger", type: "button", onclick: () => { if (confirm(`Remove ${c.name || "this councillor"} from ${ward.name}?`)) { ward.councillors.splice(i, 1); pendingPhotos.delete(i); drawPeople(); } } }, "Remove")))));
     });
   }
   drawPeople();
@@ -1155,7 +1459,7 @@ function renderWards() {
         el("label", { text: "What has happened (optional)" }), ev,
         el("div", { class: "row-btns" },
           el("button", { class: "secondary", type: "button", onclick: () => { if (i > 0) { ward.pledges.splice(i - 1, 0, ward.pledges.splice(i, 1)[0]); drawPledges(); } } }, "Move up"),
-          el("button", { class: "secondary", type: "button", onclick: () => { if (confirm("Remove this pledge?")) { ward.pledges.splice(i, 1); drawPledges(); } } }, "Remove"))));
+          el("button", { class: "secondary danger", type: "button", onclick: () => { if (confirm("Remove this pledge?")) { ward.pledges.splice(i, 1); drawPledges(); } } }, "Remove"))));
     });
   }
   drawPledges();
@@ -1183,11 +1487,11 @@ function renderWards() {
   }
 
   root.append(
-    el("h2", { text: "Councillors", style: "font-size:18px;margin:22px 0 0" }), peopleBox,
+    el("h2", { text: "Councillors", class: "section-title" }), peopleBox,
     el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { ward.councillors.push({ name: "", role: "", phone: "", email: "", photo: "", bio: [] }); drawPeople(); } }, "Add councillor")),
-    el("h2", { text: "Pledges", style: "font-size:18px;margin:28px 0 0" }),
-    el("label", { text: "Heading shown on the page" }), heading,
-    el("p", { class: "hint", text: "Pledges with no progress set show without a badge. The progress bar appears once at least one has a status." }),
+    el("h2", { text: "Pledges", class: "section-title" }),
+    el("div", { class: "card" }, el("label", { text: "Heading shown on the page" }), heading,
+      el("p", { class: "hint", text: "Pledges with no progress set show without a badge. The progress bar appears once at least one has a status." })),
     pledgeBox,
     el("div", { class: "row-btns" }, el("button", { class: "secondary", type: "button", onclick: () => { ward.pledges.push({ title: "", detail: "", status: "", evidence: "", evidenceUrl: "" }); drawPledges(); } }, "Add pledge")),
     el("div", { class: "sticky" }, el("button", { class: "primary", onclick: save }, `Save ${ward.name}`)));
@@ -1207,15 +1511,22 @@ async function wardAt(lat, lng) {
 function renderMap() {
   const root = $("#tab-map"); root.innerHTML = "";
   const projects = state.delivery.data.projects || [];
-  root.append(el("p", { class: "hint", text: `${projects.length} projects on the map. Click a title to edit it.` }),
-    el("div", { class: "btns", style: "margin-top:8px" }, el("button", { class: "primary", onclick: () => editProject(null) }, "Add a project")));
-  root.append(el("table", { style: "margin-top:14px" },
-    el("tr", {}, el("th", { text: "Date" }), el("th", { text: "Project" }), el("th", { text: "Ward" }), el("th", { text: "Status" })),
-    projects.map((p) => el("tr", {},
+  // v2: the same list, with a search box and the status shown as a badge
+  const rows = projects.map((p) => ({
+    el: el("tr", {},
       el("td", { text: p.date || "" }),
       el("td", {}, el("a", { href: "#", onclick: (e) => { e.preventDefault(); editProject(p.id); }, text: p.title })),
       el("td", { text: p.ward || p.councilWard || "" }),
-      el("td", { text: p.status || "" })))));
+      el("td", {}, p.status ? el("span", { class: "badge" + (p.status === "Completed" ? " ink" : " warn"), text: p.status }) : null)),
+    text: `${p.title} ${p.ward || p.councilWard || ""} ${p.status || ""} ${p.theme || ""} ${p.date || ""}`.toLowerCase(),
+  }));
+  const find = searchBox("Search the map by project, ward, type or status", rows, "project");
+  root.append(
+    el("div", { class: "toolbar" }, el("button", { class: "primary", onclick: () => editProject(null) }, "Add a project"), find.input, find.shown),
+    el("p", { class: "hint", text: "Click a title to edit it." }),
+    el("div", { class: "tablewrap" }, el("table", {},
+      el("tr", {}, el("th", { text: "Date" }), el("th", { text: "Project" }), el("th", { text: "Ward" }), el("th", { text: "Status" })),
+      rows.map((r) => r.el))));
 }
 
 function editProject(id) {
@@ -1225,8 +1536,11 @@ function editProject(id) {
   const input = (val, attrs = {}) => el("input", { type: "text", value: val ?? "", ...attrs });
   const f = {
     title: input(p.title), date: input(p.date, { placeholder: "YYYY-MM" }),
-    theme: el("select", {}, THEMES.map((t) => el("option", { value: t, selected: p.theme === t }, t))),
-    status: el("select", {}, ["Completed", "Under way"].map((t) => el("option", { value: t, selected: p.status === t }, t))),
+    // v2 fix: the lists also offer every type and status already used on the map (such as
+    // "Planned", "In progress" and "Schools"). Before, opening one of those projects showed the
+    // first choice in the list instead, and saving would have changed it without anyone meaning to.
+    theme: el("select", {}, [...new Set([...THEMES, ...(state.delivery.data.projects || []).map((x) => x.theme).filter(Boolean)])].map((t) => el("option", { value: t, selected: p.theme === t }, t))),
+    status: el("select", {}, [...new Set(["Completed", "Under way", ...(state.delivery.data.projects || []).map((x) => x.status).filter(Boolean)])].map((t) => el("option", { value: t, selected: p.status === t }, t))),
     summary: el("textarea", {}, p.summary || ""),
     sourceName: input(p.source?.name || "Swansea Council"), sourceUrl: input(p.source?.url || "", { type: "url", placeholder: "https://www.swansea.gov.uk/…" }),
     search: input("", { placeholder: "e.g. Gors Avenue, Townhill" }),
@@ -1291,17 +1605,19 @@ function editProject(id) {
 
   root.append(
     el("div", { class: "btns", style: "margin-top:0" }, el("button", { class: "secondary", onclick: renderMap }, "← All projects")),
-    el("label", { text: "Title" }), f.title,
-    el("div", { class: "two" }, el("div", {}, el("label", { text: "Month (YYYY-MM)" }), f.date), el("div", {}, el("label", { text: "Status" }), f.status)),
-    el("label", { text: "Type" }), f.theme,
-    el("label", { text: "Summary (one or two sentences, in your own words)" }), f.summary,
-    el("div", { class: "two" }, el("div", {}, el("label", { text: "Source name" }), f.sourceName), el("div", {}, el("label", { text: "Source link" }), f.sourceUrl)),
-    el("label", { text: "Find the location" }), el("div", { style: "display:flex;gap:8px" }, f.search, el("button", { class: "secondary", type: "button", onclick: search }, "Search")), results,
-    el("div", { class: "two" }, el("div", {}, el("label", { text: "Latitude" }), f.lat), el("div", {}, el("label", { text: "Longitude" }), f.lng)),
-    where,
-    el("div", { class: "sticky" }, el("div", { class: "btns", style: "margin:0" },
+    card(existing ? "Edit this project" : "Add a project",
+      el("label", { text: "Title" }), f.title,
+      el("div", { class: "two" }, el("div", {}, el("label", { text: "Month (YYYY-MM)" }), f.date), el("div", {}, el("label", { text: "Status" }), f.status)),
+      el("label", { text: "Type" }), f.theme,
+      el("label", { text: "Summary (one or two sentences, in your own words)" }), f.summary,
+      el("div", { class: "two" }, el("div", {}, el("label", { text: "Source name" }), f.sourceName), el("div", {}, el("label", { text: "Source link" }), f.sourceUrl))),
+    card("Where it is",
+      el("label", { text: "Find the location" }), el("div", { style: "display:flex;gap:8px" }, f.search, el("button", { class: "secondary", type: "button", onclick: search }, "Search")), results,
+      el("div", { class: "two" }, el("div", {}, el("label", { text: "Latitude" }), f.lat), el("div", {}, el("label", { text: "Longitude" }), f.lng)),
+      where),
+    el("div", { class: "sticky" },
       el("button", { class: "primary", onclick: save }, existing ? "Save changes" : "Add to map"),
-      existing ? el("button", { class: "secondary", onclick: remove }, "Remove from map") : null)));
+      existing ? el("button", { class: "secondary danger", onclick: remove }, "Remove from map") : null));
 }
 
 // ---- Settings ----
@@ -1340,20 +1656,26 @@ function renderSettings() {
       setStatus("Settings saved.", "ok");
     } catch (e) { setStatus(e.message, "err"); }
   }
-  root.append(
-    el("label", { text: "Digital imprint" }), f.imprint,
-    el("p", { class: "hint", text: "Shown under every article and the news reel. Publishing stays off until this is filled in properly." }),
-    el("label", { text: "Website page that shows the news reel" }), f.pageUrl,
-    el("p", { class: "hint", text: "Used to build the links Google is given for each article, e.g. https://www.swansealabour.org/news" }),
-    el("label", { text: "Labour councillors (one per line, e.g. \"Cllr Jane Jones, Cabinet Member for Education\")" }), f.councillors,
-    el("p", { class: "hint", text: "Only these people are quoted as Labour without a check." }),
-    el("label", { text: "How to describe the council" }), f.councilDescription,
-    el("label", { text: "Writing style notes" }), f.styleNotes,
-    el("label", { text: "Hashtags added to every Facebook post" }), f.facebookTags,
-    el("p", { class: "hint", text: "Added after the story's ward tags (up to two) and one topic tag, e.g. \"#Killay #Dunvant #Flooding #Swansea #SwanseaLabour\". Facebook does best with a few tags, not many. Leave empty for none." }),
-    el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
-    el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." }),
-    el("div", { class: "btns" }, el("button", { class: "primary", onclick: save }, "Save settings")));
+  // v2: the same settings, grouped into titled cards, with Save kept in reach
+  root.append(el("div", { class: "narrow" },
+    card("Legal imprint",
+      el("label", { text: "Digital imprint" }), f.imprint,
+      el("p", { class: "hint", text: "Shown under every article and the news reel. Publishing stays off until this is filled in properly." })),
+    card("Website",
+      el("label", { text: "Website page that shows the news reel" }), f.pageUrl,
+      el("p", { class: "hint", text: "Used to build the links Google is given for each article, e.g. https://www.swansealabour.org/news" })),
+    card("How drafts are written",
+      el("label", { text: "Labour councillors (one per line, e.g. \"Cllr Jane Jones, Cabinet Member for Education\")" }), f.councillors,
+      el("p", { class: "hint", text: "Only these people are quoted as Labour without a check." }),
+      el("label", { text: "How to describe the council" }), f.councilDescription,
+      el("label", { text: "Writing style notes" }), f.styleNotes),
+    card("Facebook and X",
+      el("label", { text: "Hashtags added to every Facebook post" }), f.facebookTags,
+      el("p", { class: "hint", text: "Added after the story's ward tags (up to two) and one topic tag, e.g. \"#Killay #Dunvant #Flooding #Swansea #SwanseaLabour\". Facebook does best with a few tags, not many. Leave empty for none." })),
+    card("Daily drafts",
+      el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
+      el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." })),
+    el("div", { class: "sticky" }, el("button", { class: "primary", onclick: save }, "Save settings"))));
 }
 
 // ---- Tabs & connect ----
@@ -1374,9 +1696,9 @@ $("#c-save").addEventListener("click", async () => {
 });
 
 async function start() {
-  if (!conn.owner || !conn.token) { showTab("connect"); setStatus("Connect your GitHub repositories to begin."); return; }
+  if (!conn.owner || !conn.token) { setConn(false); showTab("connect"); setStatus("Connect your GitHub repositories to begin."); return; }
   try { await loadAll(); showTab("drafts"); }
-  catch (e) { showTab("connect"); setStatus(e.message, "err"); }
+  catch (e) { setConn(false); showTab("connect"); setStatus(e.message, "err"); }
 }
 start();
 </script>
