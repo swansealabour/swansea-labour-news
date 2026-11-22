@@ -606,7 +606,10 @@ async function writeSitemap(articles) {
 // Facebook, X and WhatsApp build link previews from raw HTML without running scripts, so the
 // news reel's own pages always preview as the plain News page. Each article gets a tiny static
 // page with its own title, summary and photo; it sends people straight on to the real article.
-const DEFAULT_SHARE_IMAGE = { src: "https://static1.squarespace.com/static/60f66d93c0d6ed6055a56101/t/6255bbcacff6531bcd7f814b/1649785802379/Swansea+Bay+Credit+Jack+Wodehouse.jpg?format=1500w", width: 1500, height: 842, alt: "Swansea Bay" };
+// The picture a story with no photo is shared with: share-default.jpg, at the top level of the
+// site repository (Swansea Bay, credit Jack Wodehouse). Until v2 it was fetched from Squarespace,
+// which would have stopped working when that account closed.
+const DEFAULT_SHARE_IMAGE = { src: siteUrl("share-default.jpg"), width: 1500, height: 844, alt: "Swansea Bay" };
 function shareHtml(a, pageUrl) {
   const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const shareUrl = siteUrl(`share/${encodeURIComponent(a.id)}.html`);
