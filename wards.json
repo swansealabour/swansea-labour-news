@@ -16,7 +16,7 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
+        "asOf": "22 November 2026",
         "used": 141203,
         "payments": 55,
         "grants": 2,
@@ -148,14 +148,14 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 225793,
-        "payments": 56,
-        "grants": 29,
+        "asOf": "22 November 2026",
+        "used": 230093,
+        "payments": 60,
+        "grants": 32,
         "themes": [
           { "name": "Cleaning and tidier streets", "amount": 127914 },
-          { "name": "Parks, play and green spaces", "amount": 44625 },
-          { "name": "Grants to local groups, clubs and events", "amount": 21210 },
+          { "name": "Parks, play and green spaces", "amount": 45625 },
+          { "name": "Grants to local groups, clubs and events", "amount": 24510 },
           { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 4330 },
           { "name": "Community events, schools and charities", "amount": 1025 },
           { "name": "Roads, parking and safety", "amount": 690 },
@@ -179,7 +179,8 @@
           "Swan TV",
           "St Helen's Primary School",
           "Terrace Road Primary School",
-          "St Joseph's Under 13s"
+          "St Joseph's Under 13s",
+          "Christ Church Swansea"
         ]
       },
       "pledgeHeading": "Our Pledges",
@@ -285,10 +286,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 179292,
-        "payments": 56,
-        "grants": 18,
+        "asOf": "22 November 2026",
+        "used": 182802,
+        "payments": 61,
+        "grants": 21,
         "themes": [
           {
             "name": "Roads, parking and safety",
@@ -300,7 +301,7 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 31418
+            "amount": 34698
           },
           {
             "name": "Floral displays",
@@ -308,7 +309,7 @@
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 718
+            "amount": 949
           },
           {
             "name": "Defibrillators, bleed kits and knife-crime work",
@@ -332,7 +333,9 @@
           "Whizzknits",
           "Kids Cancer Charity Swansea",
           "Swansea Community Farm",
-          "Benefice of Swansea St Peter"
+          "Benefice of Swansea St Peter",
+          "The Sharing Table",
+          "Gors Community Primary School"
         ],
         "note": "Some projects were shared with neighbouring wards."
       },
@@ -445,10 +448,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 60744,
-        "payments": 59,
-        "grants": 8,
+        "asOf": "22 November 2026",
+        "used": 62591,
+        "payments": 63,
+        "grants": 11,
         "themes": [
           {
             "name": "Parks, play and green spaces",
@@ -472,7 +475,7 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 2283
+            "amount": 3463
           },
           {
             "name": "Defibrillators, bleed kits and knife-crime work",
@@ -484,7 +487,7 @@
           },
           {
             "name": "Floral displays",
-            "amount": 766
+            "amount": 1433
           }
         ],
         "coming": [
@@ -507,7 +510,9 @@
           "Bikeability Wales",
           "Pen-y-Fro Primary School",
           "Dunvant Primary School",
-          "Hendrefoilan Primary School"
+          "Hendrefoilan Primary School",
+          "4th Killay Guides",
+          "Dunvant Christian Fellowship"
         ],
         "note": "Some costs were shared with the ward's other councillors."
       },
@@ -721,13 +726,15 @@
             "Swansea Council's new Cleansing Ward Operative Team makes regular visits to our area, clearing lanes, paths, the bus station and parks that we and residents put forward.",
             "The Highways Weed Hotspot Team has tackled streets in Gorseinon, Grovesend and Bryngolau.",
             "New and upgraded litter bins, including Golden Grove Park, Waungron, Gower View Road, Pencefnarda Road, Parc Melin Mynach and along the cycle track.",
-            "Daffodils planted across the ward every year from our community budget.",
+            "Daffodils and spring bulbs planted across the ward every year from our community budget.",
             "Wildflower areas funded each year, and the flower troughs at Penyrheol Post Office paid for jointly with Gorseinon Town Council.",
             "A tidy-up of Gorseinon High Street, with paving power washed and repaired, bollards moved and benches renewed, and the benches outside the Mardy refurbished.",
             "An old path restored and overgrown vegetation cut back at Parc Melin Mynach.",
             "Brought the first community Christmas tree to Penyrheol, and now put up three trees each year, with lights at Parc y Werin.",
             "Grants from our community budget to dozens of local groups, including The Sharing Table's Christmas hampers, Recycled Teenagers, the Royal British Legion, St Catherine's community café, ALN Connect, Evolve, Grovesend's summer fayres and 1st Gorseinon Brownies.",
-            "Paid for Remembrance posters in bus shelters each year, and laid wreaths on behalf of our community."
+            "Paid for Remembrance posters in bus shelters each year, and laid wreaths on behalf of our community.",
+            "A new welcome seat and a picnic set with wheelchair access, paid for from our community budget.",
+            "Supported Gorseinon's Christmas event with the Town Council, donated to Swansea Food Bank, and helped pay for the Young at Heart Christmas party and a Christmas party at Loughor Workingmen's Club with Llwchwr's councillors."
           ]
         },
         {
@@ -890,18 +897,18 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 172930,
-        "payments": 127,
-        "grants": 78,
+        "asOf": "22 November 2026",
+        "used": 189070,
+        "payments": 132,
+        "grants": 81,
         "themes": [
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 40289
+            "amount": 41989
           },
           {
             "name": "Parks, play and green spaces",
-            "amount": 26780
+            "amount": 41220
           },
           {
             "name": "Roads, parking and cleaner streets",
@@ -962,7 +969,9 @@
           "Grovesend & Waungron Community Council",
           "Pengelli Sports & Social Club",
           "1st Gorseinon Brownies",
-          "Cwrt Hywel Residents Group"
+          "Cwrt Hywel Residents Group",
+          "Young at Heart",
+          "Swansea Food Bank"
         ],
         "note": "Some projects were shared with neighbouring wards."
       }
@@ -981,10 +990,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 65004,
-        "payments": 46,
-        "grants": 11,
+        "asOf": "22 November 2026",
+        "used": 65184,
+        "payments": 47,
+        "grants": 12,
         "themes": [
           {
             "name": "Parks, play and green spaces",
@@ -996,7 +1005,7 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 5090
+            "amount": 5270
           },
           {
             "name": "Community events, schools and charities",
@@ -1109,10 +1118,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 145735,
-        "payments": 68,
-        "grants": 18,
+        "asOf": "22 November 2026",
+        "used": 148475,
+        "payments": 69,
+        "grants": 19,
         "themes": [
           {
             "name": "Community events, schools and charities",
@@ -1124,7 +1133,7 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 25283
+            "amount": 28023
           },
           {
             "name": "Parks, play and green spaces",
@@ -1254,7 +1263,8 @@
             "Helped Brynhyfryd Primary School celebrate its 150th anniversary, and paid for a children's mural project there.",
             "Helped with sports days and school trips at Plasmarl and Brynhyfryd primary schools.",
             "Easter activities and events at Brynhyfryd Library.",
-            "The historic Hafod-Morfa Copperworks brought back to life, with the Penderyn distillery open and the bascule bridge and Laboratory Building being restored."
+            "The historic Hafod-Morfa Copperworks brought back to life, with the Penderyn distillery open and the bascule bridge and Laboratory Building being restored.",
+            "Helped the four schools with their Christmas events, and paid towards a memorial bench."
           ]
         }
       ],
@@ -1307,10 +1317,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 247035,
-        "payments": 130,
-        "grants": 39,
+        "asOf": "22 November 2026",
+        "used": 250995,
+        "payments": 134,
+        "grants": 42,
         "themes": [
           {
             "name": "Christmas lights and events",
@@ -1318,11 +1328,11 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 50367
+            "amount": 54267
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 35871
+            "amount": 35931
           },
           {
             "name": "Floral displays",
@@ -1366,7 +1376,9 @@
           "Inclusability CIC",
           "Friends of Primrose Park",
           "Tiny Swans",
-          "Sight Life"
+          "Sight Life",
+          "Llansamlet Community Centre",
+          "Glais Primary School"
         ]
       },
       "pledgeHeading": "Our Pledges",
@@ -1478,14 +1490,14 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 151296,
-        "payments": 73,
-        "grants": 43,
+        "asOf": "22 November 2026",
+        "used": 157746,
+        "payments": 77,
+        "grants": 46,
         "themes": [
           { "name": "Roads, parking and safety", "amount": 41253 },
-          { "name": "Grants to local groups, clubs and events", "amount": 35575 },
-          { "name": "Parks, play and green spaces", "amount": 15129 },
+          { "name": "Grants to local groups, clubs and events", "amount": 37025 },
+          { "name": "Parks, play and green spaces", "amount": 20129 },
           { "name": "Community events, schools and charities", "amount": 5058 },
           { "name": "Floral displays", "amount": 4029 },
           { "name": "Murals and community artwork", "amount": 2090 },
@@ -1522,7 +1534,9 @@
           "1st Loughor Brownies",
           "2nd Llwchwr Guides & Rangers",
           "Go Fish Gowerton CIC",
-          "Bantani Cymru"
+          "Bantani Cymru",
+          "Friends of Parc Williams",
+          "Young at Heart"
         ],
         "note": "Some projects were shared with neighbouring wards."
       },
@@ -1563,7 +1577,8 @@
             "Paid towards new fire doors at Loughor & District Workingmen's Club and improvements at Garden Village Sports & Social Club.",
             "Funded a sensory regulation zone and a school trip at Casllwchwr Primary School.",
             "Hid books in play areas across the ward for a summer book hunt.",
-            "Paid for Remembrance posters in bus shelters, and laid wreaths at Loughor Monument and Kingsbridge Cemetery each year."
+            "Paid for Remembrance posters in bus shelters, and laid wreaths at Loughor Monument and Kingsbridge Cemetery each year.",
+            "Helped pay for the Young at Heart Christmas party and a Christmas party at Loughor & District Workingmen's Club, shared with Gorseinon and Penyrheol's councillors."
           ]
         },
         {
@@ -1581,7 +1596,9 @@
             "Resurfaced the slip road from Loughor Bridge to the boating club and added parking bays, from our community budget.",
             "A new bench on the cycle path, paid for jointly with Gowerton's councillor.",
             "Asked residents how they would improve Highfield and Llys y Brenin park.",
-            "Backed plans to make Loughor Foreshore Park a Local Nature Reserve."
+            "Backed plans to make Loughor Foreshore Park a Local Nature Reserve.",
+            "Funding for the Friends of Parc Williams to carry on improving the park.",
+            "Helped Loughor Boating Club towards a new play area."
           ]
         },
         {
@@ -1697,19 +1714,19 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "4 November 2026",
-        "used": 245720,
-        "payments": 57,
+        "asOf": "22 November 2026",
+        "used": 246511,
+        "payments": 59,
         "grants": 9,
         "themes": [
-          { "name": "Christmas lights, parades and events", "amount": 88202 },
+          { "name": "Christmas lights, parades and events", "amount": 88872 },
           { "name": "Floral displays", "amount": 56058 },
           { "name": "Parks, play and green spaces", "amount": 14250 },
           { "name": "Cleaning and tidier streets", "amount": 12782 },
           { "name": "Roads, parking and safety", "amount": 10720 },
           { "name": "Grants to local groups, clubs and events", "amount": 7029 },
           { "name": "Defibrillators, bleed kits and knife-crime work", "amount": 1600 },
-          { "name": "Community events, schools and charities", "amount": 80 }
+          { "name": "Community events, schools and charities", "amount": 201 }
         ],
         "coming": [
           { "name": "Better sporting facilities at Morriston AFC" },
@@ -1844,14 +1861,14 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 135753,
-        "payments": 21,
+        "asOf": "22 November 2026",
+        "used": 139218,
+        "payments": 23,
         "grants": 7,
         "themes": [
           {
             "name": "Roads, parking and safety",
-            "amount": 91508
+            "amount": 94942
           },
           {
             "name": "Parks, play and green spaces",
@@ -1871,7 +1888,7 @@
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 385
+            "amount": 416
           }
         ],
         "coming": [
@@ -1984,10 +2001,10 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 65026,
-        "payments": 65,
-        "grants": 9,
+        "asOf": "22 November 2026",
+        "used": 68276,
+        "payments": 67,
+        "grants": 10,
         "themes": [
           {
             "name": "Parks, play and green spaces",
@@ -1999,7 +2016,7 @@
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 11007
+            "amount": 14007
           },
           {
             "name": "Sport and clubs",
@@ -2007,7 +2024,7 @@
           },
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 3975
+            "amount": 4225
           },
           {
             "name": "Christmas lights and events",
@@ -2112,7 +2129,7 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
+        "asOf": "22 November 2026",
         "used": 106744,
         "payments": 38,
         "grants": 25,
@@ -2256,14 +2273,14 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 55704,
-        "payments": 52,
+        "asOf": "22 November 2026",
+        "used": 55719,
+        "payments": 53,
         "grants": 22,
         "themes": [
           {
             "name": "Community events, schools and charities",
-            "amount": 13656
+            "amount": 13671
           },
           {
             "name": "Grants to local groups, clubs and events",
@@ -2397,7 +2414,7 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
+        "asOf": "22 November 2026",
         "used": 28646,
         "payments": 20,
         "grants": 12,
@@ -2575,12 +2592,12 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 148103,
-        "payments": 64,
-        "grants": 23,
+        "asOf": "22 November 2026",
+        "used": 150103,
+        "payments": 66,
+        "grants": 25,
         "themes": [
-          { "name": "Grants to local groups, clubs and events", "amount": 23560 },
+          { "name": "Grants to local groups, clubs and events", "amount": 25560 },
           { "name": "Parks, play and green spaces", "amount": 12231 },
           { "name": "Roads, parking and safety", "amount": 12013 },
           { "name": "Christmas, summer fun days and events", "amount": 9181 },
@@ -2607,7 +2624,8 @@
           "Sight Life",
           "The Sharing Table",
           "Baby Basics at St Thomas Church",
-          "Parish of St Thomas & Kilvey"
+          "Parish of St Thomas & Kilvey",
+          "Boys' Brigade"
         ],
         "note": "Includes spending shared with the ward's other councillor before February 2026."
       },
@@ -2648,18 +2666,18 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 163733,
-        "payments": 48,
-        "grants": 19,
+        "asOf": "22 November 2026",
+        "used": 174939,
+        "payments": 51,
+        "grants": 20,
         "themes": [
           {
             "name": "Grants to local groups, clubs and events",
-            "amount": 66550
+            "amount": 71550
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 19000
+            "amount": 19326
           },
           {
             "name": "Roads, parking and safety",
@@ -2679,7 +2697,7 @@
           },
           {
             "name": "Floral displays",
-            "amount": 5216
+            "amount": 11096
           },
           {
             "name": "Murals and community artwork",
@@ -2812,9 +2830,9 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 72400,
-        "payments": 49,
+        "asOf": "22 November 2026",
+        "used": 72800,
+        "payments": 50,
         "grants": 11,
         "themes": [
           {
@@ -2843,7 +2861,7 @@
           },
           {
             "name": "Floral displays",
-            "amount": 400
+            "amount": 800
           }
         ],
         "coming": [
@@ -2946,14 +2964,14 @@
       ],
       "budget": {
         "period": "2022–27",
-        "asOf": "5 November 2026",
-        "used": 121524,
-        "payments": 23,
+        "asOf": "22 November 2026",
+        "used": 122515,
+        "payments": 25,
         "grants": 3,
         "themes": [
           {
             "name": "Parks, play and green spaces",
-            "amount": 45560
+            "amount": 46520
           },
           {
             "name": "Roads, parking and safety",
@@ -2961,7 +2979,7 @@
           },
           {
             "name": "Community events, schools and charities",
-            "amount": 10406
+            "amount": 10436
           },
           {
             "name": "Grants to local groups, clubs and events",
