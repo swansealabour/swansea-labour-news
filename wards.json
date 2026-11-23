@@ -137,6 +137,13 @@
           ]
         }
       ],
+      "gallery": [
+        { "photo": "images/bonymaen-sports-barn.jpg", "ratio": 1.333, "caption": "Inside the new indoor sports barn at Cefn Hengoed", "alt": "Bôn-y-maen's councillors with colleagues on the 3G pitch inside the indoor sports barn" },
+        { "photo": "images/bonymaen-sports-barn-site.jpg", "ratio": 1.333, "caption": "On site while the sports barn was being built", "alt": "Bôn-y-maen's councillors with colleagues in hard hats and high-visibility vests at the building site" },
+        { "photo": "images/bonymaen-leisure-centre-gym.jpg", "ratio": 1.333, "caption": "In the leisure centre gym", "alt": "Councillors Mandy Evans and Paul Lloyd standing beside the weights in the gym" },
+        { "photo": "images/bonymaen-cefn-hengoed-entrance.jpg", "ratio": 1.333, "caption": "At Cefn Hengoed Community School", "alt": "Councillors Mandy Evans and Paul Lloyd in the entrance hall of Cefn Hengoed Community School, with the school crest on the floor" },
+        { "photo": "images/bonymaen-food-donations.jpg", "ratio": 1.333, "caption": "Sorting food donations", "alt": "Councillors Mandy Evans and Paul Lloyd sorting tins of donated food in a hall" }
+      ],
       "councillors": [
         {
           "name": "Mandy Evans",
