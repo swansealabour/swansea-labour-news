@@ -2910,7 +2910,7 @@
       "newLayout": true,
       "delivered": [
         { "title": "Roads and pavements", "text": "£292k on roads and pavements, including Roseland Road, and 590 potholes repaired." },
-        { "title": "Parks and green spaces", "text": "Planters, benches and planting across the ward, with new safety surfacing at Victoria Park on the way." },
+        { "title": "Parks and green spaces", "text": "Planters, benches and planting across the ward, and new safety surfacing in the Victoria Road park playground." },
         { "title": "Safer roads", "text": "£14k from our community budget on road safety and parking." },
         { "title": "Community events", "text": "Support for Waunarlwydd Community Centre, the carnival, Côr Waunarlwydd and children's Christmas parties." },
         { "title": "Local sport", "text": "Kit for Waunarlwydd RFC juniors and Waunarlwydd Galaxy, and help for the bowls club." }
@@ -2951,11 +2951,6 @@
             "amount": 800
           }
         ],
-        "coming": [
-          {
-            "name": "New safety surfacing at Victoria Park"
-          }
-        ],
         "groups": [
           "Côr Waunarlwydd",
           "Waunarlwydd Community Centre",
@@ -2974,35 +2969,71 @@
           "detail": "Continue to work with the Police and residents to tackle speeding and antisocial behaviour in the ward",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "New parking and traffic restrictions on Bryn Road and Swansea Road.",
+            "Double yellow lines on Cwmbach Road and Cwm Clyd, and at other sites across the ward.",
+            "The guard rail on Victoria Road extended.",
+            "Help towards Splash trips for local children, run with schools and the police."
+          ]
         },
         {
           "title": "Protecting Community Facilities",
           "detail": "Continue to support and protect our Park and Community centre",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "New safety surfacing at the Victoria Road park playground, laid in two phases with £33,900 from the council's Community Investment Fund and £14,500 from my community budget.",
+            "New outdoor gym equipment in Waunarlwydd Park.",
+            "New swings in Waunarlwydd Park.",
+            "A steam train and buddy benches for the playground.",
+            "Waunarlwydd Community Centre backed year after year: its events, Christmas lunch, Christmas party and disco, summer activities, fitness sessions and a new playgroup.",
+            "A warm hub for residents over the winter.",
+            "Help for Waunarlwydd Bowls Club, including repairs to its clubhouse."
+          ]
         },
         {
           "title": "A community to be proud of",
           "detail": "I will work hard to make sure the ward looks cared for and is a place to be proud of",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Planters on Waunarlwydd Road, planted and looked after every year.",
+            "Daffodils and spring bulbs planted across the ward every autumn, and wildflowers sown every year.",
+            "New trees planted, including a memorial tree.",
+            "Around £292,000 spent on Waunarlwydd's roads and pavements, including Roseland Road, and 590 potholes repaired.",
+            "Victoria Road given a full resurfacing.",
+            "Bus shelters across the ward repainted."
+          ]
         },
         {
           "title": "Transport",
           "detail": "I will continue to make sure the ward continues to get a decent bus service",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Bus shelters across the ward repainted."
+          ]
         },
         {
           "title": "Working for you",
           "detail": "As your Councillor I will be accessible to all residents and continue to listen to the Community I represent to ensure your voice is heard",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Kit for Waunarlwydd RFC's under-14s to mark the club's 125th year, support for its under-10s and a snooker table for the club.",
+            "Kit for Waunarlwydd Galaxy's under-11s.",
+            "Support for the Waunarlwydd Carnival Committee year after year, and for the children's Christmas parties.",
+            "A donation to Côr Waunarlwydd for its 60th anniversary.",
+            "Help for Waunarlwydd Primary School towards a sensory room, and nursery garden equipment for its PTA.",
+            "Outdoor equipment for Ysgol y Login Fach.",
+            "A start-up donation for the new group SPECS Spectrum CIC.",
+            "A day trip and a coffee machine for residents at Ty Victoria."
+          ]
         }
       ],
       "councillors": [
