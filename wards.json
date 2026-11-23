@@ -42,11 +42,6 @@
             "amount": 750
           }
         ],
-        "coming": [
-          {
-            "name": "A grant to help Swansea Eastside Foodbank buy Mount Zion Baptist Church"
-          }
-        ],
         "groups": [
           "FC Bonymaen",
           "Bonymaen Colts FC",
@@ -63,35 +58,83 @@
           "detail": "We will work with residents, the police & other organisation to tackle crime and antisocial behaviour and make our community safer",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "A speed hump and warning signs put in on Bonymaen Road.",
+            "Double yellow lines on Carmel Road, and new parking and traffic restrictions at sites across the ward.",
+            "The missing rail replaced at the junction of Bonymaen Road and Llanerch Road.",
+            "Missing bollards and rails renewed at Pen-y-Garn, Bonymaen and Lan Coed, and bollards replaced on Mansel Road.",
+            "A-frame barriers put in on paths in Winch Wen and at Phoebe Road.",
+            "Dropped kerbs on Colwyn Avenue and at the junction of Caernarvon Way and Caldicot Road, so everyone can get around.",
+            "Grass verges on Caldicot Road surfaced with tarmac, and help towards the new pavement there.",
+            "New bus shelters at Wyngarth in Winch Wen and on Mansel Road, and a hard standing by the shelter on Colwyn Avenue.",
+            "\"H\" bar markings to keep driveways clear on Mansel Road, Pentrechwyth Road, Chepstow Place and Bronllan.",
+            "New grit bins at Talfan Road and at the corner of Carmel Road and Brandon Crescent.",
+            "A no-entry sign at the Kilvey Hill track on Llanerch Road, and a no-parking sign at the bus turning point on Cefn Hengoed Road.",
+            "Around £300,000 spent on Bôn-y-maen's roads and pavements, including Mansel Road and Cwm Chapel Road, and 939 potholes repaired.",
+            "Cefn Road is next in line for resurfacing.",
+            "Help towards Splash trips for local children, run with schools and the police."
+          ]
         },
         {
           "title": "A Cleaner community",
           "detail": "We will employ an operative to help keep our streets clean by clearing litter, removing weeds and undertaking minor works. We will also work to deal with fly tipping quickly and we will install new bins across Bonymaen ward",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "The council's cleansing team keeps pathways, lanes and streets across the ward clear of litter, weeds and fly-tipping.",
+            "Nine new litter bins put in, emptied and maintained: on Jersey Road, Brokesby Road, Bonymaen Road, Cefn Road, Caldicot Road, Mansel Road, Lan Coed and Chirk Gardens.",
+            "A no fly-tipping sign put up at Chepstow Place.",
+            "A fallen pine tree cleared and three more felled on Buckingham Road.",
+            "New street name plates on Talfan Road."
+          ]
         },
         {
           "title": "Investment in park and play",
           "detail": "We will continue to invest in our parks and play areas across the ward & work with Swansea Labour council to deliver the new indoor training barn to be built at Cefn Hengoed school",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "The indoor sports barn at Cefn Hengoed is built and in use: an indoor 3G pitch, the first of its kind in Swansea, so local teams can train all year round.",
+            "The leisure centre at Cefn Hengoed upgraded as part of the same £7.5m scheme, with a new gym, a refurbished sports hall and community rooms.",
+            "Bonymaen Park playground given a new safety surface and new equipment.",
+            "Brokesby Road playground upgraded.",
+            "A new safety surface and carousel at the Cwm playground.",
+            "More than £150,000 invested in the ward's play areas.",
+            "New fencing opposite the Brokesby Road playground and high bollards in Bonymaen Park, from our community budget."
+          ]
         },
         {
           "title": "Greener community",
           "detail": "We will continue to fund flower displays and wildflower planting schemes and protect green areas to make the ward a community to be proud of",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Wildflowers sown across the ward every year, with blue cornflowers, red poppies, godetias and calendula brightening our public spaces.",
+            "Daffodil bulbs planted at sites across the ward every autumn.",
+            "A new tree planted on Lan Coed in Winch Wen.",
+            "Timber bollards and boulders put in to protect verges and green areas, including 35 bollards on Jersey Road, 15 on Cwm Chapel Road, and at Pen-y-Garn and Colwyn Road."
+          ]
         },
         {
           "title": "Supporting Local Groups",
           "detail": "We will help support local community groups, sports clubs and schools and continue to support residents and the Eastside Foodbank",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Swansea Eastside Foodbank has bought its home, the former Mount Zion Baptist Church, with £45,500 from the council's Community Investment Fund and £8,340 from our community budget.",
+            "Donations to Kilvey Writers, Manic Productions and Bonymaen Kids Play Initiative.",
+            "Support for FC Bonymaen and Bonymaen Colts FC.",
+            "A family engagement centre created at Cefn Hengoed Community School.",
+            "New facilities for pupils with additional learning needs at Cwm Glas Primary School.",
+            "Pentrechwyth Primary School rewired, with a new fire alarm.",
+            "More than £970,000 invested in the ward's schools since 2022.",
+            "Surgeries twice a month, both at 7pm: the first Monday at Bonymaen Community Centre and the third Monday at Bonymaen Rugby Club."
+          ]
         }
       ],
       "councillors": [
@@ -1729,7 +1772,6 @@
           { "name": "Community events, schools and charities", "amount": 201 }
         ],
         "coming": [
-          { "name": "Better sporting facilities at Morriston AFC" },
           { "name": "Christmas lights and floral displays for 2027" }
         ],
         "groups": [
@@ -1750,35 +1792,81 @@
           "detail": "Including Morriston, Ynystawe, Cwmrhydycierw and Parc Gwernfadog",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Parc Gwernfadog has Morriston's first brand new play area in 25 years, with a bank slide, swings and an inclusive roundabout.",
+            "Heol Tir Du play park transformed, with 40 new features for up to 70 children.",
+            "Ynystawe Park play area refurbished.",
+            "Nixon Terrace play area revamped, with swings, a roundabout and a multiplay unit.",
+            "The DFS play area upgraded.",
+            "A new multi-use games area at Morriston Park, with Swansea's first Teqball table.",
+            "A new nature trail at Morriston Park, created with the Friends of Morriston Park.",
+            "Extra tarmac surfacing at Morriston Park, paid for by the council's Community Investment Fund and our community budget.",
+            "Better sporting facilities at The Dingle, home of Morriston Town AFC: a £626,000 project, with £140,000 from the Community Investment Fund and £30,000 from our community budget.",
+            "More than £387,000 invested in Morriston's play areas since 2022."
+          ]
         },
         {
           "title": "Fund more defibrillators across Morriston",
           "detail": "Install them in more locations to save lives",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "A new defibrillator and cabinet paid for from our community budget."
+          ]
         },
         {
           "title": "Fund events and flower displays",
           "detail": "We will fund flower display and deliver community events such as the Christmas parade and the summer festivals",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Floral displays across Morriston funded every year from our community budget.",
+            "The Christmas parade and lights switch-on organised and funded every year, with entertainers, choirs and Santa's grotto.",
+            "Morriston's Christmas lights put up every year, with some of the lighting replaced.",
+            "A summer family fun day and a community fun day, with a fairground ride on Woodfield Street.",
+            "Support for Morriston's Victorian Day.",
+            "An Easter egg hunt with Morriston Business Forum.",
+            "Daffodil bulbs planted at sites across the ward."
+          ]
         },
         {
           "title": "Invest in our community",
           "detail": "We will support our local businesses and invest over £2m to regenerate Woodfield Street",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Woodfield Street resurfaced.",
+            "Morriston Tabernacle restored and reopened as the Tabernacle Morriston Centre, with council regeneration support including £450,000 from the UK Shared Prosperity Fund.",
+            "Free Wi-Fi and new CCTV in Morriston, and grants secured for local businesses.",
+            "A loading bay on Clase Road, and new parking restrictions and signs on Glantawe Street.",
+            "More than £1.2m spent on Morriston's roads and pavements, and 1,576 potholes repaired.",
+            "Roads resurfaced including Clydach Road, Pentrepoeth Road, Morfydd Street, Lon Camlad, Maes y Gwernen Road, Butterslade Grove, Christopher Road and Heol Maes Eglwys.",
+            "A cleansing operative for the Morriston area paid for from our community budget.",
+            "Fly-tipping cleared from the lane between Parc Avenue and Neath Road.",
+            "Bollards on Camellia Drive, a pothole repair on Francis Road and a no-parking sign at St David's Church."
+          ]
         },
         {
           "title": "Helping with recovery from the pandemic",
           "detail": "We will provide grants for community groups, local schools and sport clubs",
           "status": "",
           "evidence": "",
-          "evidenceUrl": ""
+          "evidenceUrl": "",
+          "done": [
+            "Grants to Tabernacle Morriston Choir, Swansea Stroke Survivors Group, Morriston Chess Club and Swansea Council for Voluntary Service.",
+            "All-weather coats for the coaches at Morriston Town FC.",
+            "Help for the Friends of Morriston Park with their family fun day, banners and signs.",
+            "A donation to Morriston Primary School towards an outdoor classroom.",
+            "Morriston Primary School's heating renewed, and Glyncollen Primary School's roof replaced in phases.",
+            "A new modular building at Ynystawe Primary School.",
+            "An extension planned for Cwmrhydyceirw Primary School, a £930,000 scheme.",
+            "The gym shared by Morriston Comprehensive and the leisure centre given a major upgrade.",
+            "Around £1m invested in Morriston's schools and public buildings since 2022."
+          ]
         }
       ],
       "councillors": [
@@ -2217,14 +2305,6 @@
         }
       ],
       "councillors": [
-        {
-          "name": "Terry Hennegan",
-          "role": "",
-          "phone": "07565769321",
-          "email": "cllr.terry.hennegan@swansea.gov.uk",
-          "photo": "images/councillors/terry-hennegan.jpg",
-          "bio": []
-        },
         {
           "name": "Mair Baker",
           "role": "",
