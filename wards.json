@@ -3038,7 +3038,11 @@
         }
       ],
       "gallery": [
-        { "photo": "images/waunarlwydd-poppy-appeal.jpg", "ratio": 0.75, "caption": "At the Royal British Legion's Poppy Appeal stall", "alt": "Councillor Wendy Lewis standing beside a Royal British Legion volunteer at a Poppy Appeal stall covered in poppies and collection tins" }
+        { "photo": "images/waunarlwydd-market-plaque.jpg", "ratio": 1.335, "caption": "Unveiling a plaque in Swansea Market with council leader Rob Stewart, in memory of Tom Simmonds and his 40 years as a Poppy Appeal volunteer", "alt": "Councillor Wendy Lewis and Councillor Rob Stewart lifting a Union flag away from a plaque on a wall in Swansea Market" },
+        { "photo": "images/waunarlwydd-sea-cadets.jpg", "ratio": 1.578, "caption": "With Swansea Sea Cadets", "alt": "Councillor Wendy Lewis standing in the middle of a large group of Sea Cadets and their officers, many holding certificates" },
+        { "photo": "images/waunarlwydd-sea-cadets-officers.jpg", "ratio": 1.507, "caption": "On parade with Swansea Sea Cadets' officers", "alt": "Councillor Wendy Lewis standing with uniformed Sea Cadets officers beside a table with a Sea Cadets banner" },
+        { "photo": "images/waunarlwydd-cks-donation.jpg", "ratio": 1.217, "caption": "Thanking the staff and customers of CK's Waunarlwydd, who raised £435 for the Rhodri Jones Memorial Appeal", "alt": "Councillor Wendy Lewis holding a cheque with supporters and two members of staff beside a Rhodri Jones Memorial Appeal banner inside CK's supermarket" },
+        { "photo": "images/waunarlwydd-defibrillator.jpg", "ratio": 1.443, "caption": "The defibrillator at Waunarlwydd Community Centre", "alt": "Councillor Wendy Lewis standing beside the defibrillator on the wall of Waunarlwydd Community Centre" }
       ],
       "councillors": [
         {
