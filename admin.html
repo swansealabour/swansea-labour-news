@@ -984,7 +984,7 @@ function storyEditor(d, mode) {
   const facebook = el("label", { class: "tick" }, facebookBox, alreadySent
     ? "Already sent to the Swansea Labour Councillors Facebook page and X."
     : sentBefore
-      ? `This story was sent to Facebook and X before, on ${new Date(d.sent.facebook).toLocaleDateString("en-GB")}. Tick to post it again.`
+      ? `This story was sent to Facebook, X and Instagram before, on ${new Date(d.sent.facebook).toLocaleDateString("en-GB")}. Tick to post it again.`
       : "Also post to the Swansea Labour Councillors Facebook page, X and Instagram (usually appears within about 15 minutes).");
   // What Zapier will post: the summary plus hashtags, refreshed as the story changes until the
   // text is edited by hand. Only an edited text is saved with the story (facebookText).
@@ -1229,7 +1229,7 @@ function storyEditor(d, mode) {
         el("div", {}, el("label", { text: "Original title" }), f.sourceTitle),
         el("div", {}, el("label", { text: "Original date" }), f.sourceDate)),
       el("label", { text: "Link to the original, e.g. on swansea.gov.uk (recommended)" }), f.sourceUrl),
-    isDraft ? card("Facebook and X", facebook,
+    isDraft ? card("Facebook, X and Instagram", facebook,
       el("label", { text: "Facebook post text" }), fbText,
       el("p", { class: "hint", text: "The summary plus a few hashtags: the story's wards, one topic, then the fixed tags from Settings. Edit it for different wording or tags; the photo, headline and link come from the share page. The X post is the headline, the link and the same hashtags." }),
       el("div", { class: "row-btns" }, fbReset)) : null,
@@ -1292,10 +1292,10 @@ function renderPublished() {
           el("span", { text: shortDate(a.date) }),
           el("span", { "data-live": a.id }),
           (a.wards || []).length ? el("span", { text: a.wards.join(", ") }) : null,
-          a.facebook ? el("span", { class: "badge", text: "Sent to Facebook and X " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null)),
+          a.facebook ? el("span", { class: "badge", text: "Sent to Facebook, X and Instagram " + new Date(a.facebook).toLocaleDateString("en-GB") }) : null)),
       el("div", { class: "story-actions" },
         el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = a.id; renderPublished(); window.scrollTo(0, 0); } }, "Edit"),
-        el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook and X again" : "Post to Facebook and X"),
+        el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook, X and Instagram again" : "Post to Facebook, X and Instagram"),
         fbToggle,
         // Facebook keeps the photo and headline it saw first; its Sharing Debugger ("Scrape Again") refreshes them.
         a.facebook ? el("a", { class: "hint", href: debuggerUrl, target: "_blank", rel: "noopener", title: "Opens Facebook's Sharing Debugger. Click Scrape Again there after changing a sent story's photo or headline.", text: "Refresh Facebook preview ↗" }) : null,
@@ -1345,9 +1345,9 @@ function facebookFields(a) {
 }
 async function postToFacebook(a) {
   const question = a.facebook
-    ? `"${a.headline}" was already sent to Facebook and X on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
+    ? `"${a.headline}" was already sent to Facebook, X and Instagram on ${new Date(a.facebook).toLocaleDateString("en-GB")}. Send it again? If it did post last time, it will appear twice.`
     : `Post "${a.headline}" to the Swansea Labour Councillors Facebook page and X? It usually appears within about 15 minutes.`;
-  if (!confirm(`${question}\n\nFacebook post:\n${facebookTextOf(a, state.config)}\n\nX post:\n${xTextOf(a, state.config)}`)) return;
+  if (!confirm(`${question}\n\nFacebook post:\n${facebookTextOf(a, state.config)}\n\nX post:\n${xTextOf(a, state.config)}\n\nInstagram: the lead photo, with the headline and the story as the caption.`)) return;
   try {
     const fresh = await readJson(conn.site, "articles.json");
     fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
@@ -1706,7 +1706,7 @@ function renderSettings() {
       el("p", { class: "hint", text: "Only these people are quoted as Labour without a check." }),
       el("label", { text: "How to describe the council" }), f.councilDescription,
       el("label", { text: "Writing style notes" }), f.styleNotes),
-    card("Facebook and X",
+    card("Facebook, X and Instagram",
       el("label", { text: "Hashtags added to every post" }), f.facebookTags,
       el("p", { class: "hint", text: "These come first, then the story's ward and one topic tag, e.g. \"#Swansea #SwanseaLabour #BuildingABetterSwansea #Killay #Flooding\". A city-wide story has no ward, so it gets two topic tags. Leave empty for none." })),
     card("Daily drafts",
