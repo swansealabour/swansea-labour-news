@@ -223,7 +223,7 @@
       <a id="site-link" href="https://www.swansealabour.org/news" target="_blank" rel="noopener">View the website ↗</a>
       <span id="conn" class="conn">Not connected</span>
       <span id="site-state" class="conn" role="status"></span>
-      <span class="version">v2.0</span>
+      <span class="version">v2.1</span>
     </div>
   </div>
 </header>
@@ -985,7 +985,7 @@ function storyEditor(d, mode) {
     ? "Already sent to the Swansea Labour Councillors Facebook page and X."
     : sentBefore
       ? `This story was sent to Facebook and X before, on ${new Date(d.sent.facebook).toLocaleDateString("en-GB")}. Tick to post it again.`
-      : "Also post to the Swansea Labour Councillors Facebook page and X (usually appears within about 15 minutes).");
+      : "Also post to the Swansea Labour Councillors Facebook page, X and Instagram (usually appears within about 15 minutes).");
   // What Zapier will post: the summary plus hashtags, refreshed as the story changes until the
   // text is edited by hand. Only an edited text is saved with the story (facebookText).
   const autoText = () => autoFacebookText({ headline: f.headline.value, summary: f.summary.value, wards: wards.value(), topic: f.topic.value }, state.config);
@@ -1270,10 +1270,10 @@ function renderPublished() {
   }
   state.editing = null;
   const rebuild = el("button", { class: "secondary", onclick: async () => {
-    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); await writeFeed(list); setStatus("Sitemap, share pages and the Facebook and X feeds rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
+    try { setStatus("Rebuilding…"); await writeSitemap(list); await writeSharePages(list); await writeFeed(list); setStatus("Sitemap, share pages and the Facebook, X and Instagram feeds rebuilt.", "ok"); } catch (e) { setStatus(e.message, "err"); }
   } }, "Rebuild sitemap, share pages and social feeds");
   const upkeep = el("div", { class: "card" }, el("h3", { class: "card-title", text: "Housekeeping" }),
-    el("p", { class: "hint", text: "Writes the sitemap, the share pages and the Facebook and X feeds again from the published stories." }),
+    el("p", { class: "hint", text: "Writes the sitemap, the share pages and the Facebook, X and Instagram feeds again from the published stories." }),
     el("div", { class: "row-btns" }, rebuild));
   if (!list.length) { root.append(el("div", { class: "empty" }, el("strong", { text: "Nothing published yet" })), upkeep); return; }
   // v2: one card per story, with a search box, in place of the table. Same buttons as before.
@@ -1353,7 +1353,7 @@ async function postToFacebook(a) {
     fresh.data.articles = fresh.data.articles.map((x) => (x.id === a.id ? { ...x, ...newFacebookSend(x.id) } : x));
     await writeSite(fresh.data, fresh.sha, `Send to Facebook and X: ${a.headline}`);
     await loadAll();
-    setStatus("Sent to the Facebook and X feeds. Zapier will post it shortly.", "ok");
+    setStatus("Sent to the Facebook, X and Instagram feeds. Zapier will post it shortly.", "ok");
   } catch (e) { setStatus(e.message, "err"); }
 }
 // What an unpublished story's share page becomes, so old links from Facebook and X land on
