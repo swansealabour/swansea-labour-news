@@ -426,10 +426,10 @@ function imagesOf(a) {
 
 // ---- Facebook post text ----
 // Zapier posts each feed item's description as the Facebook post text. By default that is the
-// summary plus five hashtags: the fixed tags from Settings (two by default), one place tag (the
-// story's first ward, or Swansea for a city-wide story), then up to two topic tags. An article's
+// summary plus five hashtags: the fixed tags from Settings (three by default), the story's first
+// ward, then one topic tag (two for a city-wide story, which has no ward tag). An article's
 // own "facebookText" (edited on the review page) replaces the automatic text entirely.
-const DEFAULT_FACEBOOK_TAGS = "#SwanseaLabour #BuildingABetterSwansea";
+const DEFAULT_FACEBOOK_TAGS = "#Swansea #SwanseaLabour #BuildingABetterSwansea";
 const WARD_TAGS = {
   "Bôn-y-maen": ["Bonymaen"], "Dunvant & Killay": ["Killay", "Dunvant"], "Gorseinon & Penyrheol": ["Gorseinon", "Penyrheol"],
   "Pontlliw & Tircoed": ["Pontlliw", "Tircoed"], "St Thomas": ["StThomas"], "West Cross": ["WestCross"],
@@ -485,11 +485,13 @@ function hashtagsFor(a, fixed) {
     tags.push(clean); return true;
   };
   for (const t of (fixed == null ? DEFAULT_FACEBOOK_TAGS : fixed).split(/\s+/)) add(t);
-  add(wardTags(a.wards)[0] || "Swansea");
+  const place = add(wardTags(a.wards)[0]);
+  // One topic after a ward tag; a city-wide story has no ward, so it gets two topics instead.
   // A story's own topics beat the keyword guesses. Guesses are only used when it has none: a
   // guessed second tag beside a chosen one is too often wrong ("Dyfatty Junction" is not Roads).
   const own = ownTopics(a.topic);
-  for (const t of own.length ? own : guessTopics(a)) add(t);
+  let topics = 0;
+  for (const t of own.length ? own : guessTopics(a)) { if (topics < (place ? 1 : 2) && add(t)) topics++; }
   return tags.map((t) => "#" + t).join(" ");
 }
 function autoFacebookText(a, config) {
@@ -1214,7 +1216,7 @@ function storyEditor(d, mode) {
       el("label", { text: "Wards this story is about (optional)" }), wards.el,
       el("p", { class: "hint", text: "Tick every ward the story is about, including wards without Labour councillors. Wards in bold have a Labour page, which shows the story too. Leave them all unticked for a city-wide story." }),
       el("label", { text: "Topic hashtags (optional, up to two words)" }), f.topic,
-      el("p", { class: "hint", text: "Used in the Facebook, X and Instagram posts, after the place tag. Put a space between two. Leave it empty to use the automatic ones." })),
+      el("p", { class: "hint", text: "Used in the Facebook, X and Instagram posts, after the ward tag. The first word is always used; a second is used only when the story has no ward. Put a space between two. Leave it empty to use the automatic ones." })),
     card("Quotes",
       isDraft ? [el("label", { text: "People quoted" }), quotedTable] : null,
       el("label", { text: "Ward councillor and candidate quotes (optional)" }),
@@ -1665,7 +1667,7 @@ function renderSettings() {
     councillors: el("textarea", {}, (c.labourCouncillors || []).join("\n")),
     councilDescription: el("input", { type: "text", value: c.councilDescription || "" }),
     styleNotes: el("textarea", {}, c.styleNotes || ""),
-    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #SwanseaLabour #BuildingABetterSwansea" }),
+    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #Swansea #SwanseaLabour #BuildingABetterSwansea" }),
     driveInboxFolderId: el("input", { type: "text", value: c.driveInboxFolderId || "" }),
   };
   async function save() {
@@ -1706,7 +1708,7 @@ function renderSettings() {
       el("label", { text: "Writing style notes" }), f.styleNotes),
     card("Facebook and X",
       el("label", { text: "Hashtags added to every post" }), f.facebookTags,
-      el("p", { class: "hint", text: "These come first, then one place tag and up to two topic tags, e.g. \"#SwanseaLabour #BuildingABetterSwansea #Killay #Flooding #Roads\". Leave empty for none." })),
+      el("p", { class: "hint", text: "These come first, then the story's ward and one topic tag, e.g. \"#Swansea #SwanseaLabour #BuildingABetterSwansea #Killay #Flooding\". A city-wide story has no ward, so it gets two topic tags. Leave empty for none." })),
     card("Daily drafts",
       el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
       el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." })),
