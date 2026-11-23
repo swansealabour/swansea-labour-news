@@ -426,10 +426,10 @@ function imagesOf(a) {
 
 // ---- Facebook post text ----
 // Zapier posts each feed item's description as the Facebook post text. By default that is the
-// summary plus a few hashtags: the story's wards (up to two), one topic tag, then the fixed tags
-// from Settings. Facebook does best with a handful of tags, not a wall of them. An article's own
-// "facebookText" (edited on the review page) replaces the automatic text entirely.
-const DEFAULT_FACEBOOK_TAGS = "#Swansea #SwanseaLabour";
+// summary plus five hashtags: the fixed tags from Settings (two by default), one place tag (the
+// story's first ward, or Swansea for a city-wide story), then up to two topic tags. An article's
+// own "facebookText" (edited on the review page) replaces the automatic text entirely.
+const DEFAULT_FACEBOOK_TAGS = "#SwanseaLabour #BuildingABetterSwansea";
 const WARD_TAGS = {
   "Bôn-y-maen": ["Bonymaen"], "Dunvant & Killay": ["Killay", "Dunvant"], "Gorseinon & Penyrheol": ["Gorseinon", "Penyrheol"],
   "Pontlliw & Tircoed": ["Pontlliw", "Tircoed"], "St Thomas": ["StThomas"], "West Cross": ["WestCross"],
@@ -466,19 +466,30 @@ function wardTags(wards) {
   return out.slice(0, 2);
 }
 const cleanTag = (t) => String(t || "").replace(/^#+/, "").replace(/[^\p{L}\p{N}_]/gu, "");
-// The topic the keywords suggest, used when a story has no "topic" of its own.
-function guessTopic(a) {
-  return (TOPIC_TAGS.find(([re]) => re.test(`${a.headline || ""} ${a.summary || ""}`)) || [])[1] || "";
+// A story's own topics: up to two words, typed on the review page or chosen by the daily task.
+function ownTopics(t) {
+  return String(t || "").split(/[\s,]+/).map(cleanTag).filter(Boolean).slice(0, 2);
 }
+// The topics the keywords suggest (up to two), used to fill any a story doesn't have of its own.
+function guessTopics(a) {
+  const text = `${a.headline || ""} ${a.summary || ""}`, out = [];
+  for (const [re, tag] of TOPIC_TAGS) if (re.test(text) && !out.includes(tag)) out.push(tag);
+  return out.slice(0, 2);
+}
+const guessTopic = (a) => guessTopics(a).join(" ");
 function hashtagsFor(a, fixed) {
-  // A story's own topic (chosen by the daily task, or typed on the review page) beats the keyword guess.
-  const topic = cleanTag(a.topic) || guessTopic(a);
-  const tags = wardTags(a.wards);
-  if (topic && !tags.some((x) => x.toLowerCase() === topic.toLowerCase())) tags.push(topic);
-  for (const t of (fixed == null ? DEFAULT_FACEBOOK_TAGS : fixed).split(/\s+/)) {
+  const tags = [];
+  const add = (t) => {
     const clean = cleanTag(t);
-    if (clean && !tags.some((x) => x.toLowerCase() === clean.toLowerCase())) tags.push(clean);
-  }
+    if (!clean || tags.some((x) => x.toLowerCase() === clean.toLowerCase())) return false;
+    tags.push(clean); return true;
+  };
+  for (const t of (fixed == null ? DEFAULT_FACEBOOK_TAGS : fixed).split(/\s+/)) add(t);
+  add(wardTags(a.wards)[0] || "Swansea");
+  // A story's own topics beat the keyword guesses. Guesses are only used when it has none: a
+  // guessed second tag beside a chosen one is too often wrong ("Dyfatty Junction" is not Roads).
+  const own = ownTopics(a.topic);
+  for (const t of own.length ? own : guessTopics(a)) add(t);
   return tags.map((t) => "#" + t).join(" ");
 }
 function autoFacebookText(a, config) {
@@ -501,6 +512,24 @@ function xTextOf(a, config) {
   while (tags.length && length(tags) > X_LIMIT) tags.pop();
   if (length(tags) > X_LIMIT) headline = headline.slice(0, X_LIMIT - 2 - X_LINK_LENGTH - 1).trimEnd() + "…";
   return [headline, link, tags.join(" ")].filter(Boolean).join("\n\n");
+}
+// Instagram caption: headline, then as much of the story as fits in whole paragraphs, a line
+// saying where the full story is (links in captions can't be clicked), then the hashtags.
+// Instagram allows 2,200 characters; a story with no body falls back to its summary.
+const INSTAGRAM_LIMIT = 2200, INSTAGRAM_MORE = "Full story at swansealabour.org/news";
+function instagramTextOf(a, config) {
+  const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined);
+  const head = (a.headline || "").trim();
+  const paras = (a.body || []).map((p) => String(p || "").trim()).filter(Boolean);
+  if (!paras.length && (a.summary || "").trim()) paras.push(a.summary.trim());
+  const build = (n) => [head, ...paras.slice(0, n), INSTAGRAM_MORE, tags].filter(Boolean).join("\n\n");
+  let n = paras.length;
+  while (n > 1 && build(n).length > INSTAGRAM_LIMIT) n--;
+  const text = build(n);
+  if (text.length <= INSTAGRAM_LIMIT) return text;
+  // Even one paragraph is too long: shorten it to fit.
+  const room = INSTAGRAM_LIMIT - build(0).length - 3;
+  return [head, paras[0].slice(0, Math.max(0, room)).trimEnd() + "…", INSTAGRAM_MORE, tags].filter(Boolean).join("\n\n");
 }
 
 // ---- GitHub contents API ----
@@ -672,7 +701,9 @@ async function writeSharePages(articles) {
 // so Facebook shows the photo, headline and summary. The description is the post text (summary
 // plus hashtags, see facebookTextOf). Zapier skips guids it has seen, so each send gets its own
 // "facebookGuid" (older articles fall back to their id). x.xml lists the same stories with X-length
-// text (xTextOf) for a second Zap that sends them to Buffer, which posts them to X.
+// text (xTextOf) for a second Zap that sends them to Buffer, which posts them to X. instagram.xml
+// lists them with the story itself as the caption (instagramTextOf) for a third Zap, which
+// publishes the lead photo (the enclosure) to Instagram.
 function feedXml(pageUrl, articles, config, textOf = facebookTextOf, about = "the Swansea Labour Councillors Facebook page") {
   const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const items = articles.filter((a) => a.facebook)
@@ -705,6 +736,7 @@ async function writeFeed(articles) {
   for (const [path, xml, message] of [
     ["feed.xml", feedXml(pageUrl, articles, state.config), "Update Facebook feed"],
     ["x.xml", feedXml(pageUrl, articles, state.config, xTextOf, "X"), "Update X feed"],
+    ["instagram.xml", feedXml(pageUrl, articles, state.config, instagramTextOf, "Instagram"), "Update Instagram feed"],
   ]) {
     const existing = await gh(conn.site, path);
     if (existing && b64decode(existing.content) === xml) continue;
@@ -907,7 +939,7 @@ function storyEditor(d, mode) {
     summary: f.summary.value.trim(),
     body: f.body.value.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
     wards: wards.value(),
-    topic: cleanTag(f.topic.value),
+    topic: ownTopics(f.topic.value).join(" "),
     sourceName: f.sourceName.value.trim(),
     sourceTitle: f.sourceTitle.value.trim(),
     sourceDate: f.sourceDate.value.trim(),
@@ -1181,8 +1213,8 @@ function storyEditor(d, mode) {
     card("Wards and topic",
       el("label", { text: "Wards this story is about (optional)" }), wards.el,
       el("p", { class: "hint", text: "Tick every ward the story is about, including wards without Labour councillors. Wards in bold have a Labour page, which shows the story too. Leave them all unticked for a city-wide story." }),
-      el("label", { text: "Topic hashtag (optional, one word)" }), f.topic,
-      el("p", { class: "hint", text: "Used in the Facebook and X posts, after the ward tags. Leave it empty to use the automatic one." })),
+      el("label", { text: "Topic hashtags (optional, up to two words)" }), f.topic,
+      el("p", { class: "hint", text: "Used in the Facebook, X and Instagram posts, after the place tag. Put a space between two. Leave it empty to use the automatic ones." })),
     card("Quotes",
       isDraft ? [el("label", { text: "People quoted" }), quotedTable] : null,
       el("label", { text: "Ward councillor and candidate quotes (optional)" }),
@@ -1633,7 +1665,7 @@ function renderSettings() {
     councillors: el("textarea", {}, (c.labourCouncillors || []).join("\n")),
     councilDescription: el("input", { type: "text", value: c.councilDescription || "" }),
     styleNotes: el("textarea", {}, c.styleNotes || ""),
-    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #Swansea #SwanseaLabour" }),
+    facebookTags: el("input", { type: "text", value: c.facebookTags == null ? DEFAULT_FACEBOOK_TAGS : c.facebookTags, placeholder: "e.g. #SwanseaLabour #BuildingABetterSwansea" }),
     driveInboxFolderId: el("input", { type: "text", value: c.driveInboxFolderId || "" }),
   };
   async function save() {
@@ -1673,8 +1705,8 @@ function renderSettings() {
       el("label", { text: "How to describe the council" }), f.councilDescription,
       el("label", { text: "Writing style notes" }), f.styleNotes),
     card("Facebook and X",
-      el("label", { text: "Hashtags added to every Facebook post" }), f.facebookTags,
-      el("p", { class: "hint", text: "Added after the story's ward tags (up to two) and one topic tag, e.g. \"#Killay #Dunvant #Flooding #Swansea #SwanseaLabour\". Facebook does best with a few tags, not many. Leave empty for none." })),
+      el("label", { text: "Hashtags added to every post" }), f.facebookTags,
+      el("p", { class: "hint", text: "These come first, then one place tag and up to two topic tags, e.g. \"#SwanseaLabour #BuildingABetterSwansea #Killay #Flooding #Roads\". Leave empty for none." })),
     card("Daily drafts",
       el("label", { text: "Google Drive drop folder ID" }), f.driveInboxFolderId,
       el("p", { class: "hint", text: "The last part of the folder's web address, after /folders/." })),
