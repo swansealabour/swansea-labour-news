@@ -54,8 +54,8 @@
       "pledgeHeading": "Our Pledges",
       "pledges": [
         {
-          "title": "A Safer community",
-          "detail": "We will work with residents, the police & other organisation to tackle crime and antisocial behaviour and make our community safer",
+          "title": "Streets everyone can use",
+          "detail": "We're proud to have funded dropped kerbs and tactile paving across the ward. We'll keep funding schemes like these so that every resident can get around safely and easily.",
           "status": "",
           "evidence": "",
           "evidenceUrl": "",
@@ -77,8 +77,8 @@
           ]
         },
         {
-          "title": "A Cleaner community",
-          "detail": "We will employ an operative to help keep our streets clean by clearing litter, removing weeds and undertaking minor works. We will also work to deal with fly tipping quickly and we will install new bins across Bonymaen ward",
+          "title": "A clean and safe ward",
+          "detail": "We'll keep funding the cleansing teams that tackle weeds and fly-tipping. We've funded them for the last few years, and it has made a real difference to our community.",
           "status": "",
           "evidence": "",
           "evidenceUrl": "",
@@ -91,8 +91,8 @@
           ]
         },
         {
-          "title": "Investment in park and play",
-          "detail": "We will continue to invest in our parks and play areas across the ward & work with Swansea Labour council to deliver the new indoor training barn to be built at Cefn Hengoed school",
+          "title": "Sport and leisure on our doorstep",
+          "detail": "We'll keep backing schemes like the refurbishment of Cefn Hengoed Leisure Centre and the successful indoor training barn.",
           "status": "",
           "evidence": "",
           "evidenceUrl": "",
@@ -107,8 +107,8 @@
           ]
         },
         {
-          "title": "Greener community",
-          "detail": "We will continue to fund flower displays and wildflower planting schemes and protect green areas to make the ward a community to be proud of",
+          "title": "A greener Bôn-y-maen",
+          "detail": "We'll keep funding wildflower schemes across the ward and protecting our local green spaces.",
           "status": "",
           "evidence": "",
           "evidenceUrl": "",
@@ -120,8 +120,8 @@
           ]
         },
         {
-          "title": "Supporting Local Groups",
-          "detail": "We will help support local community groups, sports clubs and schools and continue to support residents and the Eastside Foodbank",
+          "title": "Backing schools, clubs and local groups",
+          "detail": "We'll support our schools, clubs and local organisations so that everyone can make the most of every opportunity, learn new skills and make new friends.",
           "status": "",
           "evidence": "",
           "evidenceUrl": "",
@@ -3025,6 +3025,7 @@
           "evidence": "",
           "evidenceUrl": "",
           "done": [
+            "As Swansea Council's Armed Forces Champion, I lead the council's work on its Armed Forces Covenant, speaking up for serving personnel, veterans and their families.",
             "Kit for Waunarlwydd RFC's under-14s to mark the club's 125th year, support for its under-10s and a snooker table for the club.",
             "Kit for Waunarlwydd Galaxy's under-11s.",
             "Support for the Waunarlwydd Carnival Committee year after year, and for the children's Christmas parties.",
@@ -3036,10 +3037,13 @@
           ]
         }
       ],
+      "gallery": [
+        { "photo": "images/waunarlwydd-poppy-appeal.jpg", "ratio": 0.75, "caption": "At the Royal British Legion's Poppy Appeal stall", "alt": "Councillor Wendy Lewis standing beside a Royal British Legion volunteer at a Poppy Appeal stall covered in poppies and collection tins" }
+      ],
       "councillors": [
         {
           "name": "Wendy Lewis",
-          "role": "",
+          "role": "Swansea Council's Armed Forces Champion",
           "phone": "07866271605",
           "email": "cllr.wendy.lewis@swansea.gov.uk",
           "photo": "images/councillors/wendy-lewis.jpg",
