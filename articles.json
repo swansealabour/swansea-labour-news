@@ -3,6 +3,45 @@
   "pageUrl": "https://www.swansealabour.org/news",
   "articles": [
     {
+      "id": "2026-11-24-labour-council-appeals-for-shared-lives-carers-to-he-fb582",
+      "date": "2026-11-24T09:36:59.464Z",
+      "updated": "2026-11-24T09:36:59.464Z",
+      "headline": "Labour council looks for caring adults to help young people leaving care",
+      "summary": "Swansea's Labour council is looking for caring people to support young people leaving care through Shared Lives, helping them build life skills and confidence.",
+      "body": [
+        "Swansea's Labour council wants to make sure no young person leaving care has to face adult life on their own. It is looking for caring, compassionate local people to give them steady support through Shared Lives.",
+        "Leaving care can be a daunting time. Many young people are still building their confidence while learning to manage adult life, and having a trusted adult alongside them can change a great deal.",
+        "Shared Lives gives care leavers the chance to learn practical skills for everyday life, grow in confidence and get consistent support as they move on. The people taking part offer guidance, encouragement and stability at a key moment.",
+        "The scheme is run as West Glamorgan Shared Lives, with Swansea Council and Neath Port Talbot Council. Anyone who thinks they could help can email westglamorgansharedlives@npt.gov.uk or call 01639 686123."
+      ],
+      "images": [
+        {
+          "src": "images/2026-11-24-labour-council-appeals-for-shared-lives-carers-to-he-fb582/1.jpg",
+          "alt": "West Glamorgan Shared Lives graphic reading Support when it's needed most, with a woman and teenage girl looking at a tablet",
+          "caption": "",
+          "credit": "",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "images/2026-11-24-labour-council-appeals-for-shared-lives-carers-to-he-fb582/2.jpg",
+          "alt": "West Glamorgan Shared Lives graphic reading Support when it's needed most, with Swansea and Neath Port Talbot council logos",
+          "caption": "",
+          "credit": "",
+          "width": 1080,
+          "height": 1350
+        }
+      ],
+      "wards": [],
+      "topic": "CommunitySupport",
+      "sourceName": "a Swansea Council Facebook post",
+      "sourceTitle": "Leaving care doesn't mean facing adulthood alone.",
+      "sourceDate": "",
+      "sourceUrl": "",
+      "facebook": "2026-11-24T09:36:59.465Z",
+      "facebookGuid": "2026-11-24-labour-council-appeals-for-shared-lives-carers-to-he-fb582-mwui3cjt"
+    },
+    {
       "id": "2026-11-23-labour-council-s-christmas-parade-draws-thousands-fb648",
       "date": "2026-11-23T09:03:33.088Z",
       "updated": "2026-11-23T09:03:33.088Z",
