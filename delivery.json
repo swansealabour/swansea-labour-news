@@ -866,6 +866,86 @@
       }
     },
     {
+      "id": "victoria-road-resurfaced-waunarlwydd",
+      "title": "Victoria Road resurfaced, Waunarlwydd",
+      "date": "FY2026-27",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "The main road through the village fully resurfaced, and the guard rail extended.",
+      "lat": 51.63975,
+      "lng": -4.0183,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Swansea Council resurfacing programme",
+        "url": ""
+      }
+    },
+    {
+      "id": "victoria-road-park-playground-waunarlwydd",
+      "title": "Victoria Road park playground, Waunarlwydd",
+      "date": "2025-07",
+      "theme": "Play",
+      "status": "Completed",
+      "summary": "New safety surfacing laid in two phases, plus outdoor gym equipment, new swings, a steam train and buddy benches.",
+      "lat": 51.6403,
+      "lng": -4.0206,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Community Investment Fund and community budget",
+        "url": ""
+      }
+    },
+    {
+      "id": "bryn-road-and-swansea-road-parking-restrictions-waunarlwydd",
+      "title": "Bryn Road and Swansea Road parking restrictions, Waunarlwydd",
+      "date": "2023-02",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "New parking and traffic restrictions, paid for from the community budget.",
+      "lat": 51.64074,
+      "lng": -4.02363,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Waunarlwydd community budget",
+        "url": ""
+      }
+    },
+    {
+      "id": "cwmbach-road-and-cwm-clyd-double-yellow-lines",
+      "title": "Double yellow lines on Cwmbach Road and Cwm Clyd",
+      "date": "2026-07",
+      "theme": "Roads",
+      "status": "Completed",
+      "summary": "New double yellow lines, paid for from the community budget.",
+      "lat": 51.63883,
+      "lng": -4.00863,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Waunarlwydd community budget",
+        "url": ""
+      }
+    },
+    {
+      "id": "waunarlwydd-community-centre-supported",
+      "title": "Waunarlwydd Community Centre supported",
+      "date": "2026-07",
+      "theme": "Community",
+      "status": "Completed",
+      "summary": "Community budget help for its events, Christmas lunch and parties, summer activities, fitness sessions and a new playgroup.",
+      "lat": 51.64002,
+      "lng": -4.01967,
+      "ward": "Waunarlwydd",
+      "councilWard": "Waunarlwydd",
+      "source": {
+        "name": "Waunarlwydd community budget",
+        "url": ""
+      }
+    },
+    {
       "id": "roseland-road-resurfaced-waunarlwydd",
       "title": "Roseland Road resurfaced, Waunarlwydd",
       "date": "2026-06",
