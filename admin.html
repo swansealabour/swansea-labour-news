@@ -223,7 +223,7 @@
       <a id="site-link" href="https://www.swansealabour.org/news" target="_blank" rel="noopener">View the website ↗</a>
       <span id="conn" class="conn">Not connected</span>
       <span id="site-state" class="conn" role="status"></span>
-      <span class="version">v2.1</span>
+      <span class="version">v2.2</span>
     </div>
   </div>
 </header>
@@ -498,8 +498,22 @@ function autoFacebookText(a, config) {
   const tags = hashtagsFor(a, config && config.data ? config.data.facebookTags : undefined);
   return [(a.summary || "").trim(), tags].filter(Boolean).join("\n\n");
 }
-function facebookTextOf(a, config) {
+// The digital imprint goes at the end of every Facebook and Instagram post: the post itself is
+// political material, so the imprint on the linked article does not cover it.
+function imprintLine(config) {
+  const imprint = ((config && config.data && config.data.imprint) || "").trim();
+  return imprintOk(imprint) ? imprint : "";
+}
+function withImprint(text, config) {
+  const imprint = imprintLine(config);
+  if (!imprint || text.includes(imprint)) return text;
+  return [text, imprint].filter(Boolean).join("\n\n");
+}
+function facebookBodyOf(a, config) {
   return (a.facebookText || "").trim() || autoFacebookText(a, config);
+}
+function facebookTextOf(a, config) {
+  return withImprint(facebookBodyOf(a, config), config);
 }
 // X post text: headline, link and the same hashtags, within X's 280 characters (X counts any
 // link as 23). Tags are dropped from the end until it fits. Buffer posts it as written.
@@ -524,14 +538,15 @@ function instagramTextOf(a, config) {
   const head = (a.headline || "").trim();
   const paras = (a.body || []).map((p) => String(p || "").trim()).filter(Boolean);
   if (!paras.length && (a.summary || "").trim()) paras.push(a.summary.trim());
-  const build = (n) => [head, ...paras.slice(0, n), INSTAGRAM_MORE, tags].filter(Boolean).join("\n\n");
+  const imprint = imprintLine(config);
+  const build = (n) => [head, ...paras.slice(0, n), INSTAGRAM_MORE, tags, imprint].filter(Boolean).join("\n\n");
   let n = paras.length;
   while (n > 1 && build(n).length > INSTAGRAM_LIMIT) n--;
   const text = build(n);
   if (text.length <= INSTAGRAM_LIMIT) return text;
   // Even one paragraph is too long: shorten it to fit.
   const room = INSTAGRAM_LIMIT - build(0).length - 3;
-  return [head, paras[0].slice(0, Math.max(0, room)).trimEnd() + "…", INSTAGRAM_MORE, tags].filter(Boolean).join("\n\n");
+  return [head, paras[0].slice(0, Math.max(0, room)).trimEnd() + "…", INSTAGRAM_MORE, tags, imprint].filter(Boolean).join("\n\n");
 }
 
 // ---- GitHub contents API ----
@@ -1280,9 +1295,15 @@ function renderPublished() {
   const rows = list.map((a) => {
     const imgs = imagesOf(a);
     const fbHolder = el("div", { class: "story-extra" });
-    const fbToggle = el("button", { class: "secondary", onclick: () => {
-      if (fbHolder.firstChild) fbHolder.innerHTML = ""; else fbHolder.append(facebookTextEditor(a));
-    } }, a.facebookText ? "Facebook text (custom)" : "Facebook text");
+    // v2.2: the Facebook text and Social image panels share this space; each button opens its
+    // own panel (closing the other), and a second click closes it.
+    const togglePanel = (kind, open) => {
+      const isOpen = fbHolder.dataset.panel === kind && fbHolder.firstChild;
+      fbHolder.innerHTML = ""; delete fbHolder.dataset.panel;
+      if (!isOpen) { fbHolder.dataset.panel = kind; open(); }
+    };
+    const fbToggle = el("button", { class: "secondary", onclick: () => togglePanel("facebook", () => fbHolder.append(facebookTextEditor(a))) },
+      a.facebookText ? "Facebook text (custom)" : "Facebook text");
     const debuggerUrl = "https://developers.facebook.com/tools/debug/?q=" + encodeURIComponent(siteUrl(`share/${encodeURIComponent(a.id)}.html`));
     const item = el("li", { class: "story" },
       imgs[0] ? el("img", { class: "story-thumb", src: siteUrl(imgs[0].src), alt: imgs[0].alt || "", loading: "lazy" }) : el("span", { class: "story-thumb none", text: "No photo" }),
@@ -1297,6 +1318,7 @@ function renderPublished() {
         el("button", { class: "secondary", onclick: () => { if (!leaveEdits()) return; state.editing = a.id; renderPublished(); window.scrollTo(0, 0); } }, "Edit"),
         el("button", { class: "secondary", onclick: () => postToFacebook(a) }, a.facebook ? "Send to Facebook, X and Instagram again" : "Post to Facebook, X and Instagram"),
         fbToggle,
+        el("button", { class: "secondary", onclick: () => togglePanel("social", () => socialImagePanel(a, fbHolder)) }, "Social image"),
         // Facebook keeps the photo and headline it saw first; its Sharing Debugger ("Scrape Again") refreshes them.
         a.facebook ? el("a", { class: "hint", href: debuggerUrl, target: "_blank", rel: "noopener", title: "Opens Facebook's Sharing Debugger. Click Scrape Again there after changing a sent story's photo or headline.", text: "Refresh Facebook preview ↗" }) : null,
         el("button", { class: "secondary danger", onclick: () => unpublish(a) }, "Unpublish")),
@@ -1313,10 +1335,11 @@ function renderPublished() {
 // clears any custom text, so later edits to the summary flow through again.
 function facebookTextEditor(a) {
   const auto = autoFacebookText(a, state.config);
-  const ta = el("textarea", { style: "min-height:110px" }, facebookTextOf(a, state.config));
-  const hint = el("p", { class: "hint", text: a.facebookText
+  const ta = el("textarea", { style: "min-height:110px" }, facebookBodyOf(a, state.config));
+  const hint = el("p", { class: "hint", text: (a.facebookText
     ? "Custom text. Reset to go back to the automatic summary and hashtags."
-    : "Automatic: the summary plus hashtags. Edit it to change what Zapier posts next time this story is sent." });
+    : "Automatic: the summary plus hashtags. Edit it to change what Zapier posts next time this story is sent.")
+    + " Your imprint from Settings is added to the end automatically." });
   async function save(text) {
     try {
       setStatus("Saving…");
@@ -1421,6 +1444,160 @@ const PLEDGE_STATUS = [["", "Not set (no badge shown)"], ["delivered", "Delivere
 const slugify = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 // Square-crop a photo to 480 x 480 for the councillor directory.
+// ---- Social image: the lead photo (or Labour red) with the headline over it, for posting by hand ----
+const SOCIAL_FORMATS = {
+  portrait: { w: 1080, h: 1350, label: "Portrait (Facebook, Instagram)" },
+  square: { w: 1080, h: 1080, label: "Square" },
+  landscape: { w: 1200, h: 630, label: "Landscape (X, LinkedIn)" },
+};
+
+function wrapCanvasText(ctx, text, maxWidth) {
+  const lines = [];
+  let line = "";
+  for (const word of String(text || "").split(/\s+/)) {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width > maxWidth && line) { lines.push(line); line = word; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+async function loadLeadPhoto(a) {
+  const lead = imagesOf(a)[0];
+  if (!lead) return null;
+  const tryLoad = async (src) => {
+    const img = new Image();
+    if (!src.startsWith("data:")) img.crossOrigin = "anonymous"; // GitHub Pages allows this, so the canvas can be saved
+    img.src = src; await img.decode(); return img;
+  };
+  // The site and this page share an origin, so the photo can be drawn and saved. Freshly
+  // published photos may not be on the site yet, so fall back to reading them from GitHub.
+  try { return await tryLoad(siteUrl(lead.src)); } catch {}
+  try { return await tryLoad("data:image/jpeg;base64," + await readRawB64(conn.site, lead.src.replace(/^\/+/, ""))); } catch {}
+  return null;
+}
+
+async function drawHeadlineImage(canvas, a, img, format) {
+  const { w: W, h: H } = SOCIAL_FORMATS[format];
+  canvas.width = W; canvas.height = H;
+  if (!document.getElementById("archivo-font")) {
+    document.head.append(el("link", { id: "archivo-font", rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=swap" }));
+  }
+  await Promise.all([document.fonts.load('800 80px "Archivo"'), document.fonts.load('500 20px "Archivo"')]).catch(() => {});
+  const ctx = canvas.getContext("2d");
+  const RED = "#E4003B";
+  const font = (weight, size) => `${weight} ${size}px Archivo, "Arial Black", Arial, sans-serif`;
+  const pad = Math.round(W * 0.07);
+
+  // Background: the photo with a soft fade at the bottom, or Labour red.
+  if (img) {
+    const scale = Math.max(W / img.width, H / img.height);
+    const dw = img.width * scale, dh = img.height * scale;
+    ctx.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    const fade = ctx.createLinearGradient(0, H * 0.45, 0, H);
+    fade.addColorStop(0, "rgba(0,0,0,0)");
+    fade.addColorStop(1, "rgba(0,0,0,0.75)");
+    ctx.fillStyle = fade; ctx.fillRect(0, 0, W, H);
+  } else {
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, RED); bg.addColorStop(1, "#8f0026");
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  }
+
+  // Small "SWANSEA LABOUR" label, top left.
+  const labelSize = Math.round(W * 0.02);
+  ctx.font = font(800, labelSize);
+  ctx.textBaseline = "middle";
+  const label = "SWANSEA LABOUR";
+  const lw = ctx.measureText(label).width + labelSize * 1.4, lh = labelSize * 2.1;
+  ctx.fillStyle = img ? RED : "#ffffff";
+  ctx.fillRect(pad, pad, lw, lh);
+  ctx.fillStyle = img ? "#ffffff" : RED;
+  ctx.fillText(label, pad + labelSize * 0.7, pad + lh / 2 + 1);
+
+  // The imprint (agent details) in very small text close to the bottom edge. It is always on the
+  // image, so it travels with it if the image is shared on its own; it is in the post text too.
+  ctx.textBaseline = "alphabetic";
+  const impSize = Math.max(12, Math.round(W * 0.012));
+  const impGap = impSize * 1.3;
+  ctx.font = font(500, impSize);
+  const impLines = wrapCanvasText(ctx, imprintLine(state.config), W - pad * 2);
+  const impY = H - Math.round(W * 0.03) - (impLines.length - 1) * impGap;
+  const bottom = impLines.length ? Math.min(H - pad, impY - impSize * 2.6) : H - pad;
+
+  // Headline: kept modest so the photo leads; shrinks to fit at most 4 lines.
+  const maxH = bottom - (pad + lh + pad);
+  let size = Math.round(W * (format === "landscape" ? 0.046 : 0.058)), lines;
+  for (; size > 22; size -= 2) {
+    ctx.font = font(800, size);
+    lines = wrapCanvasText(ctx, a.headline, W * 0.82 - pad);
+    if (lines.length <= 4 && lines.length * size * 1.15 <= maxH) break;
+  }
+  const lineH = size * 1.15;
+  const top = bottom - lines.length * lineH;
+  if (img) {
+    const shadeTop = Math.max(0, top - size * 2);
+    const shade = ctx.createLinearGradient(0, shadeTop, 0, top + size);
+    shade.addColorStop(0, "rgba(0,0,0,0)");
+    shade.addColorStop(1, "rgba(0,0,0,0.35)");
+    ctx.fillStyle = shade; ctx.fillRect(0, shadeTop, W, H - shadeTop);
+  }
+  ctx.fillStyle = img ? RED : "#ffffff";
+  ctx.fillRect(pad, top - size * 0.5, W * 0.07, Math.max(5, size * 0.09));
+  ctx.fillStyle = "#ffffff";
+  lines.forEach((l, i) => ctx.fillText(l, pad, top + (i + 1) * lineH - size * 0.18));
+
+  ctx.font = font(500, impSize);
+  ctx.fillStyle = "rgba(255,255,255,0.85)";
+  impLines.forEach((l, i) => ctx.fillText(l, pad, impY + i * impGap));
+}
+
+async function socialImagePanel(a, holder) {
+  setStatus("Making social image…");
+  const img = await loadLeadPhoto(a);
+  const canvas = el("canvas", { style: "width:100%;max-width:420px;height:auto;border-radius:6px;display:block;margin:10px 0" });
+  const format = el("select", {}, Object.entries(SOCIAL_FORMATS).map(([k, v]) => el("option", { value: k }, v.label)));
+  const redraw = () => drawHeadlineImage(canvas, a, img, format.value);
+  format.addEventListener("change", redraw);
+  await redraw();
+  if (holder.dataset.panel !== "social") return; // another panel was opened while the photo loaded
+
+  const link = pageUrlOf(state.config) + "?article=" + encodeURIComponent(a.id);
+  // Summary, then the pointer to the comments, then hashtags; custom Facebook text is used as written.
+  const more = "Full story in the comments 👇";
+  const body = (a.facebookText || "").trim()
+    ? [a.facebookText.trim(), more]
+    : [(a.summary || "").trim(), more, hashtagsFor(a, state.config && state.config.data ? state.config.data.facebookTags : undefined)];
+  const caption = el("textarea", { style: "min-height:110px" }, withImprint(body.filter(Boolean).join("\n\n"), state.config));
+  const comment = el("textarea", { style: "min-height:60px" }, `Read the full story: ${link}`);
+  const copy = (field) => async () => {
+    try { await navigator.clipboard.writeText(field.value); setStatus("Copied.", "ok"); }
+    catch { field.select(); setStatus("Press Ctrl+C to copy.", ""); }
+  };
+  const download = () => canvas.toBlob((blob) => {
+    const url = URL.createObjectURL(blob);
+    const a2 = el("a", { href: url, download: `${a.id}-${format.value}.png` });
+    document.body.append(a2); a2.click(); a2.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+  }, "image/png");
+
+  const hasImprint = !!imprintLine(state.config);
+  holder.append(el("div", { class: "card" },
+    el("h3", { text: "Social image" }),
+    !hasImprint ? el("p", { class: "banner", text: "Add a real digital imprint in Settings first. It is printed small on the image and added to the post text, and the image can't be downloaded without it." }) : null,
+    el("label", { text: "Image size" }), format,
+    canvas,
+    el("p", { class: "hint", text: "The imprint is printed in small text along the bottom of the image, and added to the end of the post text." }),
+    el("div", { class: "row-btns" }, el("button", { class: "primary", onclick: download, disabled: !hasImprint }, "Download image")),
+    el("label", { text: "Post text" }), caption,
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", onclick: copy(caption) }, "Copy post text")),
+    el("label", { text: "First comment (with the link)" }), comment,
+    el("div", { class: "row-btns" }, el("button", { class: "secondary", onclick: copy(comment) }, "Copy comment")),
+    el("p", { class: "hint", text: "For posting by hand: post the image with the post text, then add the comment straight away as the first comment on your own post." })));
+  setStatus(img || !imagesOf(a).length ? "Social image ready." : "Social image ready. The photo couldn't be loaded, so the red background is used.", "ok");
+}
+
 async function squarePhoto(file) {
   const bmp = await createImageBitmap(file);
   const side = Math.min(bmp.width, bmp.height);
